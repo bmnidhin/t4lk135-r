@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const HerotextEng= "A place where TKM's voice reigns free";
+const HerotextEng= "A place where TKM's voice reigns free!!";
 const HerotextMal = "";
 
 class Herotext extends Component {
