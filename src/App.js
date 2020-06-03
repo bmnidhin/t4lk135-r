@@ -78,7 +78,7 @@ function App() {
     <div className="col s12 m4">
       <div className="icon-block">
         
-        <img src={imageOne} width="100%"className="nbm-poster" alt="Poster"></img>
+        <img src={imageOne} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
         <br/><br/>
         {/* <div title="Add to Calendar" className="addeventatc"> 
           Add Event to Calendar
@@ -98,7 +98,7 @@ function App() {
     <div className="col s12 m4">
       <div className="icon-block">
         
-      <img src={imageTwo} width="100%"className="nbm-poster" alt="Poster"></img>
+      <img src={imageTwo} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
       <br/><br/>
         {/* <div title="Add to Calendar" className="addeventatc"> 
           Add Event to Calendar
@@ -117,7 +117,7 @@ function App() {
     <div className="col s12 m4">
       <div className="icon-block">
         
-      <img src={imageThree} width="100%"className="nbm-poster" alt="Poster"></img>
+      <img src={imageThree} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
       <br/><br/>
         {/* <div title="Add to Calendar" className="addeventatc"> 
           Add Event to Calendar
@@ -157,6 +157,7 @@ function App() {
       <Media>
       <div className="media">
       <div className="media-player">
+     
             <Player src="https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA" autoPlay="true" vendor="audio"/>
           </div>
       <div className="media-controls">

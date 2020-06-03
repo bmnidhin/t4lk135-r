@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const HerotextEng= "A place where TKM's voice reigns free";
-const HerotextMal = "ഇത് വിട്ടുകളയാതവര്‍ക്ക് വേണ്ടി";
+const HerotextMal = "";
 
 class Herotext extends Component {
 
@@ -12,7 +12,8 @@ class Herotext extends Component {
         
        <div className="heading">
            <h1 className="Herotext">{HerotextEng}</h1>
-           <h3 className="Herotext-ml">{HerotextMal}</h3>
+           <h3 className="Herotext-ml">{HerotextMal}</h3> 
+           {/* Herotext-ml */}
        </div>
         
         
