@@ -1,40 +1,43 @@
 import React from 'react';
 // import logo from './logo.svg';
 import { Media, Player, } from 'react-media-player'
-import CustomPlayPause from './CustomPlayPause'
+import CustomPlayPause from './Components/CustomPlayPause'
+import Navbar from './Components/Navbar'
 
 import './App.css';
+import Herotext from './Components/Herotext';
+import Footer from './Components/Footer';
 
-const Appname= "Google";
+const Appname= "The TKM Show";
 // const { PlayPause, MuteUnmute,Volume, } = controls
 // event One
-let imageOne = require('./02.jpeg');
+let imageOne = require('./img/01.jpg');
 let eventOneTitle ="Kamithaakal Aanoda inte preshnam";
 let eventOneDescription ="";
 let eventOneStartTime ="06/15/2020 08:00 AM";
 let eventOneEndTime ="06/15/2020 10:00 AM";
 
 // event Two
-let imageTwo = require('./02.jpeg');
+let imageTwo = require('./img/02.jpg');
 let eventTwoTitle ="Kamithaakal";
 let eventTwoDescription ="";
 let eventTwoStartTime ="06/15/2020 08:00 AM";
 let eventTwoEndTime ="06/15/2020 10:00 AM";
 
 // event Three
-let imageThree = require('./02.jpeg');
+let imageThree = require('./img/03.jpg');
 let eventThreeTitle ="Kamithaakal";
 let eventThreeDescription ="";
 let eventThreeStartTime ="06/15/2020 08:00 AM";
 let eventThreeEndTime ="06/15/2020 10:00 AM";
 
 
-let podcastImgGoogle = require('./EN_Google_Podcasts_Badge_8x.png');
-let podcastImgSpotify = require('./spotify-podcast-badge-wht-grn-660x160.png');
+let podcastImgGoogle = require('./img/EN_Google_Podcasts_Badge_8x.png');
+let podcastImgSpotify = require('./img/spotify-podcast-badge-wht-blk-165x40.png');
 const timezone ="India/Kolkata";
 const location ="Kollam Kerala India";
-const logo = require('./logo.png');
-const Background = require('./wave.jpg');
+
+const Background = require('./img/wave.jpg');
 
 
 
@@ -47,8 +50,6 @@ function App() {
   return (
     <div className="App">
       
-     
-     
     
       <header className="App-header"style={{  
           backgroundImage:  "url(" + Background + ")",
@@ -56,13 +57,18 @@ function App() {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}>
-        <nav className="nav justify-content-center">
-        <img src={logo}height="150px"alt="The TKM Show"></img>
+          <Navbar/>
+          <Herotext/>
         
-      </nav>
         <div>
-        <img src={podcastImgGoogle}height="50px"alt="Google Podcast"></img>&nbsp;&nbsp;
-        <img src={podcastImgSpotify}height="50px"alt="Spotify"></img>
+          {/* <a class=" tooltipped" data-position="top" data-tooltip="Coming Soon">
+          <img src={podcastImgGoogle} height="40px"width="165" alt="Poadcast"></img>&nbsp;&nbsp;
+          </a>
+          <a class=" tooltipped" data-position="top" data-tooltip="I am a tooltip">
+          <img src={podcastImgSpotify}height="40px"width="165"alt="Spotify"></img>
+          </a> */}
+        
+        
         </div>
        <div className="nbm-img">
        <div className="section">
@@ -74,7 +80,7 @@ function App() {
         
         <img src={imageOne} width="100%"className="nbm-poster" alt="Poster"></img>
         <br/><br/>
-        <div title="Add to Calendar" className="addeventatc"> 
+        {/* <div title="Add to Calendar" className="addeventatc"> 
           Add Event to Calendar
           <span className="start">{eventOneStartTime}</span>
           <span className="end">{eventOneEndTime}</span>
@@ -82,7 +88,7 @@ function App() {
           <span className="title">{eventOneTitle}</span>
           <span className="description">{eventOneDescription}</span>
           <span className="location">{location}</span>
-      </div><br/><br/>
+      </div><br/><br/> */}
 
 
         
@@ -94,7 +100,7 @@ function App() {
         
       <img src={imageTwo} width="100%"className="nbm-poster" alt="Poster"></img>
       <br/><br/>
-        <div title="Add to Calendar" className="addeventatc"> 
+        {/* <div title="Add to Calendar" className="addeventatc"> 
           Add Event to Calendar
           <span className="start">{eventTwoStartTime}</span>
           <span className="end">{eventTwoEndTime}</span>
@@ -102,7 +108,7 @@ function App() {
           <span className="title">{eventTwoTitle}</span>
           <span className="description">{eventTwoDescription}</span>
           <span className="location">{location}</span>
-      </div><br/><br/>
+      </div><br/><br/> */}
 
        
       </div>
@@ -113,7 +119,7 @@ function App() {
         
       <img src={imageThree} width="100%"className="nbm-poster" alt="Poster"></img>
       <br/><br/>
-        <div title="Add to Calendar" className="addeventatc"> 
+        {/* <div title="Add to Calendar" className="addeventatc"> 
           Add Event to Calendar
           <span className="start">{eventThreeStartTime}</span>
           <span className="end">{eventThreeEndTime}</span>
@@ -121,7 +127,7 @@ function App() {
           <span className="title">{eventThreeTitle}</span>
           <span className="description">{eventThreeDescription}</span>
           <span className="location">{location}</span>
-      </div><br/><br/>
+      </div><br/><br/> */}
 
        
       </div>
@@ -151,7 +157,7 @@ function App() {
       <Media>
       <div className="media">
       <div className="media-player">
-            <Player src="http://stream.zeno.fm/7dpu3aargzzuv" autoPlay="true" vendor="audio"/>
+            <Player src="https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA" autoPlay="true" vendor="audio"/>
           </div>
       <div className="media-controls">
       <CustomPlayPause />
@@ -159,30 +165,7 @@ function App() {
     </div>
     </div>
     </Media>
-    
-      <footer className="footer">
-            <div className="center">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-                        <div className="main-footer justify-content-center">
-
-                            <div className="social">
-                               <br/>
-                                <a href="https://instagram.com/tkmtalkies"><i className="fa fa-instagram nbm-logo"></i></a>&nbsp;&nbsp;
-                                <a href="https://instagram.com/tkmtalkies"><i className="fa fa-facebook nbm-logo"></i></a>&nbsp;&nbsp;
-                                <a href="https://instagram.com/tkmtalkies"><i className="fa fa-twitter nbm-logo"></i></a>&nbsp;&nbsp;
-                                
-                            </div>
-
-                            <p className="artribute">© tkmtalkies</p>
-
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </footer>
+    <Footer/>
     </div>
   );
 }

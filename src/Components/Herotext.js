@@ -1,0 +1,25 @@
+import React, { Component } from 'react'
+
+const HerotextEng= "A place where TKM's voice reigns free";
+const HerotextMal = "ഇത് വിട്ടുകളയാതവര്‍ക്ക് വേണ്ടി";
+
+class Herotext extends Component {
+
+ 
+  render() {
+    
+    return (
+        
+       <div className="heading">
+           <h1 className="Herotext">{HerotextEng}</h1>
+           <h3 className="Herotext-ml">{HerotextMal}</h3>
+       </div>
+        
+        
+
+     
+    )
+  }
+}
+ 
+export default Herotext;

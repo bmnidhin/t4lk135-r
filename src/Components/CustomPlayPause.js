@@ -36,8 +36,8 @@ class CustomPlayPause extends Component {
           <ul className="pt-2">
             
             <li className="waves-effect waves-light">
-                <button className="btn btn-flat white-text" onClick={this._muteSound}>
-                {media.isMuted ? <i className="medium material-icons">volume_down</i> : <i className="medium material-icons white-text">volume_up</i>}
+                <button className="btn btn-flat white-text" onClick={this._muteSound} >
+                {media.isMuted ? <i className="medium material-icons">volume_down</i> : <i className="medium material-icons white-text">volume_down</i>}
                 </button>
             </li>
             <li className="waves-effect waves-light">
