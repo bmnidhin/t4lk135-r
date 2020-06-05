@@ -12,7 +12,7 @@ class Herotext extends Component {
         
        <div className="heading">
            <h1 className="Herotext">{HerotextEng}</h1>
-           <h3 className="Herotext-ml">{HerotextMal}</h3> 
+           <h3 className="Herotext-ml">{HerotextMal}.</h3> 
            {/* Herotext-ml */}
        </div>
         

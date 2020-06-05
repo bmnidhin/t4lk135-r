@@ -31,7 +31,7 @@ class Footer extends Component {
           
                             </div>
 
-                            <p className="artribute">© {developer}</p>
+                            <p className="artribute">© {developer}.</p>
 
                             
                         </div>
