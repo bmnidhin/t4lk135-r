@@ -3,7 +3,7 @@ import React from 'react';
 
 import {Helmet} from "react-helmet";
 import { Media, Player, } from 'react-media-player'
-import CustomPlayPause from '../components/CustomPlayPause'
+import CustomPlayPause from './components/CustomPlayPause'
 import Navbar from '../components/Navbar'
 import Herotext from '../components/Herotext';
 import Footer from '../components/Footer';
