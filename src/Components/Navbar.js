@@ -11,12 +11,12 @@ class Navbar extends Component {
     return (
       <>
 
-        <nav className="nav">
+        <nav className="nav das">
       
          
       </nav>
       <div class="justify-content-center">
-        <img src={logo} height="100px"alt={Appname}>.</img>
+        <img src={logo} height="100px"alt={Appname}></img>
       </div>
     </>
      
