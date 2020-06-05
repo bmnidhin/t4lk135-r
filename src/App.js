@@ -1,12 +1,21 @@
-import React from 'react';
-// import logo from './logo.svg';
-import { Media, Player, } from 'react-media-player'
-import CustomPlayPause from './Components/CustomPlayPause'
-import Navbar from './Components/Navbar'
+import React, { useRef, useEffect } from 'react';
+import { useLocation, Switch } from 'react-router-dom';
+import AppRoute from './utils/AppRoute';
+import ScrollReveal from './utils/ScrollReveal';
+
+
 
 import './App.css';
-import Herotext from './Components/Herotext';
-import Footer from './Components/Footer';
+
+
+
+
+// Views 
+import Home from './views/Home';
+import Listen from './views/Listen';
+
+
+
 
 const Appname= "The TKM Show";
 // const { PlayPause, MuteUnmute,Volume, } = controls
@@ -48,126 +57,16 @@ const Background = require('./img/wave.jpg');
 function App() {
   
   return (
-    <div className="App">
-      
+
+    <ScrollReveal
+    // ref={childRef}
+    children={() => (
+      <Switch>
+        <AppRoute exact path="/" component={Home}  />
+        <AppRoute exact path="/listen" component={Listen}  />
+      </Switch>
+    )} />
     
-      <header className="App-header"style={{  
-          backgroundImage:  "url(" + Background + ")",
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }}>
-          <Navbar/>
-          <Herotext/>
-        
-        <div>
-          {/* <a class=" tooltipped" data-position="top" data-tooltip="Coming Soon">
-          <img src={podcastImgGoogle} height="40px"width="165" alt="Poadcast"></img>&nbsp;&nbsp;
-          </a>
-          <a class=" tooltipped" data-position="top" data-tooltip="I am a tooltip">
-          <img src={podcastImgSpotify}height="40px"width="165"alt="Spotify"></img>
-          </a> */}
-        
-        
-        </div>
-       <div className="nbm-img">
-       <div className="section">
-
-  
-  <div className="row">
-    <div className="col s12 m4">
-      <div className="icon-block">
-        
-        <img src={imageOne} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
-        <br/><br/>
-        {/* <div title="Add to Calendar" className="addeventatc"> 
-          Add Event to Calendar
-          <span className="start">{eventOneStartTime}</span>
-          <span className="end">{eventOneEndTime}</span>
-          <span className="timezone">{timezone}</span>
-          <span className="title">{eventOneTitle}</span>
-          <span className="description">{eventOneDescription}</span>
-          <span className="location">{location}</span>
-      </div><br/><br/> */}
-
-
-        
-      </div>
-    </div>
-
-    <div className="col s12 m4">
-      <div className="icon-block">
-        
-      <img src={imageTwo} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
-      <br/><br/>
-        {/* <div title="Add to Calendar" className="addeventatc"> 
-          Add Event to Calendar
-          <span className="start">{eventTwoStartTime}</span>
-          <span className="end">{eventTwoEndTime}</span>
-          <span className="timezone">{timezone}</span>
-          <span className="title">{eventTwoTitle}</span>
-          <span className="description">{eventTwoDescription}</span>
-          <span className="location">{location}</span>
-      </div><br/><br/> */}
-
-       
-      </div>
-    </div>
-
-    <div className="col s12 m4">
-      <div className="icon-block">
-        
-      <img src={imageThree} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
-      <br/><br/>
-        {/* <div title="Add to Calendar" className="addeventatc"> 
-          Add Event to Calendar
-          <span className="start">{eventThreeStartTime}</span>
-          <span className="end">{eventThreeEndTime}</span>
-          <span className="timezone">{timezone}</span>
-          <span className="title">{eventThreeTitle}</span>
-          <span className="description">{eventThreeDescription}</span>
-          <span className="location">{location}</span>
-      </div><br/><br/> */}
-
-       
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-
-
-
-
-      
-       </div>
-      </header>
-      <Media>
-        <div className="media">
-          
-          <div className="media-controls">
-           
-            
-          </div>
-        </div>
-      </Media>
-     
-      <Media>
-      <div className="media">
-      <div className="media-player">
-     
-            <Player src="https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA" autoPlay="true" vendor="audio"/>
-          </div>
-      <div className="media-controls">
-      <CustomPlayPause />
- 
-    </div>
-    </div>
-    </Media>
-    <Footer/>
-    </div>
   );
 }
 

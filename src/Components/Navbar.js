@@ -9,12 +9,16 @@ class Navbar extends Component {
   render() {
     
     return (
+      <>
 
-        <nav className="nav justify-content-center">
-        <img src={logo} height="100px"alt={Appname}></img>
-        
+        <nav className="nav">
+      
+         
       </nav>
-
+      <div class="justify-content-center">
+        <img src={logo} height="100px"alt={Appname}></img>
+      </div>
+    </>
      
     )
   }
