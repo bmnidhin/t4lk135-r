@@ -15,7 +15,7 @@ const Appname= "The TKM Show";
 // event One
 
 
-const Background = require('../img/wave.jpg');
+const Background = require('./img/wave.jpg');
 
 
 

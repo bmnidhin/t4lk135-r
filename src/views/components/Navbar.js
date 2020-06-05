@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const Appname= "The TKM Shows";
-const logo = require('./../img/tkmshow_white.png');
+const logo = require('../img/tkmshow_white.png');
 
 class Navbar extends Component {
 
