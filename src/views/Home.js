@@ -8,7 +8,7 @@ import Navbar from './components/Navbar'
 import Herotext from './components/Herotext';
 import Footer from './components/Footer';
 
-import RecentPosters from '../components/RecentPosters';
+import RecentPosters from './components/RecentPosters';
 
 const Appname= "The TKM Show";
 // const { PlayPause, MuteUnmute,Volume, } = controls

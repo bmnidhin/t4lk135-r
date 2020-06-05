@@ -5,11 +5,11 @@ import React, { useState } from "react";
 
 import { Media, Player, controls, } from 'react-media-player'
 import CustomPlayPause from './components/CustomPlayPause'
-import PodPlayer from '../components/PodPlayer'
+import PodPlayer from './components/PodPlayer'
 import Navbar from './components/Navbar'
 import Herotext from './components/Herotext';
 import Footer from './components/Footer';
-import RecentPosters from '../components/RecentPosters';
+import RecentPosters from './components/RecentPosters';
 import {Helmet} from "react-helmet";
 
 const Appname= "The TKM Show";
