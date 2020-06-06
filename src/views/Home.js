@@ -9,6 +9,7 @@ import Herotext from './components/Herotext';
 import Footer from './components/Footer';
 
 import RecentPosters from './components/RecentPosters';
+import CountDown from './components/CountDown';
 
 const Appname= "The TKM Show";
 // const { PlayPause, MuteUnmute,Volume, } = controls
@@ -42,6 +43,7 @@ const Home = () => {
 
           <Navbar/>
           <Herotext/>
+         <CountDown/>
           
          
          

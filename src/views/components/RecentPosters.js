@@ -8,14 +8,14 @@ let eventOneStartTime ="06/15/2020 08:00 AM";
 let eventOneEndTime ="06/15/2020 10:00 AM";
 
 // event Two
-let imageTwo = require('../img/02.jpg');
+let imageTwo = require('../img/poster1.jpg');
 let eventTwoTitle ="Kamithaakal";
 let eventTwoDescription ="";
 let eventTwoStartTime ="06/15/2020 08:00 AM";
 let eventTwoEndTime ="06/15/2020 10:00 AM";
 
 // event Three
-let imageThree = require('../img/03.jpg');
+let imageThree = require('../img/launch.jpg');
 let eventThreeTitle ="Kamithaakal";
 let eventThreeDescription ="";
 let eventThreeStartTime ="06/15/2020 08:00 AM";
@@ -39,7 +39,7 @@ class RecentPosters extends Component {
  
    
    <div className="row">
-     <div className="col s12 m4">
+     <div className="col s12 m4 hide">
        <div className="icon-block">
          
          <img src={imageOne} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
@@ -59,7 +59,7 @@ class RecentPosters extends Component {
        </div>
      </div>
  
-     <div className="col s12 m4">
+     <div className="col s12 m6">
        <div className="icon-block">
          
        <img src={imageTwo} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
@@ -78,7 +78,7 @@ class RecentPosters extends Component {
        </div>
      </div>
  
-     <div className="col s12 m4">
+     <div className="col s12 m6 hide-small">
        <div className="icon-block">
          
        <img src={imageThree} width="100%"className="nbm-poster z-depth-3" alt="Poster"></img>
