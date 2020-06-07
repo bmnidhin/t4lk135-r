@@ -15,24 +15,62 @@ class PodPlayer extends Component {
    
 
     if (media.isLoading) {
-        return (<h1>Loading.....</h1>)
+        return (
+          <>
+
+          <div class="row Podplayer">
+          <div class="col s12 m3">
+            <div width="100%" height="">
+            <img src={this.props.art} width="100%" className="nbm-poster z-depth-3" alt={this.props.alt}></img>
+            </div>
+              
+               
+          </div>
+          
+          <div class="col s12 m8">
+                <div className="left-align asd">
+                    <span>Loading.....</span>
+                    <h3>{this.props.podtitle}</h3>
+                    <p class="podpara">{this.props.writeup}</p>
+                     {/* <p>Duration :<b>{media.duration}</b> </p>
+                     <time>
+                       Current Time : {(media.currentTime)}
+                      </time>
+                      <SeekBar /> */}
+                </div>
+           </div>
+          </div>
+          
+          
+           
+    
+    
+           
+          
+         </>
+        )
       }
      return (
     <>
 
       <div class="row Podplayer">
-      <div class="col s12 m4">
+      <div class="col s12 m3">
+        <div min-width="100%" height="">
+        <img src={this.props.art} width="100%" className="nbm-poster z-depth-3" alt={this.props.alt}></img>
+        </div>
           
-           <img src={this.props.art} width="100%" className="nbm-poster z-depth-3" alt={this.props.alt}></img>
+           
       </div>
+      
         <div class="col s12 m8">
-            <div className="left-align">
+            <div className="left-align  asd">
                 <h3>{this.props.podtitle}</h3>
-                 <p>Duration :<b>{media.duration}</b> </p>
+                  <p class="podpara">{this.props.writeup}</p>
+                 {/* <p>Duration :<b>{media.duration}</b> </p>
                  <time>
                    Current Time : {(media.currentTime)}
                   </time>
-                  <SeekBar />
+                  <SeekBar /> */}
             </div>
        </div>
       </div>

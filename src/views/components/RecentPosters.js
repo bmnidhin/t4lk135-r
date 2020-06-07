@@ -8,14 +8,14 @@ let eventOneStartTime ="06/15/2020 08:00 AM";
 let eventOneEndTime ="06/15/2020 10:00 AM";
 
 // event Two
-let imageTwo = require('../img/aswin8.jpg');
+let imageTwo = require('../img/01.jpg');
 let eventTwoTitle ="Kamithaakal";
 let eventTwoDescription ="";
 let eventTwoStartTime ="06/15/2020 08:00 AM";
 let eventTwoEndTime ="06/15/2020 10:00 AM";
 
 // event Three
-let imageThree = require('../img/launch.jpg');
+let imageThree = require('../img/02.jpg');
 let eventThreeTitle ="Kamithaakal";
 let eventThreeDescription ="";
 let eventThreeStartTime ="06/15/2020 08:00 AM";

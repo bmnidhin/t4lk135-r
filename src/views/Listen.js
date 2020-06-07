@@ -49,8 +49,9 @@ let PodcastURL ="https://anchor.fm/s/249bf89c/podcast/play/14682808/https%3A%2F%
 
 let streamURL = "https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA";
 const podtitle ="Stay Tuned..! Trial Episode"
-const duration ="12" 
+const duration ="12 Min" 
 const art = 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/6042015/6042015-1591172558348-8d8b77870bd83.jpg';
+const writeup ="One of the architects behind Hestia'19, The Ex G-Sec and a name familiar to the majority of TKMians, in our first episode 'Ormayundo ee mugham?' we bring to you TKM's very own Aswin P S."
 const {
   
   CurrentTime,
@@ -75,7 +76,7 @@ const Listen = () => {
      <Helmet>
         <meta charSet="utf-8" />
         <title>Listen | The TKM Show</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <link rel="canonical" href="https://thetkmshow.in/orma-undo-ee-mugham" />
     </Helmet>
     <div className="App">
       
@@ -96,27 +97,86 @@ const Listen = () => {
           
   
             <div className={hideinfo}>
-              <h1>Listen To Trial Episode</h1>
-              <input id="clickMe" type="button" value ="Listen To Podcast" onClick={() =>{podcast(PodcastURL);
+            
+
+              <div className="artboard">
+                
+                 <div className="artboard-inner">
+                   
+                 <PodPlayer
+                     art={art}
+                      podtitle ={podtitle}
+                      writeup={writeup}
+                  />
+                 </div>
+              </div>
+              <div className="podswitcher">
+                <div className="podswitch-inner ">
+                <div class="row center-align">
+                    <div class="col s6 left-align">
+                       <div className="pod-button waves-effect waves-light center-align"onClick={() =>{podcast(PodcastURL);
                                                                          PodcastControlls("visible");
-                                                                         ShowInfo("hide")}} />
+                                                                         ShowInfo("hide")}}>
+                          Listen
+                       </div>
+                    </div>
+                    <div class="col s2 right-align">
+                      
+                     </div>
+                    <div class="col s4 right-align">
+                       {duration}
+                     </div>
+                    
+                  </div>
+                </div>
+              </div>
+            
+
+
+
+            
             </div>
            
             <div className={streamControlls}>
              
-            <PodPlayer
-             art={art}
-             podtitle ={podtitle}
-             />
-            
-            <input id="clickMe" type="button" value ="Listen Live" onClick={() => {podcast(streamURL)
+            <div className="artboard">
+                
+                 <div className="artboard-inner">
+                 
+                 <PodPlayer
+                     art={art}
+                      podtitle ={podtitle}
+                      writeup={writeup}
+                  />
+                 </div>
+              </div>
+              <div className="podswitcher">
+                <div className="podswitch-inner ">
+                <div class="row center-align">
+                    <div class="col s6 left-align">
+                       <div className="pod-button waves-effect waves-light center-align" onClick={() => {podcast(streamURL)
                                                            PodcastControlls("hide");
-                                                           ShowInfo("show")}
-                                                                      } />
+                                                           ShowInfo("show")}}>
+                          Listen Live 
+                       </div>
+                    </div>
+                    <div class="col s2 right-align">
+                      
+                     </div>
+                    <div class="col s4 right-align">
+                      {duration}
+                     </div>
+                    
+                  </div>
+                </div>
+              </div>
+            
+            
+            
               
            </div>
         
-       <RecentPosters/>
+       
      
 
   
@@ -129,6 +189,10 @@ const Listen = () => {
       
      
       </header>
+      <div className="section-center">
+      <RecentPosters/>
+      </div>
+     
      
  
             

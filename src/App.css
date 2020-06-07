@@ -74,6 +74,31 @@ footer{width:100%;box-shadow: 0px -3px 12px #03022a;
 .heading{    padding: 2vh;}
 .social{    padding: 2vh;}
 
-.Podplayer{width:80%;}
+/* .Podplayer{width:80%;} */
 #clickMe{color:black;}
 .CountDown{font-size:calc(5px + 2vmin);color:#ffffffab}
+.countdown{font-size:calc(5px + 2vmin);color:#ffffff; width:80%;}
+.artboard{background-color: #000013cf;border-radius: 30px;margin-left:5%;margin-right:5%;}
+.artboard-inner{padding:10px;}
+.podswitcher{background-color: #000013cf;border-radius: 10px;margin-left:5%;margin-right:5%;margin-top:10px}
+.podswitch-inner{padding:10px;}
+.podswitch-inner .row{margin-top: 20px;}
+.pod-button{    padding: 4px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #ffffff;
+  border-width: 3px;
+  width: 200px;
+  height: 50px;}
+.section-center{display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding-top:0vh;}
+.podpara{color: #ffffffad;
+      text-align: justify;
+   font-size:calc(5px + 2vmin)}
+.artboard-inner .row{padding-top: 20px;}
+.asd{padding-right: 30px;}
