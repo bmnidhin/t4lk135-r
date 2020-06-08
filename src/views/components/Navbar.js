@@ -16,7 +16,8 @@ class Navbar extends Component {
          
       </nav>
       <div class="justify-content-center">
-        <img src={logo} height="100px"alt={Appname}></img>
+        <a href="/"> <img src={logo} height="100px"alt={Appname}></img></a>
+       
       </div>
     </>
      

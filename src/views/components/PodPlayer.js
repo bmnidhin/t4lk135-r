@@ -4,13 +4,33 @@ import { Media, Player, controls, } from 'react-media-player'
 const { PlayPause, MuteUnmute,Volume,SeekBar, } = controls
 // const { formatTime } = utils
 
+
+
 class PodPlayer extends Component {
 
+  constructor(props){
+    super(props)
+    this.state={
+  
+      percentage:60
+      
+    }
+     
+  };
     shouldComponentUpdate({ media }) {
         return this.props.media.currentTime !== media.currentTime
       }
   render() {
     const { className, style, media } = this.props
+
+  let duration = media.duration
+  let currentTime = media.currentTime
+  let percentage = (currentTime/duration)*100
+
+
+
+
+
 
    
 
@@ -29,7 +49,9 @@ class PodPlayer extends Component {
           
           <div class="col s12 m8">
                 <div className="left-align asd">
-                    <span>Loading.....</span>
+                <div class="progress">
+                  <div class="indeterminate"></div>
+                </div>
                     <h3>{this.props.podtitle}</h3>
                     <p class="podpara">{this.props.writeup}</p>
                      {/* <p>Duration :<b>{media.duration}</b> </p>
@@ -37,6 +59,7 @@ class PodPlayer extends Component {
                        Current Time : {(media.currentTime)}
                       </time>
                       <SeekBar /> */}
+                      
                 </div>
            </div>
           </div>
@@ -68,9 +91,11 @@ class PodPlayer extends Component {
                   <p class="podpara">{this.props.writeup}</p>
                  {/* <p>Duration :<b>{media.duration}</b> </p>
                  <time>
-                   Current Time : {(media.currentTime)}
+                   Current Time : {media.duration}
                   </time>
                   <SeekBar /> */}
+                  
+                   
             </div>
        </div>
       </div>
