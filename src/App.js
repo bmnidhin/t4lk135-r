@@ -13,6 +13,7 @@ import './App.css';
 // Views 
 import Home from './views/Home';
 import Listen from './views/Listen';
+import Post from './views/Post'
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Switch>
         <AppRoute exact path="/" component={Home}  />
         <AppRoute exact path="/listen" component={Listen}  />
+        <AppRoute exact path="/listen/:slug" component={Post}  />
       </Switch>
     )} />
     

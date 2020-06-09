@@ -12,36 +12,6 @@ import Footer from './components/Footer';
 import RecentPosters from './components/RecentPosters';
 import {Helmet} from "react-helmet";
 
-const Appname= "The TKM Show";
-// const { PlayPause, MuteUnmute,Volume, } = controls
-// event One
-let imageOne = require('./img/01.jpg');
-let eventOneTitle ="Kamithaakal Aanoda inte preshnam";
-let eventOneDescription ="";
-let eventOneStartTime ="06/15/2020 08:00 AM";
-let eventOneEndTime ="06/15/2020 10:00 AM";
-
-// event Two
-let imageTwo = require('./img/02.jpg');
-let eventTwoTitle ="Kamithaakal";
-let eventTwoDescription ="";
-let eventTwoStartTime ="06/15/2020 08:00 AM";
-let eventTwoEndTime ="06/15/2020 10:00 AM";
-
-// event Three
-let imageThree = require('./img/03.jpg');
-let eventThreeTitle ="Kamithaakal";
-let eventThreeDescription ="";
-let eventThreeStartTime ="06/15/2020 08:00 AM";
-let eventThreeEndTime ="06/15/2020 10:00 AM";
-
-
-let podcastImgGoogle = require('./img/EN_Google_Podcasts_Badge_8x.png');
-let podcastImgSpotify = require('./img/spotify-podcast-badge-wht-blk-165x40.png');
-const timezone ="India/Kolkata";
-const location ="Kollam Kerala India";
-
-const Background = require('./img/wave.jpg');
 
 
 let PodcastURL ="https://anchor.fm/s/249bf89c/podcast/play/14682808/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-5-3%2F79146503-44100-2-196672c664794.mp3";
