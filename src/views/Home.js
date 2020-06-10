@@ -44,8 +44,8 @@ const Home = () => {
 
           <Navbar/>
           <Herotext/>
-         
-         {/* <CountDown/> */}
+        
+         <CountDown/>
          {/* <p className="countdown"> Due to the unfortunate and untimely death of a faculty from the Architecture Dept, Prof. Jayakrishnan. We've decided to postpone the first episode of The TKM show which was to be aired today to a later date. We offer our deepest condolences to the family of the deceased.</p> */}
           
          
