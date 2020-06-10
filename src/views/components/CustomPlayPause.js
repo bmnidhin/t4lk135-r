@@ -52,7 +52,7 @@ class CustomPlayPause extends Component {
             
                 <i className="medium material-icons white-text">stop</i>
                 </button></li>
-          </ul>.
+          </ul>
         </div>
         </div>
 

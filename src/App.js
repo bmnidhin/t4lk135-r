@@ -14,6 +14,7 @@ import './App.css';
 import Home from './views/Home';
 import Listen from './views/Listen';
 import Post from './views/Post'
+import Playlist from './views/Playlist'
 
 
 
@@ -27,7 +28,9 @@ function App() {
       <Switch>
         <AppRoute exact path="/" component={Home}  />
         <AppRoute exact path="/listen" component={Listen}  />
-        <AppRoute exact path="/listen/:slug" component={Post}  />
+        <AppRoute exact path="/listen/:slug" component={Post}/>
+        <AppRoute exact path="/playlist/" component={Playlist}  />
+        <AppRoute exact path="/playlist/:slug" component={Playlist}  />
       </Switch>
     )} />
     

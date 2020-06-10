@@ -52,7 +52,7 @@ class PodPlayer extends Component {
                 <div class="progress">
                   <div class="indeterminate"></div>
                 </div>
-                    <h3>{this.props.podtitle}</h3>
+                    <h4>{this.props.podtitle}</h4>
                     <p class="podpara">{this.props.writeup}</p>
                      {/* <p>Duration :<b>{media.duration}</b> </p>
                      <time>
@@ -87,7 +87,7 @@ class PodPlayer extends Component {
       
         <div class="col s12 m8">
             <div className="left-align  asd">
-                <h3>{this.props.podtitle}</h3>
+                <h4>{this.props.podtitle}</h4>
                   <p class="podpara">{this.props.writeup}</p>
                  {/* <p>Duration :<b>{media.duration}</b> </p>
                  <time>
