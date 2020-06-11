@@ -14,7 +14,7 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
     return <Completionist />;
   } else {
     // Render a countdown
-    return <span className="CountDown">{hours} Hours {minutes}:Minutes {seconds} Seconds to <i>"Orma Undo ee Mugham?"</i>  </span>;
+    return <span className="CountDown">{hours} Hours {minutes}:Minutes {seconds} Seconds to <i>"ORMAYUNDO EE MUGHAM?"</i>  </span>;
   }
 };
 
