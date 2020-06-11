@@ -48,7 +48,7 @@ const Home = () => {
           <Herotext/>
         
          <CountDown/>
-        <p className="countdown"> "Ormayundo ee mugham " is straming live</p>
+        <p className="countdown"> "Ormayundo ee mugham " is streaming live</p>
           
          
          <div className="hide">
