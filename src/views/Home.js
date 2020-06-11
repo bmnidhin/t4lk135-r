@@ -51,16 +51,16 @@ const Home = () => {
         <p className="countdown"> "Ormayundo ee mugham " is streaming live</p>
           
          
-         <div className="">
+        
             <PromoBanner/>
-         </div>
+        
          
           
           <RecentPosters />
 
-          <div className="">
+         
              <ListenAgain />
-           </div>
+           
 
           
       </header>
