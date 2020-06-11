@@ -11,6 +11,7 @@ import Herotext from './components/Herotext';
 import Footer from './components/Footer';
 import RecentPosters from './components/RecentPosters';
 import {Helmet} from "react-helmet";
+import ListenAgain from "./components/ListenAgain";
 
 
 
@@ -66,85 +67,29 @@ const Listen = () => {
           {/* <Herotext/> */}
           
   
-            <div className={hideinfo}>
-            
-
-              <div className="artboard">
-                
-                 <div className="artboard-inner">
-                   
-                 <PodPlayer
-                     art={art}
-                      podtitle ={podtitle}
-                      writeup={writeup}
-                  />
-                 </div>
-              </div>
-              <div className="podswitcher">
-                <div className="podswitch-inner ">
-                <div class="row center-align">
-                    <div class="col s6 left-align">
-                       <div className="pod-button waves-effect waves-light center-align"onClick={() =>{podcast(PodcastURL);
-                                                                         PodcastControlls("visible");
-                                                                         ShowInfo("hide")}}>
-                          Listen
-                       </div>
-                    </div>
-                    <div class="col s2 right-align">
-                      
-                     </div>
-                    <div class="col s4 right-align">
-                       {duration}
-                     </div>
-                    
-                  </div>
-                </div>
-              </div>
-            
-
-
-
-            
-            </div>
            
-            <div className={streamControlls}>
-             
-            <div className="artboard">
                 
-                 <div className="artboard-inner">
                  
-                 <PodPlayer
-                     art={art}
-                      podtitle ={podtitle}
-                      writeup={writeup}
-                  />
-                 </div>
-              </div>
-              <div className="podswitcher">
-                <div className="podswitch-inner ">
-                <div class="row center-align">
-                    <div class="col s6 left-align">
-                       <div className="pod-button waves-effect waves-light center-align" onClick={() => {podcast(streamURL)
-                                                           PodcastControlls("hide");
-                                                           ShowInfo("show")}}>
-                          Listen Live 
-                       </div>
-                    </div>
-                    <div class="col s2 right-align">
-                      
-                     </div>
-                    <div class="col s4 right-align">
-                      {duration}
-                     </div>
-                    
-                  </div>
-                </div>
-              </div>
+                   <ListenAgain/>
+               
+                
+              
+             
+              
+            
+
+
+
             
             
+           
+           
+             
+            
+                
             
               
-           </div>
+          
         
        
      
@@ -160,7 +105,7 @@ const Listen = () => {
      
       </header>
       <div className="section-center">
-      <RecentPosters/>
+      {/* <RecentPosters/> */}
       </div>
      
      
