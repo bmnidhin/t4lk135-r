@@ -105,3 +105,18 @@ footer{width:100%;box-shadow: 0px -3px 12px #03022a;
    font-size:calc(5px + 2vmin)}
 .artboard-inner .row{padding-top: 20px;}
 .asd{padding-right: 30px;}
+.collection .collection-item{    background-color: #ffffff0d;
+  line-height: 1.5rem;
+  padding: 1px 6px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e021;font-size:calc(5px + 2vmin)}
+  .collection {
+    margin: .5rem 0 1rem 0;
+    border: 1px solid #e0e0e01c;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+collection .collection-item:hover {
+  background-color: black;
+}

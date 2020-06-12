@@ -23,7 +23,7 @@ class Footer extends Component {
 
 
                                 <a href="https://www.instagram.com/_thetkmshow_/"target="_blank"><i className="fa fa-instagram nbm-logo"></i>  Follow to Get Updates</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-                                <a href="https://anchor.fm/the-tkm-show"target="_blank"><i className="fa fa-podcast nbm-logo"></i>  Listen On Podcast</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://podcasts.google.com/?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8yNDliZjg5Yy9wb2RjYXN0L3Jzcw%3D%3D"target="_blank"><i className="fa fa-podcast nbm-logo"></i>  Listen On Google Podcasts</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="https://open.spotify.com/show/7tmPClseHqoHF5bFYT0F2o"target="_blank"><i className="fa fa-spotify nbm-logo"></i>  Listen On Spotify</a>
                                 
                             </div>

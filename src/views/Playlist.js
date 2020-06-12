@@ -20,10 +20,10 @@ let PodcastURL ="https://anchor.fm/s/249bf89c/podcast/play/14682808/https%3A%2F%
 
 
 let streamURL = "https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA";
-const podtitle ="Stay Tuned..! Trial Episode"
+// const podtitle ="Stay Tuned..! Trial Episode"
 const duration ="12 Min" 
-const art = 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/6042015/6042015-1591172558348-8d8b77870bd83.jpg';
-const writeup ="One of the architects behind Hestia'19, The Ex G-Sec and a name familiar to the majority of TKMians, in our first episode 'Ormayundo ee mugham?' we bring to you TKM's very own Aswin P S."
+// const art = 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/6042015/6042015-1591172558348-8d8b77870bd83.jpg';
+// const writeup ="One of the architects behind Hestia'19, The Ex G-Sec and a name familiar to the majority of TKMians, in our first episode 'Ormayundo ee mugham?' we bring to you TKM's very own Aswin P S."
 
 
 
@@ -109,6 +109,11 @@ const Playlist = () => {
               <div className="artboard">
                 
                  <div className="artboard-inner">
+                 <PodPlayer
+                    art={art}
+                     podtitle ={title}
+                     writeup={content}
+                 />
                    
                 <PlaylistPlayer
                   
@@ -167,8 +172,8 @@ const Playlist = () => {
                  
                  <PodPlayer
                      art={art}
-                      podtitle ={podtitle}
-                      writeup={writeup}
+                      podtitle ={title}
+                      writeup={content}
                   />
                  </div>
               </div>

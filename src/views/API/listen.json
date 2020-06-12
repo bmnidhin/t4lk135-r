@@ -1,9 +1,9 @@
 [
     {
       "title": "Episodes Demo",
-      "slug": "hello-world",
+      "slug": "indian-top-ten",
       "content": "This is the Hello World post. WordPress says edit or delete this kind of posts. I say just keep it.",
-      "album-art":"",
+      "album-art":"https://i.scdn.co/image/ab67706f00000002804274efbe5b1fcceae7336a",
                "episode-one" :"https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/music%2F07-Suno.Na.Sangemarmar-(Remix)-Arijit.Singh.mp3?alt=media&token=9a880646-b496-44fe-87ed-3799c3828c78",
                "episode-two" :"https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/music%2F07_Na_Na_Na_Na_(J_Star)_-_Dj_Harsh_Bhutani.mp3?alt=media&token=6a4aa21b-0c5d-45a1-a709-7f1086126e16",
                "episode-three" :"https://firebasestorage.googleapis.com/v0/b/jetgreen-98863.appspot.com/o/music%2F09_-_Subha_Hone_Na_De_(Remix).mp3?alt=media&token=2491eab7-83ca-4a59-a2da-234720d23a63",
@@ -15,16 +15,13 @@
                "episode-nine" :"",
                "episode-ten" :"",
       "meta-data" :  [
-                { "id": 1, "title": "Episode One" },
-                { "id": 2, "title": "Episode Two" },
-                { "id": 3, "title": "Episode Three" },
-                { "id": 4, "title": "Episode Five" },
-                { "id": 5, "title": "Episode Six" },
-                { "id": 6, "title": "Episode Seven" },
-                { "id": 7, "title": "Episode Eight" },
-                { "id": 8, "title": "" },
-                { "id": 9, "title": "" },
-                { "id": 10, "title": "" }
+                { "id": 1, "title": "Suno Na Sangemarmar- Arijt Singh" },
+                { "id": 2, "title": "Na Na Na Na" },
+                { "id": 3, "title": "Subha Hone Na De" },
+                { "id": 4, "title": "Aalolam LAD" },
+                { "id": 5, "title": "Aaradhike" },
+                { "id": 6, "title": "Barbie Girl" },
+                { "id": 7, "title": "Baaha Kilikki" }
               ]
 
     },

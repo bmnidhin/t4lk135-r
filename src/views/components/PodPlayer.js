@@ -39,7 +39,7 @@ class PodPlayer extends Component {
           <>
 
           <div class="row Podplayer">
-          <div class="col s12 m3">
+          <div class="col s12 m2">
             <div width="100%" height="">
             <img src={this.props.art} width="100%" className="nbm-poster z-depth-3" alt={this.props.alt}></img>
             </div>
@@ -47,7 +47,7 @@ class PodPlayer extends Component {
                
           </div>
           
-          <div class="col s12 m8">
+          <div class="col s12 m9">
                 <div className="left-align asd">
                 <div class="progress">
                   <div class="indeterminate"></div>

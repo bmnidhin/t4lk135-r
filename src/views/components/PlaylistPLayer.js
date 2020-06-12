@@ -187,18 +187,46 @@ class PlaylistPlayer extends Component  {
     
     const list = TRACKS.map(item => {
       return (
-        <li
-          key={item.id}
+      
+           <li  key={item.id}
           // onClick={() => this.setState({ selectedTrack: item.title })}
           onClick={() => this.setState({ selectedTrack: item.id })}
           style={{
             // fontWeight: item.title === this.state.selectedTrack && "bold"
             // fontWeight: item.id === this.state.selectedTrack && "bold"
-            color: item.id === this.state.selectedTrack && "green"
-          }}
-        >
-          {item.title}
-        </li>
+            color: item.id === this.state.selectedTrack && "green",
+            backgroundColor: item.id === this.state.selectedTrack && "#8a7d7d33",
+            cursor: "pointer"
+          }} className="collection-item"> 
+           
+           <div class="row">
+        <div class="col s1 center-align">{item.id}</div>
+      <div class="col s8 left-align">{item.title}</div>
+      <div class="col s3 right-align">23 Min</div>
+      
+    </div>
+
+
+
+
+
+
+          
+          
+          </li>
+        
+        // <li
+        //   key={item.id}
+        //   // onClick={() => this.setState({ selectedTrack: item.title })}
+        //   onClick={() => this.setState({ selectedTrack: item.id })}
+        //   style={{
+        //     // fontWeight: item.title === this.state.selectedTrack && "bold"
+        //     // fontWeight: item.id === this.state.selectedTrack && "bold"
+        //     color: item.id === this.state.selectedTrack && "green"
+        //   }}
+        // >
+        //   {item.title}
+        // </li>
       );
     });
 
@@ -214,11 +242,12 @@ class PlaylistPlayer extends Component  {
       <>
      
         
-        <h1>{this.props.title}</h1>
+        
+     {/* <LoadingStatus/> */}
         
         <div className="player">
-           <LoadingStatus/>
-          <ul className="tracklist">{list}</ul>
+           
+          <ul className="tracklist collection ">{list}</ul>
     
           {/* <TimeBar
             setTime={this.setTime}
