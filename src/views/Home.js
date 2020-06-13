@@ -13,6 +13,8 @@ import CountDown from './components/CountDown';
 import ListenAgain from './components/ListenAgain';
 import PromoBanner from './components/PromoBanner';
 import ListenPlayListAgain from './components/ListenPlayListAgain';
+import Notifications from './components/Notifications';
+import CatchAgain from './components/CatchAgain';
 
 
 const Appname= "The TKM Show";
@@ -37,7 +39,7 @@ const Home = () => {
      </Helmet>
     <div className="App">
       
-    
+       <Notifications/>
       <header className="App-header"style={{  
           backgroundImage:  "url(" + Background + ")",
           backgroundPosition: 'center',
@@ -48,12 +50,13 @@ const Home = () => {
           <Navbar/>
           <Herotext/>
         
-          <CountDown/>
+          
        
           
          
         
             <PromoBanner/>
+            <CatchAgain/>
         
          
           
@@ -66,8 +69,8 @@ const Home = () => {
           
       </header>
       <div className="section-center">
-             {/* <ListenAgain />
-             <ListenPlayListAgain/> */}
+             <ListenAgain />
+             {/* <ListenPlayListAgain/> */}
      </div>
      
    {/* don't touch the code below this line       */}

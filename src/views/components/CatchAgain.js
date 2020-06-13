@@ -3,10 +3,15 @@ import Axios from 'axios';
 // import { Link } from 'react-router';
 
 
-let imageOne = require('../img/cover1.jpg');
+const postsData = require("../API/notifications.json");
+let showOrHideBanner = postsData.map( (postsData)=>{
+    return (
+      postsData.featured
+      
+    )
+  }) 
 
-
-class ListenAgain extends Component {
+class CatchAgain extends Component {
 
   state ={
     listen:[]
@@ -24,24 +29,18 @@ class ListenAgain extends Component {
     return (
         
       <>
-      <div className="nbm-img">
+      
+      <div className={showOrHideBanner + " "+ "hide-on-large-only nbm-img"}>
       <div className="section">
  
    
- <div className="row">
-     <div className="left-align">
-     <div class="row">
-      <div class="col s6"><h5>Listen Again</h5></div>
-      <div class="col s6 right-align"><a href="/listen"><br/>View All</a></div>
-      
-    </div>
+      <div className="row">
+ 
      
-   
-     </div>
-     
-      {this.state.listen.map( track =>
+      {this.state.listen.slice(0,1).map( track =>
       
-      <div className="col s6 m4">
+
+      <div className="col s12 m12 ">
        
 
       <a href ={"/listen/"+ track.slug} >
@@ -80,4 +79,4 @@ class ListenAgain extends Component {
   }
 }
  
-export default ListenAgain;
+export default CatchAgain;

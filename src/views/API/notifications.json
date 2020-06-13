@@ -1,12 +1,28 @@
 [
-    { "showOrHideEvent":"show",
-      "upComingEventName": "Orma Undo ee Mugham",
-      
-      "showOrHideNotification":"hide",
-      "notification" :"This is Notification",
+    { 
+      "show-options":["hide-on-small-only"],
 
-      "showOrHideBanner":"show",
-      "bannerURL":"/listen/ormayundo-ee-mugham"
+      "before-event":[
+        "hide only in the case of a cancellation"],
+
+                  "showOrHideEvent":"show",
+                  "upComingEventName": "Orma Undo ee Mugham",
+                  "bannerURL" :"/listen/ormayundo-ee-mugham",
+                  "showOrHidePoster":"show",
+
+      "event-cancelation":[
+        "show only in the case of a cancellation"],
+
+                  "showOrHideNotification":"hide",
+                  "notification" :"This is Notification",
+      
+      "After Event":[
+        "show only after the successfull"],
+
+                  "featured":"hide",
+                  "showOrHideBanner":"show"
+      
+     
     
     }]
   

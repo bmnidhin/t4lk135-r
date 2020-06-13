@@ -9,7 +9,7 @@ body{margin-top: -30px;}
 }
 .nbm-img{
   width: 70%;
-  margin-top: 5vh;
+  margin-top: 1vh;
   
 }
 .App-logo {
@@ -54,7 +54,7 @@ body{margin-top: -30px;}
 /* 'archiaregular' */
 body{font-family: 'Montserrat', sans-serif; background-color: #03022a ;} 
 
-.nav{background-color: #ee6e7300;padding-top:10vh;height: 17vh;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 0%), 0 1px 5px 0 rgb(0 0 0 / 0%), 0 3px 1px -2px rgb(0 0 0 / 0%);}
+.nav{background-color: #ee6e7300;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 0%), 0 1px 5px 0 rgb(0 0 0 / 0%), 0 3px 1px -2px rgb(0 0 0 / 0%);}
 .nav-large{font-weight:100;top:0px;padding-top: 30px;}
 footer{width:100%;box-shadow: 0px -3px 12px #03022a;
   padding-bottom: 2px;
@@ -120,3 +120,7 @@ footer{width:100%;box-shadow: 0px -3px 12px #03022a;
 collection .collection-item:hover {
   background-color: black;
 }
+.topNotification{    min-height: 10vh;
+  color: white;
+  background-color: #121354;}
+  .paratop{padding-top: 5vh;}

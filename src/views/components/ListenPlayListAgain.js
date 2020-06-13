@@ -31,7 +31,7 @@ class ListenPlayListAgain extends Component {
  <div className="row">
  <div className="left-align">
      <div class="row">
-      <div class="col s6"><h4>Playlists</h4></div>
+      <div class="col s6"><h5>Playlists</h5></div>
       <div class="col s6 right-align"><a href="/playlist"><br/>View All</a></div>
       
     </div>
