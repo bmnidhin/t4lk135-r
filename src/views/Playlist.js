@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import RecentPosters from './components/RecentPosters';
 import PlaylistPlayer from './components/PlaylistPLayer';
 import {Helmet} from "react-helmet";
+import Axios from "axios";
 
 const postsData = require("./API/listen.json");
 
@@ -25,6 +26,14 @@ const duration ="12 Min"
 // const art = 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/6042015/6042015-1591172558348-8d8b77870bd83.jpg';
 // const writeup ="One of the architects behind Hestia'19, The Ex G-Sec and a name familiar to the majority of TKMians, in our first episode 'Ormayundo ee mugham?' we bring to you TKM's very own Aswin P S."
 
+function getPlayList() {
+  return Axios.get('https://t4lk135-server.vercel.app/api/v1/listen.json');
+}
+
+
+let allList = getPlayList().then(function (response) {
+  console.log(response.data);
+})
 
 
 
@@ -34,22 +43,13 @@ const duration ="12 Min"
 
 
 
-const {
-  
-  CurrentTime,
-  Progress,
-  SeekBar,
-  Duration,
- 
-} = controls
 
-const TRACKS = [
-    { id: 1, title: "Campfire Story" },
-    { id: 2, title: "Booting Up" }
-  ];
+
 
 const Playlist = () => {
-    
+  
+
+
   var { slug } = useParams(),
   post = findPostBySlug(slug);
 
@@ -135,6 +135,7 @@ const Playlist = () => {
                 
                 
                 />
+                
                  </div>
               </div>
               <div className="podswitcher">

@@ -12,6 +12,7 @@ import RecentPosters from './components/RecentPosters';
 import CountDown from './components/CountDown';
 import ListenAgain from './components/ListenAgain';
 import PromoBanner from './components/PromoBanner';
+import ListenPlayListAgain from './components/ListenPlayListAgain';
 
 
 const Appname= "The TKM Show";
@@ -47,8 +48,8 @@ const Home = () => {
           <Navbar/>
           <Herotext/>
         
-         <CountDown/>
-        <p className="countdown"> "Ormayundo ee mugham " is streaming live</p>
+          <CountDown/>
+       
           
          
         
@@ -59,11 +60,16 @@ const Home = () => {
           <RecentPosters />
 
          
-             <ListenAgain />
+            
            
 
           
       </header>
+      <div className="section-center">
+             {/* <ListenAgain />
+             <ListenPlayListAgain/> */}
+     </div>
+     
    {/* don't touch the code below this line       */}
       <Media>
         <div className="media">
