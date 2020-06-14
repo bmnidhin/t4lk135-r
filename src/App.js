@@ -3,12 +3,7 @@ import { useLocation, Switch } from 'react-router-dom';
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 
-
-
 import './App.css';
-
-
-
 
 // Views 
 import Home from './views/Home';
@@ -28,8 +23,10 @@ function App() {
     children={() => (
       <Switch>
         <AppRoute exact path="/" component={Home}  />
+        
         <AppRoute exact path="/listen" component={Listen}  />
         <AppRoute exact path="/listen/:slug" component={Post}/>
+
         <AppRoute exact path="/playlist/" component={PlayListAll}  />
         <AppRoute exact path="/playlist/:slug" component={Playlist}  />
       </Switch>

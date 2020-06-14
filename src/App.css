@@ -120,7 +120,28 @@ footer{width:100%;box-shadow: 0px -3px 12px #03022a;
 collection .collection-item:hover {
   background-color: black;
 }
-.topNotification{    min-height: 10vh;
+.topNotification{    min-height: 11vh;
   color: white;
   background-color: #121354;}
   .paratop{padding-top: 5vh;}
+
+.player{width:100%; margin-bottom: 0px;color:white}
+/* .playerimage{padding:0px} */
+.pt-2{padding-top: 5px;}
+.nowplaying{padding-left: 120px;}
+.currentimeInner{font-size: calc(2px + 2vmin)}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 0px 0;
+  width: 100%;
+  margin-top: -10px;
+}
+
+.thumb .value{display:none;}

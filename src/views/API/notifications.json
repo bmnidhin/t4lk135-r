@@ -2,25 +2,30 @@
     { 
       "show-options":["hide-on-small-only"],
 
-      "before-event":[
-        "hide only in the case of a cancellation"],
+     
 
-                  "showOrHideEvent":"show",
-                  "upComingEventName": "Orma Undo ee Mugham",
-                  "bannerURL" :"/listen/ormayundo-ee-mugham",
-                  "showOrHidePoster":"show",
-
-      "event-cancelation":[
-        "show only in the case of a cancellation"],
-
-                  "showOrHideNotification":"hide",
-                  "notification" :"This is Notification",
+      "showOrHideEvent":"show",
+      "upComingEventName": "Ormayundo ee Mugham",
+      "bannerURL" :"/listen/ormayundo-ee-mugham",
       
-      "After Event":[
-        "show only after the successfull"],
+     
+      "showOrHidePoster":"show",
+      "eventDate":"14",
+      "eventMonth":"06",
+      "eventYear":"2020",
+      "hour":"17",
+      "minutes":"30",
 
-                  "featured":"hide",
-                  "showOrHideBanner":"show"
+      "showOrHideBanner":"show",
+      
+
+
+      "showOrHideNotification":"hide",
+      "notification" :"This is Notification",
+
+      "featured":"hide"
+
+     
       
      
     

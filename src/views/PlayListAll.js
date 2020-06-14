@@ -13,6 +13,7 @@ import RecentPosters from './components/RecentPosters';
 import {Helmet} from "react-helmet";
 import ListenAgain from "./components/ListenAgain";
 import ListenPlayListAgain from "./components/ListenPlayListAgain";
+import Notifications from './components/Notifications';
 
 
 
@@ -51,6 +52,7 @@ const PlayListAll = () => {
         <link rel="canonical" href="https://thetkmshow.in/orma-undo-ee-mugham" />
     </Helmet>
     <div className="App">
+    <Notifications/>
       
     <Media>
         <div className="media">

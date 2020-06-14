@@ -1,25 +1,25 @@
+import React, { Component } from "react";
+import { Media, Player, controls } from "react-media-player";
+import CustomPlayPause from "../components/CustomPlayPause";
 
-import React, { Component } from 'react'
-import { Media, Player, controls, } from 'react-media-player'
-import CustomPlayPause from '../components/CustomPlayPause'
-import { withMediaProps } from 'react-media-player'
-import LoadingStatus from './LoadingStatus'
+const liveArt =
+  "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_episode400/6042015/6042015-1591809970938-f637b4b732133.jpg";
+const livetitle = "Live From Playlist";
 
+const streamURL =
+  "https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA";
 
-
-const streamURL = "https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA"
-
-let campfireStory = ""
-let bootingUp = ""
-let three =""
-let four =""
-let five =""
-let six = ""
-let seven = ""
-let eight = ""
-let nine = ""
-let ten = ""
-let loading
+let campfireStory = "";
+let bootingUp = "";
+let three = "";
+let four = "";
+let five = "";
+let six = "";
+let seven = "";
+let eight = "";
+let nine = "";
+let ten = "";
+let loading;
 
 function getTime(time) {
   if (!isNaN(time)) {
@@ -29,50 +29,43 @@ function getTime(time) {
   }
 }
 
-
-
-class PlaylistPlayer extends Component  {
-  
-  
-  
-  
+class PlaylistPlayer extends Component {
   state = {
     selectedTrack: null,
     player: "stopped",
     currentTime: null,
     duration: null,
-    url:streamURL
+    url: streamURL,
+    art: liveArt,
+    title: livetitle,
   };
 
-//   componentDidMount() {
-//     this.player.addEventListener("timeupdate", e => {
-//       this.setState({
-//         currentTime: e.target.currentTime,
-//         duration: e.target.duration
-//       });
-//     });
-//   }
+  //   componentDidMount() {
+  //     this.player.addEventListener("timeupdate", e => {
+  //       this.setState({
+  //         currentTime: e.target.currentTime,
+  //         duration: e.target.duration
+  //       });
+  //     });
+  //   }
 
-//   componentWillUnmount() {
-//     this.player.removeEventListener("timeupdate", () => {});
-//   }
+  //   componentWillUnmount() {
+  //     this.player.removeEventListener("timeupdate", () => {});
+  //   }
 
   componentDidUpdate(prevProps, prevState) {
-    
-    campfireStory = this.props.one
-    bootingUp = this.props.two
-    three = this.props.three
-    four = this.props.four
-    five = this.props.five
-    six = this.props.six
-    seven = this.props.seven
-    eight =this.props.eight
-    nine = this.props.nine
-    ten = this.props.ten
+    campfireStory = this.props.one;
+    bootingUp = this.props.two;
+    three = this.props.three;
+    four = this.props.four;
+    five = this.props.five;
+    six = this.props.six;
+    seven = this.props.seven;
+    eight = this.props.eight;
+    nine = this.props.nine;
+    ten = this.props.ten;
 
-    const TRACKS = this.props.meta
-    
-
+    const TRACKS = this.props.meta;
 
     if (this.state.selectedTrack !== prevState.selectedTrack) {
       let track;
@@ -83,7 +76,7 @@ class PlaylistPlayer extends Component  {
         case 2:
           track = bootingUp;
           break;
-         
+
         case 3:
           track = three;
           break;
@@ -106,8 +99,8 @@ class PlaylistPlayer extends Component  {
           track = nine;
           break;
         case 10:
-            track = ten;
-            break;
+          track = ten;
+          break;
         default:
           track = streamURL;
           break;
@@ -143,7 +136,7 @@ class PlaylistPlayer extends Component  {
     ) {
       const currentTrackIndex = TRACKS.findIndex(
         // track => track.title === this.state.selectedTrack
-        track => track.id === this.state.selectedTrack
+        (track) => track.id === this.state.selectedTrack
       );
       const tracksAmount = TRACKS.length - 1;
       if (currentTrackIndex === tracksAmount) {
@@ -151,7 +144,7 @@ class PlaylistPlayer extends Component  {
           selectedTrack: null,
           player: "stopped",
           currentTime: null,
-          duration: null
+          duration: null,
         });
       } else {
         this.handleSkip("next");
@@ -182,39 +175,31 @@ class PlaylistPlayer extends Component  {
   // };
 
   render() {
-   
-    const TRACKS = this.props.meta
-    
-    const list = TRACKS.map(item => {
+    const TRACKS = this.props.meta;
+
+    const list = TRACKS.map((item) => {
       return (
-      
-           <li  key={item.id}
+        <li
+          key={item.id}
           // onClick={() => this.setState({ selectedTrack: item.title })}
           onClick={() => this.setState({ selectedTrack: item.id })}
           style={{
             // fontWeight: item.title === this.state.selectedTrack && "bold"
             // fontWeight: item.id === this.state.selectedTrack && "bold"
             color: item.id === this.state.selectedTrack && "green",
-            backgroundColor: item.id === this.state.selectedTrack && "#8a7d7d33",
-            cursor: "pointer"
-          }} className="collection-item"> 
-           
-           <div class="row">
-        <div class="col s1 center-align">{item.id}</div>
-      <div class="col s8 left-align">{item.title}</div>
-      <div class="col s3 right-align">23 Min</div>
-      
-    </div>
+            backgroundColor:
+              item.id === this.state.selectedTrack && "#8a7d7d33",
+            cursor: "pointer",
+          }}
+          className="collection-item"
+        >
+          <div class="row">
+            <div class="col s1 center-align">{item.id}</div>
+            <div class="col s8 left-align">{item.title}</div>
+            <div class="col s3 right-align">23 Min</div>
+          </div>
+        </li>
 
-
-
-
-
-
-          
-          
-          </li>
-        
         // <li
         //   key={item.id}
         //   // onClick={() => this.setState({ selectedTrack: item.title })}
@@ -230,25 +215,17 @@ class PlaylistPlayer extends Component  {
       );
     });
 
-    
-
     const currentTime = getTime(this.state.currentTime);
     const duration = getTime(this.state.duration);
     // const { className, style, media } = this.props
 
-   
-
     return (
       <>
-     
-        
-        
-     {/* <LoadingStatus/> */}
-        
+        {/* <LoadingStatus/> */}
+
         <div className="player">
-           
           <ul className="tracklist collection ">{list}</ul>
-    
+
           {/* <TimeBar
             setTime={this.setTime}
             currentTime={this.state.currentTime}
@@ -276,36 +253,20 @@ class PlaylistPlayer extends Component  {
               <button onClick={() => this.handleSkip("next")}>Skip</button>
             </div>
           )} */}
-         </div>
-         <div>
-        <audio ref={ref => (this.player = ref)} />
-        
-           
-        
-        
-       
-          <Player src ={this.state.url} autoPlay="true" vendor="audio"/>
+        </div>
+        <div>
+          <audio ref={(ref) => (this.player = ref)} />
 
-         
-        
-        
-        
+          <Player src={this.state.url} autoPlay="true" vendor="audio" />
+
+          <CustomPlayPause title={this.state.title} imageURL={this.state.art} />
         </div>
 
-
-         <div>
-         
-           
-           <div className="media-controls">
-               <CustomPlayPause />
- 
-               </div>
-          
-         </div>
-
-
-
-
+        <div>
+          <div className="media-controls">
+            <CustomPlayPause />
+          </div>
+        </div>
       </>
     );
   }
