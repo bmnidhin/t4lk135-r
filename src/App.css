@@ -142,6 +142,7 @@ input[type=range] {
   margin: 0px 0;
   width: 100%;
   margin-top: -10px;
+  border: none;
 }
 
 .thumb .value{display:none;}

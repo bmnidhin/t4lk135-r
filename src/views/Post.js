@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import RecentPosters from "./components/RecentPosters";
 import { Helmet } from "react-helmet";
+import Notifications from "./components/Notifications";
 
 const postsData = require("./API/tracks.json");
 
@@ -42,6 +43,7 @@ const Post = () => {
         <link rel="canonical" href="https://thetkmshow.in/listen/{post.slug}" />
       </Helmet>
       <div className="App">
+      <Notifications/> 
         <Media>
           <div className="media">
             <div className="media-controls">
