@@ -4,7 +4,7 @@
       "show-options":["hide","hide-on-small-only","hide-on-med-only","hide-on-med-and-down","hide-on-med-and-up",
                       "hide-on-large-only",
                       "show-on-small","show-on-medium","show-on-large","show-on-medium-and-up","show-on-medium-and-down",
-                      "{reference: 'https://materializecss.com/helpers.html'}",],
+                      "https://materializecss.com/helpers.html"],
 
      
 
