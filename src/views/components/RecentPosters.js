@@ -3,10 +3,10 @@ import React, { Component } from "react";
 const postsData = require("../API/notifications.json");
 
 // event Two
-let imageTwo = require("../img/aswin8.jpg");
+let imageTwo = require("../img/kuruvi.jpg");
 
 // event Three
-let imageThree = require("../img/launch.jpg");
+let imageThree = require("../img/aswin.jpg");
 
 let showOrHidePoster = postsData.map((postsData) => {
   return postsData.showOrHidePoster;
