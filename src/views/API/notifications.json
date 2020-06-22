@@ -8,7 +8,7 @@
 
      
 
-      "showOrHideEvent":"hide",
+      "showOrHideEvent":"show",
       "upComingEventName": "Ith Okke Yenth",
       "bannerURL" :"/listen/ith-okke-yenth",
       
@@ -20,7 +20,7 @@
       "hour":"19",
       "minutes":"00",
 
-      "showOrHideBanner":"hide",
+      "showOrHideBanner":"show",
       
 
 
