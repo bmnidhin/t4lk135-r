@@ -10,7 +10,7 @@ import ListenAgain from "./components/ListenAgain";
 import Notifications from "./components/Notifications";
 
 let streamURL =
-  "https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA";
+  "https://streaming.radio.co/s8c7294f48/listen";
 
 const Listen = () => {
   return (
