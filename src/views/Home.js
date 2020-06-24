@@ -64,7 +64,7 @@ const Home = () => {
           <div className="media">
             <div className="media-player">
               <Player
-                src="https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA"
+                src="https://streaming.radio.co/s8c7294f48/listen"
                 autoPlay="true"
                 vendor="audio"
               />
