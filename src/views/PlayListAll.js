@@ -20,7 +20,7 @@ import Notifications from './components/Notifications';
 let PodcastURL ="https://anchor.fm/s/249bf89c/podcast/play/14682808/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-5-3%2F79146503-44100-2-196672c664794.mp3";
 
 
-let streamURL = "https://node-19.zeno.fm/7dpu3aargzzuv?rj-ttl=5&rj-tok=AAABcniqxPcAfj_wZNkMunG3eA";
+let streamURL = "https://streaming.radio.co/s8c7294f48/listen";
 const podtitle ="Stay Tuned..! Trial Episode"
 const duration ="12 Min" 
 const art = 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/6042015/6042015-1591172558348-8d8b77870bd83.jpg';
