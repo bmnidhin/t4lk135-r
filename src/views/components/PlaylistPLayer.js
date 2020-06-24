@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { Media, Player, controls } from "react-media-player";
 import CustomPlayPause from "../components/CustomPlayPause";
+const settings = require("../API/settings.json");
+
+let URL = settings.map((settings) => {
+  return settings.streamURL;
+});
 
 const liveArt =
   "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_episode400/6042015/6042015-1591809970938-f637b4b732133.jpg";
 const livetitle = "Live From Playlist";
 
-const streamURL =
-  "https://streaming.radio.co/s8c7294f48/listen";
+const streamURL =URL
 
 let campfireStory = "";
 let bootingUp = "";

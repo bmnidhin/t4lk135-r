@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 
-const HerotextEng = "A place where TKM's voice reigns free!!";
-const HerotextMal = "";
+const settings = require("../API/settings.json");
+
+let HerotextEng = settings.map((settings) => {
+  return settings.HerotextEng;
+});
+let HerotextMal = settings.map((settings) => {
+  return settings.HerotextMal;
+});
+
 
 class Herotext extends Component {
   render() {

@@ -45,7 +45,7 @@ class PodPlayer extends Component {
             <LoadingStatus />
             <div className="left-align  asd">
               <h4>{this.props.podtitle}</h4>
-              <p class="podpara">{this.props.writeup}</p>
+              <p className="podpara">{this.props.writeup}</p>
               <p>{media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)}</p>
              
 

@@ -11,6 +11,7 @@ import Listen from './views/Listen';
 import Post from './views/Post'
 import Playlist from './views/Playlist'
 import PlayListAll from './views/PlayListAll';
+import PlayGround from './views/PlayGround';
 
 
 
@@ -29,6 +30,7 @@ function App() {
 
         <AppRoute exact path="/playlist/" component={PlayListAll}  />
         <AppRoute exact path="/playlist/:slug" component={Playlist}  />
+        <AppRoute exact path="/ground" component={PlayGround}  />
       </Switch>
     )} />
     

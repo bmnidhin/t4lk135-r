@@ -9,8 +9,12 @@ import { Helmet } from "react-helmet";
 import ListenAgain from "./components/ListenAgain";
 import Notifications from "./components/Notifications";
 
-let streamURL =
-  "https://streaming.radio.co/s8c7294f48/listen";
+const settings = require("./API/settings.json")
+let URL = settings.map((settings) => {
+  return settings.streamURL;
+});
+
+let streamURL =URL;
 
 const Listen = () => {
   return (

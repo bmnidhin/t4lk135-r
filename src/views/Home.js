@@ -14,7 +14,12 @@ import Notifications from "./components/Notifications";
 import CatchAgain from "./components/CatchAgain";
 import HandleLive from "./components/HandleLive";
 import ListenAgain from "./components/ListenAgain";
+const settings = require("./API/settings.json")
+let URL = settings.map((settings) => {
+  return settings.streamURL;
+});
 
+let streamURL = URL
 const Background = require("./img/wave.jpg");
 
 const Home = () => {
@@ -64,7 +69,7 @@ const Home = () => {
           <div className="media">
             <div className="media-player">
               <Player
-                src="https://streaming.radio.co/s8c7294f48/listen"
+                src= {streamURL}
                 autoPlay="true"
                 vendor="audio"
               />

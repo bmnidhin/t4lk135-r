@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-
+import Moment from 'moment';
 // import sections
 import { Media, Player, controls } from "react-media-player";
 import CustomPlayPause from "./components/CustomPlayPause";
@@ -13,13 +13,16 @@ import { Helmet } from "react-helmet";
 import Notifications from "./components/Notifications";
 
 const postsData = require("./API/tracks.json");
+const settings = require("./API/settings.json")
+let URL = settings.map((settings) => {
+  return settings.streamURL;
+});
 
 const Post = () => {
   var { slug } = useParams(),
     post = findPostBySlug(slug);
 
-  let streamURL =
-    "https://streaming.radio.co/s8c7294f48/listen";
+  let streamURL = URL
 
   let PodcastURL = post.URL;
   const podtitle = post.title;
@@ -27,6 +30,20 @@ const Post = () => {
   const art = post.cover;
   const writeup = post.content;
   const { CurrentTime, Progress, SeekBar, Duration } = controls;
+
+
+const publishedDate = post.publishedAtDate
+const publishedTime = post.publishedAtTime
+const currentTime = Moment().format();
+const publishAt = publishedDate + "T" + publishedTime + "+05:30";
+
+
+const a = Moment(publishAt);
+const b = Moment(currentTime);
+const myDiff = b.diff(a);
+
+const isEventPublished = myDiff > 0;
+const isBannerActive = myDiff > 0 && myDiff <86400000 //displaybanner for 24 hr
 
   const [stream, podcast] = useState(streamURL);
   const [streamControlls, PodcastControlls] = useState("hide");
@@ -63,6 +80,9 @@ const Post = () => {
 
                 <div className="artboard">
                   <div className="artboard-inner">
+                    <p style={{fontSize:10}}>{isEventPublished ? "" : 'Will be available after Live ends at '+publishedDate +" "+ publishedTime}</p>
+                   
+                   
                     <PodPlayer
                       art={art}
                       podtitle={podtitle}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import Moment from 'moment';
 // import { Link } from 'react-router';
 
 
@@ -16,12 +17,29 @@ class ListenAgain extends Component {
       this.setState({ listen: res.data });
     });
   }
+ check(date,time){
+  const publishedDate = date
+  const publishedTime = time
+  const currentTime = Moment().format();
+  const publishAt = publishedDate + "T" + publishedTime + "+05:30";
+  
+  
+  const a = Moment(publishAt);
+  const b = Moment(currentTime);
+  const myDiff = b.diff(a);
+  
+  const isEventPublished = myDiff > 0;
+  const isBannerActive = myDiff > 0 && myDiff <86400000 //displaybanner for 24 hr
+  return isEventPublished
+ }
 
-  render() {
+ 
+ render() {
+
     return (
       <>
       {/* title section */}
-        <div className="nbm-img">
+        <div className={"nbm-img"}>
           <div className="section">
             <div className="row">
               <div className="left-align">
@@ -39,7 +57,8 @@ class ListenAgain extends Component {
               </div>
       {/* map episodes from json response */}
               {this.state.listen.map((track) => (
-                <div className="col s6 m4" key={track.slug}>
+                
+                <div className={this.check(track.publishedAtDate,track.publishedAtTime) ? 'col s6 m4' : 'hide'} key={track.slug}>
                   <a href={"/listen/" + track.slug}>
                     <div className="icon-block">
                       <img
@@ -48,6 +67,7 @@ class ListenAgain extends Component {
                         className="nbm-poster z-depth-3"
                         alt="Poster"
                       ></img>
+                      
                       
                     </div>
                   </a>
