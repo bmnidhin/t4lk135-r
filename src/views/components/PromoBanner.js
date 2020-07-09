@@ -55,7 +55,7 @@ class PromoBanner extends Component {
             <div className="sections">
               <div className="row">
                 <div className="col s12 m12">
-                  <a href={bannerURL}>
+                  <a href="/listen/"{bannerURL}>
                     <div className="icon-block">
                       <img
                         src={imageOne}
