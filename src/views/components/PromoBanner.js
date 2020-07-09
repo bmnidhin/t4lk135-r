@@ -18,9 +18,8 @@ let publishedAtTime = postsLatest.slice(0, 1).map((postsLatest) => {
 });
 
 let bannerURL = postsLatest.slice(0, 1).map((postsLatest) => {
-  let myslug = postsLatest.slug;
-  let calculated = "/listen/" + myslug;
-  return calculated
+  return postsLatest.slug;
+ 
 });
 
 const currentTime = Moment().format();
@@ -57,7 +56,7 @@ class PromoBanner extends Component {
             <div className="sections">
               <div className="row">
                 <div className="col s12 m12">
-                  <a href="{calculated}>
+                  <a href="/listen/minarangal-kadhaparayumbol">
                     <div className="icon-block">
                       <img
                         src={imageOne}
