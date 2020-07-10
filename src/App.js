@@ -41,9 +41,9 @@ class App extends Component {
             </Switch>
           )}
         />
-        
-        <NavTest />
         <FooterArea />
+        <NavTest />
+        
       </div>
     );
   }

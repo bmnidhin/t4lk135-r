@@ -12,15 +12,16 @@ export default class LogoArea extends Component {
           width: "100%",
         //   height: "45px",
           color: "white",
-          backgroundColor: "#0E0E93",
+          // backgroundColor: "#0E0E93",
           textAlign: "center",
           fontWeight: "400",
           fontSize: "12px",
           lineHeight: "15px",
         };
         this.imageStyle={
-            width:"18vh",
-            height:"auto"
+            width:"20vh",
+            height:"auto",
+            paddingTop:"10px"
         }
       }
     render() {

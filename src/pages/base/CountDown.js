@@ -23,6 +23,9 @@ export default class CountDown extends Component {
       backgroundColor: "#0E0E43",
       textAlign: "center",
       paddingTop: "12px",
+      paddingLeft:"10px",
+      paddingRight:"10px",
+      paddingBottom:"12px",
       fontWeight: "400",
       fontSize: "12px",
       lineHeight: "15px",
@@ -55,7 +58,8 @@ export default class CountDown extends Component {
     // Random component
     const Completionist = () => (
       <p className="countdown">
-        {this.state.upComingEventName} is Streaming Live
+        <span className="font-italic font-weight-bold"> {this.state.upComingEventName} </span>
+        is Streaming Live
       </p>
     );
 
@@ -67,9 +71,10 @@ export default class CountDown extends Component {
       } else {
         // Render a countdown
         return (
-          <span className="CountDown">
+          <span className="CountDown ">
             {days} Days {hours} Hours {minutes} Minutes {seconds} Seconds to{" "}
-            <i>{this.state.upComingEventName}</i>{" "}
+            <span className="font-italic">{this.state.upComingEventName} </span>
+           
           </span>
         );
       }

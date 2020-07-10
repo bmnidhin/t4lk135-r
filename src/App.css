@@ -4,3 +4,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 body{font-family: 'Montserrat', sans-serif;}
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+    .Herotext {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+    .Herotext {
+      font-size: 1.3rem;
+    }
+  }
+  a:hover {
+   
+    text-decoration: none;
+}
+
+.roundedImage{border-radius: 5px;}
+.flotingImage{padding: 10px;padding-left:25px;width:80px}
+.flotingTitle{padding-top:20px;}
+.flotingImageBox{width:80px;}
+.flotingTextBox{width:100%}
