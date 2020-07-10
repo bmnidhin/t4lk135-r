@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 import test from "./pages/test";
 import homepage from "./pages/homepage";
 import listen from "./pages/listen";
@@ -9,46 +9,44 @@ import episode from "./pages/episode";
 import playlists from "./pages/playlists";
 import playListDetail from "./pages/playListDetail";
 import CountDown from "./pages/base/CountDown";
-import LogoArea from "./pages/base/LogoArea";
-import NowPlaying from "./pages/base/NowPlaying";
+
+
 import FooterArea from "./pages/base/FooterArea";
 import NavTest from "./pages/base/NavTest";
-
-
+import AppRoute from "./utils/AppRoute";
+import ScrollReveal from "./utils/ScrollReveal";
+import './App.css';
 class App extends Component {
+  state={
+    now:"rakashasi"
+  }
   render() {
     return (
       <div>
-       <Router>
-         
-        <div className="container">
-          <CountDown/>
-          <LogoArea/>
-          <NavTest/>
-         
-          <Route path="/" exact component={homepage} />
-          <Route path="/listen" component={listen} />
-          <Route path="/listen/:slug" component={episode} />
-          <Route path="/playlist/" component={playlists} />
-          <Route path="/playlist/:slug"component={playListDetail} />
-          <Route path="/ground" component={test} />
+       
+        
+        <CountDown />
+        
+        <ScrollReveal
+          children={() => (
+            <Switch>
+              <AppRoute exact path="/" component={homepage} />
 
-          <NowPlaying/>
-          <FooterArea/>
-        </div>
-      </Router>
+              <AppRoute exact path="/listen" component={listen} />
+              <AppRoute exact path="/listen/:slug" component={episode} />
 
+              <AppRoute exact path="/playlist/" component={playlists} />
+              <AppRoute exact path="/playlist/:slug" component={playListDetail}/>
+              <AppRoute exact path="/ground" component={test} />
+            </Switch>
+          )}
+        />
+        
+        <NavTest />
+        <FooterArea />
       </div>
-     
     );
   }
 }
 
 export default App;
-
-
-
-
-
-
-

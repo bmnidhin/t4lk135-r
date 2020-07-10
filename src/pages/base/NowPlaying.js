@@ -4,7 +4,8 @@ export default class NowPlaying extends Component {
     render() {
         return (
             <div>
-                NowPlaying
+                NowPlaying is {this.props.playing}
+
             </div>
         )
     }
