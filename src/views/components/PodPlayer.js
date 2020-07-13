@@ -28,7 +28,7 @@ class PodPlayer extends Component {
     
   
     return (
-      <>
+      <Media>
         <div class="row Podplayer">
           <div class="col s12 m3">
             <div min-width="100%" height="">
@@ -54,9 +54,9 @@ class PodPlayer extends Component {
             </div>
           </div>
         </div>
-      </>
+        </Media>
     );
   }
 }
 
-export default withMediaProps(PodPlayer);
+export default PodPlayer;

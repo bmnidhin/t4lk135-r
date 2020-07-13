@@ -9,6 +9,8 @@ body{font-family: 'Montserrat', sans-serif;}
     .Herotext {
       font-size: 1.5rem;
     }
+   
+    
   }
   
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
@@ -16,6 +18,7 @@ body{font-family: 'Montserrat', sans-serif;}
     .Herotext {
       font-size: 1.3rem;
     }
+    
   }
   a:hover {
    
@@ -27,3 +30,32 @@ body{font-family: 'Montserrat', sans-serif;}
 .flotingTitle{padding-top:20px;}
 .flotingImageBox{width:80px;}
 .flotingTextBox{width:100%}
+.player .active::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  background-color: #007bff;
+  border: 0;
+  border-radius: 1rem;
+  -moz-transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  -moz-appearance: none;
+  appearance: none;
+}
+.player .active::-moz-range-track {
+  width: 100%;
+  height: 0.2rem;
+  color: transparent;
+  cursor: pointer;
+  background-color: #dee2e670;
+  border-color: transparent;
+  border-radius: 1rem;
+}
+.player .active {
+  width: 100%;
+  height: 1.4rem;
+  padding: 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

@@ -79,6 +79,7 @@ export default class FeaturedPosts extends Component {
             </div>
           ))}
         </div>
+      
       </div>
     );
   }
