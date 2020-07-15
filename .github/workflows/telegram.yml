@@ -16,7 +16,7 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
-     - name: telegramNotify
+     - name: telegram-Notify
        uses: athul/telewire@master
        if: always()
        with:
