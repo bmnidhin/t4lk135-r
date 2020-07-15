@@ -1,46 +1,40 @@
-name: Build
-on: [push]
+
+name: Deployment
+
+on: ['deployment']
+
 jobs:
+  deployment:
+    runs-on: 'ubuntu-latest'
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
     steps:
-      - uses: avakar/set-deployment-status@v1
-        with:
-          state: in_progress
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
-      - uses: avakar/set-deployment-status@v1
-        with:
-          state: success
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: avakar/set-deployment-status@v1
-        if: failure()
-        with:
-          state: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: 'deployment pending'
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'pending'
+        token: '${{ github.token }}'
 
-#     - name: Set up Go 1.13
-#       uses: actions/setup-go@v1
-#       with:
-#         go-version: 1.13
-#       id: go
+    - name: deploy
+      run: |
+        echo "environment - ${{ github.event.deployment.task }}"
+        echo "payload - ${{ github.event.deployment.payload }}"
 
-    
-#       - name: update deploy status
-#         if: always()
-#         uses: unacast/actions-github-deployment-status@0.2
-#         with:
-#            github_token: ${{ secrets.GITHUB_TOKEN }}
-#            status: ${{ job.status }}
-      
-      - uses: yanzay/notify-telegram@master
-        if: always()
-        with:
+    - name: 'deployment success'
+      if: success()
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'success'
+        token: '${{ github.token }}'
+
+    - name: 'deployment failure'
+      if: failure()
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'failure'
+        token: '${{ github.token }}'
+    - uses: yanzay/notify-telegram@master
+      if: always()
+      with:
          chat: ${{ secrets.chat }}
          token: ${{ secrets.token }}
          status: ${{ job.status }}
