@@ -1,7 +1,7 @@
 
 name: Deployment
 
-on: ['deployment']
+on: ['push','deployment']
 
 jobs:
   deployment:
@@ -38,3 +38,11 @@ jobs:
          chat: ${{ secrets.chat }}
          token: ${{ secrets.token }}
          status: ${{ job.status }}
+         
+    - name: Telegram GitHub Repository Events
+      uses: avkviring/telegram-github-action@v0.0.7
+      env:
+        telegram_to: ${{ secrets.chat }}  
+        telegram_token: ${{ secrets.token }}
+        event: ${{ toJson(github.event) }}
+
