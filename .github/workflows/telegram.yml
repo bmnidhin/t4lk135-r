@@ -22,8 +22,8 @@ jobs:
         to: ${{ secrets.chat }}
         token: ${{ secrets.token }}
         message: |
-         Commit ${{commit.ref}} at ${{ repo }} by ${{repo.namespace}} ${{repo.namespace}} event triggered.
-         echo This is a push.
+         The ${{ commit.ref }} event triggered final step.
+         echo This event is a pull request that had an assignee removed.
      - name: telegram-Notify
        uses: athul/telewire@master
        if: always()
