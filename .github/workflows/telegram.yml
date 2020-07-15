@@ -16,7 +16,7 @@ jobs:
     
     - name: update deploy status
       if: always()
-      uses: unacast/actions-github-deployment-status@[version]
+      uses: unacast/actions-github-deployment-status@0.2
       with:
            github_token: ${{ secrets.GITHUB_TOKEN }}
            status: ${{ job.status }}
