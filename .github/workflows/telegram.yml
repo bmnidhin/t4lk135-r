@@ -11,10 +11,6 @@ on:
   watch:
     types: [started]
 
-# name: Deployment
-
-# on: ['push','deployment']
-
 jobs:
   deployment:
     runs-on: 'ubuntu-latest'
