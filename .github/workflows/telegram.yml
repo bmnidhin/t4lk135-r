@@ -16,6 +16,14 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
+     - name: send custom message
+       uses: appleboy/telegram-action@master
+       with:
+        to: ${{ secrets.chat }}
+        token: ${{ secrets.token }}
+        message: |
+         Commit ${{commit.ref}} at ${{ repo }} by ${{repo.namespace}} ${{repo.namespace}} event triggered.
+         echo This is a push.
      - name: telegram-Notify
        uses: athul/telewire@master
        if: always()
