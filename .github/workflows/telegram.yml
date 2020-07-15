@@ -1,48 +1,80 @@
+name: Build and Notify
+on:
+  push:
+  pull_request:
+    types: [opened,closed]
+  issues:
+    types: [opened, closed, reopened]
+  issue_comment:
+    types: [created]
+  watch:
+    types: [started]
 
-name: Deployment
+# name: Deployment
 
-on: ['push','deployment']
+# on: ['push','deployment']
 
 jobs:
   deployment:
     runs-on: 'ubuntu-latest'
 
     steps:
-    - name: 'deployment pending'
-      uses: 'deliverybot/deployment-status@master'
-      with:
-        state: 'pending'
-        token: '${{ github.token }}'
+     - name: <WorkFlow Name>
+       uses: athul/telewire@master
+       if: always()
+       with:
+        chat: ${{ secrets.chat }}
+        token: ${{ secrets.token }}
+        status: ${{ job.status }}
+ 
+    
+    
+    
+    
+# name: Deployment
 
-    - name: deploy
-      run: |
-        echo "environment - ${{ github.event.deployment.task }}"
-        echo "payload - ${{ github.event.deployment.payload }}"
+# on: ['push','deployment']
 
-    - name: 'deployment success'
-      if: success()
-      uses: 'deliverybot/deployment-status@master'
-      with:
-        state: 'success'
-        token: '${{ github.token }}'
+# jobs:
+#   deployment:
+#     runs-on: 'ubuntu-latest'
 
-    - name: 'deployment failure'
-      if: failure()
-      uses: 'deliverybot/deployment-status@master'
-      with:
-        state: 'failure'
-        token: '${{ github.token }}'
-    - uses: yanzay/notify-telegram@master
-      if: always()
-      with:
-         chat: ${{ secrets.chat }}
-         token: ${{ secrets.token }}
-         status: ${{ job.status }}
+#     steps:
+#     - name: 'deployment pending'
+#       uses: 'deliverybot/deployment-status@master'
+#       with:
+#         state: 'pending'
+#         token: '${{ github.token }}'
+
+#     - name: deploy
+#       run: |
+#         echo "environment - ${{ github.event.deployment.task }}"
+#         echo "payload - ${{ github.event.deployment.payload }}"
+
+#     - name: 'deployment success'
+#       if: success()
+#       uses: 'deliverybot/deployment-status@master'
+#       with:
+#         state: 'success'
+#         token: '${{ github.token }}'
+
+#     - name: 'deployment failure'
+#       if: failure()
+#       uses: 'deliverybot/deployment-status@master'
+#       with:
+#         state: 'failure'
+#         token: '${{ github.token }}'
+#     - uses: yanzay/notify-telegram@master
+#       if: always()
+#       with:
+#          chat: ${{ secrets.chat }}
+#          token: ${{ secrets.token }}
+#          status: ${{ job.status }}
          
-    - name: Telegram GitHub Repository Events
-      uses: avkviring/telegram-github-action@v0.0.7
-      env:
-        telegram_to: ${{ secrets.chat }}  
-        telegram_token: ${{ secrets.token }}
-        event: ${{ toJson(github.event) }}
+#     - name: Telegram GitHub Repository Events
+#       uses: avkviring/telegram-github-action@v0.0.7
+#       env:
+#         telegram_to: ${{ secrets.chat }}  
+#         telegram_token: ${{ secrets.token }}
+#         event: ${{ toJson(github.event) }}
 
