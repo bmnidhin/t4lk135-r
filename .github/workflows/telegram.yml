@@ -20,7 +20,7 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
-     - name: <WorkFlow Name>
+     - name: telegram-notify
        uses: athul/telewire@master
        if: always()
        with:
