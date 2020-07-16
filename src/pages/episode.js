@@ -151,13 +151,18 @@ class episode extends Component {
   
   postNewComment(comment) {
    const timePublished = Date.now();
-    comment.user = {
-      uid: this.state.user.uid,
-      name: this.state.user.displayName,
-      time: timePublished,
-      photo: this.state.user.photoURL,
-      
-    };
+    if (this.state.user.uid ===''|| this.state.user.displayName==='' || this.state.user.photoURL ===''  ) {
+      alert("Unable to Post Comment. Try Again!!!");
+    } else {
+      comment.user = {
+        uid: this.state.user.uid,
+        name: this.state.user.displayName,
+        time: timePublished,
+        photo: this.state.user.photoURL,
+        
+      };
+    }
+   
     const comments = {
       ...this.state.comments
     };

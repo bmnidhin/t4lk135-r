@@ -30,8 +30,10 @@ class NewComment extends Component {
                         className="form-control"
                         ref="comment"
                         // id="exampleFormControlTextarea1"
+                        id="validationDefault01"
                         rows="1"
                         onKeyDown={this.handleEnter}
+                        required
                         // autoFocus={true}
                         
                       ></textarea>
