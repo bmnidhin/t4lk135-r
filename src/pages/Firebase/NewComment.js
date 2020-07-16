@@ -8,6 +8,7 @@ class NewComment extends Component {
     this.handleSubmit =this.handleSubmit.bind(this);
   }
   handleSubmit(event) {
+    event.preventDefault();
     this.props.postNewComment({
       comment: this.refs.comment.value
     });
