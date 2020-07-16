@@ -59,3 +59,26 @@ body{font-family: 'Montserrat', sans-serif;}
   -moz-appearance: none;
   appearance: none;
 }
+.commentArea{
+  text-align: left;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #0e0e43;
+  background-clip: padding-box;
+  border: 1px solid #233548;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+
+  .form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}

@@ -7,9 +7,13 @@ import Moment from "moment";
 import { Link } from 'react-router-dom';
 import FlotingPlayPause from './base/FlotingPlayPause';
 import { Helmet } from 'react-helmet';
-
+import NewComment from './Firebase/NewComment'
+import Comments from './Firebase/Comments'
+import base, { auth, providers } from '../utils/FirebaseSettings'
 const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
+
+const currentTime = Moment()
 let URL = settings.map((settings) => {
  
   return settings.streamURL;
@@ -21,15 +25,33 @@ let liveCover = settings.map((settings) => {
 
 export default class listen extends Component {
     constructor(props) {
-        super(props);  this.onChangeUsername = this.onChangeUsername.bind(this);
+        super(props);  
+        this.onChangeUsername = this.onChangeUsername.bind(this);
+        // this.postNewComment = this.postNewComment.bind(this);
         
         
         this.state={
            url: URL,
            cover:liveCover,
            title: "Live Radio",
-           listen:[]
+           listen:[],
+           comments: {},
+           isLoggedIn: false,
+           user: ""
         };
+        // this.refComments = base.syncState("ithaan", {
+        //   context: this,
+        //   state: "comments"
+        // });
+        // auth.onAuthStateChanged(user => {
+        //   if (user) {
+        //     this.setState({ isLoggedIn: true, user });
+        //     console.log("------------------------------------");
+        //     console.log(user);
+        //   } else {
+        //     this.setState({ isLoggedIn: false, user: {} });
+        //   }
+        // });
 
         this.conatiner={
           minHeight:"100vh",
@@ -77,9 +99,33 @@ export default class listen extends Component {
           playing: "aana"
         });
       }
+      // postNewComment(comment) {
+      //   comment.user = {
+      //     uid: this.state.user.uid,
+      //     name: this.state.user.displayName,
+      //     photo: this.state.user.photoURL,
+          
+      //   };
+      //   const comments = {
+      //     ...this.state.comments
+      //   };
+      //   const timestamp = Date.now();
+      //   comments[`comm-${timestamp}`] = comment;
+      //   this.setState({
+      //     comments: comments
+      //   });
+      // }
+      // auth(provider) {
+      //   auth.signInWithPopup(providers[provider]);
+      // } 
+      // logout(){
+      //   this.setState({ isLoggedIn: false, user: {} });
+
+      // }   
     render() {
         return (
           <Media>
+            
             <div>
               <Helmet>
               <meta charSet="utf-8" />
@@ -123,6 +169,42 @@ export default class listen extends Component {
 
                 </div>
                 </div>
+                {/* <div className="container">
+          {this.state.isLoggedIn && (
+            <div className="user">
+              <img
+                className="photo"
+                alt={this.state.user}
+                src={this.state.user.photoURL}
+              />
+              <h5 className="display-name"> {this.state.user.displayName} </h5>
+              <p className="email"> {this.state.user.email} </p>
+              <NewComment postNewComment={this.postNewComment} />
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => auth.signOut()}
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
+          {!this.state.isLoggedIn && (
+            <div className="alert alert-dark">
+              <h1 className="title">ReactJS Comments App</h1>
+              <label className="sign-in">Sign in: </label>
+              <button
+                className="btn btn-danger"
+                onClick={() => this.auth("google")}
+              >
+               
+                google
+              </button>
+            </div>
+           
+          )}
+          
+          <Comments comments={this.state.comments} />
+        </div> */}
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
 
           {/* <NowPlaying playing={this.state.playing}/> */}
