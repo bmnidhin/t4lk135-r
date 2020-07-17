@@ -5,32 +5,24 @@ import Comment from "./Comment";
 
 class Comments extends Component {
 
-  state={
-    loaded : false,
+ 
+  renderComment(key, comment, slug, id, user) {
+    return <Comment key={key} comment={comment} slug={slug} id={key} user={user || ''}/>;
   }
-  renderComment(key, comment) {
-    return <Comment key={key} comment={comment} />;
-  }
-  checkCommentLength(comments){
-   if (comments.length === 0) {
-     return true
-   } else {
-     return false
-   }
-  }
+ 
   render() {
     return (
       <div>
-      <div className={this.checkCommentLength(this.props.comments)? 'd-none':'its working'}>
-        <p>{this.props.comments.length}</p>
+      <div>
+
+        {}
+        
         {Object.keys(this.props.comments).reverse().map(key =>
-          this.renderComment(key, this.props.comments[key])
+          this.renderComment(key, this.props.comments[key], this.props.slug, Object.keys(this.props.comments[key]),this.props.user )
         )}
+        {/* {JSON.stringify(Object.keys(this.props.comments))} */}
       </div>
-      <div className={this.checkCommentLength(this.props.comments)? '':'d-none'}>
-      <p>No Comments. Post a comment Now</p>
-     
-    </div>
+      
     </div>
     );
   }

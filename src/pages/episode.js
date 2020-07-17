@@ -17,7 +17,7 @@ import { Helmet } from "react-helmet";
 import FeaturedPosts from "./homePageComponents/FeaturedPosts";
 import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
-import base, { auth, providers } from '../utils/FirebaseSettings'
+import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 
 const {
   PlayPause,
@@ -63,11 +63,11 @@ class episode extends Component {
       comments: {},
       isLoggedIn: false,
       numberOfComments:0,
-      user: ""
+      user: " "
     };
     this.refComments = base.syncState( this.props.match.params.slug, {
       context: this,
-      state: "comments"
+      state: "comments",
     });
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -161,20 +161,24 @@ class episode extends Component {
         photo: this.state.user.photoURL,
         
       };
+      const comments = {
+        ...this.state.comments
+      };
+  
+     
+      const timestamp = Date.now();
+      comments[`comm-${timestamp}`] = comment;
+      
+      databased.ref(this.props.match.params.slug).set(comments);
+    
+
+      // this.setState({
+      //   comments: comments,
+        
+      // });
     }
    
-    const comments = {
-      ...this.state.comments
-    };
-
-    const commentLength = comments
-    const timestamp = Date.now();
-    comments[`comm-${timestamp}`] = comment;
-
-    this.setState({
-      comments: comments,
-      numberOfComments:commentLength
-    });
+    
   }
   auth(provider) {
     auth.signInWithPopup(providers[provider]);
@@ -290,7 +294,7 @@ class episode extends Component {
                         <a onClick={() => auth.signOut()}>( Logout )</a>
                       </h6>
                       <NewComment postNewComment={this.postNewComment} />
-                      
+                      {/* {JSON.stringify(this.state.user)} */}
                     </div>
                   </div>
 
@@ -349,7 +353,8 @@ class episode extends Component {
                  <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
-                  <Comments comments={this.state.comments} />
+                  {this.state.comments === {} ?'': <Comments comments={this.state.comments}  slug={this.props.match.params.slug} user={this.state.user.uid}/>}
+                 
 
                  
                  

@@ -13,6 +13,7 @@ const firebaseApp = firebase.initializeApp({
 });
 
 const db = firebase.database(firebaseApp);
+const database = firebase.database()
 const base = Rebase.createClass(db);
 
 export const providers = {
@@ -21,4 +22,5 @@ export const providers = {
 };
 
 export const auth = firebaseApp.auth();
+export const databased = database;
 export default base;
