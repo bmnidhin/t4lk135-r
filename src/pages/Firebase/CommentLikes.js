@@ -10,7 +10,7 @@ class CommentLikes extends Component {
        
     
         this.state = {
-            counter : "",
+            counter : 0,
         };
         
         
@@ -18,15 +18,26 @@ class CommentLikes extends Component {
         
   }
   componentDidMount() {
+
+    var starCountRef = databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes');
+        starCountRef.on('value', (snapshot)=> {
+        let a = snapshot.numChildren();
+        this.setState({counter : a})
+        console.log(a)
+      
+});
+
   
-        base.fetch(this.props.slug, {
-          context: this,
-          asArray: true
-        }).then(data => {
-          console.log(data);
-        }).catch(error => {
-          //handle error
-        })
+    //  let ref = databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes');
+    //   ref.once("value")
+    //   .then((snapshot)=>{
+    //     let a = snapshot.numChildren(); // 1 ("name")
+    //     // let b = snapshot.child("name").numChildren(); // 2 ("first", "last")
+    //     // let c = snapshot.child("name/first").numChildren(); // 0
+    //     this.setState({counter : a})
+    //     console.log(a) }
+    //   );
+
     
   }
 
@@ -49,13 +60,13 @@ class CommentLikes extends Component {
 {/* (this.props.likes[this.props.user]) */}
 {/* Total Likes {Object.keys(this.props.likes).length} */}
 
-comments : {this.state.counter}
+likes : {this.state.counter}
 
 
 {this.props.likes=== undefined?
        
        this.props.user===''?"Login to like":
-       <p onClick={()=>{databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes'+"/" + this.props.user ).set({liked: true ,name: this.props.name,UID : this.props.user},)
+       <p onClick={()=>{databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes'+"/" + this.props.user ).set({liked: true ,name: this.props.name,UID : this.props.user,},)
     }}>Like</p>
        :
        (this.props.likes[this.props.user]) !==undefined ?
@@ -71,8 +82,8 @@ comments : {this.state.counter}
     }}>Like</p>
        
        }
-
-
+        
+        
        {/* {this.props.likes=== undefined?
        
        ("No")
