@@ -67,6 +67,7 @@ class episode extends Component {
     };
     this.refComments = base.syncState( this.props.match.params.slug, {
       context: this,
+      
       state: "comments",
     });
     auth.onAuthStateChanged(user => {
@@ -353,7 +354,7 @@ class episode extends Component {
                  <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
-                  {this.state.comments === {} ?'': <Comments comments={this.state.comments}  slug={this.props.match.params.slug} user={this.state.user.uid}/>}
+                  {this.state.comments === {} ?'': <Comments comments={this.state.comments}  slug={this.props.match.params.slug} user={this.state.user.uid} name={this.state.user.displayName} login={this.state.isLoggedIn}/>}
                  
 
                  

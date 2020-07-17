@@ -2,6 +2,7 @@ import React from "react";
 import Moment from "moment";
 import base, { auth, providers, databased } from '../../utils/FirebaseSettings'
 import firebase from "firebase";
+import CommentLikes from "./CommentLikes";
 
 
 
@@ -11,7 +12,8 @@ const Comment = props => {
 
 
 // const timestamp = props.comment.user.time  
-const timestamp = props.comment.user.time 
+const timestamp = props.comment.user.time
+const currentUser = props.user 
 
   return (
     <div class="d-flex bd-highlight">
@@ -45,8 +47,13 @@ const timestamp = props.comment.user.time
                       </p>
                       {/* Current User : {props.user} <br/>
                       commended by : {props.comment.user.uid} */}
-                      {JSON.stringify(props.comment  )}
+                      
                     {(props.user)=== props.comment.user.uid?   <p onClick={ ()=>{ databased.ref(props.slug +"/" + props.id).remove()}}>Delete</p> :" "}
+                  
+                    {/* steing {(props.comment.likes).find(element => element > 10)} */}
+                    {JSON.stringify(props.comment)}
+                    <CommentLikes slug={props.slug} id={props.id} user={props.user} name={props.name} likes={props.comment.likes }/>
+                   
                      
                     </div>  
                   </div>
