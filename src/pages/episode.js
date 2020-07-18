@@ -267,6 +267,7 @@ class episode extends Component {
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
                   <h6>POST A COMMENT</h6>
+                 
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
@@ -321,22 +322,14 @@ class episode extends Component {
                     // </div>
                   )}
                   {!this.state.isLoggedIn && (
-                    <div style={this.infobox}>
-                      <div class="d-flex flex-row bd-highlight mb-3">
-                        <div class="p-2 bd-highlight">
-                          <span class="material-icons">login</span>
-                        </div>
-                        <div
-                          class="p-2 bd-highlight"
-                          onClick={() => this.auth("google")}
-                        >
-                          Signin with Google to Comment
-                        </div>
-                        <div class="p-2 bd-highlight">
-                          <span class="material-icons">arrow_forward</span>
-                        </div>
-                      </div>
+                    
+                    <div className="signUpPrompt">
+                    <div className="p-3">
+                        Login to Post a Comment
+                        <p className="text-muted text-small"style={{ fontSize: "0.8rem" }}>Login or create an account to join our community</p>
+                        <button type="button" class="btn btn-outline-light" onClick={() => this.auth("google")}><i class="fab fa-google"></i> Login With Google</button>
                     </div>
+                  </div>
 
                     // <div className="alert alert-dark">
                     //   <h1 className="title">ReactJS Comments App</h1>

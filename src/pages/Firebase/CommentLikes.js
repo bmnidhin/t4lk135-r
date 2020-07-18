@@ -60,26 +60,25 @@ class CommentLikes extends Component {
 {/* (this.props.likes[this.props.user]) */}
 {/* Total Likes {Object.keys(this.props.likes).length} */}
 
-likes : {this.state.counter}
-
+    
 
 {this.props.likes=== undefined?
        
-       this.props.user===''?"Login to like":
+       this.props.user===''?(  <p><span class="material-icons pr-2"style={{fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter} [Login to like] </p>):
        <p onClick={()=>{databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes'+"/" + this.props.user ).set({liked: true ,name: this.props.name,UID : this.props.user,},)
-    }}>Like</p>
+}}><span className="material-icons pr-2" style={{fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter}</p>
        :
        (this.props.likes[this.props.user]) !==undefined ?
         
        <p onClick={()=>{databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes'+"/" + this.props.user ).remove()
-    }}>Dislike</p>
+    }}><span className="material-icons pr-2" style={{color:'#c31c6c',fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter}</p>
         
         :(this.props.user) ==='' ?
         
-        'Please login to like'
+        ( <p><span className="material-icons pr-2" style={{fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter} [Login to like] </p>)
         :
         <p onClick={()=>{databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes'+"/" + this.props.user ).set({liked: true ,name: this.props.name,UID : this.props.user})
-    }}>Like</p>
+    }}><span className="material-icons pr-2" style={{fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter}</p>
        
        }
         
