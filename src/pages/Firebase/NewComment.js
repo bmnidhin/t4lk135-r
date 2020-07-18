@@ -12,12 +12,18 @@ class NewComment extends Component {
     this.props.postNewComment({
       comment: this.refs.comment.value
     });
+    this.refs.comment.value = "";
+
   }
   handleEnter(event) {
+    
     if (event.keyCode === 13) {
-      this.props.postNewComment({
-        comment: this.refs.comment.value
-      });
+      if (this.refs.comment.value !== '') {
+        this.props.postNewComment({
+          comment: this.refs.comment.value
+        });
+      }
+      
       this.refs.comment.value = "";
       event.preventDefault();
     }
