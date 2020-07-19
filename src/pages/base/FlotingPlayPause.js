@@ -77,7 +77,7 @@ const image =
                   className="text-truncate"
                   style={{ width: "190px", fontSize: "15px" }}
                 >
-                  {this.props.title} 
+                  {this.props.title}
                 </div>
               
                 <span style={{ fontSize: "8px", textAlign:'left' }}>
@@ -94,10 +94,10 @@ const image =
                   <span class="sr-only">Loading...</span>
                 </div> */}
                 <div>
-                    <div className={media.isLoading ? '' : 'd-none'}>
+                    {/* <div className={media.isLoading && (media.duration !==Infinity) ? '' : 'd-none'}>
                     <div class="spinner-border text-secondary" role="status"></div>
-                    </div>
-                    <div className={!media.isLoading ? '' : 'd-none'}>
+                    </div> */}
+                    <div className={''}>
                     {media.isPlaying ? <span class="material-icons">pause_circle_filled</span> : <span className="material-icons ">play_circle_filled</span>}
                       
                     </div>

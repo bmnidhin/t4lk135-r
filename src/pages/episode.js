@@ -347,7 +347,7 @@ class episode extends Component {
                  <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
-                  {this.state.comments === {} ?'': <Comments comments={this.state.comments}  slug={this.props.match.params.slug} user={this.state.user.uid} name={this.state.user.displayName} login={this.state.isLoggedIn}/>}
+                  {this.state.comments === {} ?'': <Comments comments={this.state.comments}  slug={this.props.match.params.slug} user={this.state.user.uid} name={this.state.user.displayName} login={this.state.isLoggedIn} currentUser={this.state.user}/>}
                  
 
                  
@@ -387,7 +387,7 @@ class episode extends Component {
 
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.liveAudio} vendor="audio" autoPlay="true" />
+            <Player src={this.state.liveAudio} vendor="audio" autoPlay="false" />
           </div>
           <FlotingPlayPause
             cover={this.state.liveCover}

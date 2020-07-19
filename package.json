@@ -15,6 +15,7 @@
     "react-countdown": "^2.2.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
+    "react-linkify": "^1.0.0-alpha",
     "react-media-player": "^0.7.9",
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.2.0",

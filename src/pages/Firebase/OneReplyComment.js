@@ -5,11 +5,12 @@ import firebase from "firebase";
 import CommentLikes from "./CommentLikes";
 import Linkify from 'react-linkify';
 import ReplyComment from "./ReplyComment";
+import ReplyCommentLikes from "./ReplyCommentLikes";
 
 
 
 
-const Comment = props => {
+const OneReplyComment = props => {
 
 
 
@@ -75,7 +76,8 @@ const currentUser = props.user
         </div>
       
         <div class="d-flex flex-row bd-highlight  text-muted text-uppercase"style={{ fontSize: "0.6rem",cursor:"pointer" }}>
-          <div class="pt-0 pr-3 bd-highlight"><CommentLikes
+          <div class="pt-0 pr-3 bd-highlight">
+              <ReplyCommentLikes   
           slug={props.slug}
           id={props.id}
           user={props.user}
@@ -106,7 +108,7 @@ const currentUser = props.user
         
 
       
-        <ReplyComment path={props.slug} id={props.id} currentUser={props.currentUser}/>
+        
         
       </div>
      
@@ -120,4 +122,4 @@ const currentUser = props.user
   );
 };
 
-export default Comment;
+export default OneReplyComment;

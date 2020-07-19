@@ -41,6 +41,7 @@ class NewComment extends Component {
                         rows="1"
                         onKeyDown={this.handleEnter}
                         required
+                        maxlength="500"
                         // autoFocus={true}
                         
                       ></textarea>
