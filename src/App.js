@@ -9,18 +9,15 @@ import episode from "./pages/episode";
 import playlists from "./pages/playlists";
 import playListDetail from "./pages/playListDetail";
 import CountDown from "./pages/base/CountDown";
-
-
 import FooterArea from "./pages/base/FooterArea";
 import NavTest from "./pages/base/NavTest";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
-import base, { auth, providers } from './utils/FirebaseSettings'
+// import base, { auth, providers } from './utils/FirebaseSettings'
 import './App.css';
+
 class App extends Component {
-  state={
-    now:"rakashasi"
-  }
+  
   render() {
     return (
       <div>
@@ -31,9 +28,10 @@ class App extends Component {
         <ScrollReveal
           children={() => (
             <Switch>
+             
               <AppRoute exact path="/" component={homepage} />
 
-              <AppRoute exact path="/listen" component={listen} base={base} auth={auth} providers={providers}/>
+              <AppRoute exact path="/listen" component={listen}/>
               <AppRoute exact path="/listen/:slug" component={episode} />
 
               <AppRoute exact path="/playlist/" component={playlists} />

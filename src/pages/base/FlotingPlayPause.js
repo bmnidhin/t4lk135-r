@@ -1,50 +1,44 @@
 import React, { Component } from "react";
 
-import { Media, Player, controls, withMediaProps, utils } from "react-media-player";
+import {
+  Media,
+  Player,
+  controls,
+  withMediaProps,
+  utils,
+} from "react-media-player";
 import CustomtCurrentTime from "./CustomtCurrentTime";
-// import { CurrentTime } from "react-media-player/lib/controls";
-const { formatTime } = utils
-// const { PlayPause, MuteUnmute, Volume, SeekBar } = controls;
 
-const image =
-  "https://a10.gaanacdn.com/images/albums/51/1596151/crop_175x175_1596151.jpg";
+const { formatTime } = utils;
 
-  const {
-    PlayPause,
-    CurrentTime,
-    Progress,
-    SeekBar,
-    Duration,
-    MuteUnmute,
-    Volume,
-    Fullscreen,
-  } = controls
+const {
+  PlayPause,
+  CurrentTime,
+  Progress,
+  SeekBar,
+  Duration,
+  MuteUnmute,
+  Volume,
+  Fullscreen,
+} = controls;
 
-  class FlotingPlayPause extends Component {
-    constructor(props,context) {
-      super(props,context);
-      
-  
-      this.state = {
-       
-        
-        title:'Live Radio',
-        publishedAtDate:'',
+class FlotingPlayPause extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-      };
-    
-      
-     
-    }
-
+    this.state = {
+      title: "Live Radio",
+      publishedAtDate: "",
+    };
+  }
 
   shouldComponentUpdate({ media }) {
-    return this.props.media.isPlaying !== media.isPlaying
+    return this.props.media.isPlaying !== media.isPlaying;
   }
- 
+
   _handlePlayPause = () => {
-    this.props.media.playPause()
-  }
+    this.props.media.playPause();
+  };
   style = {
     position: "fixed",
     bottom: "0px",
@@ -58,9 +52,8 @@ const image =
   };
 
   render() {
-    const { className, style, media } = this.props
+    const { className, style, media } = this.props;
     return (
-      
       <div style={this.style}>
         <table className="table table-bordered" style={{ marginBottom: 0 }}>
           <tbody>
@@ -79,52 +72,52 @@ const image =
                 >
                   {this.props.title}
                 </div>
-              
-                <span style={{ fontSize: "8px", textAlign:'left' }}>
-               
-                
-                 {/* <CurrentTime/> / <Duration/> */}
-                {/* {media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)} */}
-                 </span>
-                
+
+                <span style={{ fontSize: "8px", textAlign: "left" }}>
+                  {/* <CurrentTime/> / <Duration/> */}
+                  {/* {media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)} */}
+                </span>
               </td>
 
-              <td className="align-middle text-center" width="150px" onClick={this._handlePlayPause}>
-                {/* <div class="spinner-border text-secondary" role="status">
-                  <span class="sr-only">Loading...</span>
+              <td
+                className="align-middle text-center"
+                width="150px"
+                onClick={this._handlePlayPause}
+              >
+                {/* <div className="spinner-border text-secondary" role="status">
+                  <span className="sr-only">Loading...</span>
                 </div> */}
                 <div>
-                    {/* <div className={media.isLoading && (media.duration !==Infinity) ? '' : 'd-none'}>
-                    <div class="spinner-border text-secondary" role="status"></div>
+                  {/* <div className={media.isLoading && (media.duration !==Infinity) ? '' : 'd-none'}>
+                    <div className="spinner-border text-secondary" role="status"></div>
                     </div> */}
-                    <div className={''}>
-                    {media.isPlaying ? <span class="material-icons">pause_circle_filled</span> : <span className="material-icons ">play_circle_filled</span>}
-                      
-                    </div>
-                 </div>
-                
-               
-                
+                  <div className={""}>
+                    {media.isPlaying ? (
+                      <span className="material-icons">pause_circle_filled</span>
+                    ) : (
+                      <span className="material-icons ">
+                        play_circle_filled
+                      </span>
+                    )}
+                  </div>
+                </div>
+
                 {/*  */}
               </td>
             </tr>
           </tbody>
         </table>
-        {/* <div class="row">
-          <div class="col-1 roundedImage flotingImage">
+        {/* <div className="row">
+          <div className="col-1 roundedImage flotingImage">
             {" "}
             <img src={this.state.imageURL} width="50px"></img>
           </div>
-          <div class="col-6 flotingTitle text-truncate">col-sm-4</div>
-          <div class="col-5 flotingTitle">col-sm-4</div>
+          <div className="col-6 flotingTitle text-truncate">col-sm-4</div>
+          <div className="col-5 flotingTitle">col-sm-4</div>
         </div> */}
       </div>
-      
     );
   }
 }
 
-export default withMediaProps(FlotingPlayPause)
-
-
-
+export default withMediaProps(FlotingPlayPause);

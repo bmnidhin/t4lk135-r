@@ -61,7 +61,7 @@ const currentUser = props.user
         <Linkify>
         {props.comment.status?
         (<p className="text-muted font-italics"style={{ fontSize: "0.8rem",width:"90%" }}>
-          <i>🛇 Admin removed this comment due to the violation of community guidelines [ thetkmshow.in/community-guidelines ] </i>
+          <i>🛇 This message is removed. [ thetkmshow.in/guidelines ]</i>
         </p>)
         :
         <p style={{ fontSize: "0.8rem",width:"90%" }}className="text-break text-justify">{props.comment.comment}</p>

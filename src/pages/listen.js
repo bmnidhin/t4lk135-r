@@ -1,175 +1,163 @@
-import React, { Component } from 'react'
-import NowPlaying from './base/NowPlaying'
-import LogoArea from './base/LogoArea'
+import React, { Component } from "react";
+import NowPlaying from "./base/NowPlaying";
+import LogoArea from "./base/LogoArea";
 import { Media, Player, controls } from "react-media-player";
 import axios from "axios";
 import Moment from "moment";
-import { Link } from 'react-router-dom';
-import FlotingPlayPause from './base/FlotingPlayPause';
-import { Helmet } from 'react-helmet';
-import NewComment from './Firebase/NewComment'
-import Comments from './Firebase/Comments'
-import base, { auth, providers } from '../utils/FirebaseSettings'
+import { Link } from "react-router-dom";
+import FlotingPlayPause from "./base/FlotingPlayPause";
+import { Helmet } from "react-helmet";
+import NewComment from "./Firebase/NewComment";
+import Comments from "./Firebase/Comments";
+import base, { auth, providers } from "../utils/FirebaseSettings";
 const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
 
-const currentTime = Moment()
+const currentTime = Moment();
 let URL = settings.map((settings) => {
- 
   return settings.streamURL;
 });
 let liveCover = settings.map((settings) => {
- 
-    return settings.liveCover;
-  });
+  return settings.liveCover;
+});
 
 export default class listen extends Component {
-    constructor(props) {
-        super(props);  
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        // this.postNewComment = this.postNewComment.bind(this);
-        
-        
-        this.state={
-           url: URL,
-           cover:liveCover,
-           title: "Live Radio",
-           listen:[],
-           comments: {},
-           isLoggedIn: false,
-           user: ""
-        };
-        // this.refComments = base.syncState("ithaan", {
-        //   context: this,
-        //   state: "comments"
-        // });
-        // auth.onAuthStateChanged(user => {
-        //   if (user) {
-        //     this.setState({ isLoggedIn: true, user });
-        //     console.log("------------------------------------");
-        //     console.log(user);
-        //   } else {
-        //     this.setState({ isLoggedIn: false, user: {} });
-        //   }
-        // });
+  constructor(props) {
+    super(props);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    // this.postNewComment = this.postNewComment.bind(this);
 
-        this.conatiner={
-          minHeight:"100vh",
-          backgroundColor:'#030229',
-          color:"white",
-          
+    this.state = {
+      url: URL,
+      cover: liveCover,
+      title: "Live Radio",
+      listen: [],
+      comments: {},
+      isLoggedIn: false,
+      user: "",
+    };
+    // this.refComments = base.syncState("ithaan", {
+    //   context: this,
+    //   state: "comments"
+    // });
+    // auth.onAuthStateChanged(user => {
+    //   if (user) {
+    //     this.setState({ isLoggedIn: true, user });
+    //     console.log("------------------------------------");
+    //     console.log(user);
+    //   } else {
+    //     this.setState({ isLoggedIn: false, user: {} });
+    //   }
+    // });
 
-        }
-        this.content={
-          marginLeft:'10%',
-          marginRight:'10%'
+    this.conatiner = {
+      minHeight: "100vh",
+      backgroundColor: "#030229",
+      color: "white",
+    };
+    this.content = {
+      marginLeft: "10%",
+      marginRight: "10%",
+    };
+  }
 
-        }
-      }
-    
-      componentDidMount() {
-        axios
-          .get("https://api.thetkmshow.in/listen")
-          .then((response) => {
-            this.setState({
-              listen: response.data,
-            });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-      check(date, time) {
-        const publishedDate = date;
-        const publishedTime = time;
-        const currentTime = Moment().format();
-        const publishAt = publishedDate + "T" + publishedTime + "+05:30";
-    
-        const a = Moment(publishAt);
-        const b = Moment(currentTime);
-        const myDiff = b.diff(a);
-    
-        const isEventPublished = myDiff > 0;
-        const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
-        return isEventPublished;
-      }
-
-    onChangeUsername() {
+  componentDidMount() {
+    axios
+      .get("https://api.thetkmshow.in/listen")
+      .then((response) => {
         this.setState({
-          playing: "aana"
+          listen: response.data,
         });
-      }
-      // postNewComment(comment) {
-      //   comment.user = {
-      //     uid: this.state.user.uid,
-      //     name: this.state.user.displayName,
-      //     photo: this.state.user.photoURL,
-          
-      //   };
-      //   const comments = {
-      //     ...this.state.comments
-      //   };
-      //   const timestamp = Date.now();
-      //   comments[`comm-${timestamp}`] = comment;
-      //   this.setState({
-      //     comments: comments
-      //   });
-      // }
-      // auth(provider) {
-      //   auth.signInWithPopup(providers[provider]);
-      // } 
-      // logout(){
-      //   this.setState({ isLoggedIn: false, user: {} });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  check(date, time) {
+    const publishedDate = date;
+    const publishedTime = time;
+    const currentTime = Moment().format();
+    const publishAt = publishedDate + "T" + publishedTime + "+05:30";
 
-      // }   
-    render() {
-        return (
-          <Media>
-            
-            <div>
-              <Helmet>
-              <meta charSet="utf-8" />
-        <title>Listen | The TKM Show</title>
-        <link
-          rel="canonical"
-          href="https://thetkmshow.in/listen"
-        />
-              </Helmet>
-            <div style={this.conatiner}>
-              <LogoArea/>
-               <div style={{marginTop:'30px',paddingBottom:'30px'}}>
-                 <h3 style={{textAlign:"center"}}>Listen Again</h3>
-               </div>
-                <div style={this.content}>
-                    
-                <div className="row">
-          {this.state.listen.slice(0, 20).map((track) => (
-            <div
-              className={
-                this.check(track.publishedAtDate, track.publishedAtTime)
-                  ? "col-6 col-md-3"
-                  : "d-none"
-              }
-              key={track.slug}
-            >
-              <Link to={"/listen/" + track.slug} className="">
-                <img
-                  src={track.cover}
-                  width="100%"
-                  className="roundedImage"
-                  alt="Poster"
-                ></img>
-                <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-              </Link>
+    const a = Moment(publishAt);
+    const b = Moment(currentTime);
+    const myDiff = b.diff(a);
+
+    const isEventPublished = myDiff > 0;
+    const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
+    return isEventPublished;
+  }
+
+  onChangeUsername() {
+    this.setState({
+      playing: "aana",
+    });
+  }
+  // postNewComment(comment) {
+  //   comment.user = {
+  //     uid: this.state.user.uid,
+  //     name: this.state.user.displayName,
+  //     photo: this.state.user.photoURL,
+
+  //   };
+  //   const comments = {
+  //     ...this.state.comments
+  //   };
+  //   const timestamp = Date.now();
+  //   comments[`comm-${timestamp}`] = comment;
+  //   this.setState({
+  //     comments: comments
+  //   });
+  // }
+  // auth(provider) {
+  //   auth.signInWithPopup(providers[provider]);
+  // }
+  // logout(){
+  //   this.setState({ isLoggedIn: false, user: {} });
+
+  // }
+  render() {
+    return (
+      <Media>
+        <div>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>Listen | The TKM Show</title>
+            <link rel="canonical" href="https://thetkmshow.in/listen" />
+          </Helmet>
+          <div style={this.conatiner}>
+            <LogoArea />
+            <div style={{ marginTop: "30px", paddingBottom: "30px" }}>
+              <h3 style={{ textAlign: "center" }}>Listen Again</h3>
             </div>
-          ))}
-        </div>
-      
-             
-
-                </div>
-                </div>
-                {/* <div className="container">
+            <div style={this.content}>
+              <div className="row">
+                {this.state.listen.slice(0, 20).map((track) => (
+                  <div
+                    className={
+                      this.check(track.publishedAtDate, track.publishedAtTime)
+                        ? "col-6 col-md-3"
+                        : "d-none"
+                    }
+                    key={track.slug}
+                  >
+                    <Link to={"/listen/" + track.slug} className="">
+                      <img
+                        src={track.cover}
+                        width="100%"
+                        className="roundedImage"
+                        alt="Poster"
+                      ></img>
+                      <p style={this.itemHeading} className="text-truncate">
+                        {track.title}
+                      </p>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* <div className="container">
           {this.state.isLoggedIn && (
             <div className="user">
               <img
@@ -210,11 +198,9 @@ export default class listen extends Component {
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.url} vendor="audio" autoPlay="true" />
-
-          
-            </div>
-            </div>
-            </Media>
-        )
-    }
+          </div>
+        </div>
+      </Media>
+    );
+  }
 }

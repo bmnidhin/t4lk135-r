@@ -2,17 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import base, { auth, providers } from './utils/FirebaseSettings'
+
 import "./fonts/stylesheet.css";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import ScrollMemory from "react-router-scroll-memory";
 
 const history = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={history}>
-    <App/>
+    <ScrollMemory />
+    <App />
   </Router>,
   document.getElementById("root")
 );

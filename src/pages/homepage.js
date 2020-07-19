@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NowPlaying from "./base/NowPlaying";
 import { Media, Player, controls } from "react-media-player";
 import LogoArea from "./base/LogoArea";
-import axios from "axios";
+// import axios from "axios";
 import HeroText from "./homePageComponents/HeroText";
 import ListenAfterLive from "./homePageComponents/ListenAfterLive";
 import RecentPosters from "./homePageComponents/RecentPosters";
@@ -10,7 +10,8 @@ import FeaturedPosts from "./homePageComponents/FeaturedPosts";
 import FeaturedPlaylists from "./homePageComponents/FeaturedPlaylists";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
-const { PlayPause, MuteUnmute } = controls;
+// import liveStreamURL from "../utils/Settings";
+// const { PlayPause, MuteUnmute } = controls;
 const settings = require("./API/settings.json");
 let URL = settings.map((settings) => {
  
@@ -23,14 +24,14 @@ let liveCover = settings.map((settings) => {
 const Background = require("./base/img/wave.jpg");
 
 export default class homepage extends Component {
-  state = {
+  state = {  
     url: URL,
     cover:liveCover,
     title: "Live Radio",
   };
   data = URL
   heroarea = {
-    minHeight: "100vh",
+    minHeight: "80vh",
     backgroundColor: "#030229",
     textAlign: "center",
     paddingBottom: "30px",
@@ -85,8 +86,8 @@ export default class homepage extends Component {
             <div style={this.secondaryContentInner}>
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPosts />
-              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <FeaturedPlaylists />
+              {/* <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+              <FeaturedPlaylists /> */}
             </div>
           </div>
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />

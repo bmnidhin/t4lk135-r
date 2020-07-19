@@ -31,11 +31,11 @@ export default class RecentPosters extends Component {
     }
     render() {
         return (
-          <div class="containers"style={{marginTop:"20px",marginBottom:"20px"}}>
+          <div className="containers"style={{marginTop:"20px",marginBottom:"20px"}}>
             <h6 style={this.title}></h6>
-            <div class="row">
-              <div class="col-sm"><img src={this.state.posterOne} style={this.imageStyle} alt="poster"/></div>
-              <div class="col-sm"><img src={this.state.posterTwo} style={this.imageStyle} className='d-none d-sm-block'alt="poster"/></div>
+            <div className="row">
+              <div className="col-sm"><img src={this.state.posterOne} style={this.imageStyle} alt="poster"/></div>
+              <div className="col-sm"><img src={this.state.posterTwo} style={this.imageStyle} className='d-none d-sm-block'alt="poster"/></div>
             </div>
           </div>
         );

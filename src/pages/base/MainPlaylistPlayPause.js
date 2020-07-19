@@ -30,18 +30,18 @@ class MainPlaylistPlayPause extends Component {
       <div style={this.style} className={media.isLoading || media.duration == Infinity ? "d-none" : "player"}>
         <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
 
-        <div class="d-flex flex-row bd-highlight" onClick={this.props.switch}>
-          <div class="p-2 bd-highlight">
+        <div className="d-flex flex-row bd-highlight" onClick={this.props.switch}>
+          <div className="p-2 bd-highlight">
             <div></div>
 
             <div>
               <div className={media.isLoading ? "" : "d-none"}>
-                <div class="spinner-border text-secondary" role="status"></div>
+                <div className="spinner-border text-secondary" role="status"></div>
               </div>
               
             </div>
           </div>
-          <div class="p-2 pt-3 bd-highlight text-uppercase">
+          <div className="p-2 pt-3 bd-highlight text-uppercase">
             {/* {media.duration == Infinity ? "PLAY" : ""}
             {media.isPlaying && media.duration !== Infinity ? "PLAYING" : ""}
             {!media.isPlaying && media.duration !== Infinity? "PAUSED": ""} */}
@@ -50,15 +50,15 @@ class MainPlaylistPlayPause extends Component {
 
         {media.duration == Infinity || media.isLoading ? ("") : (<SeekBar className="active" />)}
 
-        <div class="d-flex flex-row bd-highlight mb-3 justify-content-between">
-          <div class="bd-highlight" style={{ fontSize: "9px" }}>
+        <div className="d-flex flex-row bd-highlight mb-3 justify-content-between">
+          <div className="bd-highlight" style={{ fontSize: "9px" }}>
             {media.duration == Infinity || media.isLoading ? (
               ""
             ) : (
               <CurrentTime />
             )}
           </div>
-          <div class="bd-highlight" style={{ fontSize: "9px" }}>
+          <div className="bd-highlight" style={{ fontSize: "9px" }}>
             {media.duration == Infinity || media.isLoading ? "" : <Duration />}
           </div>
         </div>

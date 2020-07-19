@@ -56,8 +56,7 @@ export default class ListenAfterLive extends Component {
     const b = Moment(currentTime);
     const myDiff = b.diff(a);
 
-    const isBannerActive = true;
-    // myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
+    const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     const timeAgo = Moment(publishAt).fromNow();
 
     return (

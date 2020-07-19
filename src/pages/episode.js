@@ -212,7 +212,7 @@ class episode extends Component {
           </Helmet>
           <LogoArea />
 
-          <div style={this.content}>
+          <div style={this.content} id="top">
             <div
               className={
                 this.state.isEventNoPublishedBannerVisible ? "" : "d-none"
@@ -266,40 +266,54 @@ class episode extends Component {
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
-                  <h6>POST A COMMENT</h6>
-                 
+                  <div class="d-flex flex-row bd-highlight justify-content-between">
+                    <div class="p-2 bd-highlight">
+                      <h6>POST A COMMENT</h6>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                      {/* <a href="#bottom">Scroll to Bottom</a> */}
+                    </div>
+                  </div>
+
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
 
                   {this.state.isLoggedIn && (
                     <div class="d-flex bd-highlight">
-                    <div class="p-2 bd-highlight">
-                    <div className="rounded-circle" width="30px" height='30px' 
-                      
-                      style={{backgroundColor :'rgb(14, 14, 67)',backgroundImage:"url("+this.state.user.photoURL+")",backgroundSize: "cover",width:'40px', height:'40px',color:'rgb(14, 14, 67)'}}
-                      
-                      >
-                      &nbsp;
-                      </div>
-                      {/* <img
+                      <div class="p-2 bd-highlight">
+                        <div
+                          className="rounded-circle"
+                          width="30px"
+                          height="30px"
+                          style={{
+                            backgroundColor: "rgb(14, 14, 67)",
+                            backgroundImage:
+                              "url(" + this.state.user.photoURL + ")",
+                            backgroundSize: "cover",
+                            width: "40px",
+                            height: "40px",
+                            color: "rgb(14, 14, 67)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                        {/* <img
                         src={this.state.user.photoURL}
                         class="rounded-circle"
                         width="30px"
                         alt="..."
                       /> */}
+                      </div>
+                      <div class="p-2 flex-grow-1 bd-highlight">
+                        <h6>
+                          <b> {this.state.user.displayName} </b>
+                          <a onClick={() => auth.signOut()}>( Logout )</a>
+                        </h6>
+                        <NewComment postNewComment={this.postNewComment} />
+                        {/* {JSON.stringify(this.state.user)} */}
+                      </div>
                     </div>
-                    <div class="p-2 flex-grow-1 bd-highlight">
-                      <h6>
-                        <b> {" "}
-                        {this.state.user.displayName}{" "}</b>
-                        <a onClick={() => auth.signOut()}>( Logout )</a>
-                      </h6>
-                      <NewComment postNewComment={this.postNewComment} />
-                      {/* {JSON.stringify(this.state.user)} */}
-                    </div>
-                  </div>
-
 
                     // <div className="user">
                     //   <img
@@ -322,14 +336,24 @@ class episode extends Component {
                     // </div>
                   )}
                   {!this.state.isLoggedIn && (
-                    
                     <div className="signUpPrompt">
-                    <div className="p-3">
+                      <div className="p-3">
                         Login to Post a Comment
-                        <p className="text-muted text-small"style={{ fontSize: "0.8rem" }}>Login or create an account to join our community</p>
-                        <button type="button" class="btn btn-outline-light" onClick={() => this.auth("google")}><i class="fab fa-google"></i> Login With Google</button>
+                        <p
+                          className="text-muted text-small"
+                          style={{ fontSize: "0.8rem" }}
+                        >
+                          Login or create an account to join our community
+                        </p>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light"
+                          onClick={() => this.auth("google")}
+                        >
+                          <i class="fab fa-google"></i> Login With Google
+                        </button>
+                      </div>
                     </div>
-                  </div>
 
                     // <div className="alert alert-dark">
                     //   <h1 className="title">ReactJS Comments App</h1>
@@ -343,19 +367,28 @@ class episode extends Component {
                     //   </button>
                     // </div>
                   )}
-                 
-                 <hr
+
+                  <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
-                  {this.state.comments === {} ?'': <Comments comments={this.state.comments}  slug={this.props.match.params.slug} user={this.state.user.uid} name={this.state.user.displayName} login={this.state.isLoggedIn} currentUser={this.state.user}/>}
-                 
+                  {this.state.comments === {} ? (
+                    ""
+                  ) : (
+                    <Comments
+                      comments={this.state.comments}
+                      slug={this.props.match.params.slug}
+                      user={this.state.user.uid}
+                      name={this.state.user.displayName}
+                      login={this.state.isLoggedIn}
+                      currentUser={this.state.user}
+                    />
+                  )}
 
-                 
-                 
-                  
-                  <hr
+                  <hr  id="bottom"
                     style={{
                       borderTop: "3px solid rgba(115, 110, 110, 0.1)",
+
+                     
                     }}
                   />
                   {/* <div class="d-flex bd-highlight">
@@ -379,15 +412,22 @@ class episode extends Component {
                   </div> */}
                 </div>
 
-               
                 <FeaturedPosts />
+                <div class="d-flex flex-column bd-highlight justify-content-end">
+  <div class="p-2 bd-highlight"><a href="#top">Scroll to top</a></div>
+
+</div>
               </div>
             </div>
           </div>
-
+      
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.liveAudio} vendor="audio" autoPlay="false" />
+            <Player
+              src={this.state.liveAudio}
+              vendor="audio"
+              autoPlay="false"
+            />
           </div>
           <FlotingPlayPause
             cover={this.state.liveCover}
