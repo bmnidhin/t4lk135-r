@@ -31,7 +31,7 @@ class Comments extends Component {
  
   renderComment(key, comment, slug, id, user, name, currentUser) {
 
-    return <Comment key={key} comment={comment} slug={slug} id={key} user={user || ''} name ={name} currentUser={currentUser}/>;
+    return <Comment key={key} comment={comment} slug={slug} id={key} user={user} name ={name} currentUser={currentUser}/>;
   }
  
   render() {

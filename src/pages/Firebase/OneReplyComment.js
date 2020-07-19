@@ -86,21 +86,21 @@ const currentUser = props.user
         />
         </div>
           <div class="pt-0 pr-3 bd-highlight"> </div>
-          <div class="pt-0  pr-3 bd-highlight">{props.user === props.comment.user.uid || "888JP4sI2CNhMPUkepWonauXnNg1" ? (
+          <div class="pt-0  pr-3 bd-highlight">{props.user === props.comment.user.uid ? (
           <p onClick={() => {databased.ref(props.slug + "/" + props.id).remove();}}>
-            <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Delete Comment
+            <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Delete
           </p>) : (" ")}</div>
           <div class="pt-0  pr-3 bd-highlight">{props.user === "888JP4sI2CNhMPUkepWonauXnNg1" ? (
           (props.comment.status?
             <p onClick={() => {databased.ref(props.slug + "/" + props.id+ "/status").remove();}}>
            
-            <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Restore Comment
+            <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Restore
           </p>
             :
           
           <p onClick={() => {databased.ref(props.slug + "/" + props.id+ "/status").set({removed:true});}}>
            
-            <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Violates Rules
+            <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Rules
           </p>)
           ) : (" ")}</div>
         </div>
@@ -113,9 +113,9 @@ const currentUser = props.user
       </div>
      
     </div>
-     {/* <hr
+     <hr
      style={{ borderTop: "2px solid rgba(115, 110, 110, 0.1)" }}
-   /> */}
+   />
     
  </div>
    

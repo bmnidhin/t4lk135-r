@@ -8,6 +8,7 @@ export default class ReplyComment extends Component {
     constructor(props) {
         super(props)
         this.postNewComment = this.postNewComment.bind(this);
+        // this.onChangeUsername = this.onChangeUsername.bind(this);
         this.expandArea = this.expandArea.bind(this);
         this.hideArea = this.hideArea.bind(this);
         this.state = {
@@ -77,6 +78,13 @@ export default class ReplyComment extends Component {
         
          
        }
+       auth(provider) {
+        auth.signInWithPopup(providers[provider]);
+      } 
+      logout(){
+        this.setState({ isLoggedIn: false, user: {} });
+    
+      }
        expandArea(){
            alert("poda")
             this.setState({
@@ -102,7 +110,7 @@ export default class ReplyComment extends Component {
                 aria-expanded="false"
                 aria-controls="collapseExample"
               >
-                {this.state.counter===0?(this.props.currentUser.uid?"Post a Reply":"[Login to Reply]"):<p>{this.state.counter} {this.state.counter===1?" Reply" :" Replies"}</p>}
+                {this.state.counter===0?(this.props.currentUser.uid?"Post a Reply":<span className="text-muted ">[Login to Like or Reply]</span>):<p>{this.state.counter} {this.state.counter===1?" Reply" :" Replies"}</p>}
               </a>
             
             </p>
@@ -119,7 +127,7 @@ export default class ReplyComment extends Component {
                   name={this.props.currentUser.displayName}
                 />
                   
-                  {this.props.currentUser.uid &&(   <hr
+                  {this.state.counter===0 &&(   <hr
                    style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                  />)}
                

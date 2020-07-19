@@ -77,8 +77,7 @@ class CommentLikes extends Component {
         
         ( <p><span className="material-icons pr-2" style={{fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter} [Login to like] </p>)
         :
-        <p onClick={()=>{databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes'+"/" + this.props.user ).set({liked: true ,name: this.props.name,UID : this.props.user})
-    }}><span className="material-icons pr-2" style={{fontSize:"0.6rem"}}>thumb_up</span> {this.state.counter}</p>
+        <p><span className="material-icons pr-2" style={{fontSize:"0.6rem"}}>thumb_up</span>{this.state.counter}</p>
        
        }
         
