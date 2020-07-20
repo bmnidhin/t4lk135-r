@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import NowPlaying from "./base/NowPlaying";
+// import NowPlaying from "./base/NowPlaying";
 import {
   Media,
   Player,
   controls,
   withMediaProps,
-  utils,
+  // utils,
 } from "react-media-player";
 import LogoArea from "./base/LogoArea";
 import axios from "axios";
 import Moment from "moment";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import MainPlayPause from "./base/MainPlayPause";
 import { Helmet } from "react-helmet";
@@ -19,18 +19,18 @@ import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 
-const {
-  PlayPause,
-  CurrentTime,
-  Progress,
-  SeekBar,
-  Duration,
-  MuteUnmute,
-  Volume,
-  Fullscreen,
-} = controls;
+// const {
+//   PlayPause,
+//   CurrentTime,
+//   Progress,
+//   SeekBar,
+//   Duration,
+//   MuteUnmute,
+//   Volume,
+//   Fullscreen,
+// } = controls;
 const settings = require("./API/settings.json");
-const timePublished = Date.now();
+// const timePublished = Date.now();
 const image =
   "https://a10.gaanacdn.com/images/albums/51/1596151/crop_175x175_1596151.jpg";
 let URL = settings.map((settings) => {
@@ -124,7 +124,7 @@ class episode extends Component {
           cover: response.data.cover,
 
           duration: response.data.duration,
-          cover: response.data.cover,
+          // cover: response.data.cover,
           isEventPublished: response.data.isEventPublished,
         });
       })
@@ -197,7 +197,7 @@ class episode extends Component {
   }
 
   render() {
-    const { className, style, media } = this.props;
+    // const { className, style, media } = this.props;
    
     return (
       <Media>
@@ -308,7 +308,7 @@ class episode extends Component {
                       <div class="p-2 flex-grow-1 bd-highlight">
                         <h6>
                           <b> {this.state.user.displayName} </b>
-                          <a onClick={() => auth.signOut()}>( Logout )</a>
+                          <span onClick={() => auth.signOut()}>( Logout )</span>
                         </h6>
                         <NewComment postNewComment={this.postNewComment} />
                         {/* {JSON.stringify(this.state.user)} */}

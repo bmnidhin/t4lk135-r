@@ -15,7 +15,7 @@ export default class HeroText extends Component {
 
   render() {
     return (
-      <div>
+      <div className="pt-3 pb-3">
         <h1 style={this.textStyle} className="Herotext">
           {" "}
           {description}

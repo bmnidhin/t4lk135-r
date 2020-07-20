@@ -82,7 +82,7 @@ export default class CountDown extends Component {
     return (
       <div>
         <div
-          className={this.state.isActive ? "text-center" : "d-none"}
+          className={this.state.isActive[0] ? "text-center" : "d-none"}
           style={this.divStyle}
         >
           <Countdown
