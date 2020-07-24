@@ -350,7 +350,7 @@ class episode extends Component {
                           class="btn btn-outline-light"
                           onClick={() => this.auth("google")}
                         >
-                          <i class="fab fa-google"></i> Login With Google
+                          <i class="fa fa-google"></i> Login With Google
                         </button>
                       </div>
                     </div>
