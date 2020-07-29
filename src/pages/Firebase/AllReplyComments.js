@@ -44,7 +44,7 @@ class AllReplyComments extends Component {
           )}
 
           {Object.keys(this.props.comments)
-            .reverse()
+           
             .map((key) =>
               this.renderComment(
                 key,

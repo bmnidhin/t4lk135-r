@@ -120,9 +120,7 @@ export default class ReplyComment extends Component {
         </p>
         <div className="collapse" id={"collapseExample" + this.props.id}>
           <div>
-            {this.props.currentUser.uid && (
-              <NewComment postNewComment={this.postNewComment} />
-            )}
+           
             {/* {!this.props.currentUser.uid &&("Please login to post a reply")} */}
 
             {/* {JSON.stringify(this.state.comments)} */}
@@ -132,6 +130,9 @@ export default class ReplyComment extends Component {
               user={this.props.currentUser.uid}
               name={this.props.currentUser.displayName}
             />
+             {this.props.currentUser.uid && (
+              <NewComment postNewComment={this.postNewComment} />
+            )}
 
             {this.state.counter === 0 && (
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />

@@ -17,6 +17,10 @@ import { Helmet } from "react-helmet";
 import MainPlaylistPlayPause from "./base/MainPlaylistPlayPause";
 import FeaturedPosts from "./homePageComponents/FeaturedPosts";
 import FeaturedPlaylists from "./homePageComponents/FeaturedPlaylists";
+import NewComment from './Firebase/NewComment'
+import Comments from './Firebase/Comments'
+import base, { auth, providers, databased } from '../utils/FirebaseSettings'
+import LoveSong from "./Firebase/LoveSong";
 const {
   PlayPause,
   CurrentTime,
@@ -42,6 +46,7 @@ class playListDetail extends Component {
   constructor(props) {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
       liveTitle: "Live Radio",
@@ -56,7 +61,26 @@ class playListDetail extends Component {
       cover: liveCover,
       isEventPublished: true,
       tracks: [],
+      comments: {},
+      isLoggedIn: false,
+      numberOfComments:0,
+      user: " "
     };
+    this.refComments = base.syncState( this.props.match.params.slug, {
+      context: this,
+      
+      state: "comments",
+    });
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ isLoggedIn: true, user });
+        console.log("------------------------------------");
+        console.log(user);
+      } else {
+        this.setState({ isLoggedIn: false, user: {} });
+      }
+    });
+
 
     this.conatiner = {
       minHeight: "100vh",
@@ -129,7 +153,44 @@ class playListDetail extends Component {
       isEventNoPublishedBannerVisible: isEventPublished,
     });
   }
-
+  postNewComment(comment) {
+    const timePublished = Date.now();
+     if (this.state.user.uid ===''|| this.state.user.displayName==='' || this.state.user.photoURL ===''  ) {
+       alert("Unable to Post Comment. Try Again!!!");
+     } else {
+       comment.user = {
+         uid: this.state.user.uid,
+         name: this.state.user.displayName,
+         time: timePublished,
+         photo: this.state.user.photoURL,
+         
+       };
+       const comments = {
+         ...this.state.comments
+       };
+   
+      
+       const timestamp = Date.now();
+       comments[`comm-${timestamp}`] = comment;
+       
+       databased.ref(this.props.match.params.slug).set(comments);
+     
+ 
+       // this.setState({
+       //   comments: comments,
+         
+       // });
+     }
+    
+     
+   }
+   auth(provider) {
+     auth.signInWithPopup(providers[provider]);
+   } 
+   logout(){
+     this.setState({ isLoggedIn: false, user: {} });
+ 
+   } 
   onChangeUsername() {
     this.setState({
       liveAudio: this.state.audio,
@@ -146,6 +207,24 @@ class playListDetail extends Component {
       return (
         <tr
           key={item.id}
+          
+          style={{
+            // fontWeight: item.title === this.state.selectedTrack && "bold",
+            fontWeight: item.id === this.state.selectedTrack && "bold",
+            // color: item.id === this.state.selectedTrack && "green",
+            backgroundColor:
+              item.id === this.state.selectedTrack && "rgba(44, 40, 174, 0.44)",
+          }}
+        >
+          <th scope="row" onClick={() =>
+            this.setState({
+              selectedTrack: item.id,
+              liveAudio: item.audio,
+              liveCover: this.state.cover,
+              liveTitle: item.title,
+            })
+          }>{item.id}</th>
+          <td style={{ fontSize: "0.8rem" }}
           onClick={() =>
             this.setState({
               selectedTrack: item.id,
@@ -154,18 +233,20 @@ class playListDetail extends Component {
               liveTitle: item.title,
             })
           }
-          style={{
-            // fontWeight: item.title === this.state.selectedTrack && "bold",
-            fontWeight: item.id === this.state.selectedTrack && "bold",
-            // color: item.id === this.state.selectedTrack && "green",
-            backgroundColor:
-              item.id === this.state.selectedTrack && "rgba(3, 2, 41, 0.44)",
-          }}
-        >
-          <th scope="row">{item.id}</th>
-          <td>{item.title}</td>
-          <td className="text-rightz">{item.duration}</td>
+          >{item.title}
+        <br/><span className="text-muted"style={{ fontSize: "0.6rem" }}>
+        {item.duration}
+          </span>
+          </td>
+          <td className="text-center"><LoveSong 
+          userid={this.state.user.uid}
+          username ={this.state.user.displayName}
+          slug={this.props.match.params.slug}
+          songId={item.id}
+          google={() => this.auth("google")}
+          /> </td>
         </tr>
+       
       );
     });
     return (
@@ -242,23 +323,172 @@ class playListDetail extends Component {
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Title</th>
-                      <th scope="col text-right">Duration</th>
+                      <th scope="col text-right"></th>
                     </tr>
                   </thead>
                   <tbody>{list}</tbody>
+                 
                 </table>
               </div>
             </div>
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
-                <hr
-                  style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
-                />
+              <div className="commentArea">
+                  <hr
+                    style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
+                  />
+                  <div class="d-flex flex-row bd-highlight justify-content-between">
+                    <div class="p-2 bd-highlight">
+                      <h6>POST A COMMENT</h6>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                      {/* <a href="#bottom">Scroll to Bottom</a> */}
+                    </div>
+                  </div>
+
+                  <hr
+                    style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
+                  />
+
+                  {this.state.isLoggedIn && (
+                    <div class="d-flex bd-highlight">
+                      <div class="p-2 bd-highlight">
+                        <div
+                          className="rounded-circle"
+                          width="30px"
+                          height="30px"
+                          style={{
+                            backgroundColor: "rgb(14, 14, 67)",
+                            backgroundImage:
+                              "url(" + this.state.user.photoURL + ")",
+                            backgroundSize: "cover",
+                            width: "40px",
+                            height: "40px",
+                            color: "rgb(14, 14, 67)",
+                          }}
+                        >
+                          &nbsp;
+                        </div>
+                        {/* <img
+                        src={this.state.user.photoURL}
+                        class="rounded-circle"
+                        width="30px"
+                        alt="..."
+                      /> */}
+                      </div>
+                      <div class="p-2 flex-grow-1 bd-highlight">
+                        <h6>
+                          <b> {this.state.user.displayName} </b>
+                          <span onClick={() => auth.signOut()}>( Logout )</span>
+                        </h6>
+                        <NewComment postNewComment={this.postNewComment} />
+                        {/* {JSON.stringify(this.state.user)} */}
+                      </div>
+                    </div>
+
+                    // <div className="user">
+                    //   <img
+                    //     className="photo"
+                    //     alt={this.state.user}
+                    //     src={this.state.user.photoURL}
+                    //   />
+                    //   <h5 className="display-name">
+                    //     {" "}
+                    //     {this.state.user.displayName}{" "}
+                    //   </h5>
+                    //   <p className="email"> {this.state.user.email} </p>
+                    //   <NewComment postNewComment={this.postNewComment} />
+                    //   <button
+                    //     className="btn btn-outline-secondary"
+                    //     onClick={() => auth.signOut()}
+                    //   >
+                    //     Sign Out
+                    //   </button>
+                    // </div>
+                  )}
+                  {!this.state.isLoggedIn && (
+                    <div className="signUpPrompt">
+                      <div className="p-3">
+                        Login to Post a Comment
+                        <p
+                          className="text-muted text-small"
+                          style={{ fontSize: "0.8rem" }}
+                        >
+                          Login or create an account to join our community
+                        </p>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light"
+                          onClick={() => this.auth("google")}
+                        >
+                          <i class="fa fa-google"></i> Login With Google
+                        </button>
+                      </div>
+                    </div>
+
+                    // <div className="alert alert-dark">
+                    //   <h1 className="title">ReactJS Comments App</h1>
+                    //   <label className="sign-in">Sign in: </label>
+                    //   <button
+                    //     className="btn btn-danger"
+                    //     onClick={() => this.auth("google")}
+                    //   >
+
+                    //     google
+                    //   </button>
+                    // </div>
+                  )}
+
+                  <hr
+                    style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
+                  />
+                  {this.state.comments === {} ? (
+                    ""
+                  ) : (
+                    <Comments
+                      comments={this.state.comments}
+                      slug={this.props.match.params.slug}
+                      user={this.state.user.uid}
+                      name={this.state.user.displayName}
+                      login={this.state.isLoggedIn}
+                      currentUser={this.state.user}
+                    />
+                  )}
+
+                  <hr  id="bottom"
+                    style={{
+                      borderTop: "3px solid rgba(115, 110, 110, 0.1)",
+
+                     
+                    }}
+                  />
+                  {/* <div class="d-flex bd-highlight">
+                    <div class="p-2 bd-highlight">
+                      <img
+                        src="https://yt3.ggpht.com/a/AATXAJygzSqzI_OYRoHsaGr1lphQo46Y2_vi8K-7LUUKCg=s48-c-k-c0xffffffff-no-rj-mo"
+                        class="rounded-circle"
+                        width="100%"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="p-2 flex-grow-1 bd-highlight">
+                      <h6 style={{ fontSize: "0.7rem" }}>
+                        <b>Nidhin BM</b>
+                        <a> 23 Minutes ago</a>
+                      </h6>
+                      <p style={{ fontSize: "0.8rem" }}>
+                        ഒരു ബോറടിയും തോന്നാതെ കണ്ടവർ ആരൊക്കെ ഉണ്ട്?
+                      </p>
+                    </div>
+                  </div> */}
+                </div>
+
+               
                 <FeaturedPosts />
               </div>
             </div>
           </div>
-
+         
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.liveAudio} vendor="audio" autoPlay="true" />
