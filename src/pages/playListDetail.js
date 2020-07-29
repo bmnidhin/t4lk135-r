@@ -286,7 +286,7 @@ class playListDetail extends Component {
             </div>
             <div style={this.infobox}>
               <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                   <img
                     src={this.state.cover}
                     width="100%"
@@ -294,7 +294,7 @@ class playListDetail extends Component {
                     alt="Poster"
                   ></img>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                   <div className=" p-2 pt-4 text-break">
                     <h4>{this.state.title}</h4>
                     <div
