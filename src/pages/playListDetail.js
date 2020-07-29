@@ -95,8 +95,8 @@ class playListDetail extends Component {
       marginTop: "10px",
     };
     this.content = {
-      marginLeft: "10%",
-      marginRight: "10%",
+      marginLeft: "5%",
+      marginRight: "5%",
     };
     this.secondaryContent = {
       textAlign: "center",
@@ -224,7 +224,7 @@ class playListDetail extends Component {
               liveTitle: item.title,
             })
           }>{item.id}</th>
-          <td style={{ fontSize: "0.8rem" }}
+          <td style={{ fontSize: "1rem" }}
           onClick={() =>
             this.setState({
               selectedTrack: item.id,
@@ -314,7 +314,7 @@ class playListDetail extends Component {
                   </div>
                 </div>
               </div>
-              <div className="p-4">
+              <div className="pt-4 pb-4 pl-2 pr-2">
                 <table
                   class="table table-dark"
                   style={{ backgroundColor: "#03022900", cursor: "pointer" }}

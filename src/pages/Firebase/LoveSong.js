@@ -43,13 +43,13 @@ export class LoveSong extends Component {
           {this.props.slug} id {this.props.songId}
         </span>
         {!this.props.userid &&(
-            <span class="material-icons" onClick={this.props.google} width="100%" style={{ fontSize: "1.2rem" }}>
+            <span class="material-icons" onClick={this.props.google} width="100%" style={{ fontSize: "1.5rem" }}>
             favorite_border
           </span>
             )}
         {this.props.userid &&(
             this.state.snapshot && this.state.snapshot[this.props.userid]!=undefined ? 
-            <span class="material-icons"width="100%" style={{ fontSize: "1.2rem" }}
+            <span class="material-icons"width="100%" style={{ fontSize: "1.5rem" }}
             onClick={() => {
                 databased
                   .ref(
@@ -65,7 +65,7 @@ export class LoveSong extends Component {
             favorite
           </span>
             :
-            <span class="material-icons"width="100%" style={{ fontSize: "1.2rem" }}
+            <span class="material-icons"width="100%" style={{ fontSize: "1.5rem" }}
             onClick={() => {
                 databased
                   .ref(
