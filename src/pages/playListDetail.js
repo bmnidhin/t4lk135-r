@@ -21,6 +21,7 @@ import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import LoveSong from "./Firebase/LoveSong";
+import ReactGA from 'react-ga';
 const {
   PlayPause,
   CurrentTime,
@@ -217,6 +218,7 @@ class playListDetail extends Component {
           }}
         >
           <th scope="row" onClick={() =>
+          
             this.setState({
               selectedTrack: item.id,
               liveAudio: item.audio,
@@ -226,6 +228,11 @@ class playListDetail extends Component {
           }>{item.id}</th>
           <td style={{ fontSize: "1rem" }}
           onClick={() =>
+            // ReactGA.event({
+            //   category: 'Playlist',
+            //   action: 'Player Started',
+            //   label: item.title,
+            //   nonInteraction: true,}),
             this.setState({
               selectedTrack: item.id,
               liveAudio: item.audio,

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import ReactGA from 'react-ga';
 import {
   Media,
   Player,
@@ -31,14 +31,32 @@ class FlotingPlayPause extends Component {
       publishedAtDate: "",
     };
   }
-
+  componentDidMount(){
+    ReactGA.initialize('UA-168458070-1');
+    
+    ReactGA.event({
+      category: 'Floting Player',
+      action: 'Player Started',
+      label: this.props.title,
+      nonInteraction: true,})
+    
+    
+  
+  }
   shouldComponentUpdate({ media }) {
     return this.props.media.isPlaying !== media.isPlaying;
   }
 
   _handlePlayPause = () => {
     this.props.media.playPause();
+    ReactGA.event({
+      category: 'Floting Player',
+      action: 'Play Pause',
+      label: this.props.title,
+      nonInteraction: true
+    });
   };
+
   style = {
     position: "fixed",
     bottom: "0px",
@@ -50,7 +68,7 @@ class FlotingPlayPause extends Component {
     height: "70px",
     width: "100%",
   };
-
+  
   render() {
     const { className, style, media } = this.props;
     return (

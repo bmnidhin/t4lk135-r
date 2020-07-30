@@ -10,6 +10,8 @@ import FeaturedPosts from "./homePageComponents/FeaturedPosts";
 import FeaturedPlaylists from "./homePageComponents/FeaturedPlaylists";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
+import SubmitPromo from "./SubmitPromo";
+
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 const settings = require("./API/settings.json");
@@ -84,6 +86,7 @@ export default class homepage extends Component {
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
+             {/* <SubmitPromo/> */}
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPosts />
               {/* <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />

@@ -93,8 +93,8 @@ class episode extends Component {
       marginTop: "10px",
     };
     this.content = {
-      marginLeft: "10%",
-      marginRight: "10%",
+      marginLeft: "5%",
+      marginRight: "5%",
     };
     this.secondaryContent = {
       textAlign: "center",
