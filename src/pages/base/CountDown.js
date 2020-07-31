@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Countdown from "react-countdown";
 import axios from "axios";
-
+import Moment from "moment";
 export default class CountDown extends Component {
   constructor(props) {
     super(props);
@@ -9,11 +9,8 @@ export default class CountDown extends Component {
     this.state = {
       isActive: false,
       upComingEventName: "test event",
-      eventDate: "22",
-      eventMonth: "12",
-      eventYear: "2022",
-      hour: "19",
-      minutes: "00",
+      countDownDate:'2019-08-27',
+      countDownTime:'19:10:00',
     };
 
     this.divStyle = {
@@ -42,11 +39,13 @@ export default class CountDown extends Component {
           upComingEventName: response.data.map(
             (event) => event.upComingEventName
           ),
-          eventDate: response.data.map((event) => event.eventDate),
-          eventMonth: response.data.map((event) => event.eventMonth),
-          eventYear: response.data.map((event) => event.eventYear),
-          hour: response.data.map((event) => event.hour),
-          minutes: response.data.map((event) => event.minutes),
+          countDownDate: response.data.map(
+            (event) => event.countDownDate
+          ),
+          countDownTime: response.data.map(
+            (event) => event.countDownTime
+          ),
+          
         });
       })
       .catch((error) => {
@@ -55,11 +54,19 @@ export default class CountDown extends Component {
   }
 
   render() {
+    const currentTime = Moment().format();
+    const publishAt = this.state.countDownDate +"T" +this.state.countDownTime + "+05:30";
+
+    const a = Moment(publishAt);
+    const b = Moment(currentTime);
+    const myDiff = b.diff(a);
+
+    const isBannerActive = myDiff < 3600000  //1 hour after live ends
     // Random component
     const Completionist = () => (
       <p className="countdown">
         <span className="font-italic font-weight-bold"> {this.state.upComingEventName} </span>
-        is Streaming Live
+        is Streaming Live 
       </p>
     );
 
@@ -73,7 +80,7 @@ export default class CountDown extends Component {
         return (
           <span className="CountDown ">
             {days} Days {hours} Hours {minutes} Minutes {seconds} Seconds to{" "}
-            <span className="font-italic">{this.state.upComingEventName} </span>
+        <span className="font-italic">{this.state.upComingEventName}</span>
            
           </span>
         );
@@ -82,23 +89,13 @@ export default class CountDown extends Component {
     return (
       <div>
         <div
-          className={this.state.isActive[0] ? "text-center" : "d-none"}
+          className={
+            (this.state.isActive[0] && isBannerActive)
+            ? "text-center" : "d-none"}
           style={this.divStyle}
         >
           <Countdown
-            date={
-              this.state.eventYear +
-              "-" +
-              this.state.eventMonth +
-              "-" +
-              this.state.eventDate +
-              "T" +
-              this.state.hour +
-              ":" +
-              this.state.minutes +
-              ":" +
-              "00"
-            }
+            date={this.state.countDownDate +"T" +this.state.countDownTime}
             // YYYY-MM-DDTHH:MM:SS
             renderer={renderer}
           />

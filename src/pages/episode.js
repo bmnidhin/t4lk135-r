@@ -18,6 +18,7 @@ import FeaturedPosts from "./homePageComponents/FeaturedPosts";
 import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
+import * as SETTINGS from './constants/Settings';
 
 // const {
 //   PlayPause,
@@ -29,16 +30,16 @@ import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 //   Volume,
 //   Fullscreen,
 // } = controls;
-const settings = require("./API/settings.json");
-// const timePublished = Date.now();
-const image =
-  "https://a10.gaanacdn.com/images/albums/51/1596151/crop_175x175_1596151.jpg";
-let URL = settings.map((settings) => {
-  return settings.streamURL;
-});
-let liveCover = settings.map((settings) => {
-  return settings.liveCover;
-});
+// const settings = require("./API/settings.json");
+// // const timePublished = Date.now();
+// const image =
+//   "https://a10.gaanacdn.com/images/albums/51/1596151/crop_175x175_1596151.jpg";
+// let URL = settings.map((settings) => {
+//   return settings.streamURL;
+// });
+// let liveCover = settings.map((settings) => {
+//   return settings.liveCover;
+// });
 
 class episode extends Component {
   constructor(props) {
@@ -52,14 +53,13 @@ class episode extends Component {
       publishedAtDate: "",
       publishedAtTime: "",
       content: "",
-      liveAudio: URL,
-      liveCover: liveCover,
-      audio: URL,
+      liveAudio: SETTINGS.liveURL,
+      liveCover: SETTINGS.liveCover,
+      audio: SETTINGS.liveURL,
       duration: "",
-      cover: liveCover,
+      cover:SETTINGS.liveCover,
       isEventPublished: true,
       isEventNoPublishedBannerVisible: true,
-      image: image,
       comments: {},
       isLoggedIn: false,
       numberOfComments:0,

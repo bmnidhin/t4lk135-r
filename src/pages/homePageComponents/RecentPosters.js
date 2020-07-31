@@ -9,7 +9,7 @@ export default class RecentPosters extends Component {
     };
     componentDidMount() {
         axios
-          .get("https://api.thetkmshow.in/settings")
+          .get("https://api.thetkmshow.in/notifications")
           .then((response) => {
             this.setState({
                posterOne: response.data.map((event) => event.posterImgOne),

@@ -11,24 +11,16 @@ import FeaturedPlaylists from "./homePageComponents/FeaturedPlaylists";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
 import SubmitPromo from "./SubmitPromo";
-
+import * as SETTINGS from './constants/Settings';
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
-const settings = require("./API/settings.json");
-let URL = settings.map((settings) => {
- 
-  return settings.streamURL;
-});
-let liveCover = settings.map((settings) => {
- 
-    return settings.liveCover;
-  });
+
 const Background = require("./base/img/wave.jpg");
 
 export default class homepage extends Component {
   state = {  
-    url: URL,
-    cover:liveCover,
+    url: SETTINGS.liveURL,
+    cover:SETTINGS.liveCover,
     title: "Live Radio",
   };
   data = URL

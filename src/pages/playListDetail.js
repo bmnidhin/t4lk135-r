@@ -22,6 +22,7 @@ import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import LoveSong from "./Firebase/LoveSong";
 import ReactGA from 'react-ga';
+import * as SETTINGS from './constants/Settings';
 const {
   PlayPause,
   CurrentTime,
@@ -55,11 +56,11 @@ class playListDetail extends Component {
       publishedAtDate: "",
       publishedAtTime: "",
       content: "",
-      liveAudio: URL,
-      liveCover: liveCover,
+      liveAudio: SETTINGS.liveURL,
+      liveCover: SETTINGS.liveCover,
       selectedTrack: 0,
       duration: "",
-      cover: liveCover,
+      cover: SETTINGS.liveCover,
       isEventPublished: true,
       tracks: [],
       comments: {},

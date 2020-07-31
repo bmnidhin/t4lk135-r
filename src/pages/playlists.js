@@ -7,17 +7,19 @@ import Moment from "moment";
 import { Link } from 'react-router-dom';
 import FlotingPlayPause from './base/FlotingPlayPause';
 import { Helmet } from "react-helmet";
-const settings = require("./API/settings.json");
+import * as SETTINGS from './constants/Settings';
+
+// const settings = require("./API/settings.json");
 
 const { PlayPause, MuteUnmute } = controls;
-let URL = settings.map((settings) => {
+// let URL = settings.map((settings) => {
  
-  return settings.streamURL;
-});
-let liveCover = settings.map((settings) => {
+//   return settings.streamURL;
+// });
+// let liveCover = settings.map((settings) => {
  
-    return settings.liveCover;
-  });
+//     return settings.liveCover;
+//   });
 
 export default class playlists extends Component {
     constructor(props) {
@@ -25,8 +27,8 @@ export default class playlists extends Component {
         
         
         this.state={
-           url: URL,
-           cover:liveCover,
+          url: SETTINGS.liveURL,
+          cover:SETTINGS.liveCover,
            title: "Live Radio",
            listen:[]
         };

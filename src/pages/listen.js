@@ -10,16 +10,17 @@ import { Helmet } from "react-helmet";
 import NewComment from "./Firebase/NewComment";
 import Comments from "./Firebase/Comments";
 import base, { auth, providers } from "../utils/FirebaseSettings";
-const settings = require("./API/settings.json");
+import * as SETTINGS from './constants/Settings';
+// const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
 
 const currentTime = Moment();
-let URL = settings.map((settings) => {
-  return settings.streamURL;
-});
-let liveCover = settings.map((settings) => {
-  return settings.liveCover;
-});
+// let URL = settings.map((settings) => {
+//   return settings.streamURL;
+// });
+// let liveCover = settings.map((settings) => {
+//   return settings.liveCover;
+// });
 
 export default class listen extends Component {
   constructor(props) {
@@ -28,8 +29,8 @@ export default class listen extends Component {
     // this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
-      url: URL,
-      cover: liveCover,
+      url: SETTINGS.liveURL,
+      cover:SETTINGS.liveCover,
       title: "Live Radio",
       listen: [],
       comments: {},

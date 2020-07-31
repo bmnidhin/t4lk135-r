@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { description } from "../../utils/Settings";
+import * as SETTINGS from '../constants/Settings';
 
 export default class HeroText extends Component {
   constructor(props) {
     super(props);
 
-    this.textStyle = {
+    this.textStyle = {  
       color: "white",
       paddingLeft: "40px",
       paddingRight: "40px",
@@ -17,8 +17,8 @@ export default class HeroText extends Component {
     return (
       <div className="pt-3 pb-3">
         <h1 style={this.textStyle} className="Herotext">
-          {" "}
-          {description}
+          {" "} 
+          {SETTINGS.heroText}
         </h1>
       </div>
     );
