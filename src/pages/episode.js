@@ -73,8 +73,8 @@ class episode extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
-        console.log("------------------------------------");
-        console.log(user);
+        // console.log("------------------------------------");
+        // console.log(user);
       } else {
         this.setState({ isLoggedIn: false, user: {} });
       }

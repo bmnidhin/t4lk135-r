@@ -1,0 +1,1 @@
+export const liveURL = "www.google.com"

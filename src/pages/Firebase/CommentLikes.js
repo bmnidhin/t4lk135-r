@@ -16,7 +16,7 @@ class CommentLikes extends Component {
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
       this.setState({ counter: a });
-      console.log(a);
+      // console.log(a);
     });
 
     //  let ref = databased.ref(this.props.slug +"/" + this.props.id  +"/" + 'likes');

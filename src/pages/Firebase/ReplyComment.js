@@ -21,8 +21,8 @@ export default class ReplyComment extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
-        console.log("------------------------------------");
-        console.log(user);
+        // console.log("------------------------------------");
+        // console.log(user);
       } else {
         this.setState({ isLoggedIn: false, user: {} });
       }
@@ -44,7 +44,7 @@ export default class ReplyComment extends Component {
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
       this.setState({ counter: a });
-      console.log(a);
+      // console.log(a);
     });
   }
 

@@ -16,7 +16,7 @@ class AllReplyComments extends Component {
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
       this.setState({ counter: a });
-      console.log(a);
+      // console.log(a);
     });
   }
 
