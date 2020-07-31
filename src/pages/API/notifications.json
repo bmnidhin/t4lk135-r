@@ -1,37 +1,3 @@
-
 [
-    { 
-      "show-options":["hide","hide-on-small-only","hide-on-med-only","hide-on-med-and-down","hide-on-med-and-up",
-                      "hide-on-large-only",
-                      "show-on-small","show-on-medium","show-on-large","show-on-medium-and-up","show-on-medium-and-down",
-                      "https://materializecss.com/helpers.html"],
-
-     
-
-      "showOrHideEvent":"show",
-      
-      "upComingEventName": "Pani Varunnund Avarachaa!!",
-     
-      
-     
-      "showOrHidePoster":"show",
-      
-      "eventDate":"27","eventMonth":"07","eventYear":"2020",
-      "hour":"19","minutes":"00",
-
-      "showOrHideBanner":"show",
-      "publishBannerAt":"",
-      
-
-
-      "showOrHideNotification":"hide",
-      "notification" :"Ith okke yenth? is streaming Live",
-
-      "featured":"hide"
-
-     
-      
-     
-    
-    }]
-  
+  "depricated - APIs moved to another repository"
+  ]
