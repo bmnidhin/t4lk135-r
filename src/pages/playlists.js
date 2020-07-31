@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import FlotingPlayPause from './base/FlotingPlayPause';
 import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
-
+import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
 const { PlayPause, MuteUnmute } = controls;
@@ -27,6 +27,7 @@ export default class playlists extends Component {
         
         
         this.state={
+          notLoaded:true,
           url: SETTINGS.liveURL,
           cover:SETTINGS.liveCover,
            title: "Live Radio",
@@ -45,6 +46,12 @@ export default class playlists extends Component {
           marginRight:'10%'
 
         }
+        this.itemHeading={
+          textAlign:"left",
+          fontSize:"10px",
+          paddingTop:"15px",
+          color:"white",
+        }
       }
     
       componentDidMount() {
@@ -52,10 +59,14 @@ export default class playlists extends Component {
           .get("https://api.thetkmshow.in/playlist")
           .then((response) => {
             this.setState({
+              notLoaded:false,
               listen: response.data,
             });
           })
           .catch((error) => {
+            this.setState({
+              notLoaded:true,
+            });
             console.log(error);
           });
       }
@@ -119,6 +130,18 @@ export default class playlists extends Component {
               </Link>
             </div>
           ))}
+            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
         </div>
       
              

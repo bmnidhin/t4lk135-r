@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import Skeleton from '@yisheng90/react-loading';
 
 export default class RecentPosters extends Component {
     state={
+       notLoaded:false,
         posterOne :"",
         posterTwo :"", 
 
@@ -12,10 +14,14 @@ export default class RecentPosters extends Component {
           .get("https://api.thetkmshow.in/notifications")
           .then((response) => {
             this.setState({
+              notLoaded:false,
                posterOne: response.data.map((event) => event.posterImgOne),
                posterTwo: response.data.map((event) => event.posterImgTwo)
                ,});})
           .catch((error) => {
+            this.setState({
+              notLoaded:false,
+            });
             console.log(error);
           });
       }
@@ -34,8 +40,15 @@ export default class RecentPosters extends Component {
           <div className="containers"style={{marginTop:"20px",marginBottom:"20px"}}>
             <h6 style={this.title}></h6>
             <div className="row">
-              <div className="col-sm"><img src={this.state.posterOne} style={this.imageStyle} alt="poster"/></div>
-              <div className="col-sm">
+             <div className={this.state.notLoaded?'col-sm':'d-none'}>
+               <Skeleton color="rgb(14, 14, 67)" height="600px"/>
+             </div>
+             <div className={this.state.notLoaded?'col-sm':'d-none d-sm-block'}>
+               <Skeleton color="rgb(14, 14, 67)" height="600px"/>
+             </div>
+          
+              <div className={!this.state.notLoaded?'col-sm':'d-none'}><img src={this.state.posterOne} style={this.imageStyle} alt="poster"/></div>
+              <div className={!this.state.notLoaded?'col-sm':'d-none'}>
                 <img src={this.state.posterTwo} style={this.imageStyle} className='d-none d-sm-block'alt="poster"/>
                 sss
               </div>

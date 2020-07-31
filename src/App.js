@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import "./App.css";
+
 import test from "./pages/test";
 import homepage from "./pages/homepage";
 import listen from "./pages/listen";
@@ -13,6 +13,7 @@ import FooterArea from "./pages/base/FooterArea";
 import NavTest from "./pages/base/NavTest";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
+import 'bootstrap/dist/css/bootstrap.css';
 // import base, { auth, providers } from './utils/FirebaseSettings'
 import './App.css';
 import Redirect from "./pages/Redirect";

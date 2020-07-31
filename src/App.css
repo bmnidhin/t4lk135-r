@@ -87,3 +87,6 @@ body{font-family: 'Montserrat', sans-serif;}
 
 .signUpPrompt{min-height: 100px;background-color: #0e0e43;border-radius: 6px !important;text-align: center;vertical-align: middle;}
 
+.table-dark th, .table-dark td, .table-dark thead th {
+  border-color: #03022938;
+}

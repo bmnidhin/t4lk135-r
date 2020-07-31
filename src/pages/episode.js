@@ -19,7 +19,7 @@ import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
-
+import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
 //   CurrentTime,
@@ -48,6 +48,7 @@ class episode extends Component {
     this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
+      notLoaded:true,
       liveTitle: "Live Radio",
       title: "",
       publishedAtDate: "",
@@ -116,6 +117,7 @@ class episode extends Component {
 
       .then((response) => {
         this.setState({
+          notLoaded:false,
           title: response.data.title,
           publishedAtDate: response.data.publishedAtDate,
           publishedAtTime: response.data.publishedAtTime,
@@ -130,6 +132,9 @@ class episode extends Component {
       })
       .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
       .catch((error) => {
+        this.setState({
+          notLoaded:true,
+        });
         console.log(error);
       });
   }
@@ -207,7 +212,7 @@ class episode extends Component {
             <title>{this.state.title} | The TKM Show</title>
             <link
               rel="canonical"
-              href="https://thetkmshow.in/orma-undo-ee-mugham"
+              href= {"https://thetkmshow.in/listen "+ this.props.match.params.slug}
             />
           </Helmet>
           <LogoArea />
@@ -241,6 +246,11 @@ class episode extends Component {
                 </div>
                 <div class="col-sm-8">
                   <div className=" p-2 pt-4 text-break">
+                  <div className={this.state.notLoaded?"":"d-none"}>
+                  <Skeleton color="rgb(3, 2, 41,0.3)"/>
+                  <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/>
+                 </div>
+                  
                     <h4>{this.state.title}</h4>
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
@@ -255,6 +265,9 @@ class episode extends Component {
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
+                      <div className={this.state.notLoaded?"":"d-none"}>
+                  <Skeleton color="rgb(3, 2, 41,0.3)" rows={6}/>
+                 </div>
                     </p>
                   </div>
                 </div>

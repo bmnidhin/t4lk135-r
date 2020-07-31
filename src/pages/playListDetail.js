@@ -23,6 +23,7 @@ import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import LoveSong from "./Firebase/LoveSong";
 import ReactGA from 'react-ga';
 import * as SETTINGS from './constants/Settings';
+import Skeleton from '@yisheng90/react-loading';
 const {
   PlayPause,
   CurrentTime,
@@ -51,8 +52,9 @@ class playListDetail extends Component {
     this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
+      notLoaded:true,
       liveTitle: "Live Radio",
-      title: "Loading.....",
+      title: "",
       publishedAtDate: "",
       publishedAtTime: "",
       content: "",
@@ -119,6 +121,7 @@ class playListDetail extends Component {
 
       .then((response) => {
         this.setState({
+          notLoaded:false,
           title: response.data.title,
           publishedAtDate: response.data.publishedAtDate,
           publishedAtTime: response.data.publishedAtTime,
@@ -135,6 +138,9 @@ class playListDetail extends Component {
       .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
       .catch((error) => {
         console.log(error);
+        this.setState({
+          notLoaded:true,
+        });
       });
   }
 
@@ -214,7 +220,7 @@ class playListDetail extends Component {
             fontWeight: item.id === this.state.selectedTrack && "bold",
             // color: item.id === this.state.selectedTrack && "green",
             backgroundColor:
-              item.id === this.state.selectedTrack && "rgba(44, 40, 174, 0.44)",
+              item.id === this.state.selectedTrack && "rgba(44, 40, 174, 0.34)",
           }}
         >
           <th scope="row" onClick={() =>
@@ -225,7 +231,13 @@ class playListDetail extends Component {
               liveCover: this.state.cover,
               liveTitle: item.title,
             })
-          }>{item.id}</th>
+          }>{item.id === this.state.selectedTrack?
+            <span class="material-icons">
+play_circle_outline
+</span>
+          :item.id}
+            
+            </th>
           <td style={{ fontSize: "1rem" }}
           onClick={() =>
             // ReactGA.event({
@@ -303,6 +315,10 @@ class playListDetail extends Component {
                 </div>
                 <div class="col-sm-10">
                   <div className=" p-2 pt-4 text-break">
+                  <div className={this.state.notLoaded?"":"d-none"}>
+                  <Skeleton color="rgb(3, 2, 41,0.3)"/>
+                  <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/>
+                 </div>
                     <h4>{this.state.title}</h4>
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
@@ -317,6 +333,9 @@ class playListDetail extends Component {
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
+                      <div className={this.state.notLoaded?"":"d-none"}>
+                  <Skeleton color="rgb(3, 2, 41,0.3)" rows={6}/>
+                 </div>
                     </p>
                   </div>
                 </div>
@@ -333,7 +352,10 @@ class playListDetail extends Component {
                       <th scope="col text-right"></th>
                     </tr>
                   </thead>
-                  <tbody>{list}</tbody>
+                  <tbody>
+                    {list}
+                   
+                    </tbody>
                  
                 </table>
               </div>

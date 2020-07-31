@@ -11,6 +11,7 @@ import NewComment from "./Firebase/NewComment";
 import Comments from "./Firebase/Comments";
 import base, { auth, providers } from "../utils/FirebaseSettings";
 import * as SETTINGS from './constants/Settings';
+import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
 
@@ -29,6 +30,7 @@ export default class listen extends Component {
     // this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
+      notLoaded:true,
       url: SETTINGS.liveURL,
       cover:SETTINGS.liveCover,
       title: "Live Radio",
@@ -60,6 +62,12 @@ export default class listen extends Component {
       marginLeft: "10%",
       marginRight: "10%",
     };
+    this.itemHeading={
+      textAlign:"left",
+      fontSize:"10px",
+      paddingTop:"15px",
+      color:"white",
+    }
   }
 
   componentDidMount() {
@@ -67,10 +75,14 @@ export default class listen extends Component {
       .get("https://api.thetkmshow.in/listen")
       .then((response) => {
         this.setState({
+          notLoaded:false,
           listen: response.data,
         });
       })
       .catch((error) => {
+        this.setState({
+          notLoaded:true,
+        });
         console.log(error);
       });
   }
@@ -133,6 +145,7 @@ export default class listen extends Component {
             </div>
             <div style={this.content}>
               <div className="row">
+                
                 {this.state.listen.slice(0, 20).map((track) => (
                   <div
                     className={
@@ -155,6 +168,18 @@ export default class listen extends Component {
                     </Link>
                   </div>
                 ))}
+                <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+           </div>
               </div>
             </div>
           </div>
