@@ -13,7 +13,9 @@ import FooterArea from "./pages/base/FooterArea";
 import NavTest from "./pages/base/NavTest";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/js/bootstrap.js';
+
 // import base, { auth, providers } from './utils/FirebaseSettings'
 import './App.css';
 import Redirect from "./pages/Redirect";
