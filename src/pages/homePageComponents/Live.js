@@ -16,7 +16,7 @@ import NewComment from "../Firebase/NewComment";
 import AllLiveChats from "../Firebase/AllLiveChats";
 import NewLiveChat from "../Firebase/NewLiveChat";
 import FeaturedPosts from "./FeaturedPosts";
-
+const Background = require("../base/img/wave.jpg");
 
 
 export default class Live extends Component {
@@ -27,20 +27,14 @@ export default class Live extends Component {
 
     this.state = {
       url: SETTINGS.liveURL,
-      cover:" https://i.ytimg.com/vi/oDf8h5PNKnI/maxresdefault.jpg",
-    //   SETTINGS.liveCover,
+      cover:SETTINGS.liveCover,
       title: "Live Radio",
       comments: {},
       isLoggedIn: false,
       notLoaded:true,
       user: "",
     };
-    this.refComments = base.syncState( "live-comments", {
-        context: this,
-        
-        state: "comments",
-       
-      });
+   
       auth.onAuthStateChanged(user => {
         if (user) {
           this.setState({ isLoggedIn: true, user });
@@ -55,6 +49,10 @@ export default class Live extends Component {
     this.conatiner = {
       minHeight: "100vh",
       backgroundColor: "#030229",
+      backgroundImage: "url(" + Background + ")",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
       color: "white",
     };
       this.conatinerInner = {
@@ -78,6 +76,12 @@ export default class Live extends Component {
   }
   componentDidMount() {
     this.scrollToBottom();
+    this.refComments = base.syncState( "live-comments", {
+      context: this,
+      
+      state: "comments",
+     
+    });
     this.setState({notLoaded: false})
 }
 componentDidUpdate() {
@@ -138,6 +142,7 @@ postNewComment(comment) {
           <div style={this.conatiner}>
             <LogoArea />
             <div className="pl-3 pr-3 pb-10">
+              
               <div className="container mt-3 p-3"style={this.conatinerInner}>
                 <div className="row">
                   <div className="col-md-4">
@@ -147,18 +152,7 @@ postNewComment(comment) {
                       <h6 className="pt-3">Live Chat</h6>
                       <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
                         <div className="live-comments fixed-bottom"id="dcroll" style={{fontSize:"0.7em"}}>
-                        { this.state.notLoaded && (
-                        <div>
-                        <p></p>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        </div>
                        
-
-                         )}
                         <AllLiveChats
                       comments={this.state.comments}
                       slug="live-comments"
@@ -210,6 +204,7 @@ postNewComment(comment) {
                   )}
                  
                   {this.state.isLoggedIn &&(
+                    
                       <NewLiveChat postNewComment={this.postNewComment} />
                   )}
                    {!this.state.isLoggedIn && (
@@ -257,16 +252,16 @@ postNewComment(comment) {
             
             </div>
            
-            <div className="pb-3">&nbsp;
+            
+            
+          </div>
+          <div className="pb-3" style={{backgroundColor:"#030229", color:"ffffff"}}>&nbsp;
               
-            <div style={{paddingLeft:"8%", paddingRight:"8%"}}>
+            <div style={{paddingLeft:"8%", paddingRight:"8%", }}>
                  <FeaturedPosts/>
               </div>
             
             </div>
-            
-          </div>
-         
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
 
           {/* <NowPlaying playing={this.state.playing}/> */}

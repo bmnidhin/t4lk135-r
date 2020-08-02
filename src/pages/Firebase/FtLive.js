@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Moment from "moment";
 import { Link } from "react-router-dom";
 
+
 export default class FtLive extends Component {
     mainContent = {
         textAlign: "left",

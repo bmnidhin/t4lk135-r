@@ -66,11 +66,7 @@ class episode extends Component {
       numberOfComments:0,
       user: " "
     };
-    this.refComments = base.syncState( this.props.match.params.slug, {
-      context: this,
-      
-      state: "comments",
-    });
+    
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
@@ -136,6 +132,11 @@ class episode extends Component {
           notLoaded:true,
         });
         console.log(error);
+      });
+      this.refComments = base.syncState( this.props.match.params.slug, {
+        context: this,
+        
+        state: "comments",
       });
   }
   check(date, time) {

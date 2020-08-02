@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Skeleton from "@yisheng90/react-loading";
 import Comment from "./Comment";
 import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
 import OneLiveChat from "./OneLiveChat";
@@ -8,7 +8,7 @@ class AllLiveChats extends Component {
     super(props);
 
     this.state = {
-      counter: "Loading",
+      counter: true,
     };
   }
 
@@ -16,8 +16,8 @@ class AllLiveChats extends Component {
     var starCountRef = databased.ref(this.props.slug);
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
-      this.setState({ counter: a });
-      console.log(a);
+      this.setState({ counter: false });
+      
     });
   }
 
@@ -47,6 +47,24 @@ class AllLiveChats extends Component {
           {this.state.counter === 0 && (
             <div className="p-3 text-center">
               <h5>Be First to start a live chat</h5>
+            </div>
+          )}
+           {this.state.counter && (
+            <div className="" style={{ fontSize: "0.9rem" }}>
+             
+                        <div>
+                        <p></p>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        </div>
+                       
+
+                        
+
+              
             </div>
           )}
          

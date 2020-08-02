@@ -70,11 +70,7 @@ class playListDetail extends Component {
       numberOfComments:0,
       user: " "
     };
-    this.refComments = base.syncState( this.props.match.params.slug, {
-      context: this,
-      
-      state: "comments",
-    });
+    
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
@@ -141,6 +137,11 @@ class playListDetail extends Component {
         this.setState({
           notLoaded:true,
         });
+      });
+      this.refComments = base.syncState( this.props.match.params.slug, {
+        context: this,
+        
+        state: "comments",
       });
   }
 
