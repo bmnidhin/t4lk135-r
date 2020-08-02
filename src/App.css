@@ -90,3 +90,8 @@ body{font-family: 'Montserrat', sans-serif;}
 .table-dark th, .table-dark td, .table-dark thead th {
   border-color: #03022938;
 }
+.live-comments{position: relative;
+
+  height: 35vh;
+  margin-top: .5rem;
+  overflow: auto;}
