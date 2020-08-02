@@ -32,12 +32,14 @@ export default class Live extends Component {
       title: "Live Radio",
       comments: {},
       isLoggedIn: false,
+      notLoaded:true,
       user: "",
     };
     this.refComments = base.syncState( "live-comments", {
         context: this,
         
         state: "comments",
+       
       });
       auth.onAuthStateChanged(user => {
         if (user) {
@@ -76,6 +78,7 @@ export default class Live extends Component {
   }
   componentDidMount() {
     this.scrollToBottom();
+    this.setState({notLoaded: false})
 }
 componentDidUpdate() {
     this.scrollToBottom();
@@ -144,7 +147,18 @@ postNewComment(comment) {
                       <h6 className="pt-3">Live Chat</h6>
                       <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
                         <div className="live-comments fixed-bottom"id="dcroll" style={{fontSize:"0.7em"}}>
-                        
+                        { this.state.notLoaded && (
+                        <div>
+                        <p></p>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        </div>
+                       
+
+                         )}
                         <AllLiveChats
                       comments={this.state.comments}
                       slug="live-comments"
