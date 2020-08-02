@@ -16,7 +16,7 @@ class AllLiveChats extends Component {
     var starCountRef = databased.ref(this.props.slug);
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
-      this.setState({ counter: false });
+      this.setState({ counter: a });
       
     });
   }
@@ -49,7 +49,7 @@ class AllLiveChats extends Component {
               <h5>Be First to start a live chat</h5>
             </div>
           )}
-           {this.state.counter && (
+           {this.state.counter===true && (
             <div className="" style={{ fontSize: "0.9rem" }}>
              
                         <div>
