@@ -87,7 +87,7 @@ export class LoveSong extends Component {
          
         )}
         {/* counterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr */}
-        {/* <br/><span style={{ fontSize: "0.6rem" }}>{this.state.counter}</span> */}
+        <br/><span style={{ fontSize: "0.6rem" }}>{this.state.counter}</span>
 
 
         {/* {this.state.snapshot&&(this.state.snapshot[this.props.userid]!=undefined ?
