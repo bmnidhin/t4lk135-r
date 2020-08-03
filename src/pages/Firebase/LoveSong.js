@@ -86,7 +86,10 @@ export class LoveSong extends Component {
           </span>
          
         )}
-        <br/><span style={{ fontSize: "0.6rem" }}>{this.state.counter}</span>
+        {/* counterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr */}
+        {/* <br/><span style={{ fontSize: "0.6rem" }}>{this.state.counter}</span> */}
+
+
         {/* {this.state.snapshot&&(this.state.snapshot[this.props.userid]!=undefined ?
             <span class="material-icons"width="100%"
             onClick={() => {
