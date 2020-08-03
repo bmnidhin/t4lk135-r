@@ -364,7 +364,7 @@ play_circle_outline
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
                   
-              <div className="commentArea">
+              <div className="commentArea mt-3">
                   <SubmitPromo/>
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
