@@ -24,6 +24,7 @@ import LoveSong from "./Firebase/LoveSong";
 import ReactGA from 'react-ga';
 import * as SETTINGS from './constants/Settings';
 import Skeleton from '@yisheng90/react-loading';
+import SubmitPromo from "./SubmitPromo";
 const {
   PlayPause,
   CurrentTime,
@@ -362,6 +363,7 @@ play_circle_outline
             </div>
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
+                  <SubmitPromo/>
               <div className="commentArea">
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
