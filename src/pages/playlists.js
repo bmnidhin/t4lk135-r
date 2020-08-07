@@ -113,9 +113,7 @@ export default class playlists extends Component {
           {this.state.listen.slice(0, 20).map((track) => (
             <div
               className={
-                this.check(track.publishedAtDate, track.publishedAtTime)
-                  ? "col-6 col-md-3"
-                  : "col-6 col-md-3"
+                track.isPublished?"col-6 col-md-3":"d-none"
               }
               key={track.slug}
             >

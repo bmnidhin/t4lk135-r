@@ -19,6 +19,7 @@ import ScrollReveal from "./utils/ScrollReveal";
 // import base, { auth, providers } from './utils/FirebaseSettings'
 import './App.css';
 import Redirect from "./pages/Redirect";
+import Live from "./pages/homePageComponents/Live";
 
 class App extends Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class App extends Component {
               <AppRoute exact path="/playlist/:slug" component={playListDetail}/>
               <AppRoute exact path="/ground" component={test} />
               <AppRoute exact path="/submit" component={Redirect} />
+              <AppRoute exact path="/live" component={Live} />
             </Switch>
           )}
         />

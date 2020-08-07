@@ -69,13 +69,10 @@ class playListDetail extends Component {
       comments: {},
       isLoggedIn: false,
       numberOfComments:0,
-      user: " "
+      user: " ",
+      commentsLoaded: false 
     };
-    this.refComments = base.syncState( this.props.match.params.slug, {
-      context: this,
-      
-      state: "comments",
-    });
+    
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
@@ -142,6 +139,17 @@ class playListDetail extends Component {
         this.setState({
           notLoaded:true,
         });
+      });
+      this.refComments = base.syncState( this.props.match.params.slug, {
+        context: this,
+        
+        state: "comments",
+      });
+      var starCountRef = databased.ref(this.props.match.params.slug);
+      starCountRef.on("value", (snapshot) => {
+        let a = snapshot.numChildren();
+        this.setState({ commentsLoaded: true });
+        console.log(a);
       });
   }
 
@@ -413,7 +421,8 @@ play_circle_outline
                           <b> {this.state.user.displayName} </b>
                           <span onClick={() => auth.signOut()}>( Logout )</span>
                         </h6>
-                        <NewComment postNewComment={this.postNewComment} />
+                        {this.state.commentsLoaded&&( <NewComment postNewComment={this.postNewComment} />)}
+                        
                         {/* {JSON.stringify(this.state.user)} */}
                       </div>
                     </div>

@@ -12,6 +12,7 @@ import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
 import SubmitPromo from "./SubmitPromo";
 import * as SETTINGS from './constants/Settings';
+import FeaturedLiveChat from "./Firebase/FeaturedLiveChat";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -73,6 +74,7 @@ export default class homepage extends Component {
             <HeroText />
             <div style={this.mainContent}>
               <ListenAfterLive />
+              <FeaturedLiveChat/>
               <RecentPosters />
             </div>
           </div>
