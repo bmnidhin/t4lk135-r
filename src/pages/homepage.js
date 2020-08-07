@@ -74,7 +74,8 @@ export default class homepage extends Component {
             <HeroText />
             <div style={this.mainContent}>
               <ListenAfterLive />
-              <FeaturedLiveChat/>
+      {/*  <FeaturedLiveChat/> */}
+             
               <RecentPosters />
             </div>
           </div>
