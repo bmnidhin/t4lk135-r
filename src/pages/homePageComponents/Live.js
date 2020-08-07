@@ -221,7 +221,7 @@ postNewComment(comment) {
                  
                   {this.state.isLoggedIn &&(
                     
-                    this.state.commentsLoaded&&( <NewComment postNewComment={this.postNewComment} />)
+                    this.state.commentsLoaded&&( <NewLiveChat postNewComment={this.postNewComment} user={this.state.user} />)
                   )}
                    {!this.state.isLoggedIn && (
                     <div className="signUpPrompt" >
