@@ -14,7 +14,7 @@ const OneLiveChat = (props) => {
   return (
     <div width="100%">
       <div className="d-flex bd-highlight">
-        <div className="p-2 bd-highlight">
+        <div className="p-1 bd-highlight">
           <div
             className="rounded-circle"
             width="30px"
@@ -43,11 +43,12 @@ const OneLiveChat = (props) => {
                       /> */}
         </div>
         <div
-          className="p-2 flex-grow-1 bd-highlight"
+          className="p-1 flex-grow-1 bd-highlight"
           style={{ maxWidth: "100%" }}
         >
          
           <div>
+          <p  className="text-break" style={{width:"90%"}}>
           <span style={{ fontSize: "0.7rem" }}>
             <b>{props.comment.user.name} </b>
             <a className="text-muted">
@@ -56,6 +57,7 @@ const OneLiveChat = (props) => {
             </a>
           </span> &nbsp;
             <Linkify>
+           
               {props.comment.status ? (
                 <span
                   className="text-muted font-italics"
@@ -68,13 +70,14 @@ const OneLiveChat = (props) => {
               ) : (
                 <span
                   style={{ fontSize: "0.8rem", width: "90%" }}
-                  className="text-break text-justify"
+                 
                 >
                   &nbsp; &nbsp; {props.comment.comment}
                 </span>
               )}
+             
             </Linkify>
-
+            </p>
             {/* Current User : {props.user} <br/>
                       commended by : {props.comment.user.uid} */}
           </div>

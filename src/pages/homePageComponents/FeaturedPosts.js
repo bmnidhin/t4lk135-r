@@ -44,6 +44,7 @@ export default class FeaturedPosts extends Component {
      paddingTop:"20px",
      paddingBottom:"15px",
      textAlign:"left",
+     color:"#ffffff"
   }
   itemHeading={
     textAlign:"left",
@@ -55,7 +56,7 @@ export default class FeaturedPosts extends Component {
     return (
       <div>
         <div className="d-flex flex-row bd-highlight justify-content-between mb-3">
-          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>LISTEN AGAIN</span></div>
+          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>LISTEN</span></div>
           <div className=" bd-highlight">
               
           <Link to="/listen">VIEW ALL</Link>
@@ -75,10 +76,25 @@ export default class FeaturedPosts extends Component {
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           <Skeleton color="rgb(14, 14, 67)" height="200px"/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+           {/* <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           <Skeleton color="rgb(14, 14, 67)" height="200px"/>
-           </div>
-          {this.state.listen.slice(0, 6).map((track) => (
+           </div> */}
+           <div
+              className= {true?"col-6 col-md-3":"d-none"}
+              
+              // key={track.slug}
+            >
+              <Link to={"/live"} className="">
+                <img
+                  src="https://bmnidhin.github.io/t4lk-static/s1/live.jpg"
+                  width="100%"
+                  className="roundedImage"
+                  alt="Poster"
+                ></img>
+                 <p style={this.itemHeading} className='text-truncate'>Live Radio</p>
+              </Link>
+            </div>
+          {this.state.listen.slice(0, 3).map((track) => (
             <div
               className={
                 this.check(track.publishedAtDate, track.publishedAtTime)
@@ -98,6 +114,7 @@ export default class FeaturedPosts extends Component {
               </Link>
             </div>
           ))}
+          
         </div>
       
       </div>

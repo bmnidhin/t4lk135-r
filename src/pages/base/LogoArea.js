@@ -19,7 +19,7 @@ export default class LogoArea extends Component {
       lineHeight: "15px",
     };
     this.imageStyle = {
-      width: "20vh",
+      width: "15vh",
       height: "auto",
       paddingTop: "10px",
     };

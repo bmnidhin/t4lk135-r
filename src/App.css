@@ -11,7 +11,11 @@ body{font-family: 'Montserrat', sans-serif;}
     .Herotext {
       font-size: 1.5rem;
     }
-   
+    .live-comments{position: relative;
+
+      height: 35vh;
+      margin-top: .5rem;
+      overflow: auto;}
     
   }
   
@@ -20,6 +24,12 @@ body{font-family: 'Montserrat', sans-serif;}
     .Herotext {
       font-size: 1.3rem;
     }
+    .live-comments{position: relative;
+
+      height: 30vh;
+      
+      margin-top: .1rem;
+      overflow: auto;}
     
   }
   a:hover {
@@ -90,8 +100,3 @@ body{font-family: 'Montserrat', sans-serif;}
 .table-dark th, .table-dark td, .table-dark thead th {
   border-color: #03022938;
 }
-.live-comments{position: relative;
-
-  height: 35vh;
-  margin-top: .5rem;
-  overflow: auto;}

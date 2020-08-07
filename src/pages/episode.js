@@ -64,7 +64,8 @@ class episode extends Component {
       comments: {},
       isLoggedIn: false,
       numberOfComments:0,
-      user: " "
+      user: " ",
+      commentsLoaded:false
     };
     
     auth.onAuthStateChanged(user => {
@@ -137,6 +138,12 @@ class episode extends Component {
         context: this,
         
         state: "comments",
+      });
+      var starCountRef = databased.ref(this.props.match.params.slug);
+      starCountRef.on("value", (snapshot) => {
+        let a = snapshot.numChildren();
+        this.setState({ commentsLoaded: true });
+        console.log(a);
       });
   }
   check(date, time) {
@@ -324,7 +331,8 @@ class episode extends Component {
                           <b> {this.state.user.displayName} </b>
                           <span onClick={() => auth.signOut()}>( Logout )</span>
                         </h6>
-                        <NewComment postNewComment={this.postNewComment} />
+                        {this.state.commentsLoaded&&( <NewComment postNewComment={this.postNewComment} />)}
+                       
                         {/* {JSON.stringify(this.state.user)} */}
                       </div>
                     </div>

@@ -45,7 +45,7 @@ export default class FeaturedLiveChat extends Component {
                   className="text-uppercase text-muted"
                   style={{ fontSize: "10px" }}
                 >
-                   Live comments, Song dedications and much more
+                   Live comments and much more
                 </span>
                 <div className="d-flex flex-row bd-highlight justify-content-between mb-2">
                     

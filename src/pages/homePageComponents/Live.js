@@ -33,6 +33,7 @@ export default class Live extends Component {
       isLoggedIn: false,
       notLoaded:true,
       user: "",
+      commentsLoaded: false 
     };
    
       auth.onAuthStateChanged(user => {
@@ -57,8 +58,9 @@ export default class Live extends Component {
     };
       this.conatinerInner = {
        backgroundColor: "#0e0e43",
-       minHeight:"30vh",
-       borderRadius:"5px"
+       minHeight:"24vh",
+       borderRadius:"5px",
+       width:"100%"
        
       };
       this.secondaryContent = {
@@ -83,6 +85,12 @@ export default class Live extends Component {
      
     });
     this.setState({notLoaded: false})
+    var starCountRef = databased.ref("live-comments");
+      starCountRef.on("value", (snapshot) => {
+        let a = snapshot.numChildren();
+        this.setState({ commentsLoaded: true });
+        console.log(a);
+      });
 }
 componentDidUpdate() {
     this.scrollToBottom();
@@ -141,17 +149,25 @@ postNewComment(comment) {
           </Helmet>
           <div style={this.conatiner}>
             <LogoArea />
-            <div className="pl-3 pr-3 pb-10">
+            <div className="pl-1 pr-1 pb-10">
               
-              <div className="container mt-3 p-3"style={this.conatinerInner}>
+              <div className="container mt-1 p-3 pr-2 pl-2"style={this.conatinerInner}>
                 <div className="row">
                   <div className="col-md-4">
-                      <div style={{height:"100px", backgroundColor:"green"}}></div>
+                     <div className="d-none d-lg-block">
+                       <img src="https://bmnidhin.github.io/t4lk-static/s1/live.jpg" alt="Live" width="100%"
+                  className="roundedImage"/>
+                     </div>
+                     <div className="d-lg-none">
+                     <img src="https://bmnidhin.github.io/t4lk-static/s1/live2.jpg" alt="Live" width="100%"
+                  className="roundedImage"/>
+                     </div>
+                    
                       </div>
                   <div className="col-12 col-md-8">
                       <h6 className="pt-3">Live Chat</h6>
                       <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-                        <div className="live-comments fixed-bottom"id="dcroll" style={{fontSize:"0.7em"}}>
+                        <div className="live-comments fixed-bottom"id="dcroll" style={{fontSize:"0.7em",overflowX:"hidden"}}>
                        
                         <AllLiveChats
                       comments={this.state.comments}
@@ -205,7 +221,7 @@ postNewComment(comment) {
                  
                   {this.state.isLoggedIn &&(
                     
-                      <NewLiveChat postNewComment={this.postNewComment} />
+                    this.state.commentsLoaded&&( <NewComment postNewComment={this.postNewComment} />)
                   )}
                    {!this.state.isLoggedIn && (
                     <div className="signUpPrompt" >

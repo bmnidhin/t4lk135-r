@@ -78,8 +78,10 @@ export default class FeaturedPlaylists extends Component {
           <Skeleton color="rgb(14, 14, 67)" height="200px"/>
            </div>
           {this.state.listen.slice(0, 6).map((track) => (
+            
             <div
-              className="col-6 col-md-3"
+              className= {track.isPublished?"col-6 col-md-3":"d-none"}
+              
               key={track.slug}
             >
               <Link to={"/playlist/" + track.slug} className="">
@@ -92,7 +94,12 @@ export default class FeaturedPlaylists extends Component {
                  <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
               </Link>
             </div>
+            
+            
           ))}
+       
+           
+           
         </div>
       </div>
     );
