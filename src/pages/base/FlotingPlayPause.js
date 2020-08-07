@@ -62,7 +62,7 @@ class FlotingPlayPause extends Component {
     bottom: "0px",
     right: "0px",
     left: "0px",
-    zIndex: "999",
+    zIndex: "9999",
     cursor: "pointer",
     backgroundColor: "white",
     height: "70px",
