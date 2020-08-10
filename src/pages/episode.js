@@ -19,7 +19,7 @@ import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
-import Skeleton from '@yisheng90/react-loading';
+// import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
 //   CurrentTime,
@@ -255,8 +255,9 @@ class episode extends Component {
                 <div class="col-sm-8">
                   <div className=" p-2 pt-4 text-break">
                   <div className={this.state.notLoaded?"":"d-none"}>
-                  <Skeleton color="rgb(3, 2, 41,0.3)"/>
-                  <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/>
+                  {/* <Skeleton color="rgb(3, 2, 41,0.3)"/>
+                  <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/> */}
+                  Loading........
                  </div>
                   
                     <h4>{this.state.title}</h4>
@@ -274,7 +275,8 @@ class episode extends Component {
                       {" "}
                       {this.state.content}
                       <div className={this.state.notLoaded?"":"d-none"}>
-                  <Skeleton color="rgb(3, 2, 41,0.3)" rows={6}/>
+                  {/* <Skeleton color="rgb(3, 2, 41,0.3)" rows={6}/> */}
+                  Loading
                  </div>
                     </p>
                   </div>

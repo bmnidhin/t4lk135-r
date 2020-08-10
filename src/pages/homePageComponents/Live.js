@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet";
 
 import base, { auth, providers , databased } from "../../utils/FirebaseSettings";
 import * as SETTINGS from "../constants/Settings";
-import Skeleton from "@yisheng90/react-loading";
+// import Skeleton from "@yisheng90/react-loading";
 import { animateScroll } from "react-scroll";
 import NewComment from "../Firebase/NewComment";
 import AllLiveChats from "../Firebase/AllLiveChats";

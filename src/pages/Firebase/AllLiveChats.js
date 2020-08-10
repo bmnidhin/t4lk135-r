@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Skeleton from "@yisheng90/react-loading";
+// import Skeleton from "@yisheng90/react-loading";
 import Comment from "./Comment";
 import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
 import OneLiveChat from "./OneLiveChat";
@@ -54,11 +54,12 @@ class AllLiveChats extends Component {
              
                         <div>
                         <p></p>
+                        {/* <Skeleton color="rgb(14, 14, 67)" height="20px"/>
                         <Skeleton color="rgb(14, 14, 67)" height="20px"/>
                         <Skeleton color="rgb(14, 14, 67)" height="20px"/>
                         <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
-                        <Skeleton color="rgb(14, 14, 67)" height="20px"/>
+                        <Skeleton color="rgb(14, 14, 67)" height="20px"/> */}
+                        Loading........
                         </div>
                        
 

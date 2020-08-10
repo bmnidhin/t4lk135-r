@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import FlotingPlayPause from './base/FlotingPlayPause';
 import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
-import Skeleton from '@yisheng90/react-loading';
+// import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
 const { PlayPause, MuteUnmute } = controls;
@@ -129,16 +129,16 @@ export default class playlists extends Component {
             </div>
           ))}
             <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
         </div>
       

@@ -23,7 +23,7 @@ import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import LoveSong from "./Firebase/LoveSong";
 import ReactGA from 'react-ga';
 import * as SETTINGS from './constants/Settings';
-import Skeleton from '@yisheng90/react-loading';
+// import Skeleton from '@yisheng90/react-loading';
 import SubmitPromo from "./SubmitPromo";
 const {
   PlayPause,
@@ -325,8 +325,9 @@ play_circle_outline
                 <div class="col-sm-10">
                   <div className=" p-2 pt-4 text-break">
                   <div className={this.state.notLoaded?"":"d-none"}>
-                  <Skeleton color="rgb(3, 2, 41,0.3)"/>
-                  <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/>
+                  {/* <Skeleton color="rgb(3, 2, 41,0.3)"/>
+                  <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/> */}
+                  Loading.........
                  </div>
                     <h4>{this.state.title}</h4>
                     <div
@@ -343,7 +344,8 @@ play_circle_outline
                       {" "}
                       {this.state.content}
                       <div className={this.state.notLoaded?"":"d-none"}>
-                  <Skeleton color="rgb(3, 2, 41,0.3)" rows={6}/>
+                  {/* <Skeleton color="rgb(3, 2, 41,0.3)" rows={6}/> */}
+                  Loading....
                  </div>
                     </p>
                   </div>

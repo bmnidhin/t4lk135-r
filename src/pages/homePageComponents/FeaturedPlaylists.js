@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Moment from "moment";
 import { Link } from 'react-router-dom';
-import Skeleton from '@yisheng90/react-loading';
+// import Skeleton from '@yisheng90/react-loading';
 
 export default class FeaturedPlaylists extends Component {
   state = {
@@ -66,16 +66,16 @@ export default class FeaturedPlaylists extends Component {
 
         <div className="row">
         <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
           {this.state.listen.slice(0, 6).map((track) => (
             

@@ -11,7 +11,7 @@ import NewComment from "./Firebase/NewComment";
 import Comments from "./Firebase/Comments";
 import base, { auth, providers } from "../utils/FirebaseSettings";
 import * as SETTINGS from './constants/Settings';
-import Skeleton from '@yisheng90/react-loading';
+// import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
 
@@ -169,16 +169,16 @@ export default class listen extends Component {
                   </div>
                 ))}
                 <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          <Skeleton color="rgb(14, 14, 67)" height="200px"/>
+          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
            </div>
               </div>
             </div>

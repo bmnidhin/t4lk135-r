@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import Skeleton from '@yisheng90/react-loading';
+// import Skeleton from '@yisheng90/react-loading';
 
 export default class RecentPosters extends Component {
     state={
