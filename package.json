@@ -11,6 +11,7 @@
     "bootstrap": "^4.5.0",
     "firebase": "^7.16.0",
     "moment": "^2.27.0",
+    "prop-types": "^15.7.2",
     "re-base": "^4.0.0",
     "react": "^16.13.1",
     "react-countdown": "^2.2.1",
