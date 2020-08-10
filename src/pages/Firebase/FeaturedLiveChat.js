@@ -33,7 +33,7 @@ export default class FeaturedLiveChat extends Component {
     
     render() {
         return (
-            <div>
+            <div className="mt-3">
                 {/* <OneFeatLiveChat comments={this.state.comments}/> */}
                 <Link
             to={"/live/"}
