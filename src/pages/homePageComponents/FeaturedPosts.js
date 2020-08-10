@@ -8,6 +8,7 @@ export default class FeaturedPosts extends Component {
   state = {
     notLoaded:true,
     listen: [],
+    sliceAt:3
   };
   componentDidMount() {
     axios
@@ -17,6 +18,29 @@ export default class FeaturedPosts extends Component {
           notLoaded:false,
           listen: response.data,
         });
+        
+      })
+      .then(()=>{
+        const publishedDate = this.state.listen[0].publishedAtDate;
+        const publishedTime = this.state.listen[0].publishedAtTime;
+        const currentTime = Moment().format();
+        const publishAt = publishedDate + "T" + publishedTime + "+05:30";
+
+        const a = Moment(publishAt);
+        const b = Moment(currentTime);
+        const myDiff = b.diff(a);
+
+        const isEventPublished = myDiff > 0;
+        const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
+        if (isEventPublished) {
+          this.setState({
+            sliceAt:3
+          });
+        } else {
+          this.setState({
+            sliceAt:4
+          });
+        }
       })
       .catch((error) => {
         this.setState({
@@ -39,7 +63,7 @@ export default class FeaturedPosts extends Component {
     const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     return isEventPublished;
   }
-
+ 
   heading={
      paddingTop:"20px",
      paddingBottom:"15px",
@@ -69,16 +93,20 @@ export default class FeaturedPosts extends Component {
          
           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+          Loading....
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+          Loading....
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+          Loading....
            </div>
-           {/* <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          // <Skeleton color="rgb(14, 14, 67)" height="200px"/>
-           </div> */}
+           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+         {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+       
+           </div>
            <div
               className= {true?"col-6 col-md-3":"d-none"}
               
@@ -94,7 +122,7 @@ export default class FeaturedPosts extends Component {
                  <p style={this.itemHeading} className='text-truncate'>Live Radio</p>
               </Link>
             </div>
-          {this.state.listen.slice(0, 3).map((track) => (
+          {this.state.listen.slice(0, this.state.sliceAt).map((track) => (
             <div
               className={
                 this.check(track.publishedAtDate, track.publishedAtTime)
