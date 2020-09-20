@@ -20,6 +20,9 @@ import ScrollReveal from "./utils/ScrollReveal";
 import './App.css';
 import Redirect from "./pages/Redirect";
 import Live from "./pages/homePageComponents/Live";
+import ClubEpisodes from "./pages/ClubEpisodes";
+import ClubPromoPage from "./pages/ClubPromoPage";
+import ClubListen from "./pages/ClubListen";
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +51,11 @@ class App extends Component {
 
               <AppRoute exact path="/playlist/" component={playlists} />
               <AppRoute exact path="/playlist/:slug" component={playListDetail}/>
+
+              <AppRoute exact path="/club99/" component={ClubEpisodes} />
+              <AppRoute exact path="/club99/:slug" component={ClubListen}/>
+              <AppRoute exact path="/p/:slug" component={ClubPromoPage}/>
+
               <AppRoute exact path="/ground" component={test} />
               <AppRoute exact path="/submit" component={Redirect} />
               <AppRoute exact path="/live" component={Live} />
