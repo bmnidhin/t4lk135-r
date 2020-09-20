@@ -153,8 +153,8 @@ postNewComment(comment) {
             
             <div className="pl-2 pr-2 d-block d-sm-none">
                    
-            <ClubAdvt top={"Read Now"} heading={"Check out a video by SAE TKMCE and the annual magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
-                   
+            <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
+            {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>       */}
                   
                 </div>
             <div className="pl-1 pr-1 pb-10">
