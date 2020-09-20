@@ -40,7 +40,7 @@ export default class ClubAdvt extends Component {
             </span>
             <div className="d-flex flex-row bd-highlight justify-content-between mb-2">
               <div className="bd-highlight">
-                <h3 style={{ fontSize: "19px", fontWeight: "500" }}>
+                <h3 style={{ fontSize: "14px", fontWeight: "500" }}>
                   {this.props.heading}
                 </h3>
                 {this.props.bottom&&(

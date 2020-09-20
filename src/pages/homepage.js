@@ -75,7 +75,7 @@ export default class homepage extends Component {
             <LogoArea />
             <HeroText />
             <div style={this.mainContent}>
-            <ClubAdvt top={"Read Now"} heading={"Magazine Published"} link={"p/sae-tkmce"}/>
+            <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE TKMCE and the annual magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
               <ListenAfterLive />
               {/* <FeaturedLiveChat/> */}
              
