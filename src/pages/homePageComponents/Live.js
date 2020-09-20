@@ -16,6 +16,7 @@ import NewComment from "../Firebase/NewComment";
 import AllLiveChats from "../Firebase/AllLiveChats";
 import NewLiveChat from "../Firebase/NewLiveChat";
 import FeaturedPosts from "./FeaturedPosts";
+import ClubAdvt from "../base/ClubAdvt";
 const Background = require("../base/img/wave.jpg");
 
 
@@ -149,9 +150,17 @@ postNewComment(comment) {
           </Helmet>
           <div style={this.conatiner}>
             <LogoArea />
+            
+            <div className="pl-2 pr-2 d-block d-sm-none">
+                   
+            <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
+            {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>       */}
+                  
+                </div>
             <div className="pl-1 pr-1 pb-10">
               
-              <div className="container mt-1 p-3 pr-2 pl-2"style={this.conatinerInner}>
+              <div className="container mt-1 p-3 pr-2 pl-2 pb-3"style={this.conatinerInner}>
+                
                 <div className="row">
                   <div className="col-md-4">
                      <div className="d-none d-lg-block">
@@ -206,6 +215,7 @@ postNewComment(comment) {
                         alt="..."
                       /> */}
                       </div>
+                      
                       <div class="p-2 flex-grow-1 bd-highlight">
                         <h6 style={{fontSize:"0.7em"}}>
                           <b> {this.state.user.displayName} </b>

@@ -13,6 +13,8 @@ import { Helmet } from "react-helmet";
 import SubmitPromo from "./SubmitPromo";
 import * as SETTINGS from './constants/Settings';
 import FeaturedLiveChat from "./Firebase/FeaturedLiveChat";
+import FeaturedClubs from "./homePageComponents/FeaturedClub";
+import ClubAdvt from "./base/ClubAdvt";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -73,8 +75,10 @@ export default class homepage extends Component {
             <LogoArea />
             <HeroText />
             <div style={this.mainContent}>
+            <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
+            {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
               <ListenAfterLive />
-              <FeaturedLiveChat/>
+              {/* <FeaturedLiveChat/> */}
              
               <RecentPosters />
             </div>
@@ -82,6 +86,8 @@ export default class homepage extends Component {
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
              <SubmitPromo/>
+             <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+              <FeaturedClubs/>
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPosts />
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
