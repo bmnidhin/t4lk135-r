@@ -81,7 +81,7 @@ export default class Privacy extends Component {
             </div>
             <div style={this.content}>
             <p><span >Effective date: October 1, 2020</span></p>
-<p><span >Hestia ("us", "we", or "our") operates the https://thetkmshow.in website and the &ldquo;The TKM Show&rsquo;&rsquo; mobile application (the "Service").</span></p>
+<p><span >The TKM Show ("us", "we", or "our") operates the https://thetkmshow.in website and the &ldquo;The TKM Show&rsquo;&rsquo; mobile application (the "Service").</span></p>
 <p><span >This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</span></p>
 <p><span >We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.</span></p>
 <h2><b>Information Collection And Use</b></h2>
