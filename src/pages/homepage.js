@@ -15,6 +15,7 @@ import * as SETTINGS from './constants/Settings';
 import FeaturedLiveChat from "./Firebase/FeaturedLiveChat";
 import FeaturedClubs from "./homePageComponents/FeaturedClub";
 import ClubAdvt from "./base/ClubAdvt";
+import Adbanner from "./AdBanner";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -78,7 +79,7 @@ export default class homepage extends Component {
             <ClubAdvt top={"Read Now"} heading={"Magazine Published"} link={"p/sae-tkmce"}/>
               <ListenAfterLive />
               {/* <FeaturedLiveChat/> */}
-             
+             <Adbanner/>
               <RecentPosters />
             </div>
           </div>
