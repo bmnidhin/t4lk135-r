@@ -159,12 +159,14 @@ export default class ClubPromoPage extends Component {
               
             </div>
             <div style={this.content}>
-            {this.state.hasYoutube &&(
-              <iframe width="100%" height="300" src="https://www.youtube.com/embed/SWgfXEOPIgg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            )}
-            <div className="mt-2 mb-3" ></div>
             {this.state.hasBanner &&(
               <ClubAdvt top={this.state.bannerContent.subOne} heading={this.state.bannerContent.heading} link={this.state.bannerContent.link} target="_blank"/>
+            )}
+            <div className="mt-2 mb-3" ></div>
+            
+
+{this.state.hasYoutube &&(
+              <iframe width="100%" height="300" src={this.state.youtubeLink} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             )}
              <div className="mt-2 mb-3" ></div>
               <div className="row">

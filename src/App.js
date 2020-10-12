@@ -23,6 +23,8 @@ import Live from "./pages/homePageComponents/Live";
 import ClubEpisodes from "./pages/ClubEpisodes";
 import ClubPromoPage from "./pages/ClubPromoPage";
 import ClubListen from "./pages/ClubListen";
+import MagazineDownload from "./pages/MagazineDownload";
+import Privacy from "./pages/Privacy";
 
 class App extends Component {
   constructor(props) {
@@ -59,6 +61,8 @@ class App extends Component {
               <AppRoute exact path="/ground" component={test} />
               <AppRoute exact path="/submit" component={Redirect} />
               <AppRoute exact path="/live" component={Live} />
+              <AppRoute exact path="/privacy" component={Privacy} />
+              <AppRoute exact path="/mech-magazine" component={MagazineDownload} />
             </Switch>
           )}
         />
