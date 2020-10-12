@@ -164,7 +164,7 @@ export default class ClubPromoPage extends Component {
               <ClubAdvt top={this.state.bannerContent.subOne} heading={this.state.bannerContent.heading} link={this.state.bannerContent.link} target="_blank"/>
             )}
             <div className="mt-2 mb-3" ></div>
-            <Adbanner/>
+            {/* <Adbanner/> */}
 
 {this.state.hasYoutube &&(
               <iframe width="100%" height="300" src={this.state.youtubeLink} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -310,7 +310,7 @@ class ClubListen extends Component {
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
                 <div className="commentArea">
-                  <Adbanner/>
+                  {/* <Adbanner/> */}
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />

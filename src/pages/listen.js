@@ -145,7 +145,7 @@ export default class listen extends Component {
               <h3 style={{ textAlign: "center" }}>Listen Again</h3>
             </div>
             <div style={this.content}>
-              <Adbanner/>
+              {/* <Adbanner/> */}
               <div className="row">
                 
                 {this.state.listen.slice(0, 20).map((track) => (
