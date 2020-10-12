@@ -11,6 +11,7 @@ import NewComment from "./Firebase/NewComment";
 import Comments from "./Firebase/Comments";
 import base, { auth, providers } from "../utils/FirebaseSettings";
 import * as SETTINGS from './constants/Settings';
+import Adbanner from "./AdBanner";
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
@@ -144,6 +145,7 @@ export default class listen extends Component {
               <h3 style={{ textAlign: "center" }}>Listen Again</h3>
             </div>
             <div style={this.content}>
+              <Adbanner/>
               <div className="row">
                 
                 {this.state.listen.slice(0, 20).map((track) => (

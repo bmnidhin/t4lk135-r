@@ -80,7 +80,7 @@ export default class homepage extends Component {
             {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
               <ListenAfterLive />
               {/* <FeaturedLiveChat/> */}
-             <Adbanner/>
+             
               <RecentPosters />
             </div>
           </div>
@@ -90,7 +90,10 @@ export default class homepage extends Component {
              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedClubs/>
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+              <Adbanner/>
+              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPosts />
+             
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPlaylists />
             </div>

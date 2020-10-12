@@ -12,6 +12,7 @@ import Comments from "./Firebase/Comments";
 import base, { auth, providers } from "../utils/FirebaseSettings";
 import * as SETTINGS from './constants/Settings';
 import ClubAdvt from "./base/ClubAdvt";
+import Adbanner from "./AdBanner";
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
@@ -163,7 +164,7 @@ export default class ClubPromoPage extends Component {
               <ClubAdvt top={this.state.bannerContent.subOne} heading={this.state.bannerContent.heading} link={this.state.bannerContent.link} target="_blank"/>
             )}
             <div className="mt-2 mb-3" ></div>
-            
+            <Adbanner/>
 
 {this.state.hasYoutube &&(
               <iframe width="100%" height="300" src={this.state.youtubeLink} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

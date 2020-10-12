@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import FlotingPlayPause from './base/FlotingPlayPause';
 import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
+import Adbanner from './AdBanner';
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
@@ -108,7 +109,7 @@ export default class playlists extends Component {
                  <h3 style={{textAlign:"center"}}>Playlists</h3>
                </div>
                 <div style={this.content}>
-                    
+                  <Adbanner/>  
                 <div className="row">
           {this.state.listen.slice(0, 20).map((track) => (
             <div

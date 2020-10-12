@@ -20,6 +20,7 @@ import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
 import ClubAdvt from "./base/ClubAdvt";
+import Adbanner from "./AdBanner";
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -309,6 +310,7 @@ class ClubListen extends Component {
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
                 <div className="commentArea">
+                  <Adbanner/>
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />

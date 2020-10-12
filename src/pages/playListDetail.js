@@ -25,6 +25,7 @@ import ReactGA from 'react-ga';
 import * as SETTINGS from './constants/Settings';
 // import Skeleton from '@yisheng90/react-loading';
 import SubmitPromo from "./SubmitPromo";
+import Adbanner from "./AdBanner";
 const {
   PlayPause,
   CurrentTime,
@@ -375,6 +376,7 @@ play_circle_outline
               <div style={this.secondaryContentInner}>
                   
               <div className="commentArea mt-3">
+              <Adbanner/>
                   <SubmitPromo/>
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
@@ -387,7 +389,7 @@ play_circle_outline
                       {/* <a href="#bottom">Scroll to Bottom</a> */}
                     </div>
                   </div>
-
+                 
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                   />
