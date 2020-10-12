@@ -10,7 +10,7 @@ export default class Adbanner extends Component {
         time: "",
     };
     mainContent = {
-      
+        // backgroundColor:"green",
         marginTop: "10px",
     };
 
@@ -22,21 +22,21 @@ export default class Adbanner extends Component {
     render() {
         return (
             <div style={this.mainContent}>
-                <span>Sponsored Content<Link to={"/why-ads"}> [?] </Link></span>
+                <span style={{paddingBottom:"10px"}}>Sponsored Content<Link to={"/why-ads"}> [?] </Link></span>
                 <AdSense.Google
                    client='ca-pub-9394063465092952'
-                   slot='6661146116'
+                   slot='4365638345'
                    style={{ display: 'block'}}
-                   format='auto'
+                   format='fluid'
                    responsive='true'
-                //    layoutKey='-fb+5w+4e-db+86'
+                   layoutKey='-fb+5w+4e-db+86'
                 />
             </div>
         );
     }
 }
 // style="display:block"
+//      data-ad-format="fluid"
+//      data-ad-layout-key="-fb+5w+4e-db+86"
 //      data-ad-client="ca-pub-9394063465092952"
-//      data-ad-slot="6661146116"
-//      data-ad-format="auto"
-//      data-full-width-responsive="true">
+//      data-ad-slot="4365638345"
