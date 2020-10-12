@@ -22,20 +22,21 @@ export default class Adbanner extends Component {
     render() {
         return (
             <div style={this.mainContent}>
-                <p>Sponsored Content<Link to={"/why-ads"}> [?] </Link></p>
+                <span>Sponsored Content<Link to={"/why-ads"}> [?] </Link></span>
                 <AdSense.Google
-                    client='ca-pub-9394063465092952'
-                    slot='6499356404'
-                    style={{ width:' 100%', height: 'auto', }}
-                    format=''
+                   client='ca-pub-9394063465092952'
+                   slot='6661146116'
+                   style={{ display: 'block'}}
+                   format='auto'
+                   responsive='true'
+                //    layoutKey='-fb+5w+4e-db+86'
                 />
             </div>
         );
     }
 }
-{/* <AdSense.Google
-                    client='ca-pub-9394063465092952'
-                    slot='6499356404'
-                    style={{ width:' 100%', height: 100, }}
-                    format=''
-                /> */}
+// style="display:block"
+//      data-ad-client="ca-pub-9394063465092952"
+//      data-ad-slot="6661146116"
+//      data-ad-format="auto"
+//      data-full-width-responsive="true">
