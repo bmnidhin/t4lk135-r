@@ -76,7 +76,7 @@ export default class homepage extends Component {
             <LogoArea />
             <HeroText />
             <div style={this.mainContent}>
-            <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
+            {/* <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/> */}
             {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
               <ListenAfterLive />
               {/* <FeaturedLiveChat/> */}
@@ -86,16 +86,18 @@ export default class homepage extends Component {
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
+           
+             <FeaturedPosts />
              <SubmitPromo/>
-             <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <FeaturedClubs/>
+            
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <Adbanner/>
-              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <FeaturedPosts />
+              
              
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPlaylists />
+              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+              <FeaturedClubs/>
             </div>
           </div>
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
