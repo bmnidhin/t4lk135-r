@@ -62,7 +62,7 @@ export default class ListenAfterLive extends Component {
     return (
       <Link
         to={"/listen/" + this.state.slug}
-        className={isBannerActive && this.state.isbannerOn ? "" : "d-none"}
+        className={true ? "" : "d-none"}
       >
         <div style={this.mainContent}>
           <div style={this.inner}>
