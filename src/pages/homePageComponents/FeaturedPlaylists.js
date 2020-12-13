@@ -77,7 +77,7 @@ export default class FeaturedPlaylists extends Component {
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
            </div>
-          {this.state.listen.slice(0, 4).map((track) => (
+          {this.state.listen.slice(0, 5).map((track) => (
             
             <div
               className= {track.isPublished?"col-6 col-md-3":"d-none"}
