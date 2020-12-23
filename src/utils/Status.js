@@ -84,11 +84,11 @@ class Status extends Component {
  }
    if(this.props.media.duration !== Infinity ){
      if(this.props.auth){
-      Axios.post('http://localhost:5000/v2/log', article)
+      Axios.post('https://v2.thetkmshow.in/v2/log', article)
       .then(response => console.log(response.data)); 
      }
      else{
-      Axios.post('http://localhost:5000/v2/log', unAuthArticle)
+      Axios.post('https://v2.thetkmshow.in/v2/log', unAuthArticle)
       .then(response => console.log(response.data)); 
     }
    
