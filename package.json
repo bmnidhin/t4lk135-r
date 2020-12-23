@@ -51,5 +51,9 @@
   },
   "devDependencies": {
     "gh-pages": "^3.0.0"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/bmnidhin/t4lk135-r.git",
+  "author": "Nidhin BM <nidhinbm.bm@gmail.com>",
+  "license": "MIT"
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactGA from 'react-ga';
+import base, { auth, providers, databased } from '../../utils/FirebaseSettings'
 import {
   Media,
   Player,
@@ -7,7 +8,9 @@ import {
   withMediaProps,
   utils,
 } from "react-media-player";
+
 import CustomtCurrentTime from "./CustomtCurrentTime";
+import { myLog } from "../../packages/logger/Logger";
 
 const { formatTime } = utils;
 
@@ -29,26 +32,59 @@ class FlotingPlayPause extends Component {
     this.state = {
       title: "Live Radio",
       publishedAtDate: "",
+      user: "",
+      isLoggedIn: false,
+      CurrentTime: "",
     };
   }
+  
   componentDidMount(){
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ isLoggedIn: true, user });
+        // console.log("------------------------------------");
+        // console.log(user);
+      } else {
+        this.setState({ isLoggedIn: false, user: {} });
+      }
+    });
     ReactGA.initialize('UA-168458070-1');
-    
+
     ReactGA.event({
       category: 'Floting Player',
       action: 'Player Started',
       label: this.props.title,
-      nonInteraction: true,})
-    
-    
+      nonInteraction: true,}) 
   
+  }
+
+  componentDidUpdate({media}){
+    myLog(this.state.isLoggedIn, 
+      this.state.user.displayName,
+      this.state.user.userId,
+      "Loaded Player - " + this.props.title,
+      "Update",
+      
+       )
+    
+       ReactGA.event({
+        category: 'Floting Player',
+        action: 'Player Started',
+        label: this.props.title,
+        nonInteraction: true,}) 
+    
+    
   }
   shouldComponentUpdate({ media }) {
     return this.props.media.isPlaying !== media.isPlaying;
+    
   }
 
   _handlePlayPause = () => {
-    this.props.media.playPause();
+    this.props.media.playPause()
+    {this.props.media.isPlaying? localStorage.setItem('autoplay', false) :localStorage.setItem('autoplay', true)}
+    ReactGA.initialize('UA-168458070-1');
+
     ReactGA.event({
       category: 'Floting Player',
       action: 'Play Pause',
@@ -73,6 +109,7 @@ class FlotingPlayPause extends Component {
   render() {
     const { className, style, media } = this.props;
     return (
+      <Media>
       <div style={this.style}>
         <table className="table table-bordered" style={{ marginBottom: 0 }}>
           <tbody>
@@ -93,7 +130,7 @@ class FlotingPlayPause extends Component {
                 </div>
 
                 <span style={{ fontSize: "8px", textAlign: "left" }}>
-                  {/* <CurrentTime/> / <Duration/> */}
+                 
                   {/* {media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)} */}
                 </span>
               </td>
@@ -135,6 +172,7 @@ class FlotingPlayPause extends Component {
           <div className="col-5 flotingTitle">col-sm-4</div>
         </div> */}
       </div>
+      </Media>
     );
   }
 }

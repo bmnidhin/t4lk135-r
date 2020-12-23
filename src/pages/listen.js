@@ -1,17 +1,14 @@
 import React, { Component } from "react";
-import NowPlaying from "./base/NowPlaying";
 import LogoArea from "./base/LogoArea";
 import { Media, Player, controls } from "react-media-player";
 import axios from "axios";
-import Moment from "moment";
+import Moment, { defineLocale } from "moment";
 import { Link } from "react-router-dom";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
-import NewComment from "./Firebase/NewComment";
-import Comments from "./Firebase/Comments";
-import base, { auth, providers } from "../utils/FirebaseSettings";
 import * as SETTINGS from './constants/Settings';
-import Adbanner from "./AdBanner";
+
+
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 const { PlayPause, MuteUnmute } = controls;
@@ -225,7 +222,7 @@ export default class listen extends Component {
 
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay="true" />
+          <Player src={this.state.url} vendor="audio" autoPlay={localStorage.getItem('autoplay')} />
           </div>
         </div>
       </Media>

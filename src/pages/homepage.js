@@ -16,6 +16,7 @@ import FeaturedLiveChat from "./Firebase/FeaturedLiveChat";
 import FeaturedClubs from "./homePageComponents/FeaturedClub";
 import ClubAdvt from "./base/ClubAdvt";
 import Adbanner from "./AdBanner";
+import Status from "../utils/Status";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -100,8 +101,8 @@ export default class homepage extends Component {
               <FeaturedClubs/>
             </div>
           </div>
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
-
+          <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/>
+          
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.url} vendor="audio" autoPlay="true" />

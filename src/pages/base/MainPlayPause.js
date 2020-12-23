@@ -19,12 +19,21 @@ const {
 } = controls;
 
 class MainPlayPause extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      seekBar:false
+    }
+  }
+
   style = {
     paddingTop: "10px",
     paddingBottom: "10px",
     cursor: "pointer",
   };
-  componentDidMount() {}
+  componentDidMount() {
+   
+  }
   render() {
     const { className, style, media } = this.props;
     return (
@@ -64,7 +73,7 @@ class MainPlayPause extends Component {
         </div>
 
         {media.duration == Infinity || media.isLoading ? ("") : (<SeekBar className="custom-range" />)}
-
+          
         <div className="d-flex flex-row bd-highlight mb-3 justify-content-between">
           <div className="bd-highlight" style={{ fontSize: "9px" }}>
             {media.duration == Infinity || media.isLoading ? (

@@ -46,23 +46,23 @@ class App extends Component {
           children={() => (
             <Switch>
              
-              <AppRoute exact path="/" component={homepage} />
+              <Route exact path="/" component={homepage} />
 
-              <AppRoute exact path="/listen" component={listen}/>
-              <AppRoute exact path="/listen/:slug" component={episode} />
+              <Route exact path="/listen" component={listen}/>
+              <Route exact path="/listen/:slug" component={episode} />
 
-              <AppRoute exact path="/playlist/" component={playlists} />
-              <AppRoute exact path="/playlist/:slug" component={playListDetail}/>
+              <Route exact path="/playlist/" component={playlists} />
+              <Route exact path="/playlist/:slug" component={playListDetail}/>
 
-              <AppRoute exact path="/club99/" component={ClubEpisodes} />
-              <AppRoute exact path="/club99/:slug" component={ClubListen}/>
-              <AppRoute exact path="/p/:slug" component={ClubPromoPage}/>
+              <Route exact path="/club99/" component={ClubEpisodes} />
+              <Route exact path="/club99/:slug" component={ClubListen}/>
+              <Route exact path="/p/:slug" component={ClubPromoPage}/>
 
-              <AppRoute exact path="/ground" component={test} />
-              <AppRoute exact path="/submit" component={Redirect} />
-              <AppRoute exact path="/live" component={Live} />
-              <AppRoute exact path="/privacy" component={Privacy} />
-              <AppRoute exact path="/mech-magazine" component={MagazineDownload} />
+              <Route exact path="/ground" component={test} />
+              <Route exact path="/submit" component={Redirect} />
+              <Route exact path="/live" component={Live} />
+              <Route exact path="/privacy" component={Privacy} />
+              <Route exact path="/mech-magazine" component={MagazineDownload} />
             </Switch>
           )}
         />

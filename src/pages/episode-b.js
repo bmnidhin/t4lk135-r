@@ -111,7 +111,6 @@ class episode extends Component {
   }
 
   componentDidMount() {
-    
     axios
       .get("https://api.thetkmshow.in/listen/" + this.props.match.params.slug)
 
@@ -277,7 +276,7 @@ class episode extends Component {
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
                     <MainPlayPause switch={this.onChangeUsername} />
-                    <Status src={this.state.liveAudio}
+                    {/* <Status src={this.state.liveAudio}
                       cover={this.state.liveCover}
                       title={this.state.liveTitle}
                       url = {this.state.liveAudio}
@@ -286,7 +285,7 @@ class episode extends Component {
                       id={this.state.user.uid}
                       auth ={this.state.isLoggedIn}
                       
-                    />
+                    /> */}
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
