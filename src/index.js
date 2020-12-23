@@ -10,6 +10,11 @@ import * as serviceWorker from "./serviceWorker";
 import ScrollMemory from "react-router-scroll-memory";
 
 const history = createBrowserHistory();
+if(!localStorage.getItem('anonymous')){
+  localStorage.setItem("anonymous", Math.random(5))
+}
+
+
 
 ReactDOM.render(
   <Router history={history}>

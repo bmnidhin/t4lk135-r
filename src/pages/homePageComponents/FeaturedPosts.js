@@ -131,7 +131,7 @@ export default class FeaturedPosts extends Component {
               }
               key={track.slug}
             >
-              <Link to={"/listen/" + track.slug} className="">
+              <a href={"/listen/" + track.slug}>
                 <img
                   src={track.cover}
                   width="100%"
@@ -139,7 +139,7 @@ export default class FeaturedPosts extends Component {
                   alt="Poster"
                 ></img>
                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-              </Link>
+              </a>
             </div>
           ))}
           
