@@ -1,13 +1,9 @@
-'use strict';
 
-const { default: Axios } = require("axios");
-
- 
 module.exports = {
     myLog
 }
  
-function myLog(isLoggedIn, name,userId, event,type, progress) {
+function myLog(name,userId, event,type, progress) {
    
     const data = {
      name : name,
@@ -18,6 +14,6 @@ function myLog(isLoggedIn, name,userId, event,type, progress) {
      
     }
    
-    return console.log(data);
+    return data;
 }
  

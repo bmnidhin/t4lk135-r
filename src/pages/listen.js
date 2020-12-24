@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import LogoArea from "./base/LogoArea";
 import { Media, Player, controls } from "react-media-player";
 import axios from "axios";
-import Moment, { defineLocale } from "moment";
+import Moment from "moment";
 import { Link } from "react-router-dom";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
@@ -11,9 +11,7 @@ import * as SETTINGS from './constants/Settings';
 
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
-const { PlayPause, MuteUnmute } = controls;
 
-const currentTime = Moment();
 // let URL = settings.map((settings) => {
 //   return settings.streamURL;
 // });
@@ -96,7 +94,6 @@ export default class listen extends Component {
     const myDiff = b.diff(a);
 
     const isEventPublished = myDiff > 0;
-    const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     return isEventPublished;
   }
 

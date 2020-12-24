@@ -20,7 +20,6 @@ import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
 import Adbanner from "./AdBanner";
-import Status from "../utils/Status";
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -147,7 +146,7 @@ class episode extends Component {
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
       this.setState({ commentsLoaded: true });
-      console.log(a);
+      // console.log(a);
     });
   }
   check(date, time) {

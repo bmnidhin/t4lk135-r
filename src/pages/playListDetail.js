@@ -1,51 +1,27 @@
 import React, { Component } from "react";
-import NowPlaying from "./base/NowPlaying";
 import {
   Media,
   Player,
   controls,
   withMediaProps,
-  utils,
 } from "react-media-player";
 import LogoArea from "./base/LogoArea";
 import axios from "axios";
 import Moment from "moment";
-import { Link } from "react-router-dom";
 import FlotingPlayPause from "./base/FlotingPlayPause";
-import MainPlayPause from "./base/MainPlayPause";
 import { Helmet } from "react-helmet";
 import MainPlaylistPlayPause from "./base/MainPlaylistPlayPause";
 import FeaturedPosts from "./homePageComponents/FeaturedPosts";
-import FeaturedPlaylists from "./homePageComponents/FeaturedPlaylists";
 import NewComment from './Firebase/NewComment'
 import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import LoveSong from "./Firebase/LoveSong";
-import ReactGA from 'react-ga';
 import * as SETTINGS from './constants/Settings';
 // import Skeleton from '@yisheng90/react-loading';
 import SubmitPromo from "./SubmitPromo";
 import Adbanner from "./AdBanner";
-const {
-  PlayPause,
-  CurrentTime,
-  Progress,
-  SeekBar,
-  Duration,
-  MuteUnmute,
-  Volume,
-  Fullscreen,
-} = controls;
 const settings = require("./API/settings.json");
 
-const image =
-  "https://a10.gaanacdn.com/images/albums/51/1596151/crop_175x175_1596151.jpg";
-let URL = settings.map((settings) => {
-  return settings.streamURL;
-});
-let liveCover = settings.map((settings) => {
-  return settings.liveCover;
-});
 
 class playListDetail extends Component {
   constructor(props) {
@@ -151,7 +127,7 @@ class playListDetail extends Component {
       starCountRef.on("value", (snapshot) => {
         let a = snapshot.numChildren();
         this.setState({ commentsLoaded: true });
-        console.log(a);
+        // console.log(a);
       });
   }
 
@@ -166,7 +142,6 @@ class playListDetail extends Component {
     const myDiff = b.diff(a);
 
     const isEventPublished = myDiff > 0;
-    const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     this.setState({
       isEventNoPublishedBannerVisible: isEventPublished,
     });
@@ -219,7 +194,6 @@ class playListDetail extends Component {
   }
 
   render() {
-    const { className, style, media } = this.props;
     const TRACKS = this.state.tracks;
 
     const list = TRACKS.map((item) => {

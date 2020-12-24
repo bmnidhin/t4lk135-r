@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import NowPlaying from "../base/NowPlaying";
 import LogoArea from "../base/LogoArea";
-import { Media, Player, controls } from "react-media-player";
+import { Media, Player } from "react-media-player";
 
-import Moment from "moment";
-import { Link } from "react-router-dom";
 import FlotingPlayPause from "../base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
 
@@ -12,7 +9,6 @@ import base, { auth, providers , databased } from "../../utils/FirebaseSettings"
 import * as SETTINGS from "../constants/Settings";
 // import Skeleton from "@yisheng90/react-loading";
 import { animateScroll } from "react-scroll";
-import NewComment from "../Firebase/NewComment";
 import AllLiveChats from "../Firebase/AllLiveChats";
 import NewLiveChat from "../Firebase/NewLiveChat";
 import FeaturedPosts from "./FeaturedPosts";
@@ -92,7 +88,7 @@ export default class Live extends Component {
       starCountRef.on("value", (snapshot) => {
         let a = snapshot.numChildren();
         this.setState({ commentsLoaded: true });
-        console.log(a);
+        // console.log(a);
       });
 }
 componentDidUpdate() {

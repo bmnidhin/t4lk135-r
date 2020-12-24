@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import * as SETTINGS from '../constants/Settings';
 
 export default class HeroText extends Component {

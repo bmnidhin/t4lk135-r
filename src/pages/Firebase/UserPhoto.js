@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import base, { auth, providers, databased } from '../../utils/FirebaseSettings'
-import { ToastContainer, toast } from 'react-toastify';
+import { auth, providers } from '../../utils/FirebaseSettings'
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
+import { databased } from "../../utils/FirebaseSettings";
 
 class CommentLikes extends Component {
   constructor(props) {

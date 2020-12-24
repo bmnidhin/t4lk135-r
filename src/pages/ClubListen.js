@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import {
   Media,
   Player,
-  controls,
   withMediaProps,
   // utils,
 } from "react-media-player";
@@ -20,7 +19,6 @@ import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
 import ClubAdvt from "./base/ClubAdvt";
-import Adbanner from "./AdBanner";
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -156,7 +154,7 @@ class ClubListen extends Component {
       starCountRef.on("value", (snapshot) => {
         let a = snapshot.numChildren();
         this.setState({ commentsLoaded: true });
-        console.log(a);
+        // console.log(a);
       });
   }
   check(date, time) {
@@ -170,7 +168,6 @@ class ClubListen extends Component {
     const myDiff = b.diff(a);
 
     const isEventPublished = myDiff > 0;
-    const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     this.setState({
       isEventNoPublishedBannerVisible: isEventPublished,
     });

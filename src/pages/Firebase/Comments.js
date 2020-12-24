@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Comment from "./Comment";
-import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
+import { databased } from "../../utils/FirebaseSettings";
 class Comments extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +20,7 @@ class Comments extends Component {
     });
   }
 
-  renderComment(key, comment, slug, id, user, name, currentUser) {
+  renderComment(key, comment, slug, user, name, currentUser) {
     return (
       <Comment
         key={key}
@@ -63,7 +63,6 @@ class Comments extends Component {
                 key,
                 this.props.comments[key],
                 this.props.slug,
-                Object.keys(this.props.comments[key]),
                 this.props.user,
                 this.props.name,
                 this.props.currentUser

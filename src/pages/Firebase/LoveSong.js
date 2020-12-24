@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
+import { databased } from "../../utils/FirebaseSettings";
 
 export class LoveSong extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export class LoveSong extends Component {
     starcount.on("value", (snapshot) => {
         let a = snapshot.numChildren();
         this.setState({ counter: a });
-        console.log(a);
+        // console.log(a);
       });
   }
   changeLikes() {

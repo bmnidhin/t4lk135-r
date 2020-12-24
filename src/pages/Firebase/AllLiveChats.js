@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import Skeleton from "@yisheng90/react-loading";
-import Comment from "./Comment";
-import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
+import { databased } from "../../utils/FirebaseSettings";
 import OneLiveChat from "./OneLiveChat";
 class AllLiveChats extends Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class AllLiveChats extends Component {
     });
   }
 
-  renderComment(key, comment, slug, id, user, name, currentUser) {
+  renderComment(key, comment, slug, user, name, currentUser) {
     return (
       <OneLiveChat
         key={key}
@@ -75,7 +74,6 @@ class AllLiveChats extends Component {
                 key,
                 this.props.comments[key],
                 this.props.slug,
-                Object.keys(this.props.comments[key]),
                 this.props.user,
                 this.props.name,
                 this.props.currentUser

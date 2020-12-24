@@ -1,10 +1,7 @@
 import React from "react";
 import Moment from "moment";
-import base, { auth, providers, databased } from '../../utils/FirebaseSettings'
-import firebase from "firebase";
-import CommentLikes from "./CommentLikes";
+import { databased } from '../../utils/FirebaseSettings'
 import Linkify from 'react-linkify';
-import ReplyComment from "./ReplyComment";
 import ReplyCommentLikes from "./ReplyCommentLikes";
 
 
@@ -16,7 +13,6 @@ const OneReplyComment = props => {
 
 // const timestamp = props.comment.user.time  
 const timestamp = props.comment.user.time
-const currentUser = props.user 
 
   return (
     <div width="100%">

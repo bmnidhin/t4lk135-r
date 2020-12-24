@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
 
-import Moment from "moment";
 import FtLive from './FtLive';
 
 
@@ -13,7 +11,7 @@ export default class OneFeatLiveChat extends Component {
              
         }
     }
-    renderComment(key, comment, id) {
+    renderComment(key, comment) {
         return (
           <FtLive
             key={key}
@@ -31,7 +29,6 @@ export default class OneFeatLiveChat extends Component {
               this.renderComment(
                 key,
                 this.props.comments[key],
-                Object.keys(this.props.comments[key]),
                 
               )
             )}
