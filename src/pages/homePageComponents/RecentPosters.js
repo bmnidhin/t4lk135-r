@@ -41,9 +41,10 @@ export default class RecentPosters extends Component {
             <h6 style={this.title}></h6>
           
             <div className="row">
-              <div className={!this.state.notLoaded?'col-sm':'d-none'}><img src={this.state.posterOne} style={this.imageStyle} alt="poster"/></div>
-              <div className={!this.state.notLoaded?'col-sm':'d-none'}>
-                <img src={this.state.posterTwo} style={this.imageStyle} className='d-none d-sm-block'alt="poster"/>
+              <div className={!this.state.notLoaded?'col':'d-none'}>
+                <img src={this.state.posterOne} style={this.imageStyle} alt="poster"/></div>
+              <div className={!this.state.notLoaded?'col':'d-none'}>
+                <img src={this.state.posterTwo} style={this.imageStyle} alt="poster"/>
                 
               </div>
             </div>
