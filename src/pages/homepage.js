@@ -17,6 +17,7 @@ import FeaturedClubs from "./homePageComponents/FeaturedClub";
 import ClubAdvt from "./base/ClubAdvt";
 import Adbanner from "./AdBanner";
 import Status from "../utils/Status";
+import RecentlyPlayed from "./homePageComponents/RecentlyPlayed";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -87,7 +88,8 @@ export default class homepage extends Component {
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
-           
+             <RecentlyPlayed page="home"/>
+             <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
              <FeaturedPosts />
              <SubmitPromo/>
             

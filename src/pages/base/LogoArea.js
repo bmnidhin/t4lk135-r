@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import UserPhoto from "../Firebase/UserPhoto";
 
 const logo = require("./img/tkmshow_white.png");
 const appName = "thetkmshow";
@@ -23,13 +24,34 @@ export default class LogoArea extends Component {
       height: "auto",
       paddingTop: "10px",
     };
+    this.table = {
+      width: "100%",
+    }
   }
   render() {
     return (
-      <div style={this.divStyle}>
-        <Link to="/">
-          <img src={logo} style={this.imageStyle} alt={appName}></img>
-        </Link>
+      <div style={this.divStyle} className="pl-4 pr-4">
+        
+        <table style={this.table} >
+          <tbody>
+            <tr>
+              <td style={{ width: "10%",fontSize: "25px" }}><span className="material-icons">
+menu
+</span></td>
+              <td style={{ width: "80%" }}>
+                <Link to="/">
+                <img src={logo} style={this.imageStyle} alt={appName}></img>
+              </Link>
+              </td>
+              <td style={{ width: "10%" }}>
+                <UserPhoto />
+                </td>
+            </tr>
+          </tbody>
+        </table>
+
+          
+
       </div>
     );
   }

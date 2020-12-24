@@ -59,6 +59,7 @@ export default class ClubPromoPage extends Component {
     //     console.log(user);
     //   } else {
     //     this.setState({ isLoggedIn: false, user: {} });
+              //localStorage.removeItem('userid')
     //   }
     // });
 
@@ -142,6 +143,7 @@ export default class ClubPromoPage extends Component {
   // }
   // logout(){
   //   this.setState({ isLoggedIn: false, user: {} });
+              //localStorage.removeItem('userid')
 
   // }
   render() {

@@ -23,8 +23,10 @@ export default class ReplyComment extends Component {
         this.setState({ isLoggedIn: true, user });
         // console.log("------------------------------------");
         // console.log(user);
+        localStorage.setItem("userid",this.state.user.uid)
       } else {
         this.setState({ isLoggedIn: false, user: {} });
+              localStorage.removeItem('userid')
       }
     });
   }
@@ -81,6 +83,7 @@ export default class ReplyComment extends Component {
   }
   logout() {
     this.setState({ isLoggedIn: false, user: {} });
+              localStorage.removeItem('userid')
   }
   expandArea() {
     alert("poda");

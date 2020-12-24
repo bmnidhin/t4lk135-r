@@ -80,6 +80,7 @@ class playListDetail extends Component {
        
       } else {
         this.setState({ isLoggedIn: false, user: {} });
+              localStorage.removeItem('userid')
       }
     });
 
@@ -206,6 +207,7 @@ class playListDetail extends Component {
    } 
    logout(){
      this.setState({ isLoggedIn: false, user: {} });
+              localStorage.removeItem('userid')
  
    } 
   onChangeUsername() {

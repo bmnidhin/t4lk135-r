@@ -51,6 +51,7 @@ export default class ClubEpisodes extends Component {
     //     console.log(user);
     //   } else {
     //     this.setState({ isLoggedIn: false, user: {} });
+              //localStorage.removeItem('userid')
     //   }
     // });
 
@@ -128,6 +129,7 @@ export default class ClubEpisodes extends Component {
   // }
   // logout(){
   //   this.setState({ isLoggedIn: false, user: {} });
+              //localStorage.removeItem('userid')
 
   // }
   render() {

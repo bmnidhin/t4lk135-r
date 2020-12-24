@@ -82,7 +82,7 @@ class Status extends Component {
     
     
  }
-   if(this.props.media.duration !== Infinity ){
+   if(this.props.media.duration !== Infinity && this.props.media.isPlaying ){
      if(this.props.auth){
       Axios.post('https://v2.thetkmshow.in/v2/log', article)
       .then(response => console.log(response.data)); 
