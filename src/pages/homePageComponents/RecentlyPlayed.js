@@ -169,7 +169,7 @@ export default class RecentlyPlayed extends Component {
                                 <div className="progress" style={{ height: '0.3rem' }}>
                                     <div className="progress-bar" role="progressbar" style={{ width: track.progress + "%", backgroundColor: "#dc3545" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p style={this.itemHeading} className='text-truncate'>{track.title} {track.time}</p>
+                                <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
                             </a>
                         </div>
                     ))}
