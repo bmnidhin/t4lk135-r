@@ -8,6 +8,7 @@ import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
 import Adbanner from "./AdBanner";
+import BottomNav from "./base/BottomNav";
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
@@ -217,7 +218,7 @@ export default class ClubEpisodes extends Component {
           <Comments comments={this.state.comments} />
         </div> */}
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
-
+          <BottomNav selected="club"/>
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.url} vendor="audio" autoPlay="true" />

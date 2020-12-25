@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 
 
 import * as SETTINGS from './constants/Settings';
+import BottomNav from "./base/BottomNav";
 
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
@@ -169,6 +170,7 @@ export default class Privacy extends Component {
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.url} vendor="audio" autoPlay="true" />
+            <BottomNav selected="privacy"/>
           </div>
         </div>
       </Media>

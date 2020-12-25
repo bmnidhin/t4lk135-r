@@ -20,6 +20,7 @@ import * as SETTINGS from './constants/Settings';
 // import Skeleton from '@yisheng90/react-loading';
 import SubmitPromo from "./SubmitPromo";
 import Adbanner from "./AdBanner";
+import BottomNav from "./base/BottomNav";
 const settings = require("./API/settings.json");
 
 
@@ -517,7 +518,9 @@ play_circle_outline
           <FlotingPlayPause
             cover={this.state.liveCover}
             title={this.state.liveTitle}
+
           />
+          <BottomNav selected="playlist"/>
         </div>
       </Media>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserPhoto from "../Firebase/UserPhoto";
 
+
 const logo = require("./img/tkmshow_white.png");
 const appName = "thetkmshow";
 
@@ -35,6 +36,7 @@ export default class LogoArea extends Component {
         <table style={this.table} >
           <tbody>
             <tr>
+              
               <td style={{ width: "10%",fontSize: "25px" }}><span className="material-icons">
 menu
 </span></td>

@@ -28,7 +28,7 @@ class Status extends Component {
     cursor: "pointer",
   };
   componentDidMount() {
-    localStorage.setItem("percent", 404)
+    localStorage.setItem("percent", 0)
 
     setInterval(this.tickingTimer, 60000) //upadate percentage in 1 min
   }

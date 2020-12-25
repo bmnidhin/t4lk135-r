@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
+import BottomNav from "./base/BottomNav";
 
 
 // import Skeleton from '@yisheng90/react-loading';
@@ -222,6 +223,7 @@ export default class listen extends Component {
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
           <Player src={this.state.url} vendor="audio" autoPlay={localStorage.getItem('autoplay')} />
+          <BottomNav selected="listen"/>
           </div>
         </div>
       </Media>

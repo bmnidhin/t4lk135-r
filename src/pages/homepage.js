@@ -14,6 +14,7 @@ import * as SETTINGS from './constants/Settings';
 import FeaturedClubs from "./homePageComponents/FeaturedClub";
 import Adbanner from "./AdBanner";
 import RecentlyPlayed from "./homePageComponents/RecentlyPlayed";
+import BottomNav from "./base/BottomNav";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -100,7 +101,7 @@ export default class homepage extends Component {
             </div>
           </div>
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/>
-          
+          <BottomNav selected='home'/>
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.url} vendor="audio" autoPlay="true" />

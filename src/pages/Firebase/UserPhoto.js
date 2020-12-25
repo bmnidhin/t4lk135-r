@@ -81,7 +81,7 @@ export default class UserPhoto extends Component {
                     </div>
                     </Link>
                   )}
-                  <ToastContainer />
+ 
             </div>
         )
     }

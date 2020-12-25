@@ -20,6 +20,7 @@ import Comments from './Firebase/Comments'
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
 import Adbanner from "./AdBanner";
+import BottomNav from "./base/BottomNav";
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -475,6 +476,7 @@ class episode extends Component {
             cover={this.state.liveCover}
             title={this.state.liveTitle}
           />
+          <BottomNav selected="listen"/>
         </div>
       </Media>
     );

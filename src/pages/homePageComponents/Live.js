@@ -13,6 +13,7 @@ import AllLiveChats from "../Firebase/AllLiveChats";
 import NewLiveChat from "../Firebase/NewLiveChat";
 import FeaturedPosts from "./FeaturedPosts";
 import ClubAdvt from "../base/ClubAdvt";
+import BottomNav from "../base/BottomNav";
 const Background = require("../base/img/wave.jpg");
 
 
@@ -292,6 +293,7 @@ postNewComment(comment) {
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
             <Player src={this.state.url} vendor="audio" autoPlay="true" />
+            <BottomNav selected="live"/>
           </div>
         </div>
       </Media>

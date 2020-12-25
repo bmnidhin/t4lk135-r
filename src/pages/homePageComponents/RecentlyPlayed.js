@@ -88,6 +88,7 @@ export default class RecentlyPlayed extends Component {
 
     render() {
          
+           
         
 
         return (
@@ -149,7 +150,7 @@ export default class RecentlyPlayed extends Component {
                      
                       
                    
-                    {this.state.listen.slice(0, this.state.sliceAt).map((track) => (
+                    {this.state.listen.slice(0, this.state.sliceAt).sort((b, a) => a.time - b.time).map((track) => (
                         <div
                             className={
                                 true
@@ -168,7 +169,7 @@ export default class RecentlyPlayed extends Component {
                                 <div className="progress" style={{ height: '0.3rem' }}>
                                     <div className="progress-bar" role="progressbar" style={{ width: track.progress + "%", backgroundColor: "#dc3545" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
+                                <p style={this.itemHeading} className='text-truncate'>{track.title} {track.time}</p>
                             </a>
                         </div>
                     ))}

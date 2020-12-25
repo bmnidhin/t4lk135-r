@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import { auth, providers } from "../utils/FirebaseSettings";
 import * as SETTINGS from './constants/Settings';
 import RecentlyPlayed from "./homePageComponents/RecentlyPlayed";
+import BottomNav from "./base/BottomNav";
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
@@ -286,6 +287,7 @@ export default class MyLibrary extends Component {
                     {/* <NowPlaying playing={this.state.playing}/> */}
                     <div className="media">
                         <Player src={this.state.url} vendor="audio" autoPlay="true" />
+                        <BottomNav selected="library"/>
                     </div>
                 </div>
             </Media>
