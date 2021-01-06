@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Moment from "moment";
 import { Link } from 'react-router-dom';
+import Placehold from "../base/Placehold";
 // import Skeleton from '@yisheng90/react-loading';
 
 export default class FeaturedClubs extends Component {
@@ -92,21 +93,17 @@ export default class FeaturedClubs extends Component {
 
         <div className="row">
          
-          <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-          Loading....
+        <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-          Loading....
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-          Loading....
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-         {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-       
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
            
           {this.state.listen.slice(0, this.state.sliceAt).map((track) => (

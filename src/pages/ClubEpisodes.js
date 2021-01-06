@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
 import Adbanner from "./AdBanner";
 import BottomNav from "./base/BottomNav";
+import Placehold from "./base/Placehold";
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
@@ -166,17 +167,17 @@ export default class ClubEpisodes extends Component {
                     </Link>
                   </div>
                 ))}
-                <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
+                <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-           <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */} Loading......
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
               </div>
             </div>

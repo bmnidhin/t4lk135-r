@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { auth } from '../../utils/FirebaseSettings'
-// import Skeleton from '@yisheng90/react-loading';
+
 import Party from './assets/party.svg';
+import Placehold from "../base/Placehold";
 
 export default class RecentlyPlayed extends Component {
     constructor(props) {
@@ -130,22 +131,18 @@ export default class RecentlyPlayed extends Component {
                 {this.state.listen.length==0 &&(<p className="text-muted text-center" style={{minHeight:"100px"}}>Listen Some episodes and it will appear here</p>)}
                 <div className="row">
 
-                    <div className={this.state.notLoaded ? "col-6 col-md-3" : "d-none"}>
-                        {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-          Loading....
+                <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-                    <div className={this.state.notLoaded ? "col-6 col-md-3" : "d-none"}>
-                        {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-          Loading....
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-                    <div className={this.state.notLoaded ? "col-6 col-md-3" : "d-none"}>
-                        {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-          Loading....
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>
-                    <div className={this.state.notLoaded ? "col-6 col-md-3" : "d-none"}>
-                        {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
-
-                    </div>
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
+           </div>
                    
                      
                       

@@ -61,7 +61,7 @@ export default class MyLibrary extends Component {
 
         this.conatiner = {
             minHeight: "100vh",
-            backgroundColor: "#030229",
+            backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
             color: "white",
 
 
@@ -69,7 +69,7 @@ export default class MyLibrary extends Component {
         this.content = {
             marginLeft: "10%",
             marginRight: "10%",
-            backgroundColor: "#0b0229",
+            backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
         };
         this.itemHeading = {
             textAlign: "left",
@@ -78,7 +78,7 @@ export default class MyLibrary extends Component {
             color: "white",
         }
         this.infobox = {
-            backgroundColor: "#0e0e43",
+            backgroundColor: SETTINGS.COLOURS.BRAND_BG,
             borderRadius: "5px",
             padding: "30px",
             marginTop: "10px",

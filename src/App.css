@@ -84,7 +84,7 @@ body{font-family: 'Montserrat', sans-serif;}
   font-weight: 400;
   line-height: 1.5;
   color: #fff;
-  background-color: #0e0e43;
+  background-color:rgb(18, 25, 39);
   background-clip: padding-box;
   border: 1px solid #233548;
   border-radius: .25rem;
@@ -95,7 +95,7 @@ body{font-family: 'Montserrat', sans-serif;}
     opacity: 1;
 }
 
-.signUpPrompt{min-height: 100px;background-color: #0e0e43;border-radius: 6px !important;text-align: center;vertical-align: middle;}
+.signUpPrompt{min-height: 100px;background-color: rgb(18, 25, 39);border-radius: 6px !important;text-align: center;vertical-align: middle;}
 
 .table-dark th, .table-dark td, .table-dark thead th {
   border-color: #03022938;
