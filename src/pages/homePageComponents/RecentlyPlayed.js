@@ -159,7 +159,7 @@ export default class RecentlyPlayed extends Component {
                             }
                             key={track.slug}
                         >
-                            <a href={"/listen/" + track.slug}>
+                            <Link to={"/listen/" + track.slug}>
                                 <img
                                     src={track.cover}
                                     width="100%"
@@ -170,15 +170,17 @@ export default class RecentlyPlayed extends Component {
                                     <div className="progress-bar" role="progressbar" style={{ width: track.progress + "%", backgroundColor: "#dc3545" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-                            </a>
+                            </Link>
                         </div>
                     ))}
 
                 </div>
+                <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
                     </div>  
+                   
                   )}
                 
-
+            
             </div>
         );
     }

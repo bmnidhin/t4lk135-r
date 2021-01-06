@@ -128,3 +128,9 @@ body{font-family: 'Montserrat', sans-serif;}
   min-width: 0;
   width: 100%;
 }
+/* .border-white {
+  border-color: #73c93900!important;
+} */
+.border-bottom {
+  border-bottom: 0.5px solid #87888845!important;
+}

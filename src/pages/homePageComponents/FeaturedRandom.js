@@ -4,19 +4,52 @@ import Moment from "moment";
 import { Link } from 'react-router-dom';
 // import Skeleton from '@yisheng90/react-loading';
 
-export default class FeaturedPlaylists extends Component {
+export default class FeaturedRandom extends Component {
   state = {
     notLoaded:true,
     listen: [],
+    sliceAt:4,
+    random:4
   };
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/playlist")
+      .get("https://api.thetkmshow.in/listen")
       .then((response) => {
         this.setState({
           notLoaded:false,
           listen: response.data,
         });
+        
+      }).then(()=>{
+        const random =Math.floor(Math.random() * (this.state.listen.length-4))
+        console.log("random is"+ random)
+        this.setState({
+            random:random
+          });
+      }
+       
+      )
+      .then(()=>{
+        const publishedDate = this.state.listen[0].publishedAtDate;
+        const publishedTime = this.state.listen[0].publishedAtTime;
+        const currentTime = Moment().format();
+        const publishAt = publishedDate + "T" + publishedTime + "+05:30";
+
+        const a = Moment(publishAt);
+        const b = Moment(currentTime);
+        const myDiff = b.diff(a);
+
+        const isEventPublished = myDiff > 0;
+        const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
+        if (isEventPublished) {
+          this.setState({
+            sliceAt:3
+          });
+        } else {
+          this.setState({
+            sliceAt:4
+          });
+        }
       })
       .catch((error) => {
         this.setState({
@@ -39,11 +72,12 @@ export default class FeaturedPlaylists extends Component {
     const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     return isEventPublished;
   }
-
+ 
   heading={
      paddingTop:"20px",
      paddingBottom:"15px",
      textAlign:"left",
+     color:"#ffffff"
   }
   itemHeading={
     textAlign:"left",
@@ -52,55 +86,60 @@ export default class FeaturedPlaylists extends Component {
     color:"white",
   }
   render() {
+      
     return (
-      <div className="pt-3 pb-3">
+      <div className="pt-5">
         <div className="d-flex flex-row bd-highlight justify-content-between mb-3">
-          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>PLAYLISTS</span></div>
+          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>FOR YOU</span></div>
           <div className=" bd-highlight">
               
-          <Link to="/playlist">VIEW ALL</Link>
+          <Link to="/listen">VIEW ALL</Link>
           </div>
           
         </div>
        
 
         <div className="row">
-        <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
+         
+          <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+          Loading....
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+          Loading....
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
           {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+          Loading....
            </div>
            <div className={this.state.notLoaded?"col-6 col-md-3":"d-none"}>
-          {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+         {/* <Skeleton color="rgb(14, 14, 67)" height="200px"/> */}
+       
            </div>
-          {this.state.listen.slice(0, 5).map((track) => (
-            
+          {this.state.listen.slice(this.state.random, this.state.random+4).map((track) => (
             <div
-              className= {track.isPublished?"col-6 col-md-3":"d-none"}
-              
+              className={
+                this.check(track.publishedAtDate, track.publishedAtTime)
+                  ? "col-6 col-md-3"
+                  : "d-none"
+              }
               key={track.slug}
             >
-              <Link to={"/playlist/" + track.slug} className="">
+              <a href={"/listen/" + track.slug}>
                 <img
-                  src={track['album-art']}
+                  src={track.cover}
                   width="100%"
                   className="roundedImage"
                   alt="Poster"
                 ></img>
-                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-              </Link>
+                <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
+              </a>
             </div>
-            
-            
           ))}
-       
-           
-           
+          
         </div>
+      
       </div>
     );
   }

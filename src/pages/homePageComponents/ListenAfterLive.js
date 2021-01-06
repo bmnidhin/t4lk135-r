@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Moment from "moment";
+import * as SETTINGS from '../constants/Settings';
 
 export default class ListenAfterLive extends Component {
   state = {
@@ -14,7 +15,7 @@ export default class ListenAfterLive extends Component {
     textAlign: "left",
     textDecoration: "none",
     borderRadius: "5px",
-    backgroundColor: "rgb(14, 14, 67)",
+    backgroundColor: SETTINGS.COLOURS.HEADER_COLOR,
     minHeight: "50px",
     isbannerOn: true,
   };
@@ -64,13 +65,13 @@ export default class ListenAfterLive extends Component {
         to={"/listen/" + this.state.slug}
         className={true ? "" : "d-none"}
       >
-        <div style={this.mainContent}>
+        <div style={this.mainContent} className="border border-primary">
           <div style={this.inner}>
             <span
               className="text-uppercase text-muted"
               style={{ fontSize: "10px" }}
             >
-              listen again
+              Recent Episode
             </span>
             <div className="d-flex flex-row bd-highlight justify-content-between mb-2">
               <div className="bd-highlight">

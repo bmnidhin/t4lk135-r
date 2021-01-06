@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import * as SETTINGS from './constants/Settings';
 
 export default class SubmitPromo extends Component {
   state = {
@@ -12,7 +13,7 @@ export default class SubmitPromo extends Component {
     textAlign: "left",
     textDecoration: "none",
     borderRadius: "5px",
-    backgroundColor: "rgb(14, 14, 67)",
+    backgroundColor: SETTINGS.COLOURS.CARD_GRADIENT,
     minHeight: "50px",
     isbannerOn: true,
   };

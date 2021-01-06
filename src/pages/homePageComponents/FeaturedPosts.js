@@ -78,9 +78,9 @@ export default class FeaturedPosts extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="pt-3 pb-5">
         <div className="d-flex flex-row bd-highlight justify-content-between mb-3">
-          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>LISTEN</span></div>
+          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>LATEST</span></div>
           <div className=" bd-highlight">
               
           <Link to="/listen">VIEW ALL</Link>
@@ -131,7 +131,7 @@ export default class FeaturedPosts extends Component {
               }
               key={track.slug}
             >
-              <a href={"/listen/" + track.slug}>
+              <Link to={"/listen/" + track.slug}>
                 <img
                   src={track.cover}
                   width="100%"
@@ -139,7 +139,7 @@ export default class FeaturedPosts extends Component {
                   alt="Poster"
                 ></img>
                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-              </a>
+              </Link>
             </div>
           ))}
           

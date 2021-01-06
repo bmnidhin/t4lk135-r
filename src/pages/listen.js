@@ -53,7 +53,7 @@ export default class listen extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.content = {

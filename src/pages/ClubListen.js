@@ -90,12 +90,12 @@ class ClubListen extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
       paddingBottom: "50px",
     };
     this.infobox = {
-      backgroundColor: "#0e0e43",
+      backgroundColor: SETTINGS.COLOURS.BRAND_BG,
       borderRadius: "5px",
       padding: "10px",
       marginTop: "10px",
@@ -106,7 +106,7 @@ class ClubListen extends Component {
     };
     this.secondaryContent = {
       textAlign: "center",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.secondaryContentInner = {
@@ -237,7 +237,7 @@ class ClubListen extends Component {
           </Helmet>
           <LogoArea />
 
-          <div style={this.content} id="top">
+          <div style={this.content} id="top"className="mt-3">
             {this.state.hasPromo &&(
               <ClubAdvt top={this.state.promoContent.subOne} heading={this.state.promoContent.heading} link={this.state.promoContent.link}/>
             )}

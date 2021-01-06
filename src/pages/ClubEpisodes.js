@@ -52,7 +52,7 @@ export default class ClubEpisodes extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.content = {
@@ -141,7 +141,7 @@ export default class ClubEpisodes extends Component {
               <h3 style={{ textAlign: "center" }}>Club99 Series</h3>
             </div>
             <div style={this.content}>
-              <Adbanner/>
+              {/* <Adbanner/> */}
               <div className="row">
                 
                 {this.state.listen.slice(0, 20).map((track) => (

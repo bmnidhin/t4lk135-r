@@ -20,6 +20,8 @@ import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
 import Status from "../utils/Status";
 import BottomNav from "./base/BottomNav";
+import FeaturedRandom from "./homePageComponents/FeaturedRandom";
+
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -83,12 +85,12 @@ class episode extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
       paddingBottom: "50px",
     };
     this.infobox = {
-      backgroundColor: "#0e0e43",
+      backgroundColor: SETTINGS.COLOURS.BRAND_BG,
       borderRadius: "5px",
       padding: "10px",
       marginTop: "10px",
@@ -99,7 +101,7 @@ class episode extends Component {
     };
     this.secondaryContent = {
       textAlign: "center",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.secondaryContentInner = {
@@ -136,6 +138,7 @@ class episode extends Component {
         this.setState({
           notLoaded: true,
         });
+        alert('Some Error, Try again (404)')
         console.log(error);
       });
     this.refComments = base.syncState(this.props.match.params.slug, {
@@ -231,7 +234,7 @@ class episode extends Component {
           </Helmet>
           <LogoArea />
 
-          <div style={this.content} id="top">
+          <div style={this.content} id="top"className="pt-4">
             <div
               className={
                 this.state.isEventNoPublishedBannerVisible ? "" : "d-none"
@@ -453,7 +456,7 @@ class episode extends Component {
                   </div> */}
                 </div>
 
-                <FeaturedPosts />
+                <FeaturedRandom/>
                 <div class="d-flex flex-column bd-highlight justify-content-end">
                   <div class="p-2 bd-highlight"><a href="#top">Scroll to top</a></div>
 

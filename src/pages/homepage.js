@@ -15,6 +15,7 @@ import FeaturedClubs from "./homePageComponents/FeaturedClub";
 import Adbanner from "./AdBanner";
 import RecentlyPlayed from "./homePageComponents/RecentlyPlayed";
 import BottomNav from "./base/BottomNav";
+import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -29,10 +30,18 @@ export default class homepage extends Component {
   data = URL
   heroarea = {
     minHeight: "80vh",
-    backgroundColor: "#030229",
+    backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
     textAlign: "center",
-    paddingBottom: "30px",
+
     backgroundImage: "url(" + Background + ")",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
+  inner= {
+    minHeight: "80vh",
+    backgroundColor: SETTINGS.COLOURS.OVERLAY,
+    textAlign: "center",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -44,11 +53,11 @@ export default class homepage extends Component {
     marginTop: "30px",
     marginRight: "10%",
 
-    minHeight: "100px",
+
   };
   secondaryContent = {
     textAlign: "center",
-    backgroundColor: "#030229",
+    backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
     color: "white",
   };
   secondaryContentInner = {
@@ -72,26 +81,32 @@ export default class homepage extends Component {
           />
           </Helmet>
           <div style={this.heroarea}>
-            <LogoArea />
+            <div style={this.inner}>
+            <LogoArea page={'home'} />
             <HeroText />
             <div style={this.mainContent}>
             {/* <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/> */}
             {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
               <ListenAfterLive />
               {/* <FeaturedLiveChat/> */}
-             
-              <RecentPosters />
+            
+              <FeaturedRandom />
+              
+              
+              {/* <RecentPosters /> */}
+            </div>
             </div>
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
+            <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
              <RecentlyPlayed page="home"/>
-             <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+             
              <FeaturedPosts />
              <SubmitPromo/>
             
-              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <Adbanner/>
+              
+              {/* <Adbanner/> */}
               
              
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />

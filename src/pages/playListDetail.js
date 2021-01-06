@@ -21,6 +21,7 @@ import * as SETTINGS from './constants/Settings';
 import SubmitPromo from "./SubmitPromo";
 import Adbanner from "./AdBanner";
 import BottomNav from "./base/BottomNav";
+import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 const settings = require("./API/settings.json");
 
 
@@ -64,12 +65,12 @@ class playListDetail extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
       paddingBottom: "50px",
     };
     this.infobox = {
-      backgroundColor: "#0e0e43",
+      backgroundColor: SETTINGS.COLOURS.BRAND_BG,
       borderRadius: "5px",
       padding: "10px",
       marginTop: "10px",
@@ -80,7 +81,7 @@ class playListDetail extends Component {
     };
     this.secondaryContent = {
       textAlign: "center",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.secondaryContentInner = {
@@ -353,7 +354,7 @@ play_circle_outline
               <div style={this.secondaryContentInner}>
                   
               <div className="commentArea mt-3">
-              <Adbanner/>
+              {/* <Adbanner/> */}
                   <SubmitPromo/>
                   <hr
                     style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
@@ -506,7 +507,7 @@ play_circle_outline
                 </div>
 
                
-                <FeaturedPosts />
+                <FeaturedRandom/>
               </div>
             </div>
           </div>

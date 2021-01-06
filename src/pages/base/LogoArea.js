@@ -21,7 +21,7 @@ export default class LogoArea extends Component {
       lineHeight: "15px",
     };
     this.imageStyle = {
-      width: "20vh",
+      width: "15vh",
       height: "auto",
       paddingTop: "10px",
     };
@@ -31,28 +31,33 @@ export default class LogoArea extends Component {
   }
   render() {
     return (
-      <div style={this.divStyle} className="pl-4 pr-4">
-        
+      <div style={this.divStyle} className="pl-4 pr-4 pb-3 border-bottom border-white">
+
         <table style={this.table} >
           <tbody>
             <tr>
-              
-              <td style={{ width: "10%",fontSize: "25px" }}><span className="material-icons">
-menu
-</span></td>
+
+              <td style={{ width: "10%", fontSize: "25px", }}>
+              <Link to="/listen">
+              <span className="material-icons"style={{color:"white"}}>
+                  search
+                </span>
+                </Link>
+                
+              </td>
               <td style={{ width: "80%" }}>
                 <Link to="/">
-                <img src={logo} style={this.imageStyle} alt={appName}></img>
-              </Link>
+                  <img src={logo} style={this.imageStyle} alt={appName}></img>
+                </Link>
               </td>
               <td style={{ width: "10%" }}>
                 <UserPhoto />
-                </td>
+              </td>
             </tr>
           </tbody>
         </table>
 
-          
+
 
       </div>
     );

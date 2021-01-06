@@ -8,6 +8,7 @@ import FlotingPlayPause from './base/FlotingPlayPause';
 import { Helmet } from "react-helmet";
 import * as SETTINGS from './constants/Settings';
 import BottomNav from './base/BottomNav';
+
 // import Skeleton from '@yisheng90/react-loading';
 // const settings = require("./API/settings.json");
 
@@ -35,7 +36,7 @@ export default class playlists extends Component {
 
         this.conatiner={
           minHeight:"100vh",
-          backgroundColor:'#030229',
+          backgroundColor:SETTINGS.COLOURS.BG_COLOR_L0,
           color:"white",
           
 

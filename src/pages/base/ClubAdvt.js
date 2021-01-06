@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Moment from "moment";
-
+import * as SETTINGS from '../constants/Settings';
 export default class ClubAdvt extends Component {
   state = {
     title: "",
@@ -14,7 +14,7 @@ export default class ClubAdvt extends Component {
     textAlign: "left",
     textDecoration: "none",
     borderRadius: "5px",
-    backgroundColor: "rgb(14, 14, 67)",
+    backgroundColor: SETTINGS.COLOURS.BRAND_BG,
     minHeight: "40px",
     isbannerOn: true,
   };
@@ -30,7 +30,7 @@ export default class ClubAdvt extends Component {
         to={"/" + this.props.link}
         target={this.props.target || "#"}
       >
-        <div style={this.mainContent}>
+        <div style={this.mainContent} className="">
           <div style={this.inner}>
             <span
               className="text-uppercase text-muted"
