@@ -44,7 +44,7 @@ import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 //   return settings.liveCover;
 // });
 
-class episode extends Component {
+class WatchEpisode extends Component {
   constructor(props) {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -68,7 +68,8 @@ class episode extends Component {
       isLoggedIn: false,
       numberOfComments: 0,
       user: " ",
-      commentsLoaded: false
+      commentsLoaded: false,
+      coverVisible:true
     };
 
     auth.onAuthStateChanged(user => {
@@ -116,7 +117,7 @@ class episode extends Component {
   componentDidMount() {
     
     axios
-      .get("https://api.thetkmshow.in/listen/" + this.props.match.params.slug)
+      .get("https://api.thetkmshow.in/watch/" + this.props.match.params.slug)
 
       .then((response) => {
         this.setState({
@@ -213,6 +214,7 @@ class episode extends Component {
       liveAudio: this.state.audio,
       liveCover: this.state.cover,
       liveTitle: this.state.title,
+      coverVisible:true
     });
     localStorage.setItem('title', this.state.title)
     localStorage.setItem('cover', this.state.cover)
@@ -229,7 +231,7 @@ class episode extends Component {
             <title>{this.state.title} | The TKM Show</title>
             <link
               rel="canonical"
-              href={"https://thetkmshow.in/listen " + this.props.match.params.slug}
+              href={"https://thetkmshow.in/watch " + this.props.match.params.slug}
             />
           </Helmet>
           <LogoArea />
@@ -254,12 +256,15 @@ class episode extends Component {
             <div style={this.infobox}>
               <div class="row">
                 <div class="col-sm-4">
-                  <img
-                    src={this.state.cover}
-                    width="100%"
-                    className="roundedImage"
-                    alt="Poster"
-                  ></img>
+                {this.state.coverVisible &&(
+                     <img
+                     src={this.state.cover}
+                     width="100%"
+                     className="roundedImage d-none d-xl-block"
+                     alt="Poster"
+                   ></img>
+                )}
+                 
                 </div>
                 <div class="col-sm-8">
                   <div className=" p-2 pt-4 text-break">
@@ -268,7 +273,14 @@ class episode extends Component {
                   <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/> */}
                   Loading........
                  </div>
-
+                 <div className="media pb-3">
+            <Player
+              src={this.state.liveAudio}
+              vendor="audio"
+              autoPlay="false"
+              width="100%"
+            />
+          </div>
                     <h4>{this.state.title}</h4>
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
@@ -284,7 +296,7 @@ class episode extends Component {
                       cover={this.state.liveCover}
                       title={this.state.liveTitle}
                       url = {this.state.liveAudio}
-                      slug={"listen/"+this.props.match.params.slug}
+                      slug={"watch/"+this.props.match.params.slug}
                       name={this.state.user.displayName}
                       id={this.state.user.uid}
                       auth ={this.state.isLoggedIn}
@@ -466,13 +478,13 @@ class episode extends Component {
           </div>
 
           {/* <NowPlaying playing={this.state.playing}/> */}
-          <div className="media">
+          {/* <div className="media">
             <Player
               src={this.state.liveAudio}
               vendor="audio"
               autoPlay="false"
             />
-          </div>
+          </div> */}
           <FlotingPlayPause
             cover={this.state.liveCover}
             title={this.state.liveTitle}
@@ -483,4 +495,4 @@ class episode extends Component {
     );
   }
 }
-export default withMediaProps(episode);
+export default withMediaProps(WatchEpisode);

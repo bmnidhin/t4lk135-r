@@ -23,7 +23,7 @@ export default class FeaturedRandom extends Component {
         
       }).then(()=>{
         const random =Math.floor(Math.random() * (this.state.listen.length-4))
-        console.log("random is"+ random)
+      
         this.setState({
             random:random
           });

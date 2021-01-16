@@ -156,7 +156,7 @@ export default class RecentlyPlayed extends Component {
                             }
                             key={track.slug}
                         >
-                            <Link to={"/listen/" + track.slug}>
+                            <Link to={track.slug}>
                                 <img
                                     src={track.cover}
                                     width="100%"

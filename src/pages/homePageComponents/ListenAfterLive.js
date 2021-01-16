@@ -10,6 +10,7 @@ export default class ListenAfterLive extends Component {
     slug: "",
     date: "",
     time: "",
+    data: []
   };
   mainContent = {
     textAlign: "left",
@@ -36,14 +37,12 @@ export default class ListenAfterLive extends Component {
         console.log(error);
       });
     axios
-      .get("https://api.thetkmshow.in/listen")
+      .get("https://api.thetkmshow.in/alltracks")
       .then((response) => {
         this.setState({
-          title: response.data[0].title,
-          slug: response.data[0].slug,
-          date: response.data[0].publishedAtDate,
-          time: response.data[0].publishedAtTime,
+          data: response.data
         });
+        console.log(this.state.data)
       })
       .catch((error) => {
         console.log(error);
@@ -61,39 +60,45 @@ export default class ListenAfterLive extends Component {
     const timeAgo = Moment(publishAt).fromNow();
 
     return (
-      <Link
-        to={"/listen/" + this.state.slug}
-        className={true ? "" : "d-none"}
+      <div>
+        {this.state.data.filter(track => track.isEventPublished ??true).slice(0, 1).map((track) => (
+
+<Link
+to={track.slug}
+className={true ? "" : "d-none"}
+>
+<div style={this.mainContent} className="border border-primary">
+  <div style={this.inner}>
+    <span
+      className="text-uppercase text-muted"
+      style={{ fontSize: "10px" }}
+    >
+      Recent Episode
+    </span>
+    <div className="d-flex flex-row bd-highlight justify-content-between mb-2">
+      <div className="bd-highlight">
+        <h3 style={{ fontSize: "19px", fontWeight: "500" }}>
+          {track.title}
+        </h3>
+        <span style={{ fontSize: "10px" }} className="text-muted">
+          Streamed Recently
+        </span>
+      </div>
+      <div
+        style={{ height: "100%", display: "inline" }}
+        className="bd-highlight align-middle"
       >
-        <div style={this.mainContent} className="border border-primary">
-          <div style={this.inner}>
-            <span
-              className="text-uppercase text-muted"
-              style={{ fontSize: "10px" }}
-            >
-              Recent Episode
-            </span>
-            <div className="d-flex flex-row bd-highlight justify-content-between mb-2">
-              <div className="bd-highlight">
-                <h3 style={{ fontSize: "19px", fontWeight: "500" }}>
-                  {this.state.title}
-                </h3>
-                <span style={{ fontSize: "10px" }} className="text-muted">
-                  Streamed {timeAgo}
-                </span>
-              </div>
-              <div
-                style={{ height: "100%", display: "inline" }}
-                className="bd-highlight align-middle"
-              >
-                <span className="material-icons " style={{ fontSize: "38px" }}>
-                  play_circle_outline
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Link>
+        <span className="material-icons " style={{ fontSize: "38px" }}>
+          play_circle_outline
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+</Link>
+        ))}
+      </div>
+      
     );
   }
 }

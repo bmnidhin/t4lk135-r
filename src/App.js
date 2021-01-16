@@ -26,6 +26,7 @@ import ClubListen from "./pages/ClubListen";
 import MagazineDownload from "./pages/MagazineDownload";
 import Privacy from "./pages/Privacy";
 import MyLibrary from "./pages/MyLibrary";
+import WatchEpisode from "./pages/WatchEpisode";
 
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
 
               <Route exact path="/listen" component={listen}/>
               <Route exact path="/listen/:slug" component={episode} />
+              <Route exact path="/watch/:slug" component={WatchEpisode} />
 
               <Route exact path="/playlist/" component={playlists} />
               <Route exact path="/playlist/:slug" component={playListDetail}/>
