@@ -199,7 +199,7 @@ class SongDedication extends Component {
             <div  style={{
             backgroundColor: "rgb(14, 14, 67)",
             backgroundImage:
-              "url(" + this.state.randomAvathar + ")",
+              "url(" + "https://images.unsplash.com/photo-1462965326201-d02e4f455804?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80" + ")",
             backgroundSize: "cover",
             width: "100%",
             height: "100%",
