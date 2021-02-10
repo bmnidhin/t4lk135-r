@@ -199,8 +199,8 @@ class SongDedication extends Component {
           <div style={this.infobox} className="pt-4 mb-4">
           <div className="p-3 text-center">
                 <h3>Anonymous Song Dedication</h3>
-              <p className="text-muted">Name Your Favorite song and your valantine you wanna dedicate this to.</p>
-              <p className="text-muted">👤 <u>Your name wont be reveled to anyone </u></p>
+              <p className="text-muted">Name Your favorite song and your valantine you wanna dedicate this to.</p>
+              <p className="text-muted">👤Your name wont be revealed to anyone </p>
             </div>
             </div>
             <div style={this.secondaryContent}>
@@ -238,7 +238,7 @@ class SongDedication extends Component {
                       </div>
                       <div class="p-2 flex-grow-1 bd-highlight">
                         <h6>
-                          <b> Favorite song - Valantine </b>
+                          <b> Favorite song - Valantine's Name </b>
                         
                         </h6>
                         {this.state.commentsLoaded && (<PostDedication postNewComment={this.postNewComment} />)}
