@@ -195,14 +195,31 @@ class SongDedication extends Component {
           </Helmet>
           <LogoArea />
 
-          <div style={this.content} id="top"className="pt-4 pb-4">
-          <div style={this.infobox} className="pt-4 mb-4">
+          <div style={this.content} id="top"className="pt-4 mb-4">
+            <div  style={{
+            backgroundColor: "rgb(14, 14, 67)",
+            backgroundImage:
+              "url(" + this.state.randomAvathar + ")",
+            backgroundSize: "cover",
+            width: "100%",
+            height: "100%",
+            
+          }}>
+               <div style={this.infobox} className="pt-4 mb-4" style={{
+            backgroundColor: "rgba(18,30,40,0.9)",
+            width: "100%",
+            height: "100%",
+            
+          }}>
           <div className="p-3 text-center">
                 <h3>Anonymous Song Dedication</h3>
               <p className="text-muted">Name Your favorite song and your valantine you wanna dedicate this to.</p>
               <p className="text-muted">👤Your name wont be revealed to anyone </p>
             </div>
             </div>
+
+            </div>
+         
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
                 <div className="commentArea">

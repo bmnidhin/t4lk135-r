@@ -42,7 +42,7 @@ class PostDedication extends Component {
             required
             maxLength="500"
             aria-describedby="button-addon2"
-          // autoFocus={true}
+            autoFocus={true}
 
           />
           <div class="input-group-append">
