@@ -27,6 +27,7 @@ import MagazineDownload from "./pages/MagazineDownload";
 import Privacy from "./pages/Privacy";
 import MyLibrary from "./pages/MyLibrary";
 import WatchEpisode from "./pages/WatchEpisode";
+import SongDedication from "./pages/SongDedication";
 
 
 class App extends Component {
@@ -62,6 +63,7 @@ class App extends Component {
               <Route exact path="/club99/:slug" component={ClubListen}/>
               <Route exact path="/p/:slug" component={ClubPromoPage}/>
               <Route exact path="/library" component={MyLibrary}/>
+              <Route exact path="/song-dedication" component={SongDedication}/>
 
               <Route exact path="/ground" component={test} />
               <Route exact path="/submit" component={Redirect} />

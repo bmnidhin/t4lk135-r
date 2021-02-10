@@ -11,16 +11,6 @@ import BottomNav from "./base/BottomNav";
 import Placehold from "./base/Placehold";
 
 
-// import Skeleton from '@yisheng90/react-loading';
-// const settings = require("./API/settings.json");
-
-// let URL = settings.map((settings) => {
-//   return settings.streamURL;
-// });
-// let liveCover = settings.map((settings) => {
-//   return settings.liveCover;
-// });
-
 export default class listen extends Component {
   constructor(props) {
     super(props);
@@ -37,20 +27,6 @@ export default class listen extends Component {
       isLoggedIn: false,
       user: "",
     };
-    // this.refComments = base.syncState("ithaan", {
-    //   context: this,
-    //   state: "comments"
-    // });
-    // auth.onAuthStateChanged(user => {
-    //   if (user) {
-    //     this.setState({ isLoggedIn: true, user });
-    //     console.log("------------------------------------");
-    //     console.log(user);
-    //   } else {
-    //     this.setState({ isLoggedIn: false, user: {} });
-              //localStorage.removeItem('userid')
-    //   }
-    // });
 
     this.conatiner = {
       minHeight: "100vh",
@@ -104,30 +80,7 @@ export default class listen extends Component {
       playing: "aana",
     });
   }
-  // postNewComment(comment) {
-  //   comment.user = {
-  //     uid: this.state.user.uid,
-  //     name: this.state.user.displayName,
-  //     photo: this.state.user.photoURL,
 
-  //   };
-  //   const comments = {
-  //     ...this.state.comments
-  //   };
-  //   const timestamp = Date.now();
-  //   comments[`comm-${timestamp}`] = comment;
-  //   this.setState({
-  //     comments: comments
-  //   });
-  // }
-  // auth(provider) {
-  //   auth.signInWithPopup(providers[provider]);
-  // }
-  // logout(){
-  //   this.setState({ isLoggedIn: false, user: {} });
-              //localStorage.removeItem('userid')
-
-  // }
   render() {
     return (
       <Media>
@@ -183,45 +136,8 @@ export default class listen extends Component {
               </div>
             </div>
           </div>
-          {/* <div className="container">
-          {this.state.isLoggedIn && (
-            <div className="user">
-              <img
-                className="photo"
-                alt={this.state.user}
-                src={this.state.user.photoURL}
-              />
-              <h5 className="display-name"> {this.state.user.displayName} </h5>
-              <p className="email"> {this.state.user.email} </p>
-              <NewComment postNewComment={this.postNewComment} />
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => auth.signOut()}
-              >
-                Sign Out
-              </button>
-            </div>
-          )}
-          {!this.state.isLoggedIn && (
-            <div className="alert alert-dark">
-              <h1 className="title">ReactJS Comments App</h1>
-              <label className="sign-in">Sign in: </label>
-              <button
-                className="btn btn-danger"
-                onClick={() => this.auth("google")}
-              >
-               
-                google
-              </button>
-            </div>
-           
-          )}
           
-          <Comments comments={this.state.comments} />
-        </div> */}
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
-
-          {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
           <Player src={this.state.url} vendor="audio" autoPlay={localStorage.getItem('autoplay')} />
           <BottomNav selected="listen"/>
