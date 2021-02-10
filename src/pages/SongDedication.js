@@ -212,7 +212,7 @@ class SongDedication extends Component {
             
           }}>
           <div className="p-3 text-center">
-                <h3>Anonymous Song Dedication</h3>
+                <h3>Anonymous Song Dedication ❤️😊</h3>
               <p className="text-muted">Name Your favorite song and your valantine you wanna dedicate this to.</p>
               <p className="text-muted">👤Your name wont be revealed to anyone </p>
             </div>

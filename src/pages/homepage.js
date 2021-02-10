@@ -16,6 +16,7 @@ import Adbanner from "./AdBanner";
 import RecentlyPlayed from "./homePageComponents/RecentlyPlayed";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
+import Promobox from "./PromoBox";
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -91,14 +92,16 @@ export default class homepage extends Component {
               {/* <FeaturedLiveChat/> */}
             
               <FeaturedRandom />
+               
               
-              
+               
               {/* <RecentPosters /> */}
             </div>
             </div>
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
+            {/* <Promobox title="Hey! Checkout Anonymous Song Dedication ❤️😊" subtitle="Dedicate" link="/song-dedication" target=""/> */}
             <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
              <RecentlyPlayed page="home"/>
              
