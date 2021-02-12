@@ -157,7 +157,7 @@ class FlotingPlayPause extends Component {
     return (
      <>
       <div style={this.seek}>
-      <SeekBar className="form-range" style={{width: "100%"}}/>
+      <SeekBar className="e-range" />
       </div>
       <div style={this.style}>
       
