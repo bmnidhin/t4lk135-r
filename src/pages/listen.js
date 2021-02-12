@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import LogoArea from "./base/LogoArea";
 import { Media, Player, controls } from "react-media-player";
 import axios from "axios";
-import Moment from "moment";
 import { Link } from "react-router-dom";
 import FlotingPlayPause from "./base/FlotingPlayPause";
 import { Helmet } from "react-helmet";
@@ -14,13 +13,13 @@ import Placehold from "./base/Placehold";
 export default class listen extends Component {
   constructor(props) {
     super(props);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    // this.onChangeUsername = this.onChangeUsername.bind(this);
     // this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
-      notLoaded:true,
+      notLoaded: true,
       url: SETTINGS.liveURL,
-      cover:SETTINGS.liveCover,
+      cover: SETTINGS.liveCover,
       title: "Live Radio",
       listen: [],
       comments: {},
@@ -37,48 +36,29 @@ export default class listen extends Component {
       marginLeft: "10%",
       marginRight: "10%",
     };
-    this.itemHeading={
-      textAlign:"left",
-      fontSize:"10px",
-      paddingTop:"15px",
-      color:"white",
+    this.itemHeading = {
+      textAlign: "left",
+      fontSize: "10px",
+      paddingTop: "15px",
+      color: "white",
     }
   }
 
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/listen")
+      .get("https://api.thetkmshow.in/alltracks")
       .then((response) => {
         this.setState({
-          notLoaded:false,
+          notLoaded: false,
           listen: response.data,
         });
       })
       .catch((error) => {
         this.setState({
-          notLoaded:true,
+          notLoaded: true,
         });
         console.log(error);
       });
-  }
-  check(date, time) {
-    const publishedDate = date;
-    const publishedTime = time;
-    const currentTime = Moment().format();
-    const publishAt = publishedDate + "T" + publishedTime + "+05:30";
-
-    const a = Moment(publishAt);
-    const b = Moment(currentTime);
-    const myDiff = b.diff(a);
-
-    const isEventPublished = myDiff > 0;
-    return isEventPublished;
-  }
-
-  onChangeUsername() {
-    this.setState({
-      playing: "aana",
-    });
   }
 
   render() {
@@ -98,49 +78,43 @@ export default class listen extends Component {
             <div style={this.content}>
               {/* <Adbanner/> */}
               <div className="row">
-                
+
                 {this.state.listen.slice(0, 20).map((track) => (
-                  <div
-                    className={
-                      this.check(track.publishedAtDate, track.publishedAtTime)
-                        ? "col-6 col-md-3"
-                        : "d-none"
-                    }
-                    key={track.slug}
-                  >
-                    <Link to={"/listen/" + track.slug} className="">
-                      <img
-                        src={track.cover}
-                        width="100%"
-                        className="roundedImage"
-                        alt="Poster"
-                      ></img>
-                      <p style={this.itemHeading} className="text-truncate">
-                        {track.title}
-                      </p>
-                    </Link>
-                  </div>
-                ))}
-             <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
+                  track.isEventPublished && (
+                    <div className={"col-6 col-md-3"} key={track.slug}>
+                      <Link to={track.slug} className="">
+                        <img
+                          src={track.cover}
+                          width="100%"
+                          className="roundedImage"
+                          alt="Poster"
+                        ></img>
+                        <p style={this.itemHeading} className="text-truncate">
+                          {track.title}
+                        </p>
+                      </Link>
+                    </div>
+                  )))}
+                <div className="col-6 col-md-3">
+                  <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+                </div>
+                <div className="col-6 col-md-3">
+                  <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+                </div>
+                <div className="col-6 col-md-3">
+                  <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+                </div>
+                <div className="col-6 col-md-3">
+                  <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+                </div>
               </div>
             </div>
           </div>
-          
+
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
           <div className="media">
-          <Player src={this.state.url} vendor="audio" autoPlay={localStorage.getItem('autoplay')} />
-          <BottomNav selected="listen"/>
+            <Player src={this.state.url} vendor="audio" autoPlay={localStorage.getItem('autoplay')} />
+            <BottomNav selected="listen" />
           </div>
         </div>
       </Media>

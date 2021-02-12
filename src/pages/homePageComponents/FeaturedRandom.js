@@ -14,7 +14,7 @@ export default class FeaturedRandom extends Component {
   };
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/listen")
+      .get("https://api.thetkmshow.in/alltracks")
       .then((response) => {
         this.setState({
           notLoaded:false,
@@ -30,28 +30,6 @@ export default class FeaturedRandom extends Component {
       }
        
       )
-      .then(()=>{
-        const publishedDate = this.state.listen[0].publishedAtDate;
-        const publishedTime = this.state.listen[0].publishedAtTime;
-        const currentTime = Moment().format();
-        const publishAt = publishedDate + "T" + publishedTime + "+05:30";
-
-        const a = Moment(publishAt);
-        const b = Moment(currentTime);
-        const myDiff = b.diff(a);
-
-        const isEventPublished = myDiff > 0;
-        const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
-        if (isEventPublished) {
-          this.setState({
-            sliceAt:3
-          });
-        } else {
-          this.setState({
-            sliceAt:4
-          });
-        }
-      })
       .catch((error) => {
         this.setState({
           notLoaded:true,
@@ -59,20 +37,7 @@ export default class FeaturedRandom extends Component {
         console.log(error);
       });
   }
-  check(date, time) {
-    const publishedDate = date;
-    const publishedTime = time;
-    const currentTime = Moment().format();
-    const publishAt = publishedDate + "T" + publishedTime + "+05:30";
 
-    const a = Moment(publishAt);
-    const b = Moment(currentTime);
-    const myDiff = b.diff(a);
-
-    const isEventPublished = myDiff > 0;
-    const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
-    return isEventPublished;
-  }
  
   heading={
      paddingTop:"20px",
@@ -102,28 +67,14 @@ export default class FeaturedRandom extends Component {
 
         <div className="row">
          
-        <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
+     
           {this.state.listen.slice(this.state.random, this.state.random+4).map((track) => (
-            <div
-              className={
-                this.check(track.publishedAtDate, track.publishedAtTime)
-                  ? "col-6 col-md-3"
-                  : "d-none"
-              }
+            track.isEventPublished &&(
+              <div
+              className={"col-6 col-md-3"}
               key={track.slug}
             >
-              <a href={"/listen/" + track.slug}>
+              <a href={track.slug}>
                 <img
                   src={track.cover}
                   width="100%"
@@ -133,8 +84,22 @@ export default class FeaturedRandom extends Component {
                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
               </a>
             </div>
-          ))}
+            )))}
           
+
+
+          <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
+           </div>
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
+           </div>
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
+           </div>
+           <div className="col-6 col-md-3">
+          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
+           </div>
         </div>
       
       </div>

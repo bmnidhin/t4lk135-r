@@ -114,8 +114,8 @@ export default class homepage extends Component {
              
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
               <FeaturedPlaylists />
-              <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <FeaturedClubs/>
+              {/* <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+              <FeaturedClubs/> */}
             </div>
           </div>
           <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/>

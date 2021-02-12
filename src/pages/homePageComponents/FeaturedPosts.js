@@ -13,7 +13,7 @@ export default class FeaturedPosts extends Component {
   };
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/listen")
+      .get("https://api.thetkmshow.in/alltracks")
       .then((response) => {
         this.setState({
           notLoaded:false,
@@ -128,7 +128,7 @@ export default class FeaturedPosts extends Component {
               }
               key={track.slug}
             >
-              <Link to={"/listen/" + track.slug}>
+              <Link to={track.slug}>
                 <img
                   src={track.cover}
                   width="100%"
