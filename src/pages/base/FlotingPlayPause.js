@@ -129,6 +129,7 @@ class FlotingPlayPause extends Component {
   };
   
   render() {
+    //https://developers.google.com/web/updates/2017/02/media-session
     if ('mediaSession' in navigator) {
 
       navigator.mediaSession.metadata = new window.MediaMetadata({

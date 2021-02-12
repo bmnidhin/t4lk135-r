@@ -74,7 +74,7 @@ export default class FeaturedRandom extends Component {
               className={"col-6 col-md-3"}
               key={track.slug}
             >
-              <a  href={'/' + track.slug+"?autoplay=true"}>
+              <a  href={'/' + track.slug+"?autoplay=false"}>
                 <img
                   src={track.cover}
                   width="100%"
