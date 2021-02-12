@@ -88,13 +88,17 @@ class FlotingPlayPause extends Component {
     
   }
   shouldComponentUpdate({ media }) {
+   
     return this.props.media.isPlaying !== media.isPlaying;
     
   }
 
   _handlePlayPause = () => {
-    this.props.media.playPause()
-    {this.props.media.isPlaying? localStorage.setItem('autoplay', false) :localStorage.setItem('autoplay', true)}
+ 
+      this.props.media.playPause()
+  
+    
+    {this.props.media.isPlaying? localStorage.removeItem('autoplay') :localStorage.setItem('autoplay', true)}
     ReactGA.initialize('UA-168458070-1');
 
     ReactGA.event({
