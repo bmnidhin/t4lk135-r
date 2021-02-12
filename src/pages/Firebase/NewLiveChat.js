@@ -28,7 +28,7 @@ class NewLiveChat extends Component {
   }
   style = {
     position: "fixed",
-    bottom: "125px",
+    bottom: "75px",
     right: "0px",
     left: "0px",
     zIndex: "9999",

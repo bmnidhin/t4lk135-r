@@ -97,7 +97,7 @@ class FlotingPlayPause extends Component {
 
   style = {
     position: "fixed",
-    bottom: "5px",
+    bottom: "0px",
     right: "0px",
     left: "0px",
     zIndex: "999999",
