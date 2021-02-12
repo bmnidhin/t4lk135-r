@@ -39,6 +39,7 @@ class FlotingPlayPause extends Component {
   }
   
   componentDidMount(){
+    setInterval(this.tickingTimer, 1000) //upadate percentage in 1 min
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
@@ -50,6 +51,8 @@ class FlotingPlayPause extends Component {
               localStorage.removeItem('userid')
       }
     });
+
+   
     ReactGA.initialize('UA-168458070-1');
 
     ReactGA.event({
@@ -58,6 +61,13 @@ class FlotingPlayPause extends Component {
       label: this.props.title,
       nonInteraction: true,}) 
   
+  }
+
+  tickingTimer = () => {
+    this.forceUpdate();
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   componentDidUpdate({media}){
@@ -100,19 +110,56 @@ class FlotingPlayPause extends Component {
     bottom: "0px",
     right: "0px",
     left: "0px",
-    zIndex: "999999",
+    zIndex: "9999",
     cursor: "pointer",
     backgroundColor: "white",
     height: "75px",
     width: "100%",
 //     boxShadow: "#0a0a0a 0px -1px 11px 0px"
   };
+  seek = {
+    position: "fixed",
+    bottom: "60px",
+    right: "0px",
+    left: "0px",
+    zIndex: "999999",
+    cursor: "pointer",
+    width: "100%",
+//     boxShadow: "#0a0a0a 0px -1px 11px 0px"
+  };
   
   render() {
+    if ('mediaSession' in navigator) {
+
+      navigator.mediaSession.metadata = new window.MediaMetadata({
+        title: this.props.title,
+        artist: 'The TKM Show',
+        album: 'Originals',
+        artwork: [
+          { src: this.props.cover,   sizes: '96x96',   type: 'image/png' },
+          { src: this.props.cover, sizes: '128x128', type: 'image/png' },
+          { src: this.props.cover, sizes: '192x192', type: 'image/png' },
+          { src: this.props.cover, sizes: '256x256', type: 'image/png' },
+          { src: this.props.cover, sizes: '384x384', type: 'image/png' },
+          { src: this.props.cover, sizes: '512x512', type: 'image/png' },
+        ]
+      });
+    
+      // navigator.mediaSession.setActionHandler('play', function() {});
+      // navigator.mediaSession.setActionHandler('pause', function() {});
+      // navigator.mediaSession.setActionHandler('seekbackward', function() {});
+      // navigator.mediaSession.setActionHandler('seekforward', function() {});
+      // navigator.mediaSession.setActionHandler('previoustrack', function() {});
+      // navigator.mediaSession.setActionHandler('nexttrack', function() {});
+    }
     const { className, style, media } = this.props;
     return (
-      <Media>
+     <>
+      <div style={this.seek}>
+      <SeekBar  style={{width: "100%"}}/>
+      </div>
       <div style={this.style}>
+      
         <table className="table table-bordered" style={{ marginBottom: 0 }}>
           <tbody>
             <tr>
@@ -133,7 +180,7 @@ class FlotingPlayPause extends Component {
 
                 <span style={{ fontSize: "8px", textAlign: "left" }}>
                  
-                  {/* {media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)} */}
+                  {media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)}
                 </span>
               </td>
 
@@ -146,18 +193,20 @@ class FlotingPlayPause extends Component {
                   <span className="sr-only">Loading...</span>
                 </div> */}
                 <div>
-                  {/* <div className={media.isLoading && (media.duration !==Infinity) ? '' : 'd-none'}>
-                    <div className="spinner-border text-secondary" role="status"></div>
-                    </div> */}
-                  <div className={""}>
-                    {media.isPlaying ? (
-                      <span className="material-icons">pause_circle_filled</span>
-                    ) : (
-                      <span className="material-icons ">
-                        play_circle_filled
-                      </span>
-                    )}
-                  </div>
+                
+                  {media.isLoading&&(<div className="spinner-border text-secondary" role="status"></div>)}
+                  {!media.isLoading&&(
+                     <div className={""}>
+                     {media.isPlaying ? (
+                       <span className="material-icons">pause_circle_filled</span>
+                     ) : (
+                       <span className="material-icons ">
+                         play_circle_filled
+                       </span>
+                     )}
+                   </div>
+                  )}
+                 
                 </div>
 
                 {/*  */}
@@ -174,7 +223,7 @@ class FlotingPlayPause extends Component {
           <div className="col-5 flotingTitle">col-sm-4</div>
         </div> */}
       </div>
-      </Media>
+     </>
     );
   }
 }

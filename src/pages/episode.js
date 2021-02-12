@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import {
   Media,
   Player,
+  controls,
   withMediaProps,
-  // utils,
+  utils,
 } from "react-media-player";
 import LogoArea from "./base/LogoArea";
 import axios from "axios";
@@ -21,18 +22,25 @@ import * as SETTINGS from './constants/Settings';
 import Status from "../utils/Status";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
+import {
+  BrowserRouter as Router,
+  Link,
+  useLocation
+} from "react-router-dom";
 
 // import Skeleton from '@yisheng90/react-loading';
-// const {
-//   PlayPause,
-//   CurrentTime,
-//   Progress,
-//   SeekBar,
-//   Duration,
-//   MuteUnmute,
-//   Volume,
-//   Fullscreen,
-// } = controls;
+const {
+  PlayPause,
+  CurrentTime,
+  Progress,
+  SeekBar,
+  Duration,
+  MuteUnmute,
+  Volume,
+  Fullscreen,
+} = controls;
+
+let qs = require('qs');
 // const settings = require("./API/settings.json");
 // // const timePublished = Date.now();
 // const image =
@@ -132,6 +140,16 @@ class episode extends Component {
           // cover: response.data.cover,
           isEventPublished: response.data.isEventPublished,
         });
+        let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay
+        let seekTo   = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).seek
+        if (autoplay =="true") {
+          this.setState({
+            liveAudio: response.data.URL,
+            liveCover: response.data.cover,
+            liveTitle: response.data.title,
+          });
+        }
+       
       })
       .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
       .catch((error) => {
@@ -141,6 +159,9 @@ class episode extends Component {
         alert('Some Error, Try again (404)')
         console.log(error);
       });
+      //
+
+     
     this.refComments = base.syncState(this.props.match.params.slug, {
       context: this,
 
@@ -168,7 +189,7 @@ class episode extends Component {
       isEventNoPublishedBannerVisible: isEventPublished,
     });
   }
-
+  
   postNewComment(comment) {
     const timePublished = Date.now();
     if (this.state.user.uid === '' || this.state.user.displayName === '' || this.state.user.photoURL === '') {
@@ -208,6 +229,7 @@ class episode extends Component {
               localStorage.removeItem('userid')
 
   }
+ 
   onChangeUsername() {
     this.setState({
       liveAudio: this.state.audio,
@@ -217,10 +239,15 @@ class episode extends Component {
     localStorage.setItem('title', this.state.title)
     localStorage.setItem('cover', this.state.cover)
     localStorage.setItem('url', this.state.audio)
+
+   
   }
 
   render() {
-
+    const { className, style, media } = this.props;
+    let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay;
+    let seekTo   = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).seek;
+   
     return (
       <Media>
         <div style={this.conatiner}>
@@ -254,6 +281,7 @@ class episode extends Component {
             <div style={this.infobox}>
               <div class="row">
                 <div class="col-sm-4">
+                  
                   <img
                     src={this.state.cover}
                     width="100%"
@@ -268,7 +296,7 @@ class episode extends Component {
                   <Skeleton color="rgb(3, 2, 41,0.3)" width="10%"/> */}
                   Loading........
                  </div>
-
+                   
                     <h4>{this.state.title}</h4>
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
@@ -280,6 +308,11 @@ class episode extends Component {
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
                     <MainPlayPause switch={this.onChangeUsername} />
+            
+                    <FlotingPlayPause
+            cover={this.state.liveCover}
+            title={this.state.liveTitle}
+          />
                     <Status src={this.state.liveAudio}
                       cover={this.state.liveCover}
                       title={this.state.liveTitle}
@@ -473,10 +506,7 @@ class episode extends Component {
               autoPlay="false"
             />
           </div>
-          <FlotingPlayPause
-            cover={this.state.liveCover}
-            title={this.state.liveTitle}
-          />
+          
           <BottomNav selected="listen"/>
         </div>
       </Media>

@@ -20,6 +20,7 @@ import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 import * as SETTINGS from './constants/Settings';
 import ClubAdvt from "./base/ClubAdvt";
 import BottomNav from "./base/BottomNav";
+import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -41,7 +42,7 @@ import BottomNav from "./base/BottomNav";
 // let liveCover = settings.map((settings) => {
 //   return settings.liveCover;
 // });
-
+let qs = require('qs');
 class ClubListen extends Component {
   constructor(props) {
     super(props);
@@ -138,6 +139,15 @@ class ClubListen extends Component {
           // cover: response.data.cover,
           isEventPublished: response.data.isEventPublished,
         });
+        let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay
+        let seekTo   = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).seek
+        if (autoplay =="true") {
+          this.setState({
+            liveAudio: response.data.URL,
+            liveCover: response.data.cover,
+            liveTitle: response.data.title,
+          });
+        }
       })
       .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
       .catch((error) => {
@@ -462,7 +472,7 @@ class ClubListen extends Component {
                   </div> */}
                 </div>
 
-                <FeaturedPosts />
+                <FeaturedRandom/>
                 <div class="d-flex flex-column bd-highlight justify-content-end">
   <div class="p-2 bd-highlight"><a href="#top">Scroll to top</a></div>
 

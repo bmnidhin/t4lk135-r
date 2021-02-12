@@ -43,7 +43,7 @@ import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 // let liveCover = settings.map((settings) => {
 //   return settings.liveCover;
 // });
-
+let qs = require('qs');
 class WatchEpisode extends Component {
   constructor(props) {
     super(props);
@@ -133,6 +133,15 @@ class WatchEpisode extends Component {
           // cover: response.data.cover,
           isEventPublished: response.data.isEventPublished,
         });
+        let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay
+        let seekTo   = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).seek
+        if (autoplay =="true") {
+          this.setState({
+            liveAudio: response.data.URL,
+            liveCover: response.data.cover,
+            liveTitle: response.data.title,
+          });
+        }
       })
       .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
       .catch((error) => {

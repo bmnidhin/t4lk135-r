@@ -59,7 +59,7 @@ export default class FeaturedRandom extends Component {
           <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>FOR YOU</span></div>
           <div className=" bd-highlight">
               
-          <Link to="/listen">VIEW ALL</Link>
+          <Link to={"/listen"}>VIEW ALL</Link>
           </div>
           
         </div>
@@ -74,15 +74,16 @@ export default class FeaturedRandom extends Component {
               className={"col-6 col-md-3"}
               key={track.slug}
             >
-              <a href={track.slug}>
+              <a  href={'/' + track.slug+"?autoplay=true"}>
                 <img
                   src={track.cover}
                   width="100%"
                   className="roundedImage"
                   alt="Poster"
                 ></img>
+            
                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-              </a>
+                </a>
             </div>
             )))}
           

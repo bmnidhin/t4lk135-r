@@ -134,3 +134,12 @@ body{font-family: 'Montserrat', sans-serif;}
 .border-bottom {
   border-bottom: 0.5px solid #87888845!important;
 }
+
+.my-range{
+  width: 100%;
+  height: 1.4rem;
+  padding: 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none}

@@ -48,7 +48,7 @@ class MainPlaylistPlayPause extends Component {
           </div>
         </div>
 
-        {media.duration == Infinity || media.isLoading ? ("") : (<SeekBar className="custom-range" />)}
+        {/* {media.duration == Infinity || media.isLoading ? ("") : (<SeekBar className="custom-range" />)}
 
         <div className="d-flex flex-row bd-highlight mb-3 justify-content-between">
           <div className="bd-highlight" style={{ fontSize: "9px" }}>
@@ -61,7 +61,7 @@ class MainPlaylistPlayPause extends Component {
           <div className="bd-highlight" style={{ fontSize: "9px" }}>
             {media.duration == Infinity || media.isLoading ? "" : <Duration />}
           </div>
-        </div>
+        </div> */}
         <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
       </div>
     );

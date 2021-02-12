@@ -104,7 +104,7 @@ class BottomNav extends Component {
         bottom: "0px",
         right: "0px",
         left: "0px",
-        zIndex: "99999",
+        zIndex: "10",
         cursor: "pointer",
         backgroundColor: "white",
         height: "50px",
