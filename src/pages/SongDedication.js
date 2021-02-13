@@ -230,7 +230,7 @@ class SongDedication extends Component {
                   {/* <Adbanner /> */}
                 
 
-                  {form !=200 &&(
+                  {form !=300 &&(
                          <div className="p-3 text-center">
                          <p className="text-muted">Sorry! We are no longer accepting responses</p>
 
@@ -242,7 +242,7 @@ class SongDedication extends Component {
                      
                       
                        
-                        {form ==200  && (
+                        {form ==300  && (
                           <>
                               <div class="p-2 bd-highlight">
                         <div
