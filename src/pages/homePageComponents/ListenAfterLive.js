@@ -42,7 +42,7 @@ export default class ListenAfterLive extends Component {
         this.setState({
           data: response.data
         });
-        console.log(this.state.data)
+        // console.log(this.state.data)
       })
       .catch((error) => {
         console.log(error);

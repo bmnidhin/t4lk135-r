@@ -133,6 +133,11 @@ class FlotingPlayPause extends Component {
   };
   
   render() {
+
+    let nowTitle = localStorage.getItem('title');
+    let nowCover = localStorage.getItem('cover');
+    let nowURL = localStorage.getItem('url');
+
     //https://developers.google.com/web/updates/2017/02/media-session
     if ('mediaSession' in navigator) {
 

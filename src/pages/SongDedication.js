@@ -24,6 +24,9 @@ import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 import PostDedication from "./Firebase/PostDedication";
 import Dedications from "./Firebase/Dedications";
 import { AvatarGenerator } from 'random-avatar-generator';
+import Popup from 'react-popup';
+let qs = require('qs');
+
 
 class SongDedication extends Component {
   constructor(props) {
@@ -151,7 +154,7 @@ class SongDedication extends Component {
       comments[`comm-${timestamp}`] = comment;
 
       databased.ref("song-dedication").set(comments);
-
+      alert('Your dedication is recorded. It will be pulblished at 7PM 14 feb 2021 ❤️😊')
 
       // this.setState({
       //   comments: comments,
@@ -181,7 +184,7 @@ class SongDedication extends Component {
   }
 
   render() {
-
+    let admin = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).admin
     return (
       <Media>
         <div style={this.conatiner}>
@@ -194,7 +197,7 @@ class SongDedication extends Component {
             />
           </Helmet>
           <LogoArea />
-
+         
           <div style={this.content} id="top"className="pt-4 mb-4">
             <div  style={{
             backgroundColor: "rgb(14, 14, 67)",
@@ -256,6 +259,9 @@ class SongDedication extends Component {
                       <div class="p-2 flex-grow-1 bd-highlight">
                         <h6>
                           <b> Favorite song - Valantine's Name </b>
+                          <p className="text-muted pt-2 text-small">
+                             Eg <i>'Humsafar' - Badrinath Ki Dulhania - Govindan - 3rd year EC</i>
+                          </p>
                         
                         </h6>
                         {this.state.commentsLoaded && (<PostDedication postNewComment={this.postNewComment} />)}
@@ -292,14 +298,18 @@ class SongDedication extends Component {
                   {this.state.comments === {} ? (
                     ""
                   ) : (
+                     
                       <Dedications
-                        comments={this.state.comments}
-                        slug={"song-dedication"}
-                        user={this.state.user.uid||"anonymous"}
-                        name={this.state.user.displayName ||"anonymous"}
-                        login={this.state.isLoggedIn ||"anonymous"}
-                        currentUser={this.state.user ||"anonymous"}
-                      />
+                      isAdmin = {admin == 4462? true: false}
+                      comments={this.state.comments}
+                      slug={"song-dedication"}
+                      user={this.state.user.uid||"anonymous"}
+                      name={this.state.user.displayName ||"anonymous"}
+                      login={this.state.isLoggedIn ||"anonymous"}
+                      currentUser={this.state.user ||"anonymous"}
+                    />
+                    
+                     
                     )}
 
                   <hr id="bottom"
