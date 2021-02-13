@@ -216,7 +216,7 @@ class SongDedication extends Component {
           }}>
           <div className="p-3 text-center">
                 <h3>Anonymous Song Dedication ❤️😊</h3>
-              <p className="text-muted">Name Your favorite song and your valantine you wanna dedicate this to.</p>
+              <p className="text-muted">Name Your favorite song and your Valentine you wanna dedicate this to.</p>
               <p className="text-muted">👤Your name wont be revealed to anyone </p>
             </div>
             </div>
@@ -258,7 +258,7 @@ class SongDedication extends Component {
                       </div>
                       <div class="p-2 flex-grow-1 bd-highlight">
                         <h6>
-                          <b> Favorite song - Valantine's Name </b>
+                          <b> Favorite song - Valentine's Name </b>
                           <p className="text-muted pt-2 text-small">
                              Eg <i>'Humsafar' - Badrinath Ki Dulhania - Govindan - 3rd year EC</i>
                           </p>
