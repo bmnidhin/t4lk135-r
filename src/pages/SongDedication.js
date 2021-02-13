@@ -185,6 +185,7 @@ class SongDedication extends Component {
 
   render() {
     let admin = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).admin
+    let form = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).form
     return (
       <Media>
         <div style={this.conatiner}>
@@ -229,10 +230,21 @@ class SongDedication extends Component {
                   {/* <Adbanner /> */}
                 
 
+                  {form !=200 &&(
+                         <div className="p-3 text-center">
+                         <p className="text-muted">Sorry! We are no longer accepting responses</p>
 
+                       </div>
+                      )}
                   {true && (
                     <div class="d-flex bd-highlight">
-                      <div class="p-2 bd-highlight">
+                  
+                     
+                      
+                       
+                        {form ==200  && (
+                          <>
+                              <div class="p-2 bd-highlight">
                         <div
                           className="rounded-circle"
                           width="30px"
@@ -249,25 +261,24 @@ class SongDedication extends Component {
                         >
                           &nbsp;
                         </div>
-                        {/* <img
-                        src={this.state.user.photoURL}
-                        class="rounded-circle"
-                        width="30px"
-                        alt="..."
-                      /> */}
+                       
                       </div>
-                      <div class="p-2 flex-grow-1 bd-highlight">
-                        <h6>
-                          <b> Favorite song - Valentine's Name </b>
-                          <p className="text-muted pt-2 text-small">
-                             Eg <i>'Humsafar' - Badrinath Ki Dulhania - Govindan - 3rd year EC</i>
-                          </p>
-                        
-                        </h6>
-                        {this.state.commentsLoaded && (<PostDedication postNewComment={this.postNewComment} />)}
+                           <div class="p-2 flex-grow-1 bd-highlight">
+                           <h6>
+                           <b> Favorite song - Valentine's Name </b>
+                           <p className="text-muted pt-2 text-small">
+                              Eg <i>'Humsafar' - Badrinath Ki Dulhania - Govindan - 3rd year EC</i>
+                           </p>
+                         
+                         </h6>
+                          {this.state.commentsLoaded && (<PostDedication postNewComment={this.postNewComment} />)}
+                          </div>
+                          </>
+                        )}
+                       
 
                         {/* {JSON.stringify(this.state.user)} */}
-                      </div>
+                     
                     </div>
 
                     // <div className="user">
