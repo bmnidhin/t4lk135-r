@@ -55,11 +55,11 @@ class FlotingPlayPause extends Component {
    
     ReactGA.initialize('UA-168458070-1');
 
-    ReactGA.event({
-      category: 'Floting Player',
-      action: 'Player Started',
-      label: this.props.title,
-      nonInteraction: true,}) 
+    // ReactGA.event({
+    //   category: 'Floting Player',
+    //   action: 'Player Started',
+    //   label: this.props.title,
+    //   nonInteraction: true,}) 
   
   }
 
@@ -79,11 +79,11 @@ class FlotingPlayPause extends Component {
       
        )
     
-       ReactGA.event({
-        category: 'Floting Player',
-        action: 'Player Started',
-        label: this.props.title,
-        nonInteraction: true,}) 
+      //  ReactGA.event({
+      //   category: 'Floting Player',
+      //   action: 'Player Started',
+      //   label: this.props.title,
+      //   nonInteraction: true,}) 
     
     
   }
@@ -101,12 +101,12 @@ class FlotingPlayPause extends Component {
     {this.props.media.isPlaying? localStorage.removeItem('autoplay') :localStorage.setItem('autoplay', true)}
     ReactGA.initialize('UA-168458070-1');
 
-    ReactGA.event({
-      category: 'Floting Player',
-      action: 'Play Pause',
-      label: this.props.title,
-      nonInteraction: true
-    });
+    // ReactGA.event({
+    //   category: 'Floting Player',
+    //   action: 'Play Pause',
+    //   label: this.props.title,
+    //   nonInteraction: true
+    // });
   };
 
   style = {

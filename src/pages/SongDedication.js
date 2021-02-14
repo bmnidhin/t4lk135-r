@@ -25,6 +25,7 @@ import PostDedication from "./Firebase/PostDedication";
 import Dedications from "./Firebase/Dedications";
 import { AvatarGenerator } from 'random-avatar-generator';
 import Popup from 'react-popup';
+import Promobox from "./PromoBox";
 let qs = require('qs');
 
 
@@ -238,7 +239,7 @@ class SongDedication extends Component {
           <LogoArea />
          
           <div style={this.content} id="top"className="pt-4 mb-4">
-
+          
 
             <div  style={{
             backgroundColor: "rgb(14, 14, 67)",
