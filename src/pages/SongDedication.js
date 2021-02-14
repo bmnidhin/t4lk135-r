@@ -406,7 +406,7 @@ class SongDedication extends Component {
                   ) : (
                      
                       <Dedications
-                      isAdmin = {admin == 4462? true: false}
+                      isAdmin = {admin == 4462? true}
                       comments={this.state.comments}
                       slug={"song-dedication"}
                       user={this.state.user.uid||"anonymous"}
