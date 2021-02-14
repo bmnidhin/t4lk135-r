@@ -99,6 +99,44 @@ class SongDedication extends Component {
   }
 
   componentDidMount() {
+
+    axios
+    .get("https://api.thetkmshow.in/listen/the-choice-of-brave")
+
+    .then((response) => {
+      this.setState({
+        notLoaded: false,
+        title: response.data.title,
+        publishedAtDate: response.data.publishedAtDate,
+        publishedAtTime: response.data.publishedAtTime,
+        content: response.data.content,
+        audio: response.data.URL,
+        cover: response.data.cover,
+
+        duration: response.data.duration,
+        // cover: response.data.cover,
+        isEventPublished: response.data.isEventPublished,
+      });
+      let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay
+      let seekTo   = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).seek
+      if (autoplay =="true") {
+        this.setState({
+          liveAudio: response.data.URL,
+          liveCover: response.data.cover,
+          liveTitle: response.data.title,
+        });
+      }
+     
+    })
+    .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
+    .catch((error) => {
+      this.setState({
+        notLoaded: true,
+      });
+      alert('Some Error, Try again (404)')
+      console.log(error);
+    });
+    //
     
     this.refComments = base.syncState("song-dedication", {
       context: this,
@@ -200,16 +238,30 @@ class SongDedication extends Component {
           <LogoArea />
          
           <div style={this.content} id="top"className="pt-4 mb-4">
+
+          <div className="p-3 text-center">
+              <h5>Anonymous Song Dedication - Live at 7pm 14th Feb 21</h5>
+            </div>
+
             <div  style={{
             backgroundColor: "rgb(14, 14, 67)",
             backgroundImage:
-              "url(" + "https://images.unsplash.com/photo-1462965326201-d02e4f455804?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80" + ")",
+              "url(" + "https://thetkmshow.github.io/static/poster/rovlt.png" + ")",
             backgroundSize: "cover",
             width: "100%",
             height: "100%",
             
           }}>
-               <div style={this.infobox} className="pt-4 mb-4" style={{
+            <img src ="https://thetkmshow.github.io/static/poster/rovlt.png" width="100%">
+            
+            </img>
+
+           
+
+
+
+
+               {/* <div style={this.infobox} className="pt-4 mb-4" style={{
             backgroundColor: "rgba(18,30,40,0.9)",
             width: "100%",
             height: "100%",
@@ -220,29 +272,92 @@ class SongDedication extends Component {
               <p className="text-muted">Name Your favorite song and your Valentine you wanna dedicate this to.</p>
               <p className="text-muted">👤Your name wont be revealed to anyone </p>
             </div>
-            </div>
+            </div> */}
 
             </div>
+            <div className="p-3 text-center">
+            <p>Coming soon !!!!</p>
+<a href="https://www.instagram.com/onlivechat/?igshid=1gnjsgctluczq" target="_blank">Follow Onlive on Instagram</a>
+            </div>
          
+            {/* <div style={this.infobox}>
+              <div class="row">
+                <div class="col-sm-4">
+                  
+                  <img
+                    src={this.state.cover}
+                    width="100%"
+                    className="roundedImage"
+                    alt="Poster"
+                  ></img>
+                </div>
+                <div class="col-sm-8">
+                  <div className=" p-2 pt-4 text-break">
+                    <div className={this.state.notLoaded ? "" : "d-none"}>
+                    
+                  Loading........
+                 </div>
+                   
+                    <h4>{this.state.title}</h4>
+                    <div
+                      class="d-flex flex-row bd-highlight mb-2"
+                      style={{ fontSize: "10px", color: "#d0cccc" }}
+                    >
+                      <div class="bd-highlight text-uppercase">
+                        {this.state.duration}
+                      </div>
+                      <div class="pl-2 bd-highlight text-uppercase"></div>
+                    </div>
+                    <MainPlayPause switch={this.onChangeUsername} />
+            
+                    <FlotingPlayPause
+            cover={this.state.liveCover}
+            title={this.state.liveTitle}
+          />
+                    <Status src={this.state.liveAudio}
+                      cover={this.state.liveCover}
+                      title={this.state.liveTitle}
+                      url = {this.state.liveAudio}
+                      slug={"listen/"+this.props.match.params.slug}
+                      name={this.state.user.displayName}
+                      id={this.state.user.uid}
+                      auth ={this.state.isLoggedIn}
+                      
+                    />
+                    <p style={{ color: "#d0cccc" }} className="text-justify">
+                      {" "}
+                      {this.state.content}
+                      <div className={this.state.notLoaded ? "" : "d-none"}>
+                       
+                  Loading
+                 </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            
             <div style={this.secondaryContent}>
               <div style={this.secondaryContentInner}>
                 <div className="commentArea">
                   {/* <Adbanner /> */}
                 
+{
 
-                  {form !=300 &&(
-                         <div className="p-3 text-center">
-                         <p className="text-muted">Sorry! We are no longer accepting responses</p>
+                  // {form !=300 &&(
+                  //        <div className="p-3 text-center mt-3">
+                  //        <p className="text-muted">Sorry! We are no longer accepting responses</p>
 
-                       </div>
-                      )}
+                  //      </div>
+                  //     )} */
+                  }
                   {true && (
-                    <div class="d-flex bd-highlight">
+                    <div class="d-flex bd-highlight mt-3">
                   
                      
                       
                        
-                        {form ==300  && (
+                        {form ==505  && (
                           <>
                               <div class="p-2 bd-highlight">
                         <div
@@ -277,29 +392,9 @@ class SongDedication extends Component {
                         )}
                        
 
-                        {/* {JSON.stringify(this.state.user)} */}
+                    
                      
                     </div>
-
-                    // <div className="user">
-                    //   <img
-                    //     className="photo"
-                    //     alt={this.state.user}
-                    //     src={this.state.user.photoURL}
-                    //   />
-                    //   <h5 className="display-name">
-                    //     {" "}
-                    //     {this.state.user.displayName}{" "}
-                    //   </h5>
-                    //   <p className="email"> {this.state.user.email} </p>
-                    //   <NewComment postNewComment={this.postNewComment} />
-                    //   <button
-                    //     className="btn btn-outline-secondary"
-                    //     onClick={() => auth.signOut()}
-                    //   >
-                    //     Sign Out
-                    //   </button>
-                    // </div>
                   )}
                   
 
