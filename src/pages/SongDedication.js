@@ -101,7 +101,7 @@ class SongDedication extends Component {
   componentDidMount() {
 
     axios
-    .get("https://api.thetkmshow.in/listen/the-choice-of-brave")
+    .get("https://api.thetkmshow.in/alltracks/song-dedication")
 
     .then((response) => {
       this.setState({
@@ -239,9 +239,6 @@ class SongDedication extends Component {
          
           <div style={this.content} id="top"className="pt-4 mb-4">
 
-          <div className="p-3 text-center">
-              <h5>Anonymous Song Dedication - Live at 7pm 14th Feb 21</h5>
-            </div>
 
             <div  style={{
             backgroundColor: "rgb(14, 14, 67)",
@@ -252,35 +249,9 @@ class SongDedication extends Component {
             height: "100%",
             
           }}>
-            <img src ="https://thetkmshow.github.io/static/poster/rovlt.png" width="100%">
-            
-            </img>
-
            
-
-
-
-
-               {/* <div style={this.infobox} className="pt-4 mb-4" style={{
-            backgroundColor: "rgba(18,30,40,0.9)",
-            width: "100%",
-            height: "100%",
-            
-          }}>
-          <div className="p-3 text-center">
-                <h3>Anonymous Song Dedication ❤️😊</h3>
-              <p className="text-muted">Name Your favorite song and your Valentine you wanna dedicate this to.</p>
-              <p className="text-muted">👤Your name wont be revealed to anyone </p>
-            </div>
-            </div> */}
-
-            </div>
-            <div className="p-3 text-center">
-            <p>Coming soon !!!!</p>
-<a href="https://www.instagram.com/onlivechat/?igshid=1gnjsgctluczq" target="_blank">Follow Onlive on Instagram</a>
-            </div>
          
-            {/* <div style={this.infobox}>
+            <div style={this.infobox}>
               <div class="row">
                 <div class="col-sm-4">
                   
@@ -318,7 +289,7 @@ class SongDedication extends Component {
                       cover={this.state.liveCover}
                       title={this.state.liveTitle}
                       url = {this.state.liveAudio}
-                      slug={"listen/"+this.props.match.params.slug}
+                      slug={"song-dedication"}
                       name={this.state.user.displayName}
                       id={this.state.user.uid}
                       auth ={this.state.isLoggedIn}
@@ -335,6 +306,33 @@ class SongDedication extends Component {
                   </div>
                 </div>
               </div>
+            </div>
+            {/* <img src ="https://thetkmshow.github.io/static/poster/rovlt.png" width="100%">
+            
+            </img> */}
+
+           
+
+
+
+
+               {/* <div style={this.infobox} className="pt-4 mb-4" style={{
+            backgroundColor: "rgba(18,30,40,0.9)",
+            width: "100%",
+            height: "100%",
+            
+          }}>
+          <div className="p-3 text-center">
+                <h3>Anonymous Song Dedication ❤️😊</h3>
+              <p className="text-muted">Name Your favorite song and your Valentine you wanna dedicate this to.</p>
+              <p className="text-muted">👤Your name wont be revealed to anyone </p>
+            </div>
+            </div> */}
+
+            </div>
+            {/* <div className="p-3 text-center">
+            <p>Coming soon !!!!</p>
+<a href="https://www.instagram.com/onlivechat/?igshid=1gnjsgctluczq" target="_blank">Follow Onlive on Instagram</a>
             </div> */}
             
             <div style={this.secondaryContent}>
@@ -474,3 +472,4 @@ class SongDedication extends Component {
   }
 }
 export default withMediaProps(SongDedication);
+
