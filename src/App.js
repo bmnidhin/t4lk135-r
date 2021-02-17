@@ -59,7 +59,7 @@ class App extends Component {
               <Route exact path="/playlist/" component={playlists} />
               <Route exact path="/playlist/:slug" component={playListDetail}/>
 
-              <Route exact path="/club99/" component={ClubEpisodes} />
+             
               <Route exact path="/club99/:slug" component={ClubListen}/>
               <Route exact path="/p/:slug" component={ClubPromoPage}/>
               <Route exact path="/library" component={MyLibrary}/>
@@ -69,7 +69,7 @@ class App extends Component {
               <Route exact path="/submit" component={Redirect} />
               <Route exact path="/live" component={Live} />
               <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/mech-magazine" component={MagazineDownload} />
+            
             </Switch>
           )}
         />

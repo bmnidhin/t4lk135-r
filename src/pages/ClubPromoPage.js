@@ -139,6 +139,11 @@ export default class ClubPromoPage extends Component {
 
   // }
   render() {
+    const playBack ={
+      url:localStorage.getItem('url'),
+      cover:localStorage.getItem('cover'),
+      title:localStorage.getItem('title')
+    }
     return (
       <Media>
         <div>

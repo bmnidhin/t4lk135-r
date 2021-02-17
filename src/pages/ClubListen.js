@@ -233,7 +233,11 @@ class ClubListen extends Component {
 
   render() {
     // const { className, style, media } = this.props;
-   
+    const playBack ={
+      url:localStorage.getItem('url'),
+      cover:localStorage.getItem('cover'),
+      title:localStorage.getItem('title')
+    }
     return (
       <Media>
         <div style={this.conatiner}>

@@ -24,6 +24,11 @@ export default class Promobox extends Component {
   };
  
   render() {
+    const playBack ={
+      url:localStorage.getItem('url'),
+      cover:localStorage.getItem('cover'),
+      title:localStorage.getItem('title')
+    }
   return (
       <Link
         to={this.props.link}

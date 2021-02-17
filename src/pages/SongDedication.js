@@ -223,6 +223,11 @@ class SongDedication extends Component {
   }
 
   render() {
+    const playBack ={
+      url:localStorage.getItem('url'),
+      cover:localStorage.getItem('cover'),
+      title:localStorage.getItem('title')
+    }
     let admin = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).admin
     let form = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).form
     return (
