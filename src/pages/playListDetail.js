@@ -256,11 +256,7 @@ play_circle_outline
        
       );
     });
-    const playBack ={
-      url:localStorage.getItem('url'),
-      cover:localStorage.getItem('cover'),
-      title:localStorage.getItem('title')
-    }
+ 
     return (
       <Media>
         <div style={this.conatiner}>

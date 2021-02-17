@@ -70,11 +70,7 @@ export default class homepage extends Component {
     minHeight: "100px",
   };
   render() {
-    const playBack ={
-      url:localStorage.getItem('url'),
-      cover:localStorage.getItem('cover'),
-      title:localStorage.getItem('title')
-    }
+ 
     console.log(playBack)
     return (
       <Media>

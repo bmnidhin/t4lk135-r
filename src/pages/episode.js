@@ -247,11 +247,7 @@ class episode extends Component {
     const { className, style, media } = this.props;
     let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay;
     let seekTo   = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).seek;
-    const playBack ={
-      url:localStorage.getItem('url'),
-      cover:localStorage.getItem('cover'),
-      title:localStorage.getItem('title')
-    }
+ 
     return (
       <Media>
         <div style={this.conatiner}>
