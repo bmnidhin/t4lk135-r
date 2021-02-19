@@ -27,6 +27,7 @@ export default class FeaturedRandom extends Component {
         this.setState({
             random:random
           });
+      
       }
        
       )
@@ -63,32 +64,35 @@ export default class FeaturedRandom extends Component {
           </div>
           
         </div>
-       
+        
 
         <div className="row">
          
-     
+       
           {this.state.listen.slice(this.state.random, this.state.random+4).map((track) => (
             track.isEventPublished &&(
               <div
               className={"col-6 col-md-3"}
               key={track.slug}
             >
-              <a  href={'/' + track.slug+"?autoplay=false"}>
+              <Link to={track.slug.split('/')[0] === window.location.pathname.split('/')[1] ?"/play/"+track.slug.split('/')[1]:"/"+ track.slug}>
+               
                 <img
                   src={track.cover}
                   width="100%"
                   className="roundedImage"
                   alt="Poster"
+                 
+                  
                 ></img>
             
                 <p style={this.itemHeading} className='text-truncate'>{track.title}</p>
-                </a>
+                </Link>
             </div>
             )))}
           
 
-
+          
           <div className="col-6 col-md-3">
           <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
            </div>

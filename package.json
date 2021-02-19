@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -28,11 +30,14 @@
     "react-media-player": "^0.7.9",
     "react-moment": "^0.9.7",
     "react-popup": "^0.10.0",
+    "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-router-scroll-memory": "^2.0.6",
     "react-scripts": "3.4.1",
     "react-scroll": "^1.8.0",
     "react-toastify": "^6.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "smooth-scroll": "^16.1.3"
   },
   "scripts": {

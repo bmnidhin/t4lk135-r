@@ -53,7 +53,7 @@ let qs = require('qs');
 //   return settings.liveCover;
 // });
 
-class episode extends Component {
+class Play extends Component {
   constructor(props) {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -521,4 +521,4 @@ class episode extends Component {
     );
   }
 }
-export default withMediaProps(episode);
+export default withMediaProps(Play);

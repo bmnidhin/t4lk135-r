@@ -8,6 +8,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ScrollMemory from "react-router-scroll-memory";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const history = createBrowserHistory();
 if(!localStorage.getItem('anonymous')){
@@ -17,10 +19,12 @@ if(!localStorage.getItem('anonymous')){
 
 
 ReactDOM.render(
+  <Provider store={store}>
   <Router history={history}>
     <ScrollMemory />
     <App />
-  </Router>,
+  </Router>
+  </Provider>,
   document.getElementById("root")
 );
 

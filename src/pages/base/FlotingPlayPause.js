@@ -37,22 +37,22 @@ class FlotingPlayPause extends Component {
       CurrentTime: "",
     };
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     setInterval(this.tickingTimer, 1000) //upadate percentage in 1 min
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ isLoggedIn: true, user });
         // console.log("------------------------------------");
         // console.log(user);
-        localStorage.setItem("userid",this.state.user.uid)
+        localStorage.setItem("userid", this.state.user.uid)
       } else {
         this.setState({ isLoggedIn: false, user: {} });
-              localStorage.removeItem('userid')
+        localStorage.removeItem('userid')
       }
     });
 
-   
+
     ReactGA.initialize('UA-168458070-1');
 
     // ReactGA.event({
@@ -60,7 +60,7 @@ class FlotingPlayPause extends Component {
     //   action: 'Player Started',
     //   label: this.props.title,
     //   nonInteraction: true,}) 
-  
+
   }
 
   tickingTimer = () => {
@@ -70,35 +70,35 @@ class FlotingPlayPause extends Component {
     clearInterval(this.interval);
   }
 
-  componentDidUpdate({media}){
-    myLog(this.state.isLoggedIn, 
+  componentDidUpdate({ media }) {
+    myLog(this.state.isLoggedIn,
       this.state.user.displayName,
       this.state.user.userId,
       "Loaded Player - " + this.props.title,
       "Update",
-      
-       )
-    
-      //  ReactGA.event({
-      //   category: 'Floting Player',
-      //   action: 'Player Started',
-      //   label: this.props.title,
-      //   nonInteraction: true,}) 
-    
-    
+
+    )
+
+    //  ReactGA.event({
+    //   category: 'Floting Player',
+    //   action: 'Player Started',
+    //   label: this.props.title,
+    //   nonInteraction: true,}) 
+
+
   }
   shouldComponentUpdate({ media }) {
-   
+
     return this.props.media.isPlaying !== media.isPlaying;
-    
+
   }
 
   _handlePlayPause = () => {
- 
-      this.props.media.playPause()
-  
-    
-    {this.props.media.isPlaying? localStorage.removeItem('autoplay') :localStorage.setItem('autoplay', true)}
+
+    this.props.media.playPause()
+
+
+    { this.props.media.isPlaying ? localStorage.removeItem('autoplay') : localStorage.setItem('autoplay', true) }
     ReactGA.initialize('UA-168458070-1');
 
     // ReactGA.event({
@@ -119,7 +119,7 @@ class FlotingPlayPause extends Component {
     backgroundColor: "white",
     height: "75px",
     width: "100%",
-//     boxShadow: "#0a0a0a 0px -1px 11px 0px"
+    //     boxShadow: "#0a0a0a 0px -1px 11px 0px"
   };
   seek = {
     position: "fixed",
@@ -129,9 +129,9 @@ class FlotingPlayPause extends Component {
     zIndex: "999999",
     cursor: "pointer",
     width: "100%",
-//     boxShadow: "#0a0a0a 0px -1px 11px 0px"
+    //     boxShadow: "#0a0a0a 0px -1px 11px 0px"
   };
-  
+
   render() {
 
     let nowTitle = localStorage.getItem('title');
@@ -146,7 +146,7 @@ class FlotingPlayPause extends Component {
         artist: 'The TKM Show',
         album: 'Originals',
         artwork: [
-          { src: this.props.cover,   sizes: '96x96',   type: 'image/png' },
+          { src: this.props.cover, sizes: '96x96', type: 'image/png' },
           { src: this.props.cover, sizes: '128x128', type: 'image/png' },
           { src: this.props.cover, sizes: '192x192', type: 'image/png' },
           { src: this.props.cover, sizes: '256x256', type: 'image/png' },
@@ -154,7 +154,7 @@ class FlotingPlayPause extends Component {
           { src: this.props.cover, sizes: '512x512', type: 'image/png' },
         ]
       });
-    
+
       // navigator.mediaSession.setActionHandler('play', function() {});
       // navigator.mediaSession.setActionHandler('pause', function() {});
       // navigator.mediaSession.setActionHandler('seekbackward', function() {});
@@ -164,67 +164,96 @@ class FlotingPlayPause extends Component {
     }
     const { className, style, media } = this.props;
     return (
-     <>
-      <div style={this.seek}>
-      <SeekBar className="e-range" />
-      </div>
-      <div style={this.style}>
-      
-        <table className="table table-bordered" style={{ marginBottom: 0 }}>
-          <tbody>
-            <tr>
-              <td width="50px">
-                <img
-                  src={this.props.cover}
-                  width="50px"
-                  className="roundedImage"
-                ></img>
-              </td>
-              <td className="align-middle">
-                <div
-                  className="text-truncate"
-                  style={{ width: "190px", fontSize: "15px" }}
+      <>
+        <div style={this.seek}>
+          <SeekBar className="e-range" />
+        </div>
+        <div style={this.style}>
+
+          <table className="table table-bordered" style={{ marginBottom: 0 }}>
+            <tbody>
+              <tr>
+                <td width="50px">
+                  <img
+                    src={this.props.cover}
+                    width="50px"
+                    className="roundedImage"
+                  ></img>
+                </td>
+                <td className="align-middle">
+                  <div
+                    className="text-truncate"
+                    style={{ width: "190px", fontSize: "15px" }}
+                  >
+                    {this.props.title}
+                  </div>
+
+                  <span style={{ fontSize: "8px", textAlign: "left" }}>
+
+                    {media.duration == Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)}
+                  </span>
+                </td>
+
+                <td
+                  className="align-middle text-center"
+                  width="170px"
+                  
                 >
-                  {this.props.title}
-                </div>
-
-                <span style={{ fontSize: "8px", textAlign: "left" }}>
-                 
-                  {media.duration==Infinity || media.isLoading ? '' : formatTime(media.currentTime) + " / " + formatTime(media.duration)}
-                </span>
-              </td>
-
-              <td
-                className="align-middle text-center"
-                width="150px"
-                onClick={this._handlePlayPause}
-              >
-                {/* <div className="spinner-border text-secondary" role="status">
+                  {/* <div className="spinner-border text-secondary" role="status">
                   <span className="sr-only">Loading...</span>
                 </div> */}
-                <div>
-                
-                  {media.isLoading&&(<div className="spinner-border text-secondary" role="status"></div>)}
-                  {!media.isLoading&&(
-                     <div className={""}>
-                     {media.isPlaying ? (
-                       <span className="material-icons">pause_circle_filled</span>
-                     ) : (
-                       <span className="material-icons ">
-                         play_circle_filled
+                  <div>
+                    <div className="btn-group" role="group" aria-label="Basic example">
+                      <span className="material-icons p-2">
+                      skip_previous
                        </span>
-                     )}
-                   </div>
-                  )}
-                 
-                </div>
+                      {media.isLoading && (<div className="spinner-border text-secondary" role="status" ></div>)}
+                      {!media.isLoading && (
+                        <div className={""}onClick={this._handlePlayPause}>
+                          {media.isPlaying ? (
+                            <span className="material-icons p-2">pause_circle_filled</span>
+                          ) : (
+                              <span className="material-icons p-2">
+                                play_circle_filled
+                              </span>
+                            )}
+                        </div>
+                      )}
+                      <span className="material-icons p-2 ">
+                      skip_next
+                       </span>
+                    </div>
 
-                {/*  */}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        {/* <div className="row">
+
+                  </div>
+
+                  {/*  */}
+                </td>
+                <td
+                  className="align-middle text-center"
+                  width="70px"
+                 
+                >
+                  {/* <div className="spinner-border text-secondary" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div> */}
+                  <div>
+
+
+                    <span className="material-icons muted">menu_open</span>
+
+
+                  </div>
+
+
+
+
+                  {/*  */}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {/* <div className="row">
           <div className="col-1 roundedImage flotingImage">
             {" "}
             <img src={this.state.imageURL} width="50px"></img>
@@ -232,8 +261,8 @@ class FlotingPlayPause extends Component {
           <div className="col-6 flotingTitle text-truncate">col-sm-4</div>
           <div className="col-5 flotingTitle">col-sm-4</div>
         </div> */}
-      </div>
-     </>
+        </div>
+      </>
     );
   }
 }
