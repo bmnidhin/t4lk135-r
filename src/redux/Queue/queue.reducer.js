@@ -5,17 +5,20 @@ const INITIAL_STATE = {
 };
 const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case INCREMENT:
+        case PLAYIT:
            console.log(action.payload)
            return {
              ...state, 
-             count: state.count + 1,
+             nowPlaying:action.payload,
+             audio: action.payload.audio,
+             cover: action.payload.cover,
+             title: action.payload.title,
+             vendor: action.payload.vendor,
+             slug: action.payload.slug
+
              
            };
-        case DECREMENT:
-           return {
-              ...state, count: state.count - 1,
-           };
+        
          default: return state;
     }
 };

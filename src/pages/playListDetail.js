@@ -515,13 +515,9 @@ play_circle_outline
          
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.liveAudio} vendor="audio" autoPlay="true" />
+          
           </div>
-          <FlotingPlayPause
-            cover={this.state.liveCover}
-            title={this.state.liveTitle}
-
-          />
+        
           <BottomNav selected="playlist"/>
         </div>
       </Media>

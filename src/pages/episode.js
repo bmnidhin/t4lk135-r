@@ -22,7 +22,9 @@ import * as SETTINGS from './constants/Settings';
 import Status from "../utils/Status";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
+import { connect } from 'react-redux';
 
+import { playIt } from '../redux/Queue/queue.actions';
 import {
   BrowserRouter as Router,
   Link,
@@ -58,8 +60,8 @@ class episode extends Component {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.postNewComment = this.postNewComment.bind(this);
-    this.reRender = this.reRender.bind(this);
-
+    this.handlePlayIt = this.handlePlayIt.bind(this);
+    
     this.state = {
       notLoaded: true,
       liveTitle: "Live Radio",
@@ -93,7 +95,7 @@ class episode extends Component {
               localStorage.removeItem('userid')
       }
     });
-
+   
     this.conatiner = {
       minHeight: "100vh",
       backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
@@ -177,6 +179,9 @@ class episode extends Component {
       // console.log(a);
     });
   }
+  handlePlayIt = () => {
+    this.props.playIt("hi")
+  };
   check(date, time) {
     const publishedDate = date;
     const publishedTime = time;
@@ -232,11 +237,18 @@ class episode extends Component {
               localStorage.removeItem('userid')
 
   }
-  reRender = () => {
-    this.forceUpdate();
-    console.log('rerender')
-  };
+
+
   onChangeUsername() {
+    this.props.playIt(
+      {
+        audio: this.state.audio,
+        cover: this.state.cover,
+        title: this.state.title,
+        vendor: 'audio',
+        slug: this.props.match.params.slug
+      }
+    )
     this.setState({
       liveAudio: this.state.audio,
       liveCover: this.state.cover,
@@ -305,6 +317,7 @@ class episode extends Component {
                  </div>
                    
                     <h4>{this.state.title}</h4>
+                    {/* <button onClick={this.handlePlayIt}>haha</button> */}
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
                       style={{ fontSize: "10px", color: "#d0cccc" }}
@@ -435,18 +448,6 @@ class episode extends Component {
                         </button>
                       </div>
                     </div>
-
-                    // <div className="alert alert-dark">
-                    //   <h1 className="title">ReactJS Comments App</h1>
-                    //   <label className="sign-in">Sign in: </label>
-                    //   <button
-                    //     className="btn btn-danger"
-                    //     onClick={() => this.auth("google")}
-                    //   >
-
-                    //     google
-                    //   </button>
-                    // </div>
                   )}
 
                   <hr
@@ -472,25 +473,7 @@ class episode extends Component {
 
                     }}
                   />
-                  {/* <div class="d-flex bd-highlight">
-                    <div class="p-2 bd-highlight">
-                      <img
-                        src="https://yt3.ggpht.com/a/AATXAJygzSqzI_OYRoHsaGr1lphQo46Y2_vi8K-7LUUKCg=s48-c-k-c0xffffffff-no-rj-mo"
-                        class="rounded-circle"
-                        width="100%"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="p-2 flex-grow-1 bd-highlight">
-                      <h6 style={{ fontSize: "0.7rem" }}>
-                        <b>Nidhin BM</b>
-                        <a> 23 Minutes ago</a>
-                      </h6>
-                      <p style={{ fontSize: "0.8rem" }}>
-                        ഒരു ബോറടിയും തോന്നാതെ കണ്ടവർ ആരൊക്കെ ഉണ്ട്?
-                      </p>
-                    </div>
-                  </div> */}
+  
                 </div>
 
                 <FeaturedRandom/>
@@ -501,17 +484,17 @@ class episode extends Component {
               </div>
             </div>
           </div>
-          <FlotingPlayPause
+          {/* <FlotingPlayPause
             cover={this.state.liveCover}
             title={this.state.liveTitle}
-          />
-          {/* <NowPlaying playing={this.state.playing}/> */}
+          /> */}
+       
           <div className="media">
-            <Player
+            {/* <Player
               src={this.state.liveAudio}
               vendor="audio"
               autoPlay="false"
-            />
+            /> */}
           </div>
           
           <BottomNav selected="listen"/>
@@ -521,4 +504,16 @@ class episode extends Component {
     );
   }
 }
-export default withMediaProps(episode);
+const mapStateToProps = (state) => {
+  return {
+     count: state.counter.count,
+     nowPlaying : state.queue.nowPlaying
+   };
+  };
+export default connect( 
+  
+  null,
+  {playIt},
+ 
+ 
+  )(episode);

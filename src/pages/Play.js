@@ -501,17 +501,10 @@ class Play extends Component {
               </div>
             </div>
           </div>
-          <FlotingPlayPause
-            cover={this.state.liveCover}
-            title={this.state.liveTitle}
-          />
+         
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player
-              src={this.state.liveAudio}
-              vendor="audio"
-              autoPlay="false"
-            />
+          
           </div>
           
           <BottomNav selected="listen"/>

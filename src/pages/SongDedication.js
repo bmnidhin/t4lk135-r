@@ -457,16 +457,9 @@ class SongDedication extends Component {
 
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player
-              src={this.state.liveAudio}
-              vendor="audio"
-              autoPlay="false"
-            />
+           
           </div>
-          <FlotingPlayPause
-            cover={this.state.liveCover}
-            title={this.state.liveTitle}
-          />
+         
           <BottomNav selected="listen"/>
         </div>
       </Media>

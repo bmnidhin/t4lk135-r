@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
+import queueReducer from './Queue/queue.reducer';
 import counterReducer from './Counter/counter.reducer';
+
 
 // here, combineReducers() as the name suggests combines 
 // various reducers into a single reducer. In redux, 
@@ -11,5 +13,6 @@ import counterReducer from './Counter/counter.reducer';
 
 const rootReducer = combineReducers({
     counter: counterReducer,
+    queue : queueReducer
 });
 export default rootReducer;

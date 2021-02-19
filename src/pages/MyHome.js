@@ -120,11 +120,11 @@ export default class MyHome extends Component {
               <FeaturedClubs/> */}
             </div>
           </div>
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/>
+          {/* <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/> */}
           <BottomNav selected='home'/>
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay="true" />
+            {/* <Player src={this.state.url} vendor="audio" autoPlay="true" /> */}
           </div>
         </div>
       </Media>

@@ -27,34 +27,41 @@ import SongDedication from "./pages/SongDedication";
 import MyHome from "./pages/MyHome";
 
 import { connect } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './redux/Counter/counter.actions';
+import { playIt } from './redux/Queue/queue.actions';
+
+import * as SETTINGS from './pages/constants/Settings';
+
 import Play from "./pages/Play";
+import FlotingPlayPause from "./pages/base/FlotingPlayPause";
+import {
+  Media,
+  Player,
+  controls,
+  withMediaProps,
+  utils,
+} from "react-media-player";
 
 class App extends Component {
  
 
     state = {
-      isAllTracksLoaded: false,
-      listen:[1,2,3,4]
-         
-    }
+     title:'Live TV',
+     audio: SETTINGS.liveURL,
+     cover: SETTINGS.liveCover,
+     vendor: 'audio'
+     }
   
-    handleAddTodo = () => {
-      this.props.increaseCounter(this.state.listen)
-    };
-    handleDecrementTodo = () => {
-      this.props.decreaseCounter()
-    };
+ 
   render() {
+    
     return (
       <div>
        
         
         <CountDown />
-        <div style={{color:'#ffffff'}}>Count: {this.props.count} {this.props.alert}</div>
-   
-        <button onClick={this.handleAddTodo}>IncreaseCount</button>
-     <button onClick={this.handleDecrementTodo}>Decrease Count</button>
+        
+        <div style={{color:'#ffffff'}}>Count: {this.props.nowPlaying&&(this.props.nowPlaying.title)}</div>
+      
         <ScrollReveal
           children={() => (
             <Switch>
@@ -86,9 +93,24 @@ class App extends Component {
             </Switch>
           )}
         />
+       
+       
+       <Media>
+         <div>
+            <Player
+              src={this.props.nowPlaying ? this.props.nowPlaying.audio :this.state.audio}
+              vendor={this.props.nowPlaying ?this.props.nowPlaying.vendor :this.state.vendor}
+              autoPlay="false"
+            />
+            <FlotingPlayPause
+            cover={this.props.nowPlaying ?this.props.nowPlaying.cover :this.state.cover}
+            title={ this.props.nowPlaying ? this.props.nowPlaying.title : this.state.title }
+          />
+          </div>
+         </Media>
         <FooterArea />
         {/* <NavTest /> */}
-        
+       
       </div>
     );
   }
@@ -96,6 +118,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
      count: state.counter.count,
+     nowPlaying : state.queue.nowPlaying
    };
   };
   // const mapDispatchToProps = (dispatch) => {
@@ -107,7 +130,7 @@ const mapStateToProps = (state) => {
   export default connect( 
   
     mapStateToProps,
-    { increaseCounter,decreaseCounter },
+    {playIt},
    
    
     )(App);

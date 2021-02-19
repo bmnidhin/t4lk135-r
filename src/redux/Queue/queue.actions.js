@@ -3,7 +3,20 @@ import {PLAYIT, CURRENTLYPLAYING, PREVIOUS, NEXT, QUEUE} from './queue.types';
 let nextToPlay = 0;
 
 //playit()
-
+export const playIt = (content) => {
+  
+    return {
+        type: PLAYIT,
+        payload: {
+            id: ++nextToPlay,
+            audio: content.audio,
+            cover: content.cover,
+            title: content.title,
+            vendor: content.vendor,
+            slug: content.slug,
+          }
+    };
+};
 //currentlyPlaying()
 
 //previousSong()
@@ -11,18 +24,18 @@ let nextToPlay = 0;
 //nextSong()
 
 //getFullQueue()
-export const increaseCounter = (content) => {
+// export const increaseCounter = (content) => {
   
-    return {
-        type: INCREMENT,
-        payload: {
-            id: ++nextTodoId,
-            content
-          }
-    };
-};
-export const decreaseCounter = () => {
-    return {
-       type: DECREMENT,
-    };
-};
+//     return {
+//         type: INCREMENT,
+//         payload: {
+//             id: ++nextTodoId,
+//             content
+//           }
+//     };
+// };
+// export const decreaseCounter = () => {
+//     return {
+//        type: DECREMENT,
+//     };
+// };

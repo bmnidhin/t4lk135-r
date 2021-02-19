@@ -172,11 +172,11 @@ export default class ClubPromoPage extends Component {
             </div>
           </div>
           
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
+         
           <BottomNav/>
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay="true" />
+            
           </div>
         </div>
       </Media>
