@@ -11,7 +11,9 @@ import {
 
 import CustomtCurrentTime from "./CustomtCurrentTime";
 import { myLog } from "../../packages/logger/Logger";
+import { connect } from 'react-redux';
 
+import { playIt } from '../../redux/Queue/queue.actions';
 const { formatTime } = utils;
 
 const {
@@ -34,7 +36,7 @@ class FlotingPlayPause extends Component {
       publishedAtDate: "",
       user: "",
       isLoggedIn: false,
-      CurrentTime: "",
+    
     };
   }
 
@@ -92,7 +94,14 @@ class FlotingPlayPause extends Component {
     return this.props.media.isPlaying !== media.isPlaying;
 
   }
+_handleNext = ()=>{
+  
+  this.props.nextSong()
+}
 
+_handlePreviouss = ()=>{
+  this.props.previousSong()
+}
   _handlePlayPause = () => {
 
     this.props.media.playPause()
@@ -108,7 +117,8 @@ class FlotingPlayPause extends Component {
     //   nonInteraction: true
     // });
   };
-
+  
+ 
   style = {
     position: "fixed",
     bottom: "0px",
@@ -131,12 +141,15 @@ class FlotingPlayPause extends Component {
     width: "100%",
     //     boxShadow: "#0a0a0a 0px -1px 11px 0px"
   };
-
+  
   render() {
-
-    let nowTitle = localStorage.getItem('title');
-    let nowCover = localStorage.getItem('cover');
-    let nowURL = localStorage.getItem('url');
+    const { className, style, media } = this.props;
+  if(!media.isLoading){
+    if(media.currentTime === media.duration){
+     this._handleNext()
+    }
+  }
+  
 
     //https://developers.google.com/web/updates/2017/02/media-session
     if ('mediaSession' in navigator) {
@@ -159,12 +172,13 @@ class FlotingPlayPause extends Component {
       // navigator.mediaSession.setActionHandler('pause', function() {});
       // navigator.mediaSession.setActionHandler('seekbackward', function() {});
       // navigator.mediaSession.setActionHandler('seekforward', function() {});
-      // navigator.mediaSession.setActionHandler('previoustrack', function() {});
-      // navigator.mediaSession.setActionHandler('nexttrack', function() {});
+      navigator.mediaSession.setActionHandler('previoustrack', this._handlePreviouss);
+      navigator.mediaSession.setActionHandler('nexttrack', this._handleNext);
     }
-    const { className, style, media } = this.props;
+   
     return (
       <>
+      
         <div style={this.seek}>
           <SeekBar className="e-range" />
         </div>
@@ -185,7 +199,7 @@ class FlotingPlayPause extends Component {
                     className="text-truncate"
                     style={{ width: "190px", fontSize: "15px" }}
                   >
-                    {this.props.title}
+                   {this.props.title}
                   </div>
 
                   <span style={{ fontSize: "8px", textAlign: "left" }}>
@@ -204,7 +218,7 @@ class FlotingPlayPause extends Component {
                 </div> */}
                   <div>
                     <div className="btn-group" role="group" aria-label="Basic example">
-                      <span className="material-icons p-2">
+                      <span className="material-icons p-2" onClick={this._handlePreviouss}>
                       skip_previous
                        </span>
                       {media.isLoading && (<div className="spinner-border text-secondary" role="status" ></div>)}
@@ -219,7 +233,7 @@ class FlotingPlayPause extends Component {
                             )}
                         </div>
                       )}
-                      <span className="material-icons p-2 ">
+                      <span className="material-icons p-2 " onClick={this._handleNext}>
                       skip_next
                        </span>
                     </div>
@@ -266,5 +280,6 @@ class FlotingPlayPause extends Component {
     );
   }
 }
+
 
 export default withMediaProps(FlotingPlayPause);

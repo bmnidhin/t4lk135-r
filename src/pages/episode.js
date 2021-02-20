@@ -24,7 +24,7 @@ import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
 import { connect } from 'react-redux';
 
-import { playIt } from '../redux/Queue/queue.actions';
+import { playIt, addQueue } from '../redux/Queue/queue.actions';
 import {
   BrowserRouter as Router,
   Link,
@@ -60,7 +60,8 @@ class episode extends Component {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.postNewComment = this.postNewComment.bind(this);
-    this.handlePlayIt = this.handlePlayIt.bind(this);
+    this.queueAddHandler = this.queueAddHandler.bind(this);
+    
     
     this.state = {
       notLoaded: true,
@@ -81,7 +82,9 @@ class episode extends Component {
       numberOfComments: 0,
       user: " ",
       commentsLoaded: false,
-      rerender:false
+      rerender:false,
+      isPlaying : false,
+      isQueueAdded : false
     };
 
     auth.onAuthStateChanged(user => {
@@ -125,7 +128,7 @@ class episode extends Component {
       // minHeight: "100px",
     };
   }
-
+  
   componentDidMount() {
     
     axios
@@ -179,9 +182,7 @@ class episode extends Component {
       // console.log(a);
     });
   }
-  handlePlayIt = () => {
-    this.props.playIt("hi")
-  };
+
   check(date, time) {
     const publishedDate = date;
     const publishedTime = time;
@@ -260,7 +261,22 @@ class episode extends Component {
 
    
   }
-
+  queueAddHandler(){
+   
+  
+    if(true){
+      this.props.addQueue(
+        {
+          audio: this.state.audio,
+          cover: this.state.cover,
+          title: this.state.title,
+          vendor: 'audio',
+          slug: this.props.match.params.slug
+        }
+      )
+    }
+   
+  }
   render() {
     const { className, style, media } = this.props;
     let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay;
@@ -327,8 +343,11 @@ class episode extends Component {
                       </div>
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
-                    <MainPlayPause switch={this.onChangeUsername} />
-            
+                    <MainPlayPause 
+                     slug ={this.props.match.params.slug}
+                    nowPlaying ={this.props.nowPlaying || "live"}
+                    switch={this.onChangeUsername} />
+                    <button onClick={this.queueAddHandler}>Add to queue</button>
                 
                     <Status src={this.state.liveAudio}
                       cover={this.state.liveCover}
@@ -507,13 +526,14 @@ class episode extends Component {
 const mapStateToProps = (state) => {
   return {
      count: state.counter.count,
-     nowPlaying : state.queue.nowPlaying
+     nowPlaying : state.queue.nowPlaying,
+     myQueue: state.queue.myQueue
    };
   };
 export default connect( 
   
-  null,
-  {playIt},
+  mapStateToProps,
+  {playIt,addQueue},
  
  
   )(episode);

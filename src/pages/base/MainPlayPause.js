@@ -45,11 +45,9 @@ class MainPlayPause extends Component {
             <div></div>
 
             <div>
-              <div className={media.isLoading ? "" : "d-none"}>
-                <div className="spinner-border text-secondary" role="status"></div>
-              </div>
-              <div className={!media.isLoading ? "" : "d-none"}>
-                {media.isPlaying && media.duration !== Infinity ? (
+              
+              <div className={!media.isLoading ? "" : ""}>
+                {this.props.slug === this.props.nowPlaying.slug ? (
                   <span className="material-icons" style={{ fontSize: "35px" }}>
                     surround_sound
                   </span>
@@ -66,9 +64,8 @@ class MainPlayPause extends Component {
             </div>
           </div>
           <div className="p-2 pt-3 bd-highlight text-uppercase">
-            {media.duration == Infinity ? "PLAY" : ""}
-            {media.isPlaying && media.duration !== Infinity ? "PLAYING" : ""}
-            {!media.isPlaying && media.duration !== Infinity? "PAUSED": ""}
+            {this.props.slug === this.props.nowPlaying.slug ? "PLAYING" : "PLAY"}
+           
           </div>
         </div>
 

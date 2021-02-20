@@ -27,7 +27,7 @@ import SongDedication from "./pages/SongDedication";
 import MyHome from "./pages/MyHome";
 
 import { connect } from 'react-redux';
-import { playIt } from './redux/Queue/queue.actions';
+import { playIt,previousSong,nextSong,addQueue } from './redux/Queue/queue.actions';
 
 import * as SETTINGS from './pages/constants/Settings';
 
@@ -40,6 +40,7 @@ import {
   withMediaProps,
   utils,
 } from "react-media-player";
+import { createBrowserHistory } from 'history'
 
 class App extends Component {
  
@@ -48,9 +49,61 @@ class App extends Component {
      title:'Live TV',
      audio: SETTINGS.liveURL,
      cover: SETTINGS.liveCover,
-     vendor: 'audio'
+     vendor: 'audio',
+     currentIndex: 0,
+     previousAudio:{},
+     nextAudio:{}
      }
-  
+   handleNext = () => {
+    let next = this.props.queue.tracks
+     if (next !== undefined) {
+       let calc = next[this.state.currentIndex +1]
+       if (calc !==undefined) {
+        this.setState({currentIndex:this.state.currentIndex+1})
+        this.props.playIt(
+          {
+            audio: calc.audio,
+            cover: calc.cover,
+            title: calc.title,
+            vendor: 'audio',
+            slug: calc.slug
+          }
+        )
+       } else {
+        alert('No Next')
+       }
+       
+     } else {
+       alert('Queue is empty')
+     }
+
+     }
+     handlePrevious = () => {
+      let next = this.props.queue.tracks
+      if (next !== undefined) {
+        let calc = next[this.state.currentIndex -1]
+        if (calc !==undefined && this.state.currentIndex -1 >=0) {
+         this.setState({currentIndex:this.state.currentIndex-1})
+         this.props.playIt(
+           {
+             audio: calc.audio,
+             cover: calc.cover,
+             title: calc.title,
+             vendor: 'audio',
+             slug: calc.slug
+           }
+         )
+        } else {
+         alert('No Next')
+        }
+        
+      } else {
+        alert('Queue is empty')
+      }
+     
+
+
+     }
  
   render() {
     
@@ -59,8 +112,6 @@ class App extends Component {
        
         
         <CountDown />
-        
-        <div style={{color:'#ffffff'}}>Count: {this.props.nowPlaying&&(this.props.nowPlaying.title)}</div>
       
         <ScrollReveal
           children={() => (
@@ -98,13 +149,18 @@ class App extends Component {
        <Media>
          <div>
             <Player
-              src={this.props.nowPlaying ? this.props.nowPlaying.audio :this.state.audio}
-              vendor={this.props.nowPlaying ?this.props.nowPlaying.vendor :this.state.vendor}
-              autoPlay="false"
+                src={this.props.nowPlaying ? this.props.nowPlaying.audio :this.state.audio}
+                vendor={this.props.nowPlaying ?this.props.nowPlaying.vendor :this.state.vendor}
+                autoPlay="false"
             />
             <FlotingPlayPause
-            cover={this.props.nowPlaying ?this.props.nowPlaying.cover :this.state.cover}
-            title={ this.props.nowPlaying ? this.props.nowPlaying.title : this.state.title }
+                cover={this.props.nowPlaying ?this.props.nowPlaying.cover :this.state.cover}
+                title={ this.props.nowPlaying ? this.props.nowPlaying.title : this.state.title }
+                nextSong ={this.handleNext}
+                queue ={this.props.queue}
+                previousSong ={this.handlePrevious}
+                currentIndex = {this.state.currentIndex}
+             
           />
           </div>
          </Media>
@@ -118,7 +174,10 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
      count: state.counter.count,
-     nowPlaying : state.queue.nowPlaying
+     nowPlaying : state.queue.nowPlaying,
+     myNextSong : state.queue.nextSong,
+     myPreviousSong: state.queue.previousSong,
+     queue : state.queue.myQueue
    };
   };
   // const mapDispatchToProps = (dispatch) => {
@@ -130,7 +189,7 @@ const mapStateToProps = (state) => {
   export default connect( 
   
     mapStateToProps,
-    {playIt},
+    {playIt,previousSong,nextSong,addQueue},
    
    
     )(App);
