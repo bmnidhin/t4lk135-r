@@ -54,14 +54,19 @@ import Queue from "./pages/Queue";
 
 const theme = createMuiTheme({
   palette: {
-    type: "dark"
+    type: "dark",
+    palette:{
+      background:{
+        paper: SETTINGS.COLOURS.BG_COLOR_L0
+      }
+    }
   }
 });
 class App extends Component {
  
 
     state = {
-     title:'Live Radio',
+     title:'Live TV',
      audio: SETTINGS.liveURL,
      cover: SETTINGS.liveCover,
      vendor: 'audio',

@@ -16,6 +16,7 @@ import { isMobile } from "react-device-detect";
 import { playIt } from '../../redux/Queue/queue.actions';
 import { Link } from "react-router-dom";
 import Status from "../../utils/Status";
+import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 const { formatTime } = utils;
 
 const {
@@ -199,7 +200,7 @@ _handlePreviouss = ()=>{
                 <td className="align-middle"style={{ width: "100px", fontSize: "15px" }}>
                   <div
                     className="text-truncate"
-                    style={isMobile ? { fontSize: "15px",maxWidth: "50px" } :{ fontSize: "15px",maxWidth: "150px" } }
+                    style={isMobile ? { fontSize: "15px",maxWidth: "70px" } :{ fontSize: "15px",maxWidth: "150px" } }
                    
                   >
                      <Link to={this.props.slug} style={{color:'black' }}>
@@ -257,9 +258,9 @@ _handlePreviouss = ()=>{
                   <div>
                     
 
-                    <Link to={'/queue'}>
+                    <Link to={'/queue'} style={{color:'black'}}>
 
-                    <span className="material-icons muted" style={{color:"black"}}>menu_open</span>
+                  <QueueMusicIcon />
                     </Link>
 
                    

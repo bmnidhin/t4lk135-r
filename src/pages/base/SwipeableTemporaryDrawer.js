@@ -10,28 +10,62 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
+import HomeIcon from '@material-ui/icons/Home';
+import AlbumIcon from '@material-ui/icons/Album';
+import {Link} from 'react-router-dom'
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
+import { QueueMusic } from '@material-ui/icons';
+import RadioIcon from '@material-ui/icons/Radio';
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
 const myList = [
   { 
     id:'0',
     name : "Home",
     path : '/',
-    icon : <MailIcon/>
+    icon : <HomeIcon/>
   },
   {
     id:'1',
     name : "Listen",
-    path : '/',
-    icon : <MailIcon/>
+    path : '/listen',
+    icon : <AlbumIcon/>
   },
   {
     id:'2',
     name : "Playlists",
-    path : '/',
-    icon : <MailIcon/>
+    path : '/playlist',
+    icon : <PlaylistPlayIcon/>
+  },
+  {
+    id:'3',
+    name : "Live Radio",
+    path : '/live',
+    icon : <RadioIcon/>
   }
 ]
 
+const mySecondList = [
+  { 
+    id:'0',
+    name : "Queue",
+    path : '/queue',
+    icon : <QueueMusic/>
+  },
+  {
+    id:'1',
+    name : "My Library",
+    path : '/library',
+    icon : <SubscriptionsIcon/>
+  },
+  {
+    id:'2',
+    name : "Song Dedication",
+    path : '/song-dedication',
+    icon : <LoyaltyIcon/>
+  }
+]
 const useStyles = makeStyles({
     list: {
       width: 250,
@@ -68,19 +102,23 @@ export default function SwipeableTemporaryDrawer() {
       >
         <List>
           {myList.map((text, index) => (
+            <Link to={text.path}>
             <ListItem button key={text.id}>
               <ListItemIcon>{text.icon}</ListItemIcon>
               <ListItemText primary={text.name} />
             </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+        {mySecondList.map((text, index) => (
+            <Link to={text.path}>
+            <ListItem button key={text.id}>
+              <ListItemIcon>{text.icon}</ListItemIcon>
+              <ListItemText primary={text.name} />
             </ListItem>
+            </Link>
           ))}
         </List>
       </div>
