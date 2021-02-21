@@ -22,7 +22,10 @@ import SubmitPromo from "./SubmitPromo";
 import Adbanner from "./AdBanner";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
-const settings = require("./API/settings.json");
+import { connect } from 'react-redux';
+
+import { playIt, addQueue } from '../redux/Queue/queue.actions';
+
 
 
 class playListDetail extends Component {
@@ -187,12 +190,36 @@ class playListDetail extends Component {
               localStorage.removeItem('userid')
  
    } 
-  onChangeUsername() {
+  onChangeUsername(item, tracks) {
+    this.props.playIt(
+      {
+        audio: item.audio,
+        cover: this.state.cover,
+        title: item.title,
+        vendor: 'audio',
+        slug: "/playlist/"+this.props.match.params.slug +'/'+item.id,
+        duration : item.duration
+
+      }
+    )
+   tracks.slice(item.id -1, 100).map((track) => (
+    this.props.addQueue(
+      {
+        audio: track.audio,
+        cover: this.state.cover,
+        title: track.title,
+        vendor: 'audio',
+        slug:  "/playlist/"+this.props.match.params.slug +'/'+track.id,
+        duration: track.duartion
+      }
+    )
+   ))
     this.setState({
-      liveAudio: this.state.audio,
+      selectedTrack: item.id,
+      liveAudio: item.audio,
       liveCover: this.state.cover,
-      liveTitle: this.state.title,
-    });
+      liveTitle: item.title,
+    })
   }
 
   render() {
@@ -205,21 +232,18 @@ class playListDetail extends Component {
           
           style={{
             // fontWeight: item.title === this.state.selectedTrack && "bold",
-            fontWeight: item.id === this.state.selectedTrack && "bold",
+            fontWeight: this.props.nowPlaying&&("/playlist/"+this.props.match.params.slug + "/"+ item.id === this.props.nowPlaying.slug && "bold"),
             // color: item.id === this.state.selectedTrack && "green",
             backgroundColor:
-              item.id === this.state.selectedTrack && "rgba(44, 40, 174, 0.34)",
+            this.props.nowPlaying&&("/playlist/"+this.props.match.params.slug + "/"+ item.id === this.props.nowPlaying.slug && "rgba(44, 40, 174, 0.34)")
+              ,
           }}
         >
           <th scope="row" onClick={() =>
-          
-            this.setState({
-              selectedTrack: item.id,
-              liveAudio: item.audio,
-              liveCover: this.state.cover,
-              liveTitle: item.title,
-            })
-          }>{item.id === this.state.selectedTrack?
+            
+            this.onChangeUsername(item, this.state.tracks)
+           
+          }>{this.props.nowPlaying&&("/playlist/"+this.props.match.params.slug + "/"+ item.id === this.props.nowPlaying.slug)?
             <span class="material-icons">
 play_circle_outline
 </span>
@@ -228,17 +252,8 @@ play_circle_outline
             </th>
           <td style={{ fontSize: "1rem" }}
           onClick={() =>
-            // ReactGA.event({
-            //   category: 'Playlist',
-            //   action: 'Player Started',
-            //   label: item.title,
-            //   nonInteraction: true,}),
-            this.setState({
-              selectedTrack: item.id,
-              liveAudio: item.audio,
-              liveCover: this.state.cover,
-              liveTitle: item.title,
-            })
+         
+            this.onChangeUsername(item,this.state.tracks)
           }
           >{item.title}
         <br/><span className="text-muted"style={{ fontSize: "0.6rem" }}>
@@ -256,6 +271,7 @@ play_circle_outline
        
       );
     });
+ 
     return (
       <Media>
         <div style={this.conatiner}>
@@ -391,12 +407,7 @@ play_circle_outline
                         >
                           &nbsp;
                         </div>
-                        {/* <img
-                        src={this.state.user.photoURL}
-                        class="rounded-circle"
-                        width="30px"
-                        alt="..."
-                      /> */}
+                       
                       </div>
                       <div class="p-2 flex-grow-1 bd-highlight">
                         <h6>
@@ -405,29 +416,10 @@ play_circle_outline
                         </h6>
                         {this.state.commentsLoaded&&( <NewComment postNewComment={this.postNewComment} />)}
                         
-                        {/* {JSON.stringify(this.state.user)} */}
+                      
                       </div>
                     </div>
 
-                    // <div className="user">
-                    //   <img
-                    //     className="photo"
-                    //     alt={this.state.user}
-                    //     src={this.state.user.photoURL}
-                    //   />
-                    //   <h5 className="display-name">
-                    //     {" "}
-                    //     {this.state.user.displayName}{" "}
-                    //   </h5>
-                    //   <p className="email"> {this.state.user.email} </p>
-                    //   <NewComment postNewComment={this.postNewComment} />
-                    //   <button
-                    //     className="btn btn-outline-secondary"
-                    //     onClick={() => auth.signOut()}
-                    //   >
-                    //     Sign Out
-                    //   </button>
-                    // </div>
                   )}
                   {!this.state.isLoggedIn && (
                     <div className="signUpPrompt">
@@ -485,25 +477,7 @@ play_circle_outline
                      
                     }}
                   />
-                  {/* <div class="d-flex bd-highlight">
-                    <div class="p-2 bd-highlight">
-                      <img
-                        src="https://yt3.ggpht.com/a/AATXAJygzSqzI_OYRoHsaGr1lphQo46Y2_vi8K-7LUUKCg=s48-c-k-c0xffffffff-no-rj-mo"
-                        class="rounded-circle"
-                        width="100%"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="p-2 flex-grow-1 bd-highlight">
-                      <h6 style={{ fontSize: "0.7rem" }}>
-                        <b>Nidhin BM</b>
-                        <a> 23 Minutes ago</a>
-                      </h6>
-                      <p style={{ fontSize: "0.8rem" }}>
-                        ഒരു ബോറടിയും തോന്നാതെ കണ്ടവർ ആരൊക്കെ ഉണ്ട്?
-                      </p>
-                    </div>
-                  </div> */}
+                
                 </div>
 
                
@@ -514,17 +488,26 @@ play_circle_outline
          
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.liveAudio} vendor="audio" autoPlay="true" />
+          
           </div>
-          <FlotingPlayPause
-            cover={this.state.liveCover}
-            title={this.state.liveTitle}
-
-          />
-          <BottomNav selected="playlist"/>
+        
+         
         </div>
       </Media>
     );
   }
 }
-export default withMediaProps(playListDetail);
+const mapStateToProps = (state) => {
+  return {
+     count: state.counter.count,
+     nowPlaying : state.queue.nowPlaying,
+     myQueue: state.queue.myQueue
+   };
+  };
+export default connect( 
+  
+  mapStateToProps,
+  {playIt,addQueue},
+ 
+ 
+  )(playListDetail);

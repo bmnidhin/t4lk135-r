@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserPhoto from "../Firebase/UserPhoto";
-
+import SwipeableTemporaryDrawer from "./SwipeableTemporaryDrawer";
 
 const logo = require("./img/tkmshow_white.png");
 const appName = "thetkmshow";
+
 
 export default class LogoArea extends Component {
   constructor(props) {
@@ -37,12 +38,10 @@ export default class LogoArea extends Component {
           <tbody>
             <tr>
 
-              <td style={{ width: "10%", fontSize: "25px", }}>
-              <Link to="/listen">
-              <span className="material-icons"style={{color:"white"}}>
-                  search
-                </span>
-                </Link>
+              <td style={{ width: "10%", fontSize: "25px",cursor:'pointer' }}>
+             
+              <SwipeableTemporaryDrawer/>
+              
                 
               </td>
               <td style={{ width: "80%" }}>

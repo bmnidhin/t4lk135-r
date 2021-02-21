@@ -20,14 +20,8 @@ export default function ProfilePhoto(props) {
 
   return (
     <div>
-        <Avatar 
-        alt={props.alt}
-        src={props.src}  
-        aria-controls="fade-menu" aria-haspopup="true"
-         onClick={handleClick}/>
-      {/* <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
-        Open with fade transition
-      </Button> */}
+       
+    
       <Menu
         id="fade-menu"
         anchorEl={anchorEl}
@@ -37,11 +31,6 @@ export default function ProfilePhoto(props) {
         TransitionComponent={Fade}
       >
          
-        <MenuItem onClick={handleClose}>
-            <Link to="/library">
-              My Library
-            </Link>
-        </MenuItem>
         {/* <MenuItem onClick={handleClose}>Settings</MenuItem> */}
         <MenuItem onClick={props.logout}>Logout</MenuItem>
       </Menu>

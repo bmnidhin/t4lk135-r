@@ -62,6 +62,7 @@ export default class listen extends Component {
   }
 
   render() {
+ 
     return (
       <Media>
         <div>
@@ -111,9 +112,9 @@ export default class listen extends Component {
             </div>
           </div>
 
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
+        
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay={localStorage.getItem('autoplay')} />
+           
             <BottomNav selected="listen" />
           </div>
         </div>

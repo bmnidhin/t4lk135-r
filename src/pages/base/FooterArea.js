@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import * as SETTINGS from "../constants/Settings";
 
 export default class FooterArea extends Component {
     top={
         width:"100%",
-        backgroundColor:"rgb(14, 14, 67)",
+        backgroundColor:SETTINGS.COLOURS.BRAND_BG,
         padding:'10px',
         textAlign:'center',
         color:'white',

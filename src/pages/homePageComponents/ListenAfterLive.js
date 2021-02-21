@@ -64,6 +64,7 @@ export default class ListenAfterLive extends Component {
         {this.state.data.filter(track => track.isEventPublished ??true).slice(0, 1).map((track) => (
 
 <Link
+key={track.slug}
 to={track.slug}
 className={true ? "" : "d-none"}
 >

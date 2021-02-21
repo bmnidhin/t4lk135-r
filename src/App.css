@@ -2,10 +2,18 @@
 
 @import url('https://smc.org.in/fonts/keraleeyam.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap'); */
 html {
 	scroll-behavior: smooth;
 }
-body{font-family: 'Montserrat', sans-serif;}
+body{font-family: 'Montserrat', sans-serif !important}
+
+a{
+  color: #fff;
+}
+a :hover{
+  color: rgb(221, 217, 217);
+}
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 @media screen and (min-width: 601px) {
     .Herotext {

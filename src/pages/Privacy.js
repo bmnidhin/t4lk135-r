@@ -40,7 +40,7 @@ export default class Privacy extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.content = {
@@ -62,6 +62,7 @@ export default class Privacy extends Component {
 
 
   render() {
+
     return (
       <Media>
         <div>
@@ -165,11 +166,10 @@ export default class Privacy extends Component {
             </div>
           </div>
 
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
-
+     
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay="true" />
+          
             <BottomNav selected="privacy"/>
           </div>
         </div>

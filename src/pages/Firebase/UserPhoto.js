@@ -3,7 +3,7 @@ import { auth, providers } from '../../utils/FirebaseSettings'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
-
+import ProfilePhoto from "./ProfilePhoto";
 export default class UserPhoto extends Component {
     constructor(props) {
         super(props);
@@ -28,9 +28,9 @@ export default class UserPhoto extends Component {
         auth.signInWithPopup(providers[provider]);
       }
       logout() {
-        this.setState({ isLoggedIn: false, user: {} });
+              auth.signOut()
               localStorage.removeItem('userid')
-       
+          
       }
     render() {
         if(this.state.isLoggedIn){
@@ -39,24 +39,12 @@ export default class UserPhoto extends Component {
         return (
             <div>
                 {this.state.isLoggedIn && (
-                    <Link to="/library">
-                        <div
-                          className="rounded-circle "
-                          width="30px"
-                          height="30px"
-                          style={{
-                            backgroundColor: "rgb(14, 14, 67)",
-                            backgroundImage:
-                              "url(" + this.state.user.photoURL + ")",
-                            backgroundSize: "cover",
-                            width: "30px",
-                            height: "30px",
-                            color: "rgb(14, 14, 67)",
-                          }}
-                        >
-                          &nbsp;
-                        </div>
-                        </Link>
+                  <ProfilePhoto
+                    alt ={this.state.user.displayName}
+                    src={this.state.user.photoURL}
+                    logout={this.logout}
+                    />
+                 
                   )}
                   {!this.state.isLoggedIn &&(
                       

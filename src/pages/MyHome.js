@@ -22,7 +22,7 @@ import Promobox from "./PromoBox";
 
 const Background = require("./base/img/wave.jpg");
 
-export default class Homepage extends Component {
+export default class MyHome extends Component {
   state = {  
     url: SETTINGS.liveURL,
     cover:SETTINGS.liveCover,
@@ -90,12 +90,12 @@ export default class Homepage extends Component {
             <div style={this.mainContent}>
             {/* <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/> */}
             {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
-              <ListenAfterLive />
+              <ListenAfterLive listen={this.props.listen}/>
               {/* <FeaturedLiveChat/> */}
             
-              <FeaturedRandom />
+              <FeaturedRandom listen={this.props.listen}/>
                
-              {this.props.isAuthed}
+            
                
               {/* <RecentPosters /> */}
             </div>
@@ -107,7 +107,7 @@ export default class Homepage extends Component {
             <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
              <RecentlyPlayed page="home"/>
              
-             <FeaturedPosts />
+             <FeaturedPosts listen={this.props.listen}/>
              <SubmitPromo/>
             
               
@@ -120,11 +120,11 @@ export default class Homepage extends Component {
               <FeaturedClubs/> */}
             </div>
           </div>
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/>
+          {/* <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/> */}
           <BottomNav selected='home'/>
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay="true" />
+            {/* <Player src={this.state.url} vendor="audio" autoPlay="true" /> */}
           </div>
         </div>
       </Media>

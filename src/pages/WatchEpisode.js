@@ -21,7 +21,8 @@ import * as SETTINGS from './constants/Settings';
 import Status from "../utils/Status";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
-
+import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button'
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -231,7 +232,7 @@ class WatchEpisode extends Component {
   }
 
   render() {
-
+ 
     return (
       <Media>
         <div style={this.conatiner}>
@@ -269,7 +270,7 @@ class WatchEpisode extends Component {
                      <img
                      src={this.state.cover}
                      width="100%"
-                     className="roundedImage d-none d-xl-block"
+                     className="roundedImage"
                      alt="Poster"
                    ></img>
                 )}
@@ -283,12 +284,7 @@ class WatchEpisode extends Component {
                   Loading........
                  </div>
                  <div className="media pb-3">
-            <Player
-              src={this.state.liveAudio}
-              vendor="audio"
-              autoPlay="false"
-              width="100%"
-            />
+         
           </div>
                     <h4>{this.state.title}</h4>
                     <div
@@ -300,17 +296,12 @@ class WatchEpisode extends Component {
                       </div>
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
-                    <MainPlayPause switch={this.onChangeUsername} />
-                    <Status src={this.state.liveAudio}
-                      cover={this.state.liveCover}
-                      title={this.state.liveTitle}
-                      url = {this.state.liveAudio}
-                      slug={"watch/"+this.props.match.params.slug}
-                      name={this.state.user.displayName}
-                      id={this.state.user.uid}
-                      auth ={this.state.isLoggedIn}
-                      
-                    />
+                    {/* <MainPlayPause switch={this.onChangeUsername} /> */}
+                     <a  href ={this.state.audio} target="_blank" >
+                     <Button variant="outlined" color="secondary"className={'mb-3 mt-3'}>
+                        Watch on Youtube
+                      </Button>
+                     </a>
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
