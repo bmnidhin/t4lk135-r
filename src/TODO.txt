@@ -1,4 +1,2 @@
-
-[] Sidebar Links
-[] Local Storage Remove item percentage whwn compleated
 [] Play butto - Live Page
+[] 404 Page

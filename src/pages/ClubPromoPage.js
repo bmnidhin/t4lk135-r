@@ -1,118 +1,96 @@
-import React, { Component } from "react";
-import LogoArea from "./base/LogoArea";
-import { Media, Player, controls } from "react-media-player";
-import axios from "axios";
-import Moment from "moment";
-import FlotingPlayPause from "./base/FlotingPlayPause";
-import { Helmet } from "react-helmet";
-import * as SETTINGS from './constants/Settings';
-import ClubAdvt from "./base/ClubAdvt";
-import BottomNav from "./base/BottomNav";
-// import Skeleton from '@yisheng90/react-loading';
-// const settings = require("./API/settings.json");
+import React, {Component} from 'react'
+import LogoArea from './base/LogoArea'
+import {Media, Player, controls} from 'react-media-player'
+import axios from 'axios'
+import Moment from 'moment'
+import FlotingPlayPause from './base/FlotingPlayPause'
+import {Helmet} from 'react-helmet'
+import * as SETTINGS from './constants/Settings'
+import ClubAdvt from './base/ClubAdvt'
+import BottomNav from './base/BottomNav'
 
-// let URL = settings.map((settings) => {
-//   return settings.streamURL;
-// });
-// let liveCover = settings.map((settings) => {
-//   return settings.liveCover;
-// });
 
 export default class ClubPromoPage extends Component {
   constructor(props) {
-    super(props);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    super(props)
+    this.onChangeUsername = this.onChangeUsername.bind(this)
     // this.postNewComment = this.postNewComment.bind(this);
 
     this.state = {
-      notLoaded:true,
+      notLoaded: true,
       url: SETTINGS.liveURL,
-      cover:SETTINGS.liveCover,
-      title: "Live Radio",
-      pageTitle:"Loading..",
-      hasBanner:false,
-      bannerContent:{
-        "subOne":"Read",
-        "heading":"Magazine Name by Mechanical Department Published",
-        "subTwo":""
-        ,"link":"p/kettonam"
+      cover: SETTINGS.liveCover,
+      title: 'Live Radio',
+      pageTitle: 'Loading..',
+      hasBanner: false,
+      bannerContent: {
+        subOne: 'Read',
+        heading: 'Magazine Name by Mechanical Department Published',
+        subTwo: '',
+        link: 'p/kettonam',
       },
-      hasYoutube:false,
-      youtubeLink:"",
+      hasYoutube: false,
+      youtubeLink: '',
+    }
 
-    };
-    // this.refComments = base.syncState("ithaan", {
-    //   context: this,
-    //   state: "comments"
-    // });
-    // auth.onAuthStateChanged(user => {
-    //   if (user) {
-    //     this.setState({ isLoggedIn: true, user });
-    //     console.log("------------------------------------");
-    //     console.log(user);
-    //   } else {
-    //     this.setState({ isLoggedIn: false, user: {} });
-              //localStorage.removeItem('userid')
-    //   }
-    // });
 
     this.conatiner = {
-      minHeight: "100vh",
+      minHeight: '100vh',
       backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
-      color: "white",
-    };
+      color: 'white',
+    }
     this.content = {
-      marginLeft: "10%",
-      marginRight: "10%",
-    };
-    this.itemHeading={
-      textAlign:"left",
-      fontSize:"10px",
-      paddingTop:"15px",
-      color:"white",
+      marginLeft: '10%',
+      marginRight: '10%',
+    }
+    this.itemHeading = {
+      textAlign: 'left',
+      fontSize: '10px',
+      paddingTop: '15px',
+      color: 'white',
     }
   }
 
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/promo/" + this.props.match.params.slug)
+      .get('https://api.thetkmshow.in/promo/' + this.props.match.params.slug)
       .then((response) => {
         console.log(response.data)
         this.setState({
-          pageTitle:response.data.title,
-          notLoaded:false,
+          pageTitle: response.data.title,
+          notLoaded: false,
           listen: response.data,
-          hasBanner:response.data.hasBanner,
-          bannerContent:response.data.bannerContent,
-          hasYoutube:response.data.hasYoutube,
-          youtubeLink:response.data.youtubeLink
-        });
+          hasBanner: response.data.hasBanner,
+          bannerContent: response.data.bannerContent,
+          hasYoutube: response.data.hasYoutube,
+          youtubeLink: response.data.youtubeLink,
+        })
       })
       .catch((error) => {
         this.setState({
-          notLoaded:true,
-        });
-        console.log(error);
-      });
+          notLoaded: true,
+        })
+        console.log(error)
+      })
   }
   check(date, time) {
-    const publishedDate = date;
-    const publishedTime = time;
-    const currentTime = Moment().format();
-    const publishAt = publishedDate + "T" + publishedTime + "+05:30";
+    const publishedDate = date
+    const publishedTime = time
+    const currentTime = Moment().format()
+    const publishAt = publishedDate + 'T' + publishedTime + '+05:30'
 
-    const a = Moment(publishAt);
-    const b = Moment(currentTime);
-    const myDiff = b.diff(a);
+    const a = Moment(publishAt)
+    const b = Moment(currentTime)
+    const myDiff = b.diff(a)
 
-    const isEventPublished = myDiff > 0;
-    return isEventPublished;
+    const isEventPublished = myDiff > 0
+    return isEventPublished
   }
 
   onChangeUsername() {
     this.setState({
-      playing: "aana",
-    });
+      playing: 'aana',
+    })
   }
   // postNewComment(comment) {
   //   comment.user = {
@@ -135,51 +113,54 @@ export default class ClubPromoPage extends Component {
   // }
   // logout(){
   //   this.setState({ isLoggedIn: false, user: {} });
-              //localStorage.removeItem('userid')
+  //localStorage.removeItem('userid')
 
   // }
   render() {
- 
     return (
       <Media>
         <div>
           <Helmet>
-            <meta charSet="utf-8" />
+            <meta charSet='utf-8' />
             <title>Listen | The TKM Show</title>
-            <link rel="canonical" href="https://thetkmshow.in/listen" />
+            <link rel='canonical' href='https://thetkmshow.in/listen' />
           </Helmet>
           <div style={this.conatiner}>
             <LogoArea />
-            <div style={{ marginTop: "30px", paddingBottom: "30px" }}>
-    <h3 style={{ textAlign: "center" }}>{this.state.pageTitle}</h3>
-              
+            <div style={{marginTop: '30px', paddingBottom: '30px'}}>
+              <h3 style={{textAlign: 'center'}}>{this.state.pageTitle}</h3>
             </div>
             <div style={this.content}>
-            {this.state.hasBanner &&(
-              <ClubAdvt top={this.state.bannerContent.subOne} heading={this.state.bannerContent.heading} link={this.state.bannerContent.link} target="_blank"/>
-            )}
-            <div className="mt-2 mb-3" ></div>
-            {/* <Adbanner/> */}
+              {this.state.hasBanner && (
+                <ClubAdvt
+                  top={this.state.bannerContent.subOne}
+                  heading={this.state.bannerContent.heading}
+                  link={this.state.bannerContent.link}
+                  target='_blank'
+                />
+              )}
+              <div className='mt-2 mb-3'></div>
+              {/* <Adbanner/> */}
 
-{this.state.hasYoutube &&(
-              <iframe width="100%" height="300" src={this.state.youtubeLink} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            )}
-             <div className="mt-2 mb-3" ></div>
-              <div className="row">
-                
-            
-              </div>
+              {this.state.hasYoutube && (
+                <iframe
+                  width='100%'
+                  height='300'
+                  src={this.state.youtubeLink}
+                  frameborder='0'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                  allowfullscreen></iframe>
+              )}
+              <div className='mt-2 mb-3'></div>
+              <div className='row'></div>
             </div>
           </div>
-          
-         
-          <BottomNav/>
+
+          <BottomNav />
           {/* <NowPlaying playing={this.state.playing}/> */}
-          <div className="media">
-            
-          </div>
+          <div className='media'></div>
         </div>
       </Media>
-    );
+    )
   }
 }

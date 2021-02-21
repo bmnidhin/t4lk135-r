@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
 export class MagazineDownload extends Component {
-  constructor( props ){
+  constructor(props) {
     super();
     this.state = { ...props };
   }
-  componentWillMount(){
+  componentWillMount() {
     window.location = "https://www.magazinetkmce.com/read/mag-mech-july";
   }
-  render(){
+  render() {
     return (
-      <div style={{minHeight:"80vh",paddingTop:'40vh', backgroundColor: "#030229",textAlign: "center",color:'#ffffff'}}>
+      <div style={{ minHeight: "80vh", paddingTop: '40vh', backgroundColor: "#030229", textAlign: "center", color: '#ffffff' }}>
 
         Redirecting.....{this.props.loc}
 

@@ -6,13 +6,13 @@ export class Redirect extends Component {
     this.state = { ...props };
   }
   componentWillMount(){
-    window.location = "https://bit.ly/thetkmshow";
+    window.location = this.props.url;
   }
   render(){
     return (
       <div style={{minHeight:"80vh",paddingTop:'40vh', backgroundColor: "#030229",textAlign: "center",color:'#ffffff'}}>
 
-        Redirecting.....{this.props.loc}
+        Redirecting.....{this.props.url}
 
       </div>
     );

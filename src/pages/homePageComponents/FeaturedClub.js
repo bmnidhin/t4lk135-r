@@ -7,21 +7,21 @@ import Placehold from "../base/Placehold";
 
 export default class FeaturedClubs extends Component {
   state = {
-    notLoaded:true,
+    notLoaded: true,
     listen: [],
-    sliceAt:4
+    sliceAt: 4
   };
   componentDidMount() {
     axios
       .get("https://api.thetkmshow.in/clubs")
       .then((response) => {
         this.setState({
-          notLoaded:false,
+          notLoaded: false,
           listen: response.data,
         });
-        
+
       })
-      .then(()=>{
+      .then(() => {
         const publishedDate = this.state.listen[0].publishedAtDate;
         const publishedTime = this.state.listen[0].publishedAtTime;
         const currentTime = Moment().format();
@@ -35,17 +35,17 @@ export default class FeaturedClubs extends Component {
         const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
         if (isEventPublished) {
           this.setState({
-            sliceAt:3
+            sliceAt: 3
           });
         } else {
           this.setState({
-            sliceAt:4
+            sliceAt: 4
           });
         }
       })
       .catch((error) => {
         this.setState({
-          notLoaded:true,
+          notLoaded: true,
         });
         console.log(error);
       });
@@ -64,48 +64,48 @@ export default class FeaturedClubs extends Component {
     const isBannerActive = myDiff > 0 && myDiff < 86400000; //displaybanner for 24 hr
     return isEventPublished;
   }
- 
-  heading={
-     paddingTop:"20px",
-     paddingBottom:"15px",
-     textAlign:"left",
-     color:"#ffffff"
+
+  heading = {
+    paddingTop: "20px",
+    paddingBottom: "15px",
+    textAlign: "left",
+    color: "#ffffff"
   }
-  itemHeading={
-    textAlign:"left",
-    fontSize:"10px",
-    paddingTop:"15px",
-    color:"white",
+  itemHeading = {
+    textAlign: "left",
+    fontSize: "10px",
+    paddingTop: "15px",
+    color: "white",
   }
   render() {
     return (
       <div>
         <div className="d-flex flex-row bd-highlight justify-content-between mb-3">
-          <div className=" bd-highlight"> <span className="font-weight-bolder"style={this.heading}>
-              Club99 Series</span></div>
+          <div className=" bd-highlight"> <span className="font-weight-bolder" style={this.heading}>
+            Club99 Series</span></div>
           <div className=" bd-highlight">
-              
-          <Link to="/club99">VIEW ALL</Link>
+
+            <Link to="/club99">VIEW ALL</Link>
           </div>
-          
+
         </div>
-       
+
 
         <div className="row">
-         
-        <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           <div className="col-6 col-md-3">
-          <Placehold width="100%" height="200px" loaded={this.state.notLoaded}/>
-           </div>
-           
+
+          <div className="col-6 col-md-3">
+            <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+          </div>
+          <div className="col-6 col-md-3">
+            <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+          </div>
+          <div className="col-6 col-md-3">
+            <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+          </div>
+          <div className="col-6 col-md-3">
+            <Placehold width="100%" height="200px" loaded={this.state.notLoaded} />
+          </div>
+
           {this.state.listen.slice(0, this.state.sliceAt).map((track) => (
             <div
               className={
@@ -126,9 +126,9 @@ export default class FeaturedClubs extends Component {
               </Link>
             </div>
           ))}
-          
+
         </div>
-      
+
       </div>
     );
   }

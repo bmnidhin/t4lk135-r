@@ -20,8 +20,8 @@ export default function ProfilePhoto(props) {
 
   return (
     <div>
-       
-    
+
+
       <Menu
         id="fade-menu"
         anchorEl={anchorEl}
@@ -30,7 +30,7 @@ export default function ProfilePhoto(props) {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-         
+
         {/* <MenuItem onClick={handleClose}>Settings</MenuItem> */}
         <MenuItem onClick={props.logout}>Logout</MenuItem>
       </Menu>
