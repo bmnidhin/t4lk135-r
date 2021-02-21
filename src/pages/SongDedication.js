@@ -26,6 +26,9 @@ import Dedications from "./Firebase/Dedications";
 import { AvatarGenerator } from 'random-avatar-generator';
 import Popup from 'react-popup';
 import Promobox from "./PromoBox";
+import { connect } from 'react-redux';
+
+import { playIt, addQueue } from '../redux/Queue/queue.actions';
 let qs = require('qs');
 
 
@@ -34,6 +37,7 @@ class SongDedication extends Component {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.postNewComment = this.postNewComment.bind(this);
+    this.queueAddHandler = this.queueAddHandler.bind(this);
 
     this.state = {
       notLoaded: true,
@@ -212,6 +216,16 @@ class SongDedication extends Component {
 
   }
   onChangeUsername() {
+    this.props.playIt(
+      {
+        audio: this.state.audio,
+        cover: this.state.cover,
+        title: this.state.title,
+        vendor: 'audio',
+        slug: "/song-dedication",
+        duration : this.state.duration
+
+      })
     this.setState({
       liveAudio: this.state.audio,
       liveCover: this.state.cover,
@@ -221,7 +235,22 @@ class SongDedication extends Component {
     localStorage.setItem('cover', this.state.cover)
     localStorage.setItem('url', this.state.audio)
   }
-
+  queueAddHandler(){
+   
+  
+    if(true){
+      this.props.addQueue(
+        {
+          audio: this.state.audio,
+          cover: this.state.cover,
+          title: this.state.title,
+          vendor: 'audio',
+          slug: "/song-dedication",
+          duration: this.state.duartion
+        }
+      )
+    }
+  }
   render() {
 
     let admin = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).admin
@@ -281,22 +310,15 @@ class SongDedication extends Component {
                       </div>
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
-                    <MainPlayPause switch={this.onChangeUsername} />
-            
-                    <FlotingPlayPause
-            cover={this.state.liveCover}
-            title={this.state.liveTitle}
-          />
-                    <Status src={this.state.liveAudio}
-                      cover={this.state.liveCover}
-                      title={this.state.liveTitle}
-                      url = {this.state.liveAudio}
-                      slug={"song-dedication"}
-                      name={this.state.user.displayName}
-                      id={this.state.user.uid}
-                      auth ={this.state.isLoggedIn}
-                      
+                    <MainPlayPause 
+                     slug ={"/song-dedication"}
+                    nowPlaying ={this.props.nowPlaying || "live"}
+                    switch={this.onChangeUsername} 
+                    addQueue ={this.queueAddHandler}
                     />
+            
+            
+                  
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
@@ -460,11 +482,24 @@ class SongDedication extends Component {
            
           </div>
          
-          <BottomNav selected="listen"/>
+       
         </div>
       </Media>
     );
   }
 }
-export default withMediaProps(SongDedication);
+const mapStateToProps = (state) => {
+  return {
+     count: state.counter.count,
+     nowPlaying : state.queue.nowPlaying,
+     myQueue: state.queue.myQueue
+   };
+  };
+export default connect( 
+  
+  mapStateToProps,
+  {playIt,addQueue},
+ 
+ 
+  )(SongDedication);
 

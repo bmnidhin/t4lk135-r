@@ -186,8 +186,6 @@ class App extends Component {
                   queue ={this.props.queue}
                   nowPlaying ={this.props.nowPlaying || {slug:"/live"}}
                   currentIndex = {this.state.currentIndex}
-                
-                  
                   />}
              />
               <Route exact path="/listen" component={listen}/>

@@ -350,19 +350,11 @@ class episode extends Component {
                     <MainPlayPause 
                      slug ={"/listen/"+this.props.match.params.slug}
                     nowPlaying ={this.props.nowPlaying || "live"}
-                    switch={this.onChangeUsername} />
-                    <button onClick={this.queueAddHandler}>Add to queue</button>
-                
-                    <Status src={this.state.liveAudio}
-                      cover={this.state.liveCover}
-                      title={this.state.liveTitle}
-                      url = {this.state.liveAudio}
-                      slug={"listen/"+this.props.match.params.slug}
-                      name={this.state.user.displayName}
-                      id={this.state.user.uid}
-                      auth ={this.state.isLoggedIn}
-                      
+                    switch={this.onChangeUsername} 
+                    addQueue ={this.queueAddHandler}
                     />
+                   
+                
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
@@ -428,7 +420,6 @@ class episode extends Component {
                         </h6>
                         {this.state.commentsLoaded && (<NewComment postNewComment={this.postNewComment} />)}
 
-                        {/* {JSON.stringify(this.state.user)} */}
                       </div>
                     </div>
 

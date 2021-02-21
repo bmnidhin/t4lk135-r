@@ -21,6 +21,10 @@ import * as SETTINGS from './constants/Settings';
 import ClubAdvt from "./base/ClubAdvt";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
+import { connect } from 'react-redux';
+
+import { playIt, addQueue } from '../redux/Queue/queue.actions';
+
 // import Skeleton from '@yisheng90/react-loading';
 // const {
 //   PlayPause,
@@ -48,6 +52,7 @@ class ClubListen extends Component {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.postNewComment = this.postNewComment.bind(this);
+    this.queueAddHandler = this.queueAddHandler.bind(this);
 
     this.state = {
       notLoaded:true,
@@ -224,13 +229,40 @@ class ClubListen extends Component {
 
   }   
   onChangeUsername() {
+    this.props.playIt(
+      {
+        audio: this.state.audio,
+        cover: this.state.cover,
+        title: this.state.title,
+        vendor: 'audio',
+        slug: "/club99/"+this.props.match.params.slug,
+        duration : this.state.duration
+
+      }
+    )
     this.setState({
       liveAudio: this.state.audio,
       liveCover: this.state.cover,
       liveTitle: this.state.title,
     });
   }
-
+  queueAddHandler(){
+   
+  
+    if(true){
+      this.props.addQueue(
+        {
+          audio: this.state.audio,
+          cover: this.state.cover,
+          title: this.state.title,
+          vendor: 'audio',
+          slug: "/club99/" + this.props.match.params.slug,
+          duration: this.state.duartion
+        }
+      )
+    }
+   
+  }
   render() {
     // const { className, style, media } = this.props;
  
@@ -305,7 +337,12 @@ class ClubListen extends Component {
                       </div>
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
-                    <MainPlayPause switch={this.onChangeUsername} />
+                    <MainPlayPause 
+                     slug ={"/club99/"+this.props.match.params.slug}
+                    nowPlaying ={this.props.nowPlaying || "live"}
+                    switch={this.onChangeUsername} 
+                    addQueue ={this.queueAddHandler}
+                    />
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
@@ -492,4 +529,17 @@ class ClubListen extends Component {
     );
   }
 }
-export default withMediaProps(ClubListen);
+const mapStateToProps = (state) => {
+  return {
+     count: state.counter.count,
+     nowPlaying : state.queue.nowPlaying,
+     myQueue: state.queue.myQueue
+   };
+  };
+export default connect( 
+  
+  mapStateToProps,
+  {playIt,addQueue},
+ 
+ 
+  )(ClubListen);

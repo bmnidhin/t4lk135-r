@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as SETTINGS from "../constants/Settings";
 import Countdown from "react-countdown";
 import axios from "axios";
 import Moment from "moment";
@@ -17,7 +18,7 @@ export default class CountDown extends Component {
       width: "100%",
       height: "45px",
       color: "white",
-      backgroundColor: "#0E0E43",
+      backgroundColor:SETTINGS.COLOURS.BRAND_BG,
       textAlign: "center",
       paddingTop: "12px",
       paddingLeft:"10px",

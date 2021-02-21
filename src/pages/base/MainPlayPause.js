@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 import {
   Media,
@@ -7,6 +10,7 @@ import {
   withMediaProps,
   utils,
 } from "react-media-player";
+import { PlayArrowOutlined, PlayCircleOutline } from "@material-ui/icons";
 const {
   PlayPause,
   CurrentTime,
@@ -39,50 +43,41 @@ class MainPlayPause extends Component {
     return (
       <div style={this.style} className="player">
         <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
+          
 
-        <div className="d-flex flex-row bd-highlight" onClick={this.props.switch}>
+        <div className="d-flex flex-row bd-highlight">
           <div className="p-2 bd-highlight">
-            <div></div>
+           
 
             <div>
+        <Button
+        variant="contained"
+        color="primary"
+        // size="large"
+        className={'mr-2'}
+        onClick={this.props.switch}
+        startIcon={<PlayCircleOutline />
+        }
+      >
+        {this.props.slug === this.props.nowPlaying.slug ? "Playing" : 'Play'}
+      </Button>
+      
+      <Button
+       variant="outlined"
+        className={''}
+        startIcon={<PlaylistAddIcon />}
+        onClick={this.props.addQueue}
+      >
+        Add to Queue
+      </Button>
+      
               
-              <div className={!media.isLoading ? "" : ""}>
-                {this.props.slug === this.props.nowPlaying.slug ? (
-                  <span className="material-icons" style={{ fontSize: "35px" }}>
-                    surround_sound
-                  </span>
-                ) : (
-                  <span
-                    className="material-icons "
-                    style={{ fontSize: "35px" }}
-                  >
-                    {" "}
-                    play_circle_outline
-                  </span>
-                )}
-              </div>
             </div>
           </div>
-          <div className="p-2 pt-3 bd-highlight text-uppercase">
-            {this.props.slug === this.props.nowPlaying.slug ? "PLAYING" : "PLAY"}
-           
-          </div>
+          
         </div>
 
-        {/* {media.duration == Infinity || media.isLoading ? ("") : (<SeekBar  style={{width: "100%"}}/>)} */}
-        
-        {/* <div className="d-flex flex-row bd-highlight mb-3 justify-content-between">
-          <div className="bd-highlight" style={{ fontSize: "9px" }}>
-            {media.duration == Infinity || media.isLoading ? (
-              ""
-            ) : (
-              <CurrentTime />
-            )}
-          </div>
-          <div className="bd-highlight" style={{ fontSize: "9px" }}>
-            {media.duration == Infinity || media.isLoading ? "" : <Duration />}
-          </div>
-        </div> */}
+      
         <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
       </div>
     );

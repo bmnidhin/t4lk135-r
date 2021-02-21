@@ -49,15 +49,15 @@ export default class Live extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      backgroundColor: "#030229",
-      backgroundImage: "url(" + Background + ")",
+      backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
+      // backgroundImage: "url(" + Background + ")",
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       color: "white",
     };
       this.conatinerInner = {
-       backgroundColor: "#0e0e43",
+       backgroundColor: SETTINGS.COLOURS.BRAND_BG,
        minHeight:"24vh",
        borderRadius:"5px",
        width:"100%"
@@ -65,7 +65,7 @@ export default class Live extends Component {
       };
       this.secondaryContent = {
         textAlign: "center",
-        backgroundColor: "#030229",
+        backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
         color: "white",
       };
       this.secondaryContentInner = {
@@ -151,13 +151,13 @@ postNewComment(comment) {
           <div style={this.conatiner}>
             <LogoArea />
             
-            <div className="pl-2 pr-2 d-block d-sm-none">
+            <div className="pl-2 pr-2  d-block d-sm-none">
                    
-            <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/>
+            {/* <ClubAdvt top={"Read & Watch"} heading={"Check out a video by SAE BAJA TKMCE and the Annual Magazine of Mechanical Department"} link={"p/sae-tkmce"}/> */}
             {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>       */}
                   
                 </div>
-            <div className="pl-1 pr-1 pb-10">
+            <div className="pl-1 pr-1 mt-3 pb-10">
               
               <div className="container mt-1 p-3 pr-2 pl-2 pb-3"style={this.conatinerInner}>
                 
@@ -197,7 +197,7 @@ postNewComment(comment) {
                           className="rounded-circle"
                         
                           style={{
-                            backgroundColor: "rgb(3, 2, 41)",
+                            backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
                             backgroundImage:
                               "url(" + this.state.user.photoURL + ")",
                             backgroundSize: "cover",
@@ -281,19 +281,19 @@ postNewComment(comment) {
             
             
           </div>
-          <div className="pb-3" style={{backgroundColor:"#030229", color:"ffffff"}}>&nbsp;
+          <div className="pb-3" style={{backgroundColor:SETTINGS.COLOURS.BG_COLOR_L0, color:"ffffff"}}>&nbsp;
               
             <div style={{paddingLeft:"8%", paddingRight:"8%", }}>
                  <FeaturedPosts/>
               </div>
             
             </div>
-          <FlotingPlayPause cover={this.state.cover} title={this.state.title} />
+        
 
           {/* <NowPlaying playing={this.state.playing}/> */}
           <div className="media">
-            <Player src={this.state.url} vendor="audio" autoPlay="true" />
-            <BottomNav selected="live"/>
+          
+           
           </div>
         </div>
       </Media>

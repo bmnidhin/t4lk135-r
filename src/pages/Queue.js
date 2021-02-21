@@ -9,10 +9,12 @@ import * as SETTINGS from './constants/Settings';
 import ClubAdvt from "./base/ClubAdvt";
 import BottomNav from "./base/BottomNav";
 import { Link } from "react-router-dom";
-
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton'
 import { connect } from 'react-redux';
 
 import {removeQueue } from '../redux/Queue/queue.actions';
+import { DeleteOutline } from "@material-ui/icons";
 
 class Queue extends Component {
     constructor(props) {
@@ -171,13 +173,13 @@ class Queue extends Component {
                                                    
                                             <br />
                                                 </td>
-                                                <td className="text-center">
-                                                    <button onClick ={() => this.handleRemoveQueue(track)}>
-                                                        Remove
-                                                    </button>
-                                                <span class="material-icons text-muted">
-                                                more_vert
-                                            </span>
+                                                <td className="text-center text-muted">
+                                                <IconButton aria-label="delete" className={''}>
+          <DeleteOutline onClick ={() => this.handleRemoveQueue(track)}fontSize="small" />
+        </IconButton>
+                                                
+                                                    
+                                               
                                                 </td>
                                             </tr>
     
@@ -189,7 +191,7 @@ class Queue extends Component {
                                      )))}
                             </div>
                             <div className="mt-2 mb-3" ></div>
-                              {JSON.stringify(this.props.queue)}
+                              {/* {JSON.stringify(this.props.queue)} */}
                             <div className="mt-2 mb-3" ></div>
                             <div className="row">
 

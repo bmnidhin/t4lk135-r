@@ -22,7 +22,9 @@ import * as SETTINGS from './constants/Settings';
 import Status from "../utils/Status";
 import BottomNav from "./base/BottomNav";
 import FeaturedRandom from "./homePageComponents/FeaturedRandom";
+import { connect } from 'react-redux';
 
+import { playIt, addQueue } from '../redux/Queue/queue.actions';
 import {
   BrowserRouter as Router,
   Link,
@@ -58,8 +60,9 @@ class Play extends Component {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.postNewComment = this.postNewComment.bind(this);
-    this.reRender = this.reRender.bind(this);
-
+    this.queueAddHandler = this.queueAddHandler.bind(this);
+    
+    
     this.state = {
       notLoaded: true,
       liveTitle: "Live Radio",
@@ -70,7 +73,7 @@ class Play extends Component {
       liveAudio: SETTINGS.liveURL,
       liveCover: SETTINGS.liveCover,
       audio: SETTINGS.liveURL,
-      duration: "",
+      // duration: 0,
       cover: SETTINGS.liveCover,
       isEventPublished: true,
       isEventNoPublishedBannerVisible: true,
@@ -79,7 +82,9 @@ class Play extends Component {
       numberOfComments: 0,
       user: " ",
       commentsLoaded: false,
-      rerender:false
+      rerender:false,
+      isPlaying : false,
+      isQueueAdded : false
     };
 
     auth.onAuthStateChanged(user => {
@@ -93,7 +98,7 @@ class Play extends Component {
               localStorage.removeItem('userid')
       }
     });
-
+   
     this.conatiner = {
       minHeight: "100vh",
       backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
@@ -123,7 +128,7 @@ class Play extends Component {
       // minHeight: "100px",
     };
   }
-
+  
   componentDidMount() {
     
     axios
@@ -177,6 +182,7 @@ class Play extends Component {
       // console.log(a);
     });
   }
+
   check(date, time) {
     const publishedDate = date;
     const publishedTime = time;
@@ -232,11 +238,21 @@ class Play extends Component {
               localStorage.removeItem('userid')
 
   }
-  reRender = () => {
-    this.forceUpdate();
-    console.log('rerender')
-  };
+
+
   onChangeUsername() {
+    
+    this.props.playIt(
+      {
+        audio: this.state.audio,
+        cover: this.state.cover,
+        title: this.state.title,
+        vendor: 'audio',
+        slug: "/listen/"+this.props.match.params.slug,
+        duration : this.state.duration
+
+      }
+    )
     this.setState({
       liveAudio: this.state.audio,
       liveCover: this.state.cover,
@@ -248,7 +264,23 @@ class Play extends Component {
 
    
   }
-
+  queueAddHandler(){
+   
+  
+    if(true){
+      this.props.addQueue(
+        {
+          audio: this.state.audio,
+          cover: this.state.cover,
+          title: this.state.title,
+          vendor: 'audio',
+          slug: "/listen/" + this.props.match.params.slug,
+          duration: this.state.duartion
+        }
+      )
+    }
+   
+  }
   render() {
     const { className, style, media } = this.props;
     let autoplay = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).autoplay;
@@ -305,6 +337,7 @@ class Play extends Component {
                  </div>
                    
                     <h4>{this.state.title}</h4>
+                    {/* <button onClick={this.handlePlayIt}>haha</button> */}
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
                       style={{ fontSize: "10px", color: "#d0cccc" }}
@@ -314,19 +347,14 @@ class Play extends Component {
                       </div>
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
-                    <MainPlayPause switch={this.onChangeUsername} />
-            
-                
-                    <Status src={this.state.liveAudio}
-                      cover={this.state.liveCover}
-                      title={this.state.liveTitle}
-                      url = {this.state.liveAudio}
-                      slug={"listen/"+this.props.match.params.slug}
-                      name={this.state.user.displayName}
-                      id={this.state.user.uid}
-                      auth ={this.state.isLoggedIn}
-                      
+                    <MainPlayPause 
+                     slug ={"/listen/"+this.props.match.params.slug}
+                    nowPlaying ={this.props.nowPlaying || "live"}
+                    switch={this.onChangeUsername} 
+                    addQueue ={this.queueAddHandler}
                     />
+                   
+                
                     <p style={{ color: "#d0cccc" }} className="text-justify">
                       {" "}
                       {this.state.content}
@@ -392,7 +420,6 @@ class Play extends Component {
                         </h6>
                         {this.state.commentsLoaded && (<NewComment postNewComment={this.postNewComment} />)}
 
-                        {/* {JSON.stringify(this.state.user)} */}
                       </div>
                     </div>
 
@@ -435,18 +462,6 @@ class Play extends Component {
                         </button>
                       </div>
                     </div>
-
-                    // <div className="alert alert-dark">
-                    //   <h1 className="title">ReactJS Comments App</h1>
-                    //   <label className="sign-in">Sign in: </label>
-                    //   <button
-                    //     className="btn btn-danger"
-                    //     onClick={() => this.auth("google")}
-                    //   >
-
-                    //     google
-                    //   </button>
-                    // </div>
                   )}
 
                   <hr
@@ -472,25 +487,7 @@ class Play extends Component {
 
                     }}
                   />
-                  {/* <div class="d-flex bd-highlight">
-                    <div class="p-2 bd-highlight">
-                      <img
-                        src="https://yt3.ggpht.com/a/AATXAJygzSqzI_OYRoHsaGr1lphQo46Y2_vi8K-7LUUKCg=s48-c-k-c0xffffffff-no-rj-mo"
-                        class="rounded-circle"
-                        width="100%"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="p-2 flex-grow-1 bd-highlight">
-                      <h6 style={{ fontSize: "0.7rem" }}>
-                        <b>Nidhin BM</b>
-                        <a> 23 Minutes ago</a>
-                      </h6>
-                      <p style={{ fontSize: "0.8rem" }}>
-                        ഒരു ബോറടിയും തോന്നാതെ കണ്ടവർ ആരൊക്കെ ഉണ്ട്?
-                      </p>
-                    </div>
-                  </div> */}
+  
                 </div>
 
                 <FeaturedRandom/>
@@ -501,10 +498,17 @@ class Play extends Component {
               </div>
             </div>
           </div>
-         
-          {/* <NowPlaying playing={this.state.playing}/> */}
+          {/* <FlotingPlayPause
+            cover={this.state.liveCover}
+            title={this.state.liveTitle}
+          /> */}
+       
           <div className="media">
-          
+            {/* <Player
+              src={this.state.liveAudio}
+              vendor="audio"
+              autoPlay="false"
+            /> */}
           </div>
           
           <BottomNav selected="listen"/>
@@ -514,4 +518,17 @@ class Play extends Component {
     );
   }
 }
-export default withMediaProps(Play);
+const mapStateToProps = (state) => {
+  return {
+     count: state.counter.count,
+     nowPlaying : state.queue.nowPlaying,
+     myQueue: state.queue.myQueue
+   };
+  };
+export default connect( 
+  
+  mapStateToProps,
+  {playIt,addQueue},
+ 
+ 
+  )(Play);
