@@ -1,12 +1,7 @@
 import Axios from "axios";
 import React, { Component } from "react";
+import base, { auth, providers, databased } from '../utils/FirebaseSettings'
 
-
-import {
-  Media,
-  controls,
-  withMediaProps,
-} from "react-media-player";
 
 
 
@@ -17,6 +12,8 @@ class Status extends Component {
     this.setPercenatge = this.setPercenatge.bind(this);
     this.state = {
       progress: 0,
+      isLoggedIn:false,
+      user:''
 
     }
 
@@ -30,15 +27,26 @@ class Status extends Component {
   componentDidMount() {
     localStorage.setItem("percent", 0)
 
-    setInterval(this.tickingTimer, 60000) //upadate percentage in 1 min
+    setInterval(this.tickingTimer, 30000) //upadate percentage in 1 min
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ isLoggedIn: true, user });
+        // console.log("------------------------------------");
+        // console.log(user);
+        localStorage.setItem("userid",this.state.user.uid)
+      } else {
+        this.setState({ isLoggedIn: false, user: {} });
+              localStorage.removeItem('userid')
+      }
+    });
   }
   tickingTimer = () => {
     this.setState({ progress: localStorage.getItem("percent") })
     
     let article = {
 
-      name: this.props.name,
-      userId: this.props.id,
+      name: this.state.user.displayName,
+      userId: this.state.user.uid,
 
 
       type: "progress",
@@ -70,8 +78,8 @@ class Status extends Component {
 
 
     }
-    if (this.props.media.duration !== Infinity && this.props.media.isPlaying) {
-      if (this.props.auth) {
+    if (this.props.duration !== Infinity && this.props.isPlaying) {
+      if (this.state.isLoggedIn) {
         Axios.post('https://v2.thetkmshow.in/v2/log', article)
           
         
@@ -91,8 +99,8 @@ class Status extends Component {
   }
 
   render() {
-    const { media } = this.props;
-    let percent = (media.currentTime / media.duration) * 100
+    
+    let percent = (this.props.currentTime/this.props.duration) * 100
     let round = parseFloat(percent).toFixed(3)
     if (round > 5.00 && round < 5.2) {
       this.setPercenatge(5)
@@ -130,26 +138,16 @@ class Status extends Component {
 
     // percentage(percent)
     return (
-      <Media>
-        <p style={{ display: "none" }}>
-          Now Playing : {this.props.title} <br />
-            cover : {this.props.cover} <br />
-            Auth : {this.props.auth ? "true" : "False"} <br />
-            IsPlaying : {media.isPlaying ? "True" : "False"} <br />
-            Slug : {this.props.slug} <br />
-            Name : {this.props.name} <br />
-            UID : {this.props.id} <br />
-            Duration: {media.duration} <br />
-            CurrentTime: {media.currentTime} <br />
-            Autoplay:{localStorage.getItem("autoplay")} <br />
-            percent : {percent} <br />
-            progress : {this.state.progress}
+    
+        <p style={{ display: "" }}>
+         {this.props.currentTime}
+          
         </p>
-      </Media>
+     
     );
   }
 }
-export default withMediaProps(Status);
+export default Status;
 
 
 // const tickingTimer = () => {

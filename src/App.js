@@ -27,7 +27,7 @@ import SongDedication from "./pages/SongDedication";
 import MyHome from "./pages/MyHome";
 
 import { connect } from 'react-redux';
-import { playIt,previousSong,nextSong,addQueue } from './redux/Queue/queue.actions';
+import { playIt,previousSong,nextSong,addQueue, removeQueue } from './redux/Queue/queue.actions';
 import { ThemeProvider } from "@material-ui/styles";
 import {
   CssBaseline,
@@ -86,11 +86,31 @@ class App extends Component {
           }
         )
        } else {
-        alert('No Next')
+       //return back to Live if queue is empty
+       this.props.playIt(
+        {
+          audio: SETTINGS.liveURL,
+          cover: SETTINGS.liveCover,
+          title: "Live Radio",
+          vendor: 'audio',
+          slug: "/live",
+          duration:""
+        }
+      )
        }
        
      } else {
-       alert('Queue is empty')
+      //return back to Live if queue is empty
+      this.props.playIt(
+        {
+          audio: SETTINGS.liveURL,
+          cover: SETTINGS.liveCover,
+          title: "Live Radio",
+          vendor: 'audio',
+          slug: "/live",
+          duration:""
+        }
+      )
      }
 
      }
@@ -111,11 +131,31 @@ class App extends Component {
            }
          )
         } else {
-        //  alert('No Next')
+        //return back to Live if queue is empty
+       this.props.playIt(
+        {
+          audio: SETTINGS.liveURL,
+          cover: SETTINGS.liveCover,
+          title: "Live Radio",
+          vendor: 'audio',
+          slug: "/live",
+          duration:""
+        }
+      )
         }
         
       } else {
-        alert('Queue is empty')
+       //return back to Live if queue is empty
+       this.props.playIt(
+        {
+          audio: SETTINGS.liveURL,
+          cover: SETTINGS.liveCover,
+          title: "Live Radio",
+          vendor: 'audio',
+          slug: "/live",
+          duration:""
+        }
+      )
       }
      
 
@@ -145,7 +185,10 @@ class App extends Component {
                   
                   queue ={this.props.queue}
                   nowPlaying ={this.props.nowPlaying || {slug:"/live"}}
-                  currentIndex = {this.state.currentIndex}/>}
+                  currentIndex = {this.state.currentIndex}
+                
+                  
+                  />}
              />
               <Route exact path="/listen" component={listen}/>
               <Route path="/listen/:slug" component={episode} />
@@ -179,8 +222,10 @@ class App extends Component {
                 autoPlay="false"
             />
             <FlotingPlayPause
+                src={this.props.nowPlaying ? this.props.nowPlaying.audio :this.state.audio}
                 cover={this.props.nowPlaying ?this.props.nowPlaying.cover :this.state.cover}
                 title={ this.props.nowPlaying ? this.props.nowPlaying.title : this.state.title }
+                slug ={this.props.nowPlaying ? this.props.nowPlaying.slug :"/live"}
                 nextSong ={this.handleNext}
                 queue ={this.props.queue}
                 previousSong ={this.handlePrevious}
@@ -214,7 +259,7 @@ const mapStateToProps = (state) => {
   export default connect( 
   
     mapStateToProps,
-    {playIt,previousSong,nextSong,addQueue},
+    {playIt,previousSong,nextSong,addQueue, removeQueue},
    
    
     )(App);

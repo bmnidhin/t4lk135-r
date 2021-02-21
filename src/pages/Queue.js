@@ -10,11 +10,15 @@ import ClubAdvt from "./base/ClubAdvt";
 import BottomNav from "./base/BottomNav";
 import { Link } from "react-router-dom";
 
+import { connect } from 'react-redux';
 
-export default class Queue extends Component {
+import {removeQueue } from '../redux/Queue/queue.actions';
+
+class Queue extends Component {
     constructor(props) {
         super(props);
         this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.handleRemoveQueue = this.handleRemoveQueue.bind(this);
         // this.postNewComment = this.postNewComment.bind(this);
 
         this.state = {
@@ -62,7 +66,23 @@ export default class Queue extends Component {
             playing: "aana",
         });
     }
+    handleRemoveQueue = (track) => {
 
+       
+        this.props.removeQueue(
+            {    
+                type: 'remove',
+                data :{
+                    audio: track.audio,
+                    cover: track.cover,
+                    title: track.title,
+                    vendor: 'audio',
+                    slug: track.slug,
+                    duration: track.duartion
+                  }
+            }
+        )
+    }
     render() {
 
         return (
@@ -125,6 +145,7 @@ export default class Queue extends Component {
                                       this.props.nowPlaying.slug!== track.slug &&(
                                         
                                         <table
+                                        key 
                                         class="table table-dark mt-3 mb-3"
                                         style={{ backgroundColor: "#03022900", cursor: "pointer" }}
                                     >
@@ -151,6 +172,9 @@ export default class Queue extends Component {
                                             <br />
                                                 </td>
                                                 <td className="text-center">
+                                                    <button onClick ={() => this.handleRemoveQueue(track)}>
+                                                        Remove
+                                                    </button>
                                                 <span class="material-icons text-muted">
                                                 more_vert
                                             </span>
@@ -165,7 +189,7 @@ export default class Queue extends Component {
                                      )))}
                             </div>
                             <div className="mt-2 mb-3" ></div>
-
+                              {JSON.stringify(this.props.queue)}
                             <div className="mt-2 mb-3" ></div>
                             <div className="row">
 
@@ -185,3 +209,25 @@ export default class Queue extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+       count: state.counter.count,
+     
+       myNextSong : state.queue.nextSong,
+       myPreviousSong: state.queue.previousSong,
+       queue : state.queue.myQueue
+     };
+    };
+    // const mapDispatchToProps = (dispatch) => {
+    // return {
+    //    increaseCounter: () => dispatch(increaseCounter(this.state.listen)),
+    //    decreaseCounter: () => dispatch(decreaseCounter()),
+    //   };
+    // };
+    export default connect( 
+    
+      mapStateToProps,
+      {removeQueue},
+     
+     
+      )(Queue);

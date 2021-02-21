@@ -69,6 +69,17 @@ export const addQueue = (content) => {
     };
 };
 
+
+export const removeQueue = (content) => {
+  
+    return {
+        type: QUEUE,
+        payload: {
+            type: 'remove',
+            data:content.data
+          }
+    };
+};
 // export const increaseCounter = (content) => {
   
 //     return {

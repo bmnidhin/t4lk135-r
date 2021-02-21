@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 
 import { playIt } from '../../redux/Queue/queue.actions';
 import { Link } from "react-router-dom";
+import Status from "../../utils/Status";
 const { formatTime } = utils;
 
 const {
@@ -200,7 +201,9 @@ _handlePreviouss = ()=>{
                     className="text-truncate"
                     style={{ width: "190px", fontSize: "15px" }}
                   >
+                     <Link to={this.props.slug} style={{color:'black' }}>
                    {this.props.title}
+                   </Link>
                   </div>
 
                   <span style={{ fontSize: "8px", textAlign: "left" }}>
@@ -273,6 +276,15 @@ _handlePreviouss = ()=>{
               </tr>
             </tbody>
           </table>
+          <Status src={this.props.src}
+                      cover={this.props.cover}
+                      title={this.props.title}
+                      url = {this.state.liveAudio}
+                      slug={this.props.slug}   
+                      currentTime ={media.currentTime}  
+                      duration ={media.duration} 
+                      isPlaying ={media.isPlaying}                
+                    />
           {/* <div className="row">
           <div className="col-1 roundedImage flotingImage">
             {" "}
