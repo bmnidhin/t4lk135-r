@@ -12,7 +12,7 @@ import {
 import CustomtCurrentTime from "./CustomtCurrentTime";
 import { myLog } from "../../packages/logger/Logger";
 import { connect } from 'react-redux';
-
+import { isMobile } from "react-device-detect";
 import { playIt } from '../../redux/Queue/queue.actions';
 import { Link } from "react-router-dom";
 import Status from "../../utils/Status";
@@ -199,7 +199,8 @@ _handlePreviouss = ()=>{
                 <td className="align-middle"style={{ width: "100px", fontSize: "15px" }}>
                   <div
                     className="text-truncate"
-                    style={{ fontSize: "15px",maxWidth: "50px" }}
+                    style={isMobile ? { fontSize: "15px",maxWidth: "50px" } :{ fontSize: "15px",maxWidth: "150px" } }
+                   
                   >
                      <Link to={this.props.slug} style={{color:'black' }}>
                    {this.props.title}
@@ -213,8 +214,8 @@ _handlePreviouss = ()=>{
                 </td>
 
                 <td
-                  className="align-middle text-center"
-                  width="170px"
+                  className="align-middle text-right"
+                  width={isMobile?"90px":'190px'}
                   
                 >
                   {/* <div className="spinner-border text-secondary" role="status">
@@ -249,12 +250,10 @@ _handlePreviouss = ()=>{
                 </td>
                 <td
                   className="align-middle text-center"
-                  width="70px"
+                  width={isMobile?"20px":'20px'}
                  
                 >
-                  {/* <div className="spinner-border text-secondary" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div> */}
+                
                   <div>
                     
 

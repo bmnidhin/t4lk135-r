@@ -54,7 +54,7 @@ class MainPlayPause extends Component {
         variant="contained"
         color="primary"
         // size="large"
-        className={'mr-2'}
+        className={'mr-2 mt-2'}
         onClick={this.props.switch}
         startIcon={<PlayCircleOutline />
         }
@@ -64,7 +64,7 @@ class MainPlayPause extends Component {
       
       <Button
        variant="outlined"
-        className={''}
+        className={'mr-2 mt-2'}
         startIcon={<PlaylistAddIcon />}
         onClick={this.props.addQueue}
       >
