@@ -61,7 +61,7 @@ class App extends Component {
  
 
     state = {
-     title:'Live TV',
+     title:'Live Radio',
      audio: SETTINGS.liveURL,
      cover: SETTINGS.liveCover,
      vendor: 'audio',
