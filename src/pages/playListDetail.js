@@ -109,6 +109,7 @@ class playListDetail extends Component {
       })
       .then(this.check(this.state.publishedAtDate, this.state.publishedAtTime))
       .catch((error) => {
+        window.location = "/listen"
         console.log(error)
         this.setState({
           notLoaded: true,
@@ -284,7 +285,7 @@ class playListDetail extends Component {
                     <div class='bd-highlight text-uppercase'>{this.state.duration}</div>
                     <div class='pl-2 bd-highlight text-uppercase'></div>
                   </div>
-                  <MainPlaylistPlayPause />
+                  {/* <MainPlaylistPlayPause /> */}
                   <p style={{color: '#d0cccc'}} className='text-justify'>
                     {' '}
                     {this.state.content}

@@ -115,6 +115,7 @@ class WatchEpisode extends Component {
           notLoaded: true,
         })
         alert('Some Error, Try again (404)')
+        window.location = "/listen"
         console.log(error)
       })
     this.refComments = base.syncState(this.props.match.params.slug, {

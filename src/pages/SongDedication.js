@@ -121,6 +121,7 @@ class SongDedication extends Component {
           notLoaded: true,
         })
         alert('Some Error, Try again (404)')
+        window.location = "/listen"
         console.log(error)
       })
     //
