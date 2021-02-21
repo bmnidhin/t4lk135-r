@@ -14,6 +14,7 @@ export const playIt = (content) => {
             title: content.title,
             vendor: content.vendor,
             slug: content.slug,
+            duration:content.duration
           }
     };
 };
@@ -31,6 +32,7 @@ export const previousSong = (content) => {
             title: content.title,
             vendor: content.vendor,
             slug: content.slug,
+            duration:content.duration
           }
     };
 };
@@ -46,6 +48,7 @@ export const nextSong = (content) => {
             title: content.title,
             vendor: content.vendor,
             slug: content.slug,
+            duration:content.duration
           }
     };
 };
@@ -61,9 +64,11 @@ export const addQueue = (content) => {
             title: content.title,
             vendor: content.vendor,
             slug: content.slug,
+            duration:content.duration
           }
     };
 };
+
 // export const increaseCounter = (content) => {
   
 //     return {

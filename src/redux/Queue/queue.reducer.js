@@ -15,7 +15,8 @@ const INITIAL_STATE = {
    
 };
 
-// const pointer =0;
+
+const pointer = 0;
 
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -44,7 +45,7 @@ const reducer = (state = INITIAL_STATE, action) => {
            queue.push(action.payload)
           }
           else{
-            alert('Already added')
+            console.log('Already added')
           }
            return {
              ...state, 

@@ -14,6 +14,7 @@ import { myLog } from "../../packages/logger/Logger";
 import { connect } from 'react-redux';
 
 import { playIt } from '../../redux/Queue/queue.actions';
+import { Link } from "react-router-dom";
 const { formatTime } = utils;
 
 const {
@@ -252,9 +253,14 @@ _handlePreviouss = ()=>{
                   <span className="sr-only">Loading...</span>
                 </div> */}
                   <div>
+                    
 
+                    <Link to={'/queue'}>
 
-                    <span className="material-icons muted">menu_open</span>
+                    <span className="material-icons muted" style={{color:"black"}}>menu_open</span>
+                    </Link>
+
+                   
 
 
                   </div>

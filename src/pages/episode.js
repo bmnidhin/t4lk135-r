@@ -73,7 +73,7 @@ class episode extends Component {
       liveAudio: SETTINGS.liveURL,
       liveCover: SETTINGS.liveCover,
       audio: SETTINGS.liveURL,
-      duration: "",
+      // duration: 0,
       cover: SETTINGS.liveCover,
       isEventPublished: true,
       isEventNoPublishedBannerVisible: true,
@@ -241,13 +241,16 @@ class episode extends Component {
 
 
   onChangeUsername() {
+    
     this.props.playIt(
       {
         audio: this.state.audio,
         cover: this.state.cover,
         title: this.state.title,
         vendor: 'audio',
-        slug: this.props.match.params.slug
+        slug: "/listen/"+this.props.match.params.slug,
+        duration : this.state.duration
+
       }
     )
     this.setState({
@@ -271,7 +274,8 @@ class episode extends Component {
           cover: this.state.cover,
           title: this.state.title,
           vendor: 'audio',
-          slug: this.props.match.params.slug
+          slug: "/listen/" + this.props.match.params.slug,
+          duration: this.state.duartion
         }
       )
     }
@@ -344,7 +348,7 @@ class episode extends Component {
                       <div class="pl-2 bd-highlight text-uppercase"></div>
                     </div>
                     <MainPlayPause 
-                     slug ={this.props.match.params.slug}
+                     slug ={"/listen/"+this.props.match.params.slug}
                     nowPlaying ={this.props.nowPlaying || "live"}
                     switch={this.onChangeUsername} />
                     <button onClick={this.queueAddHandler}>Add to queue</button>

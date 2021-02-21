@@ -28,6 +28,14 @@ import MyHome from "./pages/MyHome";
 
 import { connect } from 'react-redux';
 import { playIt,previousSong,nextSong,addQueue } from './redux/Queue/queue.actions';
+import { ThemeProvider } from "@material-ui/styles";
+import {
+  CssBaseline,
+  AppBar,
+  Typography,
+  createMuiTheme
+} from "@material-ui/core";
+
 
 import * as SETTINGS from './pages/constants/Settings';
 
@@ -41,7 +49,14 @@ import {
   utils,
 } from "react-media-player";
 import { createBrowserHistory } from 'history'
+import Queue from "./pages/Queue";
 
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+});
 class App extends Component {
  
 
@@ -66,7 +81,8 @@ class App extends Component {
             cover: calc.cover,
             title: calc.title,
             vendor: 'audio',
-            slug: calc.slug
+            slug: calc.slug,
+            duration:calc.duration
           }
         )
        } else {
@@ -90,11 +106,12 @@ class App extends Component {
              cover: calc.cover,
              title: calc.title,
              vendor: 'audio',
-             slug: calc.slug
+             slug: calc.slug,
+             duration:calc.duration
            }
          )
         } else {
-         alert('No Next')
+        //  alert('No Next')
         }
         
       } else {
@@ -110,7 +127,8 @@ class App extends Component {
     return (
       <div>
        
-        
+       <ThemeProvider theme={theme}>
+      <CssBaseline />
         <CountDown />
       
         <ScrollReveal
@@ -119,16 +137,23 @@ class App extends Component {
              
               <Route exact 
                   path="/" 
-                  component={() => <MyHome listen={this.state.listen} />}
+                  component={() => <MyHome/>}
              />
-
+             <Route exact 
+                  path="/queue" 
+                  component={() => <Queue  
+                  
+                  queue ={this.props.queue}
+                  nowPlaying ={this.props.nowPlaying || {slug:"/live"}}
+                  currentIndex = {this.state.currentIndex}/>}
+             />
               <Route exact path="/listen" component={listen}/>
               <Route path="/listen/:slug" component={episode} />
               <Route path="/play/:slug" component={Play} />
               <Route  path="/watch/:slug" component={WatchEpisode} />
 
               <Route exact path="/playlist/" component={playlists} />
-              <Route exact path="/playlist/:slug" component={playListDetail}/>
+              <Route path="/playlist/:slug" component={playListDetail}/>
 
              
               <Route  path="/club99/:slug" component={ClubListen}/>
@@ -166,7 +191,7 @@ class App extends Component {
          </Media>
         <FooterArea />
         {/* <NavTest /> */}
-       
+        </ThemeProvider>
       </div>
     );
   }
