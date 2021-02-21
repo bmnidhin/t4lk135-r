@@ -186,20 +186,20 @@ _handlePreviouss = ()=>{
         </div>
         <div style={this.style}>
 
-          <table className="table table-bordered" style={{ marginBottom: 0 }}>
+          <table className="table table-bordered" style={{ marginBottom: 0 , width:"100%"}}>
             <tbody>
               <tr>
-                <td width="50px">
+                <td style={{ width: "5%" }}>
                   <img
                     src={this.props.cover}
                     width="50px"
                     className="roundedImage"
                   ></img>
                 </td>
-                <td className="align-middle">
+                <td className="align-middle"style={{ width: "100px", fontSize: "15px" }}>
                   <div
                     className="text-truncate"
-                    style={{ width: "190px", fontSize: "15px" }}
+                    style={{ fontSize: "15px" }}
                   >
                      <Link to={this.props.slug} style={{color:'black' }}>
                    {this.props.title}

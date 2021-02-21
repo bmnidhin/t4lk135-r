@@ -53,10 +53,10 @@ const reducer = (state = INITIAL_STATE, action) => {
         let isAdded = queue.find(o => o.slug == action.payload.slug);
         if (isAdded === undefined) {
           queue.push(action.payload)
-          alert('Added to Queue')
+          // alert('Added to Queue')
         }
         else {
-          alert('Already added')
+          // alert('Already added')
         }
       }
 
