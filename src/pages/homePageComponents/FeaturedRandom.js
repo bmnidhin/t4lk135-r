@@ -4,8 +4,10 @@ import Moment from 'moment'
 import {Link} from 'react-router-dom'
 import Placehold from '../base/Placehold'
 import {connect} from 'react-redux'
-
 import {nextSong} from '../../redux/Queue/queue.actions'
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 class FeaturedRandom extends Component {
   state = {
@@ -88,7 +90,8 @@ class FeaturedRandom extends Component {
                         ? '/play/' + track.slug.split('/')[1]
                         : '/' + track.slug
                     }>
-                    <img src={track.cover} width='100%' className='roundedImage' alt='Poster'></img>
+                       <LazyLoadImage effect="blur" src={track.cover} width='100%'   className='roundedImage' alt='Poster'/>
+                    {/* <img src={track.cover} width='100%' className='roundedImage' alt='Poster'></img> */}
 
                     <p style={this.itemHeading} className='text-truncate'>
                       {track.title}

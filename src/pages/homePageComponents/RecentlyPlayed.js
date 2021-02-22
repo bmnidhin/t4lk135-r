@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {auth} from '../../utils/FirebaseSettings'
-
 import Party from './assets/party.svg'
 import Placehold from '../base/Placehold'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default class RecentlyPlayed extends Component {
   constructor(props) {
@@ -85,7 +86,7 @@ export default class RecentlyPlayed extends Component {
         {this.props.page != 'home' && this.state.listen.length == 0 && (
           <>
             <p>Listen some episodes and it will appear here</p>
-            <img src={Party} alt='React Logo' width='20%' /> <br />
+            <LazyLoadImage src={Party} alt='React Logo' width='20%' /> <br />
             <br />
             <br />
             <Link to='/listen'>
@@ -139,7 +140,7 @@ export default class RecentlyPlayed extends Component {
                 .map((track) => (
                   <div className={true ? 'col-6 col-md-3' : 'd-none'} key={track.slug}>
                     <Link to={track.slug}>
-                      <img src={track.cover} width='100%' className='roundedImage' alt='Poster'></img>
+                    <LazyLoadImage effect="blur" src={track.cover} width='100%' className='roundedImage' alt='Poster'/>
                       <div className='progress' style={{height: '0.3rem'}}>
                         <div
                           className='progress-bar'

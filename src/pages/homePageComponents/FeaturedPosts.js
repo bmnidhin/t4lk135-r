@@ -3,7 +3,8 @@ import axios from 'axios'
 import Moment from 'moment'
 import {Link} from 'react-router-dom'
 import Placehold from '../base/Placehold'
-// import Skeleton from '@yisheng90/react-loading';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default class FeaturedPosts extends Component {
   state = {
@@ -110,11 +111,11 @@ export default class FeaturedPosts extends Component {
             // key={track.slug}
           >
             <Link to={'/live'} className=''>
-              <img
+            <LazyLoadImage effect="blur"
                 src='https://bmnidhin.github.io/t4lk-static/s1/live.jpg'
                 width='100%'
                 className='roundedImage'
-                alt='Poster'></img>
+                alt='Poster'/>
               <p style={this.itemHeading} className='text-truncate'>
                 Live Radio
               </p>
@@ -125,7 +126,7 @@ export default class FeaturedPosts extends Component {
               className={this.check(track.publishedAtDate, track.publishedAtTime) ? 'col-6 col-md-3' : 'd-none'}
               key={track.slug}>
               <Link to={track.slug}>
-                <img src={track.cover} width='100%' className='roundedImage' alt='Poster'></img>
+              <LazyLoadImage effect="blur" src={track.cover} width='100%' className='roundedImage' alt='Poster'/>
                 <p style={this.itemHeading} className='text-truncate'>
                   {track.title}
                 </p>

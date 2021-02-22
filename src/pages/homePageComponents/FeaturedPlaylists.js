@@ -3,7 +3,8 @@ import axios from 'axios'
 import Moment from 'moment'
 import {Link} from 'react-router-dom'
 import Placehold from '../base/Placehold'
-// import Skeleton from '@yisheng90/react-loading';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default class FeaturedPlaylists extends Component {
   state = {
@@ -83,7 +84,7 @@ export default class FeaturedPlaylists extends Component {
           {this.state.listen.slice(0, 5).map((track) => (
             <div className={track.isPublished ? 'col-6 col-md-3' : 'd-none'} key={track.slug}>
               <Link to={'/playlist/' + track.slug} className=''>
-                <img src={track['album-art']} width='100%' className='roundedImage' alt='Poster'></img>
+              <LazyLoadImage effect="blur" src={track['album-art']} width='100%' className='roundedImage' alt='Poster'/>
                 <p style={this.itemHeading} className='text-truncate'>
                   {track.title}
                 </p>

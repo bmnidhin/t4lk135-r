@@ -8,7 +8,8 @@ import {Helmet} from 'react-helmet'
 import * as SETTINGS from './constants/Settings'
 import BottomNav from './base/BottomNav'
 import Placehold from './base/Placehold'
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export default class listen extends Component {
   constructor(props) {
     super(props)
@@ -82,7 +83,7 @@ export default class listen extends Component {
                     track.isEventPublished && (
                       <div className={'col-6 col-md-3'} key={track.slug}>
                         <Link to={track.slug} className=''>
-                          <img src={track.cover} width='100%' className='roundedImage' alt='Poster'></img>
+                        <LazyLoadImage effect="blur" src={track.cover} width='100%' className='roundedImage' alt='Poster'/>
                           <p style={this.itemHeading} className='text-truncate'>
                             {track.title}
                           </p>
