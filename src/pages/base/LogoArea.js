@@ -35,15 +35,15 @@ export default class LogoArea extends Component {
         <table style={this.table}>
           <tbody>
             <tr>
-              <td style={{width: '25%', fontSize: '25px', cursor: 'pointer'}}>
+              <td style={{width: '15%', fontSize: '25px', cursor: 'pointer'}}>
                 <SwipeableTemporaryDrawer />
               </td>
-              <td style={{width: '50%'}}>
+              <td style={{width: '70%'}}>
                 <Link to='/'>
                   <img src={logo} style={this.imageStyle} alt={appName}></img>
                 </Link>
               </td>
-              <td style={{width: '25%'}}>
+              <td style={{width: '15%'}}>
                 <UserPhoto />
               </td>
             </tr>
