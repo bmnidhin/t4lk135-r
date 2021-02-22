@@ -48,7 +48,7 @@ export default class UserPhoto extends Component {
                   )}
                   {!this.state.isLoggedIn &&(
                       
-                     <button type="button"  onClick={() => this.auth("google")}class="btn btn-dark">Login</button>
+                     <span type="button"  onClick={() => this.auth("google")}>SIGN IN</span>
                     
                   )}
  

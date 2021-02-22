@@ -45,13 +45,17 @@ const theme = createMuiTheme({
 })
 class App extends Component {
   state = {
-    title: "Live TV",
+    title: "Live Radio",
     audio: SETTINGS.liveURL,
     cover: SETTINGS.liveCover,
     vendor: "audio",
     currentIndex: 0,
     previousAudio: {},
     nextAudio: {},
+  }
+
+  componentDidMount (){
+
   }
   //Next Button
   handleNext = () => {

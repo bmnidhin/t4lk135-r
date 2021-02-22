@@ -73,7 +73,7 @@ export default class ListenAfterLive extends Component {
                   </span>
                   <div className='d-flex flex-row bd-highlight justify-content-between mb-2'>
                     <div className='bd-highlight'>
-                      <h3 style={{fontSize: '19px', fontWeight: '500'}}>{track.title}</h3>
+                      <h2 style={{fontSize: '14px', fontWeight: '500'}}>{track.title}</h2>
                       <span style={{fontSize: '10px'}} className='text-muted'>
                         Streamed Recently
                       </span>

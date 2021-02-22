@@ -94,7 +94,7 @@ class Queue extends Component {
                         <img
                           src={this.props.nowPlaying.cover ? this.props.nowPlaying.cover : this.state.cover}
                           width='50px'
-                          className='roundedImage'></img>
+                          className='roundedImage'alt={'poster'}></img>
                       </td>
                       <td style={{fontSize: '1rem', width: '70%'}}>
                         <Link

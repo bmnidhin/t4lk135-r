@@ -27,7 +27,9 @@ export default class MyHome extends Component {
     url: SETTINGS.liveURL,
     cover: SETTINGS.liveCover,
     title: 'Live Radio',
+    tracks:[]
   }
+
   data = URL
   heroarea = {
     minHeight: '80vh',
