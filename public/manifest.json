@@ -3,7 +3,7 @@
   "name": "The TKM Show",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "assets/img/favicon-96x96",
       "sizes": "64x64",
       "type": "image/x-icon"
     },
