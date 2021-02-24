@@ -2,6 +2,8 @@ import { PLAYIT, CURRENTLYPLAYING, PREVIOUS, NEXT, QUEUE } from "./queue.types"
 import * as SETTINGS from "../../pages/constants/Settings"
 import ReactGA from 'react-ga'
 
+
+ReactGA.initialize('UA-168458070-1')
 let queue = [
   {
     audio: SETTINGS.liveURL,
@@ -19,7 +21,7 @@ const INITIAL_STATE = {
 const pointer = 0
 
 const reducer = (state = INITIAL_STATE, action) => {
-  ReactGA.initialize('UA-168458070-1')
+  
   switch (action.type) {
     case PLAYIT:
       return {
