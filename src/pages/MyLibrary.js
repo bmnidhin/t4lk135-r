@@ -144,7 +144,7 @@ export default class MyLibrary extends Component {
                 <div className='p-3'>
                   Logout
                   <p className='text-muted text-small' style={{fontSize: '0.8rem'}}>
-                    Stay login to be in our community and to save your progress
+                    Stay logged in to be in our community and to save your progress.
                   </p>
                   <button type='button' class='btn btn-outline-light' onClick={() => auth.signOut()}>
                     Logout
