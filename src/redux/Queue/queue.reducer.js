@@ -1,5 +1,7 @@
 import { PLAYIT, CURRENTLYPLAYING, PREVIOUS, NEXT, QUEUE } from "./queue.types"
 import * as SETTINGS from "../../pages/constants/Settings"
+import ReactGA from 'react-ga'
+
 let queue = [
   {
     audio: SETTINGS.liveURL,
@@ -17,6 +19,7 @@ const INITIAL_STATE = {
 const pointer = 0
 
 const reducer = (state = INITIAL_STATE, action) => {
+  ReactGA.initialize('UA-168458070-1')
   switch (action.type) {
     case PLAYIT:
       return {
@@ -44,7 +47,12 @@ const reducer = (state = INITIAL_STATE, action) => {
         let isAdded = queue.find((o) => o.slug == action.payload.slug)
         if (isAdded === undefined) {
           queue.push(action.payload)
-          // alert('Added to Queue')
+          ReactGA.event({
+            category: 'Queue',
+            action: action.payload.title,
+            label: 'Queue Added',
+            nonInteraction: true,})
+      
         } else {
           // alert('Already added')
         }

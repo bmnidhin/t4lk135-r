@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { Component } from "react";
 import base, { auth, providers, databased } from '../utils/FirebaseSettings'
-
+import ReactGA from 'react-ga'
 
 
 
@@ -39,6 +39,7 @@ class Status extends Component {
               localStorage.removeItem('userid')
       }
     });
+    ReactGA.initialize('UA-168458070-1')
   }
   tickingTimer = () => {
     this.setState({ progress: localStorage.getItem("percent") })
@@ -60,7 +61,7 @@ class Status extends Component {
 
 
     }
-
+    
     let unAuthArticle = {
 
       name: "Anonymous",
@@ -79,6 +80,13 @@ class Status extends Component {
 
     }
     if (this.props.duration !== Infinity && this.props.isPlaying) {
+
+      ReactGA.event({
+      category: 'Progress',
+      action: this.state.progress,
+      label: this.props.title,
+      nonInteraction: true,})
+
       if (this.state.isLoggedIn) {
         Axios.post('https://v2.thetkmshow.in/v2/log', article)
           
