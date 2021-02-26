@@ -112,9 +112,9 @@ export default class Live extends Component {
 
       const timestamp = Date.now()
       comments[`comm-${timestamp}`] = comment
-
-      databased.ref('live-comments').set(comments)
-
+      
+      databased.ref(`live-comments/comm-${timestamp}` ).set(comment)
+    
       // this.setState({
       //   comments: comments,
 

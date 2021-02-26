@@ -187,7 +187,7 @@ class episode extends Component {
       const timestamp = Date.now();
       comments[`comm-${timestamp}`] = comment;
 
-      databased.ref(this.props.match.params.slug).set(comments);
+      databased.ref(this.props.match.params.slug + `/comm-${timestamp}` ).set(comment)
 
 
       // this.setState({

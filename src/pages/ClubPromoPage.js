@@ -92,30 +92,6 @@ export default class ClubPromoPage extends Component {
       playing: 'aana',
     })
   }
-  // postNewComment(comment) {
-  //   comment.user = {
-  //     uid: this.state.user.uid,
-  //     name: this.state.user.displayName,
-  //     photo: this.state.user.photoURL,
-
-  //   };
-  //   const comments = {
-  //     ...this.state.comments
-  //   };
-  //   const timestamp = Date.now();
-  //   comments[`comm-${timestamp}`] = comment;
-  //   this.setState({
-  //     comments: comments
-  //   });
-  // }
-  // auth(provider) {
-  //   auth.signInWithPopup(providers[provider]);
-  // }
-  // logout(){
-  //   this.setState({ isLoggedIn: false, user: {} });
-  //localStorage.removeItem('userid')
-
-  // }
   render() {
     return (
       <Media>

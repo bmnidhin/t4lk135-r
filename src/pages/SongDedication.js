@@ -174,8 +174,9 @@ class SongDedication extends Component {
 
       const timestamp = Date.now()
       comments[`comm-${timestamp}`] = comment
-
-      databased.ref('song-dedication').set(comments)
+      
+      databased.ref(`'song-dedication'/comm-${timestamp}` ).set(comment)
+    
       alert('Your dedication is recorded. It will be pulblished at 7PM 14 feb 2021 ❤️😊')
 
       // this.setState({
