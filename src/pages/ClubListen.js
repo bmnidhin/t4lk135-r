@@ -140,12 +140,12 @@ class ClubListen extends Component {
         })
         console.log(error)
       })
-    this.refComments = base.syncState(this.props.match.params.slug, {
+    this.refComments = base.syncState("comments/" +this.props.match.params.slug, {
       context: this,
 
       state: 'comments',
     })
-    var starCountRef = databased.ref('club99/' + this.props.match.params.slug)
+    var starCountRef = databased.ref("comments/" +'club99/' + this.props.match.params.slug)
     starCountRef.on('value', (snapshot) => {
       let a = snapshot.numChildren()
       this.setState({commentsLoaded: true})
@@ -186,7 +186,7 @@ class ClubListen extends Component {
       const timestamp = Date.now()
       comments[`comm-${timestamp}`] = comment
 
-      databased.ref(this.props.match.params.slug + `/comm-${timestamp}` ).set(comment)
+      databased.ref("comments/" + this.props.match.params.slug + `/comm-${timestamp}` ).set(comment)
 
       // this.setState({
       //   comments: comments,

@@ -83,18 +83,18 @@ const timestamp = props.comment.user.time
         </div>
           <div class="pt-0 pr-3 bd-highlight"> </div>
           <div class="pt-0  pr-3 bd-highlight">{props.user === props.comment.user.uid ? (
-          <p onClick={() => {databased.ref(props.slug + "/" + props.id).remove();}}>
+          <p onClick={() => {databased.ref("comments/" +props.slug + "/" + props.id).remove();}}>
             <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Delete
           </p>) : (" ")}</div>
           <div class="pt-0  pr-3 bd-highlight">{props.user === "888JP4sI2CNhMPUkepWonauXnNg1" ? (
           (props.comment.status?
-            <p onClick={() => {databased.ref(props.slug + "/" + props.id+ "/status").remove();}}>
+            <p onClick={() => {databased.ref("comments/" +props.slug + "/" + props.id+ "/status").remove();}}>
            
             <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Restore
           </p>
             :
           
-          <p onClick={() => {databased.ref(props.slug + "/" + props.id+ "/status").set({removed:true});}}>
+          <p onClick={() => {databased.ref("comments/" +props.slug + "/" + props.id+ "/status").set({removed:true});}}>
            
             <span class="material-icons"style={{fontSize:"0.6rem"}}>delete</span> Rules
           </p>)

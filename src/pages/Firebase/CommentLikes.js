@@ -11,7 +11,7 @@ class CommentLikes extends Component {
   }
   componentDidMount() {
     var starCountRef = databased.ref(
-      this.props.slug + "/" + this.props.id + "/" + "likes"
+      "comments/" + this.props.slug + "/" + this.props.id + "/" + "likes"
     );
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
@@ -62,6 +62,7 @@ class CommentLikes extends Component {
                 onClick={() => {
                   databased
                     .ref(
+                      "comments/"+
                       this.props.slug +
                         "/" +
                         this.props.id +
@@ -91,6 +92,7 @@ class CommentLikes extends Component {
               onClick={() => {
                 databased
                   .ref(
+                    "comments/"+
                     this.props.slug +
                       "/" +
                       this.props.id +

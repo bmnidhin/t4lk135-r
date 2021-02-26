@@ -88,7 +88,7 @@ const OneLiveChat = (props) => {
               {props.user === props.comment.user.uid ? (
                 <p
                   onClick={() => {
-                    databased.ref(props.slug + "/" + props.id).remove();
+                    databased.ref("comments/" +props.slug + "/" + props.id).remove();
                   }}
                 >
                   <span
@@ -109,7 +109,7 @@ const OneLiveChat = (props) => {
                   <p
                     onClick={() => {
                       databased
-                        .ref(props.slug + "/" + props.id + "/status")
+                        .ref("comments/"+ props.slug + "/" + props.id + "/status")
                         .remove();
                     }}
                   >
@@ -125,7 +125,7 @@ const OneLiveChat = (props) => {
                   <p
                     onClick={() => {
                       databased
-                        .ref(props.slug + "/" + props.id + "/status")
+                        .ref("comments/"+ props.slug + "/" + props.id + "/status")
                         .set({ removed: true });
                     }}
                   >

@@ -11,7 +11,7 @@ export class LoveSong extends Component {
     };
   }
   componentDidMount(){
-    let starcount = databased.ref( this.props.slug + "-likes"+"/song-likes/"+
+    let starcount = databased.ref( "likes/"+ this.props.slug + "-likes"+"/song-likes/"+
     this.props.songId +"/" 
     // +this.props.userid 
     );
@@ -53,6 +53,7 @@ export class LoveSong extends Component {
             onClick={() => {
                 databased
                   .ref(
+                    "likes/"+
                     this.props.slug + "-likes"+
                       "/song-likes/" +
                       this.props.songId +
@@ -69,6 +70,7 @@ export class LoveSong extends Component {
             onClick={() => {
                 databased
                   .ref(
+                    "likes/"+
                     this.props.slug + "-likes"+
                       "/song-likes/" +
                       this.props.songId +

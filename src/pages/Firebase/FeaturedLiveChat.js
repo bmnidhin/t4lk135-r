@@ -9,7 +9,7 @@ export default class FeaturedLiveChat extends Component {
       isLoggedIn: false,
       user: "",
     };
-    //   this.refComments = base.syncState( "live-comments", {
+    //   this.refComments = base.syncState("comments/" + "live-comments", {
     //     context: this,
 
     //     state: "comments",

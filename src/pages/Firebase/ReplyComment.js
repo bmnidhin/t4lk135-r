@@ -31,7 +31,7 @@ export default class ReplyComment extends Component {
     });
   }
   componentDidMount() {
-    this.refComments = base.syncState(
+    this.refComments = base.syncState("comments/" +
       this.props.path + "/" + this.props.id + "/replies",
       {
         context: this,
@@ -41,7 +41,7 @@ export default class ReplyComment extends Component {
     );
 
     var starCountRef = databased.ref(
-      this.props.path + "/" + this.props.id + "/replies"
+      "comments/" +this.props.path + "/" + this.props.id + "/replies"
     );
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
@@ -69,7 +69,7 @@ export default class ReplyComment extends Component {
       comments[`reply-${timestamp}`] = comment;
 
       databased
-        .ref(this.props.path + "/" + this.props.id + "/replies")
+        .ref("comments/" +this.props.path + "/" + this.props.id + "/replies")
         .set(comments);
 
       // this.setState({

@@ -126,12 +126,12 @@ class SongDedication extends Component {
       })
     //
 
-    this.refComments = base.syncState('song-dedication', {
+    this.refComments = base.syncState("comments/" +'song-dedication', {
       context: this,
 
       state: 'comments',
     })
-    var starCountRef = databased.ref('song-dedication')
+    var starCountRef = databased.ref("comments/" +'song-dedication')
     starCountRef.on('value', (snapshot) => {
       this.setState({commentsLoaded: true})
       // console.log(a);
@@ -175,7 +175,7 @@ class SongDedication extends Component {
       const timestamp = Date.now()
       comments[`comm-${timestamp}`] = comment
       
-      databased.ref(`'song-dedication'/comm-${timestamp}` ).set(comment)
+      databased.ref("comments/" +`'song-dedication'/comm-${timestamp}` ).set(comment)
     
       alert('Your dedication is recorded. It will be pulblished at 7PM 14 feb 2021 ❤️😊')
 

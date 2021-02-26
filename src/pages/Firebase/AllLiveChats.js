@@ -12,7 +12,7 @@ class AllLiveChats extends Component {
   }
 
   componentDidMount() {
-    var starCountRef = databased.ref(this.props.slug);
+    var starCountRef = databased.ref("comments/" +this.props.slug);
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
       this.setState({ counter: a });

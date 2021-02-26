@@ -74,13 +74,13 @@ export default class Live extends Component {
   }
   componentDidMount() {
     this.scrollToBottom()
-    this.refComments = base.syncState('live-comments', {
+    this.refComments = base.syncState("comments/" +'live-comments', {
       context: this,
 
       state: 'comments',
     })
     this.setState({notLoaded: false})
-    var starCountRef = databased.ref('live-comments')
+    var starCountRef = databased.ref("comments/" +'live-comments')
     starCountRef.on('value', (snapshot) => {
       let a = snapshot.numChildren()
       this.setState({commentsLoaded: true})
@@ -113,7 +113,7 @@ export default class Live extends Component {
       const timestamp = Date.now()
       comments[`comm-${timestamp}`] = comment
       
-      databased.ref(`live-comments/comm-${timestamp}` ).set(comment)
+      databased.ref("comments/" +`live-comments/comm-${timestamp}` ).set(comment)
     
       // this.setState({
       //   comments: comments,
