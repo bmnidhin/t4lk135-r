@@ -1,5 +1,6 @@
 [] Play button - Live Page
 [] Error Pages -Offline Page
-[] Comment Box bug fix
-[] Firebase Security Rules
-
+[] Remove Unused imports
+[] Remove DRY Code
+[] API V3
+[] Materialize Cards
