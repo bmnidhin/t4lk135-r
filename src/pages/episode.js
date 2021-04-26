@@ -51,7 +51,7 @@ class episode extends Component {
       isPlaying: false,
       isQueueAdded: false,
     }
-
+    
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({isLoggedIn: true, user})
@@ -59,6 +59,12 @@ class episode extends Component {
         // console.log(user);
         localStorage.setItem('userid', this.state.user.uid)
       } else {
+        let isForceAuth = qs.parse(this.props.location.search, {ignoreQueryPrefix: true}).auth
+
+        if(isForceAuth == 1){
+          alert('Please Signin to continue')  
+          auth.signInWithPopup(providers['google'])
+        }
         this.setState({isLoggedIn: false, user: {}})
         localStorage.removeItem('userid')
       }
@@ -132,7 +138,7 @@ class episode extends Component {
         console.log(error)
       })
     //
-
+    
     this.refComments = base.syncState("comments/" +this.props.match.params.slug, {
       context: this,
 
@@ -230,7 +236,8 @@ class episode extends Component {
     const {className, style, media} = this.props
     let autoplay = qs.parse(this.props.location.search, {ignoreQueryPrefix: true}).autoplay
     let seekTo = qs.parse(this.props.location.search, {ignoreQueryPrefix: true}).seek
-
+    
+    
     return (
       <div key={this.props.match.params.slug}>
         <Media>
