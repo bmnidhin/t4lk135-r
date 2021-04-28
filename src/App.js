@@ -36,6 +36,7 @@ import GameListPage from "./pages/GameListPage"
 import FlappyPage from "./pages/gamepages/FlappyPage"
 import SnakePage from "./pages/gamepages/SnakePage"
 import PlaySnake from "./pages/gamepages/PlaySnake"
+import PlaySnakeMainPage from "./pages/gamepages/PlaySnakeMainPage"
 
 const theme = createMuiTheme({
   palette: {
@@ -175,7 +176,7 @@ class App extends Component {
                 <Route exact path="/games" component={GameListPage} />
                 <Route exact path="/games/flappy" component={FlappyPage} />
                 <Route exact path="/games/snake" component={SnakePage} />
-                <Route exact path="/games/snake/play" component={PlaySnake} />
+                <Route exact path="/games/snake/play" component={PlaySnakeMainPage} />
 
                 <Route exact path="/ground" component={test} />
                 <Route exact path="/submit" component={() => (<Redirect url={'https://bit.ly/thetkmshow'}/>)} />
