@@ -39,6 +39,7 @@
     "react-scripts": "3.4.1",
     "react-scroll": "^1.8.0",
     "react-toastify": "^6.2.0",
+    "react-touch-events": "^3.0.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "smooth-scroll": "^16.1.3"

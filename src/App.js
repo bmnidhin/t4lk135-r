@@ -32,6 +32,10 @@ import Play from "./pages/Play"
 import FlotingPlayPause from "./pages/base/FlotingPlayPause"
 import { Media, Player, controls, withMediaProps, utils } from "react-media-player"
 import Queue from "./pages/Queue"
+import GameListPage from "./pages/GameListPage"
+import FlappyPage from "./pages/gamepages/FlappyPage"
+import SnakePage from "./pages/gamepages/SnakePage"
+import PlaySnake from "./pages/gamepages/PlaySnake"
 
 const theme = createMuiTheme({
   palette: {
@@ -168,6 +172,11 @@ class App extends Component {
                 <Route exact path="/library" component={MyLibrary} />
                 <Route exact path="/song-dedication" component={SongDedication} />
 
+                <Route exact path="/games" component={GameListPage} />
+                <Route exact path="/games/flappy" component={FlappyPage} />
+                <Route exact path="/games/snake" component={SnakePage} />
+                <Route exact path="/games/snake/play" component={PlaySnake} />
+
                 <Route exact path="/ground" component={test} />
                 <Route exact path="/submit" component={() => (<Redirect url={'https://bit.ly/thetkmshow'}/>)} />
                 <Route exact path="/live" component={Live} />
@@ -197,7 +206,7 @@ class App extends Component {
               />
             </div>
           </Media>
-          <FooterArea />
+          {/* <FooterArea /> */}
         </ThemeProvider>
       </div>
     )
