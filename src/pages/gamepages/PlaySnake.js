@@ -426,18 +426,18 @@ class SnakeGame extends React.Component {
 
         <div>
           <div className="mx-auto d-flex justify-content-center align-items-center">
-            <Button variant="outlined" color="primary" className={"mr-2 mt-2"} onClick={() => this.goUp()}>
+            <Button variant="outlined" color="primary" className={"mr-3 mt-3 ml-3 mb-3"} onClick={() => this.goUp()}>
               🔼
             </Button>
           </div>
           <div className="mx-auto d-flex justify-content-center align-items-center">
-            <Button variant="outlined" color="primary" className={"mr-2 mt-2"}onClick={() => this.goLeft()}>
+            <Button variant="outlined" color="primary" className={"mr-3 mt-3 ml-3 mb-3"}onClick={() => this.goLeft()}>
               ◀️
             </Button>
-            <Button variant="outlined" color="primary" className={"mr-2 mt-2"}onClick={() => this.goDown()}>
+            <Button variant="outlined" color="primary" className={"mr-3 mt-3 ml-3 mb-3"}onClick={() => this.goDown()}>
               🔽
             </Button>
-            <Button variant="outlined" color="primary" className={"mr-2 mt-2"}onClick={() => this.goRight()}>
+            <Button variant="outlined" color="primary" className={"mr-3 mt-3 ml-3 mb-3"}onClick={() => this.goRight()}>
               ▶️
             </Button>
           </div>
