@@ -35,7 +35,6 @@ import Queue from "./pages/Queue"
 import GameListPage from "./pages/GameListPage"
 import FlappyPage from "./pages/gamepages/FlappyPage"
 import SnakePage from "./pages/gamepages/SnakePage"
-import PlaySnake from "./pages/gamepages/PlaySnake"
 import PlaySnakeMainPage from "./pages/gamepages/PlaySnakeMainPage"
 
 const theme = createMuiTheme({

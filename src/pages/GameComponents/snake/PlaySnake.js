@@ -3,6 +3,7 @@ import "./SnakeGame.css";
 import GameOver from "./GameOver.js";
 import ReactTouchEvents from "react-touch-events";
 import Button from "@material-ui/core/Button";
+import GameNav from "../../base/GameNav";
 
 class SnakeGame extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class SnakeGame extends React.Component {
   }
 
   componentDidMount() {
+    
     this.initGame();
     window.addEventListener("keydown", this.handleKeyDown);
 
@@ -99,6 +101,7 @@ class SnakeGame extends React.Component {
       snake,
       apple: { Xpos: appleXpos, Ypos: appleYpos },
     });
+  
   }
 
   gameLoop() {
@@ -119,9 +122,17 @@ class SnakeGame extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.state.timeoutId);
     window.removeEventListener("keydown", this.handleKeyDown);
+    window.onbeforeunload = confirmExit;
+            function confirmExit()
+            {
+              alert('Hi');
+            }
+
+
   }
 
   resetGame() {
+   
     let width = this.state.width;
     let height = this.state.height;
     let blockWidth = this.state.blockWidth;
@@ -212,7 +223,7 @@ class SnakeGame extends React.Component {
 
       // increase snake size
       snake.push(newTail);
-
+     
       // create another apple
       apple.Xpos =
         Math.floor(Math.random() * ((width - blockWidth) / blockWidth + 1)) *
@@ -234,6 +245,14 @@ class SnakeGame extends React.Component {
       if (this.state.score === highScore) {
         highScore++;
         localStorage.setItem("snakeHighScore", highScore);
+        if( this.props.isLoggedIn){
+       
+            this.props.postGameScore(highScore)
+            console.log(this.state.highScore + 1 )
+       
+       
+    }
+        
         newHighScore = true;
       }
 
@@ -257,6 +276,15 @@ class SnakeGame extends React.Component {
     for (let i = 1; i < snake.length; i++) {
       if (snake[0].Xpos === snake[i].Xpos && snake[0].Ypos === snake[i].Ypos)
         this.setState({ isGameOver: true });
+        if(this.state.isGameOver && this.props.isLoggedIn){
+            if (this.state.highScore == this.state.score){
+                this.props.postGameScore(this.state.highScore)
+            }
+            else{
+                this.props.postGameAttempt(this.state.score)
+            }
+        }
+       
     }
   }
 
@@ -382,12 +410,14 @@ class SnakeGame extends React.Component {
           highScore={this.state.highScore}
           newHighScore={this.state.newHighScore}
           score={this.state.score}
+          reset ={() => this.resetGame()}
         />
       );
     }
 
     return (
       <div>
+        <GameNav imojilocal='🍏' localscore={this.state.score} imojihigh={'⚡'} highscore={this.state.highScore} username={this.props.username} avathar={this.props.avathar}/>
         <div
           id="GameBoard"
           className="mx-auto d-flex justify-content-center align-items-center"
@@ -395,6 +425,7 @@ class SnakeGame extends React.Component {
             width: this.state.width,
             height: this.state.height,
             borderWidth: this.state.width / 95,
+            marginTop:"20px",
           }}
         >
           {this.state.snake.map((snakePart, index) => {
@@ -424,7 +455,15 @@ class SnakeGame extends React.Component {
           />
         </div>
 
-        <div>
+        <div style={{ marginBottom:"150px"}}>
+        {/* <div
+            id="Scores"
+            className="mt-4 mx-auto d-flex justify-content-center align-items-center"
+            style={{ fontSize: "10px" }}
+          >
+            HIGH-SCORE: {this.state.highScore}&ensp;&ensp;&ensp;&ensp;SCORE:{" "}
+            {this.state.score}
+          </div> */}
           <div className="mx-auto d-flex justify-content-center align-items-center">
             <Button variant="outlined" color="primary" className={"mr-3 mt-3 ml-3 mb-3"} onClick={() => this.goUp()}>
               🔼
@@ -442,14 +481,7 @@ class SnakeGame extends React.Component {
             </Button>
           </div>
 
-          <div
-            id="Scores"
-            className="mt-4 mx-auto d-flex justify-content-center align-items-center"
-            style={{ fontSize: "10px" }}
-          >
-            HIGH-SCORE: {this.state.highScore}&ensp;&ensp;&ensp;&ensp;SCORE:{" "}
-            {this.state.score}
-          </div>
+         
         </div>
       </div>
     );
