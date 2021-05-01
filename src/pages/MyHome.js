@@ -1,22 +1,16 @@
 import React, {Component} from 'react'
-import {Media, Player} from 'react-media-player'
+import {Media} from 'react-media-player'
 import LogoArea from './base/LogoArea'
 // import axios from "axios";
 import HeroText from './homePageComponents/HeroText'
 import ListenAfterLive from './homePageComponents/ListenAfterLive'
-import RecentPosters from './homePageComponents/RecentPosters'
 import FeaturedPosts from './homePageComponents/FeaturedPosts'
 import FeaturedPlaylists from './homePageComponents/FeaturedPlaylists'
-import FlotingPlayPause from './base/FlotingPlayPause'
 import {Helmet} from 'react-helmet'
-import SubmitPromo from './SubmitPromo'
 import * as SETTINGS from './constants/Settings'
-import FeaturedClubs from './homePageComponents/FeaturedClub'
-import Adbanner from './AdBanner'
 import RecentlyPlayed from './homePageComponents/RecentlyPlayed'
 import BottomNav from './base/BottomNav'
 import FeaturedRandom from './homePageComponents/FeaturedRandom'
-import Promobox from './PromoBox'
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -52,9 +46,9 @@ export default class MyHome extends Component {
 
   mainContent = {
     textAlign: 'center',
-    marginLeft: '10%',
-    marginTop: '30px',
-    marginRight: '10%',
+    marginLeft: '7%',
+    marginTop: '10px',
+    marginRight: '7%',
   }
   secondaryContent = {
     textAlign: 'center',
@@ -62,12 +56,11 @@ export default class MyHome extends Component {
     color: 'white',
   }
   secondaryContentInner = {
-    paddingLeft: '10%',
-    paddingTop: '50px',
-    paddingBottom: '50px',
-    paddingRight: '10%',
+    paddingLeft: '7%',
+    paddingTop: '10px',
+    paddingBottom: '10px',
+    paddingRight: '7%',
 
-    minHeight: '100px',
   }
   render() {
     return (
@@ -96,17 +89,17 @@ export default class MyHome extends Component {
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
-              <Promobox
+              {/* <Promobox
                 title='Hey! Checkout Anonymous Song Dedication ❤️😊'
                 subtitle='Dedicate'
                 link='/song-dedication'
                 target=''
-              />
+              /> */}
               <hr style={{borderTop: '3px solid rgba(115, 110, 110, 0.1)'}} />
               <RecentlyPlayed page='home' />
 
               <FeaturedPosts listen={this.props.listen} />
-              <SubmitPromo />
+              {/* <SubmitPromo /> */}
 
               {/* <Adbanner/> */}
 
@@ -119,7 +112,7 @@ export default class MyHome extends Component {
           {/* <FlotingPlayPause cover={this.state.cover} title={this.state.title} src={this.state.url}/> */}
           <BottomNav selected='home' />
           {/* <NowPlaying playing={this.state.playing}/> */}
-          <div className='media'>{/* <Player src={this.state.url} vendor="audio" autoPlay="true" /> */}</div>
+          <div className='media pb-5'>{/* <Player src={this.state.url} vendor="audio" autoPlay="true" /> */}</div>
         </div>
       </Media>
     )

@@ -32,14 +32,14 @@ export default class GameListPage extends Component {
 
     this.conatiner = {
       minHeight: "100vh",
-      paddingLeft: "10%",
-      paddingRight: "10%",
+      paddingLeft: "5%",
+      paddingRight: "5%",
       backgroundColor: SETTINGS.COLOURS.BG_COLOR_L0,
       color: "white",
     };
     this.content = {
-      marginLeft: "10%",
-      marginRight: "10%",
+      // marginLeft: "10%",
+      // marginRight: "10%",
     };
     this.itemHeading = {
       textAlign: "center",
@@ -70,7 +70,7 @@ export default class GameListPage extends Component {
         <div style={this.conatiner}>
           <LogoArea />
 
-          <div className="mb-5">
+          <div className="mb-5 mt-3">
             <GameRankBanner />
           </div>
           <div style={this.content}>
@@ -112,19 +112,19 @@ export default class GameListPage extends Component {
                 <hr
                   style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                 />
-                <h4 style={{ textAlign: "center" }}>🌎 LeaderBoard - Top 5</h4>
+                <h6 style={{ textAlign: "center" }}>🌎 LeaderBoard - Top 5</h6>
                 <hr
                   style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }}
                 />
               </div>
-              <h5>🐍 Snake</h5>
+              <p style={{ textAlign: "center" }}>🐍 Snake</p>
               <GameAllLeaderboard
                 game={"snake"}
                 currentUser={this.state.user}
                 sliceAt={5}
               />
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <h5>🐦 Flappy Bird</h5>
+              <p style={{ textAlign: "center" }}>🐦 Flappy Bird</p>
               <GameAllLeaderboard
                 game={"flappy"}
                 currentUser={this.state.user}

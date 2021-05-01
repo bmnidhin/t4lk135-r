@@ -46,10 +46,7 @@ const Comment = (props) => {
         >
           <h6 style={{ fontSize: "0.7rem" }}>
             <b>{props.comment.user.name} </b>
-            <a className="text-muted">
-              &nbsp;&nbsp; {Moment(timestamp).fromNow()}
-              {""}{" "}
-            </a>
+           
           </h6>
           <div>
             <Linkify>
@@ -79,7 +76,15 @@ const Comment = (props) => {
           <div
             className="d-flex flex-row bd-highlight  text-muted text-uppercase"
             style={{ fontSize: "0.6rem", cursor: "pointer" }}
-          >
+          > 
+      
+            <div className="pt-0 pr-3 bd-highlight">
+            <span className="text-muted">
+            {Moment(timestamp).fromNow()}
+              {""}{" "}
+            </span>
+             
+            </div> 
             <div className="pt-0 pr-3 bd-highlight">
               <CommentLikes
                 slug={props.slug}

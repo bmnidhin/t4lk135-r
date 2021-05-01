@@ -11,6 +11,7 @@ import {playIt} from '../../redux/Queue/queue.actions'
 import {Link} from 'react-router-dom'
 import Status from '../../utils/Status'
 import QueueMusicIcon from '@material-ui/icons/QueueMusic'
+
 const {formatTime} = utils
 
 const {PlayPause, CurrentTime, Progress, SeekBar, Duration, MuteUnmute, Volume, Fullscreen} = controls

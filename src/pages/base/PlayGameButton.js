@@ -40,7 +40,8 @@ class MainPlayPause extends Component {
                 className={'mr-2 mt-2'}
                 // onClick={this.props.switch}
                 startIcon={<PlayCircleOutline />}>
-                Start Game as @{generateUsername(this.props.user.email || "noname@gmail.com")}
+                Start Game
+                {/* @{generateUsername(this.props.user.email || "noname@gmail.com")} */}
               </Button>
               </Link> )}
               {!this.props.isLoggedIn &&(

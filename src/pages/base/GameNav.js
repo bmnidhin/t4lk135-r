@@ -32,7 +32,7 @@ export default class GameNav extends Component {
   }
   render() {
     return (
-      <div style={this.divStyle} className='pl-4 pr-4 pt-2 pb-3 border-bottom border-white'>
+      <div style={this.divStyle} className='pl-4 pr-4 pt-3 pb-3 border-bottom border-white'>
         <table style={this.table}>
           <tbody>
             <tr>
@@ -40,11 +40,12 @@ export default class GameNav extends Component {
               {this.props.imojilocal || ""}{' '}{this.props.localscore || 0}{' '}
               {this.props.imojihigh || ""}{' '}{this.props.highscore || 0}{' '}
               </td>
-              <td style={{width: '45%'}}>
+              <td style={{width: '40%'}}  className="float-middle">
                 {this.props.username || "noname"}
               </td>
-              <td style={{width: '20%'}}>
+              <td style={{width: '25%'}}>
               <Avatar
+              className="float-right"
                 alt={this.props.userName || "noname"}
                 src={this.props.avathar ||""}
               />

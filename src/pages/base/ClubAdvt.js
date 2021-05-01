@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Moment from "moment";
 import * as SETTINGS from '../constants/Settings';
 export default class ClubAdvt extends Component {

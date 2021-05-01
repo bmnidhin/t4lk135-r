@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SendIcon from '@material-ui/icons/Send';
 
 class NewComment extends Component {
   constructor(props) {
@@ -28,7 +29,9 @@ class NewComment extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} required autoComplete="off">
+      
+   
         <div class="input-group mb-3">
           <input
             type="text"
@@ -46,7 +49,7 @@ class NewComment extends Component {
 
           />
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Post</button>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><SendIcon fontSize="small"/></button>
           </div>
         </div>
 

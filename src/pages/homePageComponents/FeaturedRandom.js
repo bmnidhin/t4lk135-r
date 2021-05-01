@@ -27,18 +27,6 @@ class FeaturedRandom extends Component {
       })
       .then(() => {
         const random = Math.floor(Math.random() * (this.state.listen.length - 4))
-
-        // this.state.listen&&(
-        //   this.props.nextSong(
-        //     {
-        //       audio: this.state.listen[random].URL,
-        //       cover: this.state.listen[random].cover,
-        //       title: this.state.listen[random].title,
-        //       vendor: 'audio',
-        //       slug: this.state.listen[random].slug
-        //     }
-        //   )
-        // )
         this.setState({
           random: random,
         })
@@ -90,12 +78,12 @@ class FeaturedRandom extends Component {
                         ? '/play/' + track.slug.split('/')[1]
                         : '/' + track.slug
                     }>
-                       <LazyLoadImage effect="blur" src={track.cover} width='100%'   className='roundedImage' alt='Poster'/>
+                     <LazyLoadImage effect="blur" src={track.cover} width='100%'   className='roundedImage' alt='Poster'/>
                     {/* <img src={track.cover} width='100%' className='roundedImage' alt='Poster'></img> */}
-
+        
                     <p style={this.itemHeading} className='text-truncate'>
                       {track.title}
-                    </p>
+                    </p> 
                   </Link>
                 </div>
               )

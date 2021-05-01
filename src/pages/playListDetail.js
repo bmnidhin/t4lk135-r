@@ -1,31 +1,20 @@
 import React, {Component} from 'react'
-import {Media, Player, controls, withMediaProps} from 'react-media-player'
 import LogoArea from './base/LogoArea'
 import axios from 'axios'
 import Moment from 'moment'
-import FlotingPlayPause from './base/FlotingPlayPause'
-import {Helmet} from 'react-helmet'
-import MainPlaylistPlayPause from './base/MainPlaylistPlayPause'
-import FeaturedPosts from './homePageComponents/FeaturedPosts'
-import NewComment from './Firebase/NewComment'
-import Comments from './Firebase/Comments'
-import base, {auth, providers, databased} from '../utils/FirebaseSettings'
-import LoveSong from './Firebase/LoveSong'
 import * as SETTINGS from './constants/Settings'
-// import Skeleton from '@yisheng90/react-loading';
+import {Helmet} from 'react-helmet'
+import LoveSong from './Firebase/LoveSong'
 import SubmitPromo from './SubmitPromo'
-import Adbanner from './AdBanner'
-import BottomNav from './base/BottomNav'
 import FeaturedRandom from './homePageComponents/FeaturedRandom'
 import {connect} from 'react-redux'
-
 import {playIt, addQueue} from '../redux/Queue/queue.actions'
+import MyComments from './Firebase/MyComments'
 
 class playListDetail extends Component {
   constructor(props) {
     super(props)
-    this.onChangeUsername = this.onChangeUsername.bind(this)
-    this.postNewComment = this.postNewComment.bind(this)
+    this.playSong = this.playSong.bind(this)
 
     this.state = {
       notLoaded: true,
@@ -48,14 +37,7 @@ class playListDetail extends Component {
       commentsLoaded: false,
     }
 
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({isLoggedIn: true, user})
-      } else {
-        this.setState({isLoggedIn: false, user: {}})
-        localStorage.removeItem('userid')
-      }
-    })
+  
 
     this.conatiner = {
       minHeight: '100vh',
@@ -115,17 +97,7 @@ class playListDetail extends Component {
           notLoaded: true,
         })
       })
-    this.refComments = base.syncState("comments/" +this.props.match.params.slug, {
-      context: this,
 
-      state: 'comments',
-    })
-    var starCountRef = databased.ref("comments/" +this.props.match.params.slug)
-    starCountRef.on('value', (snapshot) => {
-      let a = snapshot.numChildren()
-      this.setState({commentsLoaded: true})
-      // console.log(a);
-    })
   }
 
   check(date, time) {
@@ -143,40 +115,8 @@ class playListDetail extends Component {
       isEventNoPublishedBannerVisible: isEventPublished,
     })
   }
-  postNewComment(comment) {
-    const timePublished = Date.now()
-    if (this.state.user.uid === '' || this.state.user.displayName === '' || this.state.user.photoURL === '') {
-      alert('Unable to Post Comment. Try Again!!!')
-    } else {
-      comment.user = {
-        uid: this.state.user.uid,
-        name: this.state.user.displayName,
-        time: timePublished,
-        photo: this.state.user.photoURL,
-      }
-      const comments = {
-        ...this.state.comments,
-      }
-
-      const timestamp = Date.now()
-      comments[`comm-${timestamp}`] = comment
-
-      databased.ref("comments/" +this.props.match.params.slug + `/comm-${timestamp}` ).set(comment)
-
-      // this.setState({
-      //   comments: comments,
-
-      // });
-    }
-  }
-  auth(provider) {
-    auth.signInWithPopup(providers[provider])
-  }
-  logout() {
-    this.setState({isLoggedIn: false, user: {}})
-    localStorage.removeItem('userid')
-  }
-  onChangeUsername(item, tracks) {
+ 
+  playSong(item, tracks) {
     this.props.playIt({
       audio: item.audio,
       cover: this.state.cover,
@@ -222,7 +162,7 @@ class playListDetail extends Component {
               '/playlist/' + this.props.match.params.slug + '/' + item.id === this.props.nowPlaying.slug &&
               'rgba(44, 40, 174, 0.34)',
           }}>
-          <th scope='row' onClick={() => this.onChangeUsername(item, this.state.tracks)}>
+          <th scope='row' onClick={() => this.playSong(item, this.state.tracks)}>
             {this.props.nowPlaying &&
             '/playlist/' + this.props.match.params.slug + '/' + item.id === this.props.nowPlaying.slug ? (
               <span class='material-icons'>play_circle_outline</span>
@@ -230,7 +170,7 @@ class playListDetail extends Component {
               item.id
             )}
           </th>
-          <td style={{fontSize: '1rem'}} onClick={() => this.onChangeUsername(item, this.state.tracks)}>
+          <td style={{fontSize: '1rem'}} onClick={() => this.playSong(item, this.state.tracks)}>
             {item.title}
             <br />
             <span className='text-muted' style={{fontSize: '0.6rem'}}>
@@ -309,80 +249,9 @@ class playListDetail extends Component {
           </div>
           <div style={this.secondaryContent}>
             <div style={this.secondaryContentInner}>
-              <div className='commentArea mt-3'>
+             
                 <SubmitPromo />
-                <hr style={{borderTop: '3px solid rgba(115, 110, 110, 0.1)'}} />
-                <div class='d-flex flex-row bd-highlight justify-content-between'>
-                  <div class='p-2 bd-highlight'>
-                    <h6>POST A COMMENT</h6>
-                  </div>
-                  <div class='p-2 bd-highlight'></div>
-                </div>
-
-                <hr style={{borderTop: '3px solid rgba(115, 110, 110, 0.1)'}} />
-
-                {this.state.isLoggedIn && (
-                  <div class='d-flex bd-highlight'>
-                    <div class='p-2 bd-highlight'>
-                      <div
-                        className='rounded-circle'
-                        width='30px'
-                        height='30px'
-                        style={{
-                          backgroundColor: 'rgb(14, 14, 67)',
-                          backgroundImage: 'url(' + this.state.user.photoURL + ')',
-                          backgroundSize: 'cover',
-                          width: '40px',
-                          height: '40px',
-                          color: 'rgb(14, 14, 67)',
-                        }}>
-                        &nbsp;
-                      </div>
-                    </div>
-                    <div class='p-2 flex-grow-1 bd-highlight'>
-                      <h6>
-                        <b> {this.state.user.displayName} </b>
-                        <span onClick={() => auth.signOut()}>( Logout )</span>
-                      </h6>
-                      {this.state.commentsLoaded && <NewComment postNewComment={this.postNewComment} />}
-                    </div>
-                  </div>
-                )}
-                {!this.state.isLoggedIn && (
-                  <div className='signUpPrompt'>
-                    <div className='p-3'>
-                      Login to Post a Comment
-                      <p className='text-muted text-small' style={{fontSize: '0.8rem'}}>
-                        Login or create an account to join our community
-                      </p>
-                      <button type='button' class='btn btn-outline-light' onClick={() => this.auth('google')}>
-                        <i class='fa fa-google'></i> Login With Google
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                <hr style={{borderTop: '3px solid rgba(115, 110, 110, 0.1)'}} />
-                {this.state.comments === {} ? (
-                  ''
-                ) : (
-                  <Comments
-                    comments={this.state.comments}
-                    slug={this.props.match.params.slug}
-                    user={this.state.user.uid}
-                    name={this.state.user.displayName}
-                    login={this.state.isLoggedIn}
-                    currentUser={this.state.user}
-                  />
-                )}
-
-                <hr
-                  id='bottom'
-                  style={{
-                    borderTop: '3px solid rgba(115, 110, 110, 0.1)',
-                  }}
-                />
-              </div>
+                <MyComments slug={this.props.match.params.slug} />
 
               <FeaturedRandom />
             </div>
