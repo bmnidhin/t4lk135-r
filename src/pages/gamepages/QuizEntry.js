@@ -13,7 +13,7 @@ import PlayGameButton from "../base/PlayGameButton";
 import GameAllLeaderboard from "../GameComponents/GameAllLeaderboard";
 let qs = require("qs");
 
-class SnakePage extends Component {
+class QuizEntry extends Component {
   constructor(props) {
     super(props);
     this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -187,7 +187,7 @@ class SnakePage extends Component {
 
         <div style={this.content} id="top" className="pt-4 mb-4">
           <div>
-            {!this.state.isLoggedIn && (
+          {!this.state.isLoggedIn && (
               <div className="alert alert-danger" role="alert">
                 🚨 You need an account to play this game
               </div>
@@ -205,7 +205,7 @@ class SnakePage extends Component {
                 </div>
                 <div class="col-sm-8">
                   <div className=" p-2 pt-4 text-break">
-                    <h4>Snake </h4>
+                    <h4>tkmquiz </h4>
                     <div
                       class="d-flex flex-row bd-highlight mb-2"
                       style={{ fontSize: "10px", color: "#d0cccc" }}
@@ -220,7 +220,7 @@ class SnakePage extends Component {
                         user={this.state.user}
                         isLoggedIn={this.state.isLoggedIn}
                         login={() => this.auth("google")}
-                        gameLink={"/games/snake/play"}
+                        gameLink={"/games/tkmquiz/play"}
                       />
                     </div>
                   </div>
@@ -241,7 +241,7 @@ class SnakePage extends Component {
                   ""
                 ) : (
                   <GameAllLeaderboard
-                    game={"snake"}
+                    game={"tkmquiz"}
                     currentUser={this.state.user}
                   />
                 )}
@@ -276,4 +276,4 @@ const mapStateToProps = (state) => {
     myQueue: state.queue.myQueue,
   };
 };
-export default connect(mapStateToProps, { playIt, addQueue })(SnakePage);
+export default connect(mapStateToProps, { playIt, addQueue })(QuizEntry);

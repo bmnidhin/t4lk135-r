@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import PlaySnake from "../GameComponents/snake/PlaySnake";
+import Playtkmquiz from "../GameComponents/tkmquiz/Playtkmquiz";
 import base, { auth, providers, databased } from "../../utils/FirebaseSettings";
 import { AvatarGenerator } from "random-avatar-generator";
+
 
 
 let qs = require("qs");
@@ -9,7 +10,7 @@ let qs = require("qs");
 
 
 const generateUsername = require("generate-username-from-email");
-export default class PlaySnakeMainPage extends Component {
+export default class PlaytkmquizMainPage extends Component {
   constructor(props) {
     super(props);
     this.postGameScore = this.postGameScore.bind(this);
@@ -28,6 +29,10 @@ export default class PlaySnakeMainPage extends Component {
         // console.log("------------------------------------");
         // console.log(user);
         localStorage.setItem("userid", this.state.user.uid);
+        localStorage.setItem('displayName',this.state.user.displayName);
+        localStorage.setItem('photoURL',this.state.user.photoURL);
+        localStorage.setItem('email',this.state.user.email);
+
       } else {
         this.setState({ isLoggedIn: false, user: {} });
         localStorage.removeItem("userid");
@@ -40,19 +45,17 @@ export default class PlaySnakeMainPage extends Component {
     }).play;
 
     if (play != 4033853) {
-    
-      window.location = "/games/snake?error=500";
-  
+      window.location = "/games/tkmquiz?error=500";
     }
-    if(!this.props.isLoggedIn){
-      window.location = "/games/snake?error=500";
-    }
-    this.refComments = base.syncState("games/snake/leaderboard/", {
+    // if (!this.state.isLoggedIn) {
+    //   window.location = "/games/tkmquiz?error=500";
+    // }
+    this.refComments = base.syncState("games/tkmquiz/leaderboard/", {
       context: this,
 
       state: "leaderboard",
     });
-    var starCountRef = databased.ref("games/snake/leaderboard/");
+    var starCountRef = databased.ref("games/tkmquiz/leaderboard/");
     starCountRef.on("value", (snapshot) => {
       let a = snapshot.numChildren();
       this.setState({ commentsLoaded: true });
@@ -67,6 +70,7 @@ export default class PlaySnakeMainPage extends Component {
         randomAvathar: localStorage.getItem("avathar"),
       });
     }
+  
   }
   postGameScore(score) {
     let d = new Date();
@@ -74,7 +78,7 @@ export default class PlaySnakeMainPage extends Component {
       alert("Unable to Connect With Server. Try Again!!!");
     } else {
       let data = {
-        game: "snake",
+        game: "tkmquiz",
         score: score,
         uid: this.state.user.uid,
         name: this.state.user.displayName,
@@ -84,7 +88,7 @@ export default class PlaySnakeMainPage extends Component {
         userName: generateUsername(this.state.user.email),
       };
 
-      databased.ref("games/snake/leaderboard/" + this.state.user.uid).set(data);
+      databased.ref("games/tkmquiz/leaderboard/" + this.state.user.uid).set(data);
 
       // this.setState({
       //   comments: comments,
@@ -98,7 +102,7 @@ export default class PlaySnakeMainPage extends Component {
       alert("Unable to Connect With Server. Try Again!!!");
     } else {
       let data = {
-        game: "snake",
+        game: "tkmquiz",
         score: score,
         uid: this.state.user.uid,
         name: this.state.user.displayName,
@@ -106,7 +110,7 @@ export default class PlaySnakeMainPage extends Component {
         photo: this.state.user.photoURL,
       };
 
-      databased.ref("games/snake/attempts/" + this.state.user.uid).set(data);
+      databased.ref("games/tkmquiz/attempts/" + this.state.user.uid).set(data);
 
       // this.setState({
       //   comments: comments,
@@ -129,14 +133,13 @@ export default class PlaySnakeMainPage extends Component {
     return (
       play == 4033853 &&(
         <div style={{ maxWidth: "100%" }}>
-        
-       { this.state.isLoggedIn && <PlaySnake
+       
+        {this.state.isLoggedIn && <Playtkmquiz
           postGameScore={this.postGameScore}
           postGameAttempt={this.postGameAttempt}
           isLoggedIn={this.state.isLoggedIn}
           username={ generateUsername(this.state.user.email || "noname@gmail.com")}
           avathar={this.state.randomAvathar}
-          user ={this.state.user}
         />}
       </div>
       )

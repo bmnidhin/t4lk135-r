@@ -36,8 +36,8 @@ export default class GameNav extends Component {
         <table style={this.table}>
           <tbody>
             <tr>
-              <td style={{width: '25%', fontSize: '15px', cursor: 'pointer'}}>
-              {this.props.imojilocal || ""}{' '}{this.props.localscore || 0}{' '}
+              <td style={{width: '25%', fontSize: '15px', cursor: 'pointer'}} className="float-left">
+              {this.props.imojilocal || ""}{' '}{this.props.localscore || ""}{' '}
               {this.props.imojihigh || ""}{' '}{this.props.highscore || 0}{' '}
               </td>
               <td style={{width: '40%'}}  className="float-middle">

@@ -35,6 +35,7 @@
     "react-media-player": "^0.7.9",
     "react-moment": "^0.9.7",
     "react-popup": "^0.10.0",
+    "react-quiz-component": "^0.3.8",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-router-scroll-memory": "^2.0.6",

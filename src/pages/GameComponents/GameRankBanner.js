@@ -58,8 +58,8 @@ export default class GameRankBanner extends Component {
             <p>
               Score:{" "}
               <span className="text-muted">
-                🐍 Snake: {localStorage.getItem("snakeHighScore") || 0}, 🐦
-                FlappyBird: {localStorage.getItem("flappyHighScore") || 0}
+                🐍 Snake: {localStorage.getItem("snakeHighScore") || 0}, 👩‍🏫
+                TKM Quiz: {localStorage.getItem("quizHighScore") || 0}
               </span>
             </p>
           </div>

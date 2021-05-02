@@ -102,7 +102,7 @@ export default class GameListPage extends Component {
                     alt="Poster"
                   ></img>
                   <p style={this.itemHeading} className="text-truncate">
-                    Flappy Bird
+                    TKM Quiz
                   </p>
                 </Link>
               </div>
@@ -124,9 +124,9 @@ export default class GameListPage extends Component {
                 sliceAt={5}
               />
               <hr style={{ borderTop: "3px solid rgba(115, 110, 110, 0.1)" }} />
-              <p style={{ textAlign: "center" }}>🐦 Flappy Bird</p>
+              <p style={{ textAlign: "center" }}>👩‍🏫 TKM Quiz</p>
               <GameAllLeaderboard
-                game={"flappy"}
+                game={"tkmquiz"}
                 currentUser={this.state.user}
                 sliceAt={5}
               />
