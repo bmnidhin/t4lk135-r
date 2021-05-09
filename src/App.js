@@ -170,6 +170,7 @@ class App extends Component {
 
                 <Route exact path="/ground" component={test} />
                 <Route exact path="/submit" component={() => (<Redirect url={'https://bit.ly/thetkmshow'}/>)} />
+                <Route exact path="/athena21" component={() => (<Redirect url={'https://athena21.live/?utm_source=thetkmshow.in'}/>)} />
                 <Route exact path="/live" component={Live} />
                 <Route exact path="/privacy" component={Privacy} />
                 <Route component={listen} />

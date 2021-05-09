@@ -17,6 +17,7 @@ import BottomNav from './base/BottomNav'
 import FeaturedRandom from './homePageComponents/FeaturedRandom'
 import {connect} from 'react-redux'
 import {playIt, addQueue} from '../redux/Queue/queue.actions'
+import PromoBanner from './PromoBanner'
 
 
 let qs = require('qs')
@@ -250,6 +251,7 @@ class episode extends Component {
             <LogoArea />
 
             <div style={this.content} id='top' className='pt-4'>
+            <PromoBanner/>
               <div
                 className={this.state.isEventNoPublishedBannerVisible ? '' : 'd-none'}
                 style={{
@@ -261,7 +263,7 @@ class episode extends Component {
                   marginTop: '10px',
                 }}>
                 Not yet published. Listen after {this.state.publishedAtDate} &nbsp; {this.state.publishedAtDate}{' '}
-                {this.state.rerender}
+                
               </div>
               <div style={this.infobox}>
                 <div class='row'>

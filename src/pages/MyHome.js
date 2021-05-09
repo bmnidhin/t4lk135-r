@@ -17,6 +17,7 @@ import RecentlyPlayed from './homePageComponents/RecentlyPlayed'
 import BottomNav from './base/BottomNav'
 import FeaturedRandom from './homePageComponents/FeaturedRandom'
 import Promobox from './PromoBox'
+import PromoBanner from './PromoBanner'
 // import liveStreamURL from "../utils/Settings";
 // const { PlayPause, MuteUnmute } = controls;
 
@@ -87,7 +88,7 @@ export default class MyHome extends Component {
                 {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
                 <ListenAfterLive listen={this.props.listen} />
                 {/* <FeaturedLiveChat/> */}
-
+                <PromoBanner/>
                 <FeaturedRandom listen={this.props.listen} />
 
                 {/* <RecentPosters /> */}

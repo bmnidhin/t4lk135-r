@@ -14,6 +14,7 @@ import * as SETTINGS from './constants/Settings'
 import FeaturedRandom from './homePageComponents/FeaturedRandom'
 import {connect} from 'react-redux'
 import {playIt, addQueue} from '../redux/Queue/queue.actions'
+import PromoBanner from './PromoBanner'
 
 
 
@@ -226,6 +227,7 @@ class Play extends Component {
 
     return (
       <div key={this.props.match.params.slug}>
+        
         <div style={this.conatiner}>
           <Helmet>
             <meta charSet='utf-8' />
@@ -235,6 +237,7 @@ class Play extends Component {
           <LogoArea />
 
           <div style={this.content} id='top' className='pt-4'>
+          <PromoBanner/>
             <div
               className={this.state.isEventNoPublishedBannerVisible ? '' : 'd-none'}
               style={{
