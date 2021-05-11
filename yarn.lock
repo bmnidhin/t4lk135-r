@@ -5701,9 +5701,9 @@ hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.2:
     react-is "^16.7.0"
 
 hosted-git-info@^2.1.4:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
-  integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -9472,6 +9472,13 @@ random-avatar-generator@^2.0.0:
   dependencies:
     seedrandom "^3.0.5"
 
+random-quotes@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/random-quotes/-/random-quotes-1.3.0.tgz#09e737352f361fef528dc0a9a726ef46f891e04b"
+  integrity sha512-xp/42YIuyfHCCROqFamCDy7UKDfWiE7oLEWsDbjWYsx/iz4tOsnWP3qedxBElZLJMhm5Hec8zdS954v38W5fSQ==
+  dependencies:
+    unique-random-array "1.0.0"
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -11441,6 +11448,18 @@ unique-filename@^1.1.1:
   integrity sha512-Vmp0jIp2ln35UTXuryvjzkjGdRyf9b2lTXuSYUiPmzRcl3FDtYqAwOnTJkAngD9SWhnoJzDbTKwaOrZ+STtxNQ==
   dependencies:
     unique-slug "^2.0.0"
+
+unique-random-array@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/unique-random-array/-/unique-random-array-1.0.0.tgz#42b3721c579388d8b667c93c2dbde3d5d81a9136"
+  integrity sha1-QrNyHFeTiNi2Z8k8Lb3j1dgakTY=
+  dependencies:
+    unique-random "^1.0.0"
+
+unique-random@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/unique-random/-/unique-random-1.0.0.tgz#ce3e224c8242cd33a0e77b0d7180d77e6b62d0c4"
+  integrity sha1-zj4iTIJCzTOg53sNcYDXfmti0MQ=
 
 unique-slug@^2.0.0:
   version "2.0.2"
