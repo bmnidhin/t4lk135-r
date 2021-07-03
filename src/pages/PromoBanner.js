@@ -4,11 +4,11 @@ export default class PromoBanner extends Component {
   render() {
     return (
       <div>
-      <div className="pt-3 pb-3">
+      {false && <div className="pt-3 pb-3">
                 <a href ={'https://play.google.com/store/apps/details?id=com.revolt.onlive'} target="_blank">
                 <img src="https://thetkmshow.github.io/static/poster/rovlt.png" className="border border-warning roundedImage" width="100%"/>
                 </a>
-            </div>
+            </div>}
       </div>
     );
   }
