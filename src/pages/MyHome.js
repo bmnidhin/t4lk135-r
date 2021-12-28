@@ -88,7 +88,8 @@ export default class MyHome extends Component {
                 {/* <ClubAdvt top={"Read"} heading={"Check out the annual magazine of Mechanical Department"} link={"mech-magazine"}/>  */}
                 <ListenAfterLive listen={this.props.listen} />
                 {/* <FeaturedLiveChat/> */}
-                <PromoBanner/>
+                {/*  <PromoBanner/> */}
+               
                 <FeaturedRandom listen={this.props.listen} />
 
                 {/* <RecentPosters /> */}
