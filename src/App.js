@@ -32,6 +32,9 @@ import Play from "./pages/Play"
 import FlotingPlayPause from "./pages/base/FlotingPlayPause"
 import { Media, Player, controls, withMediaProps, utils } from "react-media-player"
 import Queue from "./pages/Queue"
+import TedxHome from "./pages/TedxHome"
+import AddParticipant from "./pages/AddParticipant"
+import TedxAdminList from "./pages/TedxAdminList"
 
 const theme = createMuiTheme({
   palette: {
@@ -167,6 +170,10 @@ class App extends Component {
                 <Route path="/p/:slug" component={ClubPromoPage} />
                 <Route exact path="/library" component={MyLibrary} />
                 <Route exact path="/song-dedication" component={SongDedication} />
+
+                <Route exact path="/vote" component={TedxHome} />
+                <Route exact path="/admin/talentedx/add" component={AddParticipant} />
+                <Route exact path="/admin/talentedx/list" component={TedxAdminList} />
 
                 <Route exact path="/ground" component={test} />
                 <Route exact path="/submit" component={() => (<Redirect url={'https://bit.ly/thetkmshow'}/>)} />

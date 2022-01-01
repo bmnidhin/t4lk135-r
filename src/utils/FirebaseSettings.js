@@ -2,6 +2,7 @@ import Rebase from "re-base";
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage'; 
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyAXR_lbVyiPxc2D39Fp4BqeyFNjtzBuR2g",
@@ -17,11 +18,15 @@ const firebaseApp = firebase.initializeApp({
 const db = firebase.database(firebaseApp);
 const database = firebase.database()
 const base = Rebase.createClass(db);
-
+export const storageRef = firebase.storage().ref()
 export const providers = {
 //   facebook: new firebase.auth.FacebookAuthProvider(),
   google: new firebase.auth.GoogleAuthProvider()
 };
+
+export const increment =(value)=>{
+  return firebase.database.ServerValue.increment(value)
+}
 
 export const auth = firebaseApp.auth();
 export const databased = database;
