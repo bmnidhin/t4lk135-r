@@ -50,6 +50,7 @@ export default class VoteCard extends Component {
       // console.log(a);
     });
   }
+
   submitData(event) {
     event.preventDefault();
     console.log(this.state.scoreGiven);
@@ -95,13 +96,14 @@ export default class VoteCard extends Component {
           effect="blur"
           src={this.props.participant?.photo}
           width="100%"
+          height="200px"
           className="roundedImage"
           alt="Poster"
         />
         <p style={this.itemHeading} className="text-truncate">
         {this.props.participant?.slot} - {this.props.participant?.name}
         </p>
-
+        
         {!this.state.voteObj ? (
           <form onSubmit={this.submitData}>
             {auth.currentUser ? (

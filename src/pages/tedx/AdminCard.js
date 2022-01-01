@@ -9,6 +9,8 @@ export default class AdminCard extends Component {
   constructor(props) {
     super(props);
     this.submitData = this.submitData.bind(this);
+    this.deleteCandidate = this.deleteCandidate.bind(this);
+    this.removeFromStage = this.removeFromStage.bind(this);
     // this.inputData = this.inputData.bind(this);
     // this.onChangeUsername = this.onChangeUsername.bind(this);
     // this.postNewComment = this.postNewComment.bind(this);
@@ -76,6 +78,36 @@ export default class AdminCard extends Component {
       })
       .catch((error) => console.log(error));
   }
+  deleteCandidate(){
+
+    let sure = window.confirm("Are you sure you want to delete this participant?");
+    if (sure) {
+        databased
+    .ref("tedx/" + this.props.participant?.uid).remove().then(() => {
+        databased
+        .ref("tedx-greenroom/" + this.props.participant?.uid).remove().then(() => {
+         alert("Deleted");
+        });
+    }); 
+    } else {
+        console.log("Cancelled");
+    }
+   
+  }
+
+  removeFromStage(){
+
+    let sure = window.confirm("Are you sure you want to close voting for this participant?");
+    if (sure) {
+        databased
+    .ref("tedx/" + this.props.participant?.uid).remove().then(() => {
+        alert("Removed from stage");
+    }); 
+    } else {
+        console.log("Cancelled");
+    }
+   
+  }
 //   inputData(event) {
 //     const score = this.refs.score.value;
 
@@ -88,6 +120,7 @@ export default class AdminCard extends Component {
           effect="blur"
           src={this.props.participant?.photo}
           width="100%"
+          height="200px"
           className="roundedImage"
           alt="Poster"
         />
@@ -100,8 +133,28 @@ export default class AdminCard extends Component {
            Total Votes : {this.state.voteObj?.totalVotes ||0}
            <br/>
            Average Score : {parseInt(this.state.voteObj?.cumulativeScore ||0)/ parseInt(this.state.voteObj?.totalVotes ||1)}
-       
+           <br/><br/>
+           <button
+                    type="submit"
+                    class="btn btn-outline-danger"
+                    type="button"
+                    id="button-addon2"
+                    onClick={this.deleteCandidate}
+                  >
+                    Delete Participant
+                  </button>
+                  <br/><br/>
+         {this.state.voteObj &&  <button
+                    type="submit"
+                    class="btn btn-outline-warning"
+                    type="button"
+                    id="button-addon2"
+                    onClick={this.removeFromStage}
+                  >
+                    Close Voting
+                  </button>}
    </p>
+  
         {!this.state.voteObj ? (
             <>
            
@@ -126,11 +179,12 @@ export default class AdminCard extends Component {
           </form>
           </>
         ) : (
-
+            <p style={this.itemHeading} className="text-truncate">
           <span class="badge badge-success">
            Promoted to Stage
 
           </span>
+          </p>
         )}
         
       </div>
