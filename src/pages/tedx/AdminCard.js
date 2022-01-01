@@ -134,6 +134,7 @@ export default class AdminCard extends Component {
            <br/>
            Average Score : {parseInt(this.state.voteObj?.cumulativeScore ||0)/ parseInt(this.state.voteObj?.totalVotes ||1)}
            <br/><br/>
+          {auth.currentUser && <div>
            <button
                     type="submit"
                     class="btn btn-outline-danger"
@@ -153,6 +154,7 @@ export default class AdminCard extends Component {
                   >
                     Close Voting
                   </button>}
+                  </div>}
    </p>
   
         {!this.state.voteObj ? (
