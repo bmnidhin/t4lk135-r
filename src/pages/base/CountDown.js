@@ -31,7 +31,7 @@ export default class CountDown extends Component {
   }
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/notifications")
+      .get("https://api-thetkmshow.vercel.app/notifications")
       .then((response) => {
         this.setState({
           isActive: response.data.map(

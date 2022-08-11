@@ -46,7 +46,7 @@ export default class listen extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/alltracks')
+      .get('https://api-thetkmshow.vercel.app/alltracks')
       .then((response) => {
         this.setState({
           notLoaded: false,

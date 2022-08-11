@@ -42,7 +42,7 @@ export default class playlists extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/playlist')
+      .get('https://api-thetkmshow.vercel.app/playlist')
       .then((response) => {
         this.setState({
           notLoaded: false,

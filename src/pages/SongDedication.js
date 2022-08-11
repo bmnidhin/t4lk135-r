@@ -90,7 +90,7 @@ class SongDedication extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/alltracks/song-dedication')
+      .get('https://api-thetkmshow.vercel.app/alltracks/song-dedication')
 
       .then((response) => {
         this.setState({

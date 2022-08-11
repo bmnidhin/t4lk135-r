@@ -53,7 +53,7 @@ export default class ClubPromoPage extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/promo/' + this.props.match.params.slug)
+      .get('https://api-thetkmshow.vercel.app/promo/' + this.props.match.params.slug)
       .then((response) => {
         console.log(response.data)
         this.setState({

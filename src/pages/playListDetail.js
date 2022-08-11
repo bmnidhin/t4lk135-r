@@ -89,7 +89,7 @@ class playListDetail extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/playlist/' + this.props.match.params.slug)
+      .get('https://api-thetkmshow.vercel.app/playlist/' + this.props.match.params.slug)
 
       .then((response) => {
         this.setState({

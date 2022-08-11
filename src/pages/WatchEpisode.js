@@ -84,7 +84,7 @@ class WatchEpisode extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/watch/' + this.props.match.params.slug)
+      .get('https://api-thetkmshow.vercel.app/watch/' + this.props.match.params.slug)
 
       .then((response) => {
         this.setState({

@@ -114,7 +114,7 @@ class episode extends Component {
 
   componentDidMount() {
     axios
-      .get("https://api.thetkmshow.in/listen/" + this.props.match.params.slug)
+      .get("https://api-thetkmshow.vercel.app/listen/" + this.props.match.params.slug)
 
       .then((response) => {
         this.setState({

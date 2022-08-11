@@ -47,7 +47,7 @@ export default class ClubEpisodes extends Component {
 
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/clubs')
+      .get('https://api-thetkmshow.vercel.app/clubs')
       .then((response) => {
         this.setState({
           notLoaded: false,

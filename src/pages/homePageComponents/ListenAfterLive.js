@@ -27,7 +27,7 @@ export default class ListenAfterLive extends Component {
   }
   componentDidMount() {
     axios
-      .get('https://api.thetkmshow.in/notifications')
+      .get('https://api-thetkmshow.vercel.app/notifications')
       .then((response) => {
         this.setState({
           isbannerOn: response.data.map((event) => event.isbannerOn),
@@ -37,7 +37,7 @@ export default class ListenAfterLive extends Component {
         console.log(error)
       })
     axios
-      .get('https://api.thetkmshow.in/alltracks')
+      .get('https://api-thetkmshow.vercel.app/alltracks')
       .then((response) => {
         this.setState({
           data: response.data,
